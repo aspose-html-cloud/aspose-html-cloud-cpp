@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GtaTestDurations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Executable>C:\CLOUD_WORK\Aspose.Html.SDK.CPP\Debug\test.exe</Executable>
+  <TestDurations>
+    <TestDuration Test="TestTranslationApi.getTranslateDocumentByUrl" Duration="125036" />
+    <TestDuration Test="TestConversionApi.ConvertDocToJpeg" Duration="15079" />
+    <TestDuration Test="TestConversionApi.ConvertDocToPng" Duration="6422" />
+    <TestDuration Test="TestConversionApi.ConvertDocToBmp" Duration="261687" />
+    <TestDuration Test="TestConversionApi.ConvertDocToTiff" Duration="11724" />
+    <TestDuration Test="TestConversionApi.ConvertDocToPdf" Duration="3244" />
+    <TestDuration Test="TestConversionApi.ConvertDocToXps" Duration="2564" />
+    <TestDuration Test="TestConversionApi.ConvertUrlToJpeg" Duration="6713" />
+    <TestDuration Test="TestConversionApi.ConvertUrlToPng" Duration="5444" />
+    <TestDuration Test="TestConversionApi.ConvertUrlToBmp" Duration="683260" />
+    <TestDuration Test="TestConversionApi.ConvertUrlToTiff" Duration="6679" />
+    <TestDuration Test="TestConversionApi.ConvertUrlToPdf" Duration="4503" />
+    <TestDuration Test="TestConversionApi.ConvertUrlToXps" Duration="3756" />
+    <TestDuration Test="TestDocumentApi.getDocument" Duration="2739" />
+    <TestDuration Test="TestDocumentApi.getDocumentFragmentByXPath" Duration="2615" />
+    <TestDuration Test="TestDocumentApi.getDocumentImages" Duration="9198" />
+    <TestDuration Test="TestOcrApi.getRecognizeAndImportToHtml" Duration="21400" />
+    <TestDuration Test="TestOcrApi.getRecognizeAndTranslateToHtml" Duration="132212" />
+    <TestDuration Test="TestStorageApi.testPutCreate" Duration="1999" />
+    <TestDuration Test="TestStorageApi.testDeleteFile" Duration="2111" />
+    <TestDuration Test="TestStorageApi.testGetDownload" Duration="4149" />
+    <TestDuration Test="TestStorageApi.testPostMoveFile" Duration="7849" />
+    <TestDuration Test="TestStorageApi.putCreateFolder" Duration="4546" />
+    <TestDuration Test="TestStorageApi.testDeleteFolder" Duration="5499" />
+    <TestDuration Test="TestStorageApi.testGetListFiles" Duration="2139" />
+    <TestDuration Test="TestStorageApi.testPostMoveFolder" Duration="9467" />
+    <TestDuration Test="TestStorageApi.testGetDiskUsage" Duration="7923" />
+    <TestDuration Test="TestStorageApi.getIsExist" Duration="9442" />
+    <TestDuration Test="TestStorageApi.getIsStorageExist" Duration="3283" />
+    <TestDuration Test="TestStorageApi.getListFileVersion" Duration="11927" />
+    <TestDuration Test="TestSummarizationApi.getDetectHtmlKeyword" Duration="3917" />
+    <TestDuration Test="TestSummarizationApi.getDetectHtmlKeywordByUrl" Duration="2997" />
+    <TestDuration Test="TestTranslationApi.getTranslateDocument" Duration="37630" />
+  </TestDurations>
+</GtaTestDurations>

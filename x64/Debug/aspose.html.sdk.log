@@ -1,0 +1,17 @@
+﻿  ApiClient.cpp
+  ApiConfiguration.cpp
+  ApiException.cpp
+  ConversionApi.cpp
+  DocumentApi.cpp
+  OcrApi.cpp
+  SummarizationApi.cpp
+  TranslationApi.cpp
+  HttpContent.cpp
+  JsonBody.cpp
+  ModelBase.cpp
+  MultipartFormData.cpp
+  Object.cpp
+  Создание кода...
+ApiClient.obj : warning LNK4075: не учитывается "/EDITANDCONTINUE" из-за спецификации "/INCREMENTAL:NO"
+MSVCRTD.lib(exe_winmain.obj) : error LNK2019: ссылка на неразрешенный внешний символ WinMain в функции "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\CLOUD_WORK\Aspose.Html.SDK.CPP\x64\Debug\aspose.html.sdk.exe : fatal error LNK1120: неразрешенных внешних элементов: 1

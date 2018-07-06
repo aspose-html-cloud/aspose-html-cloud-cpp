@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{68802316-DAF0-433E-BA00-C4A64607AC19}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\CLOUD_WORK\Aspose.Html.SDK.CPP\model;C:\CLOUD_WORK\Aspose.Html.SDK.CPP;C:\boost_1_67_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>C:\CLOUD_WORK\Aspose.Html.SDK.CPP\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\boost_1_67_0;C:\CLOUD_WORK\Aspose.Html.SDK.CPP;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <NoEntryPoint>false</NoEntryPoint>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>C:\boost_1_67_0\lib;C:\CLOUD_WORK\Aspose.Html.SDK.CPP\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cpprest141d_2_10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ApiClient.cpp" />
+    <ClCompile Include="ApiConfiguration.cpp" />
+    <ClCompile Include="ApiException.cpp" />
+    <ClCompile Include="api\ConversionApi.cpp" />
+    <ClCompile Include="api\DocumentApi.cpp" />
+    <ClCompile Include="api\OcrApi.cpp" />
+    <ClCompile Include="api\StorageApi.cpp" />
+    <ClCompile Include="api\SummarizationApi.cpp" />
+    <ClCompile Include="api\TranslationApi.cpp" />
+    <ClCompile Include="HttpContent.cpp" />
+    <ClCompile Include="JsonBody.cpp" />
+    <ClCompile Include="ModelBase.cpp" />
+    <ClCompile Include="model\DiscUsage.cpp" />
+    <ClCompile Include="model\DiscUsageResponse.cpp" />
+    <ClCompile Include="model\File.cpp" />
+    <ClCompile Include="model\FileExist.cpp" />
+    <ClCompile Include="model\FileExistResponse.cpp" />
+    <ClCompile Include="model\FileVersion.cpp" />
+    <ClCompile Include="model\FileVersionsResponse.cpp" />
+    <ClCompile Include="model\MessageResponse.cpp" />
+    <ClCompile Include="model\MoveFileResponse.cpp" />
+    <ClCompile Include="model\MoveFolderResponse.cpp" />
+    <ClCompile Include="model\RemoveFileResponse.cpp" />
+    <ClCompile Include="model\RemoveFolderResponse.cpp" />
+    <ClCompile Include="model\StorageExistResponse.cpp" />
+    <ClCompile Include="MultipartFormData.cpp" />
+    <ClCompile Include="OAuth2Token.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="OctetStreamBody.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ApiClient.h" />
+    <ClInclude Include="ApiConfiguration.h" />
+    <ClInclude Include="ApiException.h" />
+    <ClInclude Include="api\ConversionApi.h" />
+    <ClInclude Include="api\DocumentApi.h" />
+    <ClInclude Include="api\OcrApi.h" />
+    <ClInclude Include="api\SummarizationApi.h" />
+    <ClInclude Include="api\TranslationApi.h" />
+    <ClInclude Include="cpprest\astreambuf.h" />
+    <ClInclude Include="cpprest\asyncrt_utils.h" />
+    <ClInclude Include="cpprest\base_uri.h" />
+    <ClInclude Include="cpprest\containerstream.h" />
+    <ClInclude Include="cpprest\details\basic_types.h" />
+    <ClInclude Include="cpprest\details\cpprest_compat.h" />
+    <ClInclude Include="cpprest\details\fileio.h" />
+    <ClInclude Include="cpprest\details\http_helpers.h" />
+    <ClInclude Include="cpprest\details\http_server.h" />
+    <ClInclude Include="cpprest\details\http_server_api.h" />
+    <ClInclude Include="cpprest\details\nosal.h" />
+    <ClInclude Include="cpprest\details\resource.h" />
+    <ClInclude Include="cpprest\details\SafeInt3.hpp" />
+    <ClInclude Include="cpprest\details\web_utilities.h" />
+    <ClInclude Include="cpprest\details\x509_cert_utilities.h" />
+    <ClInclude Include="cpprest\filestream.h" />
+    <ClInclude Include="cpprest\http_client.h" />
+    <ClInclude Include="cpprest\http_headers.h" />
+    <ClInclude Include="cpprest\http_listener.h" />
+    <ClInclude Include="cpprest\http_msg.h" />
+    <ClInclude Include="cpprest\interopstream.h" />
+    <ClInclude Include="cpprest\json.h" />
+    <ClInclude Include="cpprest\oauth1.h" />
+    <ClInclude Include="cpprest\oauth2.h" />
+    <ClInclude Include="cpprest\producerconsumerstream.h" />
+    <ClInclude Include="cpprest\rawptrstream.h" />
+    <ClInclude Include="cpprest\streams.h" />
+    <ClInclude Include="cpprest\uri.h" />
+    <ClInclude Include="cpprest\uri_builder.h" />
+    <ClInclude Include="cpprest\version.h" />
+    <ClInclude Include="cpprest\ws_client.h" />
+    <ClInclude Include="cpprest\ws_msg.h" />
+    <ClInclude Include="HttpContent.h" />
+    <ClInclude Include="IHttpBody.h" />
+    <ClInclude Include="JsonBody.h" />
+    <ClInclude Include="ModelBase.h" />
+    <ClInclude Include="model\DiscUsage.h" />
+    <ClInclude Include="model\DiscUsageResponse.h" />
+    <ClInclude Include="model\File.h" />
+    <ClInclude Include="model\FileExist.h" />
+    <ClInclude Include="model\FileExistResponse.h" />
+    <ClInclude Include="model\FileVersion.h" />
+    <ClInclude Include="model\FileVersionsResponse.h" />
+    <ClInclude Include="model\MessageResponse.h" />
+    <ClInclude Include="model\MoveFileResponse.h" />
+    <ClInclude Include="model\MoveFolderResponse.h" />
+    <ClInclude Include="model\RemoveFileResponse.h" />
+    <ClInclude Include="model\RemoveFolderResponse.h" />
+    <ClInclude Include="model\StorageExistResponse.h" />
+    <ClInclude Include="MultipartFormData.h" />
+    <ClInclude Include="OAuth2Token.h" />
+    <ClInclude Include="Object.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
