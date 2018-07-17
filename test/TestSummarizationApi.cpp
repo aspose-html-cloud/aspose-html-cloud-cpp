@@ -31,6 +31,7 @@
 #include "api/SummarizationApi.h"
 #include "api/StorageApi.h"
 
+
 using namespace com::aspose::api;
 
 class TestSummarizationApi : public TestBase
@@ -89,3 +90,5 @@ TEST_F(TestSummarizationApi, getDetectHtmlKeywordByUrl)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("keywords_by_url.json")));
 }
+
+

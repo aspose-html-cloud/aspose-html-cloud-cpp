@@ -25,6 +25,7 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
+
 #include "pch.h"
 #include "TestBase.h"
 #include "ApiConfiguration.h"
@@ -127,3 +128,5 @@ TEST_F(TestDocumentApi, getDocumentImages)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_img_result.zip")));
 }
+
+

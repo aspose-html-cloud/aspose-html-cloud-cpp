@@ -25,6 +25,7 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
+
 #include "pch.h"
 #include "TestBase.h"
 #include "ApiConfiguration.h"
@@ -54,7 +55,7 @@ protected:
 
 };
 
-/*      TEST FILE API      */
+//      TEST FILE API      
 
 TEST_F(TestStorageApi, testPutCreate)
 {
@@ -159,7 +160,7 @@ TEST_F(TestStorageApi, testPostMoveFile)
 }
 
 
-/*      TEST FOLDER API      */
+//      TEST FOLDER API      
 
 TEST_F(TestStorageApi, putCreateFolder)
 {
@@ -325,7 +326,7 @@ TEST_F(TestStorageApi, testPostMoveFolder)
 }
 
 
-/*      TEST STORAGE API      */
+//      TEST STORAGE API      
 
 TEST_F(TestStorageApi, testGetDiskUsage)
 {
@@ -379,7 +380,6 @@ TEST_F(TestStorageApi, getIsExist)
 
 	ASSERT_FALSE(result_exist->getFileExist()->isExist());
 	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
-
 }
 
 TEST_F(TestStorageApi, getIsStorageExist)
@@ -436,3 +436,5 @@ TEST_F(TestStorageApi, getListFileVersion)
 
 	std::wcout << list->toJson().serialize();
 }
+
+

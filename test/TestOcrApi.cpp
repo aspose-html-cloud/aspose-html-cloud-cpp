@@ -25,6 +25,7 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
+
 #include "pch.h"
 #include "TestBase.h"
 #include "ApiConfiguration.h"
@@ -97,3 +98,5 @@ TEST_F(TestOcrApi, getRecognizeAndTranslateToHtml)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("RecognizeAndTranslateToHtml.html")));
 }
+
+
