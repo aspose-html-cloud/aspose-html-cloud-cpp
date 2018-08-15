@@ -106,6 +106,20 @@ TEST_F(TestDocumentApi, getDocumentFragmentByXPath)
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_xpath.html")));
 }
 
+TEST_F(TestDocumentApi, getDocumentFragmentByXPathByUrl)
+{
+
+	// Get fragments from document url
+	utility::string_t sourceUrl = _XPLATSTR("https://stallman.org/articles/anonymous-payments-thru-phones.html");
+	utility::string_t xPath = _XPLATSTR(".//p");
+	utility::string_t outFormat = _XPLATSTR("plain");
+
+	auto result = api->getDocumentFragmentByXPathByUrl(sourceUrl, xPath, outFormat).get();
+
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_xpath_url.html")));
+}
+
+
 TEST_F(TestDocumentApi, getDocumentImages)
 {
 	//Upload document to storage
@@ -129,4 +143,12 @@ TEST_F(TestDocumentApi, getDocumentImages)
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_img_result.zip")));
 }
 
+TEST_F(TestDocumentApi, getDocumentImagesByUrl)
+{
+
+	//Get images from url
+	auto result = api->getDocumentImagesByUrl(_XPLATSTR("https://www.google.com/")).get();
+
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_img_url.zip")));
+}
 

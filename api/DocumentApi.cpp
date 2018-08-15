@@ -192,9 +192,8 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    {
-        queryParams[utility::conversions::to_string_t("xPath")] = ApiClient::parameterToString(xPath);
-    }
+    queryParams[utility::conversions::to_string_t("xPath")] = ApiClient::parameterToString(xPath);
+ 
     if (storage)
     {
         queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
@@ -248,6 +247,99 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
         return result;
     });
 }
+pplx::task<HttpContent> DocumentApi::getDocumentFragmentByXPathByUrl(utility::string_t sourceUrl, utility::string_t xPath, utility::string_t outFormat)
+{
+
+
+	std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+	utility::string_t path = utility::conversions::to_string_t("/html/fragments/{outFormat}");
+	boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("outFormat") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(outFormat));
+
+	std::map<utility::string_t, utility::string_t> queryParams;
+	std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+	std::map<utility::string_t, utility::string_t> formParams;
+	std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+
+	std::unordered_set<utility::string_t> responseHttpContentTypes;
+	responseHttpContentTypes.insert(utility::conversions::to_string_t("application/zip"));
+
+	utility::string_t responseHttpContentType;
+
+	// use JSON if possible
+	if (responseHttpContentTypes.size() == 0)
+	{
+		responseHttpContentType = utility::conversions::to_string_t("application/json");
+	}
+	// JSON
+	else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
+	{
+		responseHttpContentType = utility::conversions::to_string_t("application/json");
+	}
+	// multipart formdata
+	else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
+	{
+		responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+	}
+	else
+	{
+		//It's going to be binary, so just use the first one.
+		responseHttpContentType = *responseHttpContentTypes.begin();
+	}
+
+	headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
+
+	std::unordered_set<utility::string_t> consumeHttpContentTypes;
+	consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
+
+    queryParams[utility::conversions::to_string_t("sourceUrl")] = ApiClient::parameterToString(sourceUrl);
+	queryParams[utility::conversions::to_string_t("xPath")] = ApiClient::parameterToString(xPath);
+	
+
+	std::shared_ptr<IHttpBody> httpBody;
+	utility::string_t requestHttpContentType;
+
+	// use JSON if possible
+	if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
+	{
+		requestHttpContentType = utility::conversions::to_string_t("application/json");
+	}
+	// multipart formdata
+	else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
+	{
+		requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+	}
+	else
+	{
+		throw ApiException(415, utility::conversions::to_string_t("DocumentApi->GetDocumentFragmentByXPathByUrl does not consume any supported media type"));
+	}
+
+
+	return m_ApiClient->callApi(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+		.then([=](web::http::http_response response)
+	{
+		// 1xx - informational : OK
+		// 2xx - successful       : OK
+		// 3xx - redirection   : OK
+		// 4xx - client error  : not OK
+		// 5xx - client error  : not OK
+		if (response.status_code() >= 400)
+		{
+			throw ApiException(response.status_code()
+				, utility::conversions::to_string_t("error calling GetDocumentFragmentByXPathByUrl: ") + response.reason_phrase()
+				, std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+		}
+
+		return response.extract_vector();
+	})
+		.then([=](std::vector<unsigned char> response)
+	{
+		HttpContent result;
+		std::shared_ptr<std::stringstream> stream = std::make_shared<std::stringstream>(std::string(response.begin(), response.end()));
+		result.setData(stream);
+		return result;
+	});
+}
+
 pplx::task<HttpContent> DocumentApi::getDocumentImages(utility::string_t name, boost::optional<utility::string_t> folder, boost::optional<utility::string_t> storage)
 {
 
@@ -344,6 +436,95 @@ pplx::task<HttpContent> DocumentApi::getDocumentImages(utility::string_t name, b
         result.setData(stream);
         return result;
     });
+}
+pplx::task<HttpContent> DocumentApi::getDocumentImagesByUrl(utility::string_t sourceUrl)
+{
+
+
+	std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+	utility::string_t path = utility::conversions::to_string_t("/html/images/all");
+
+	std::map<utility::string_t, utility::string_t> queryParams;
+	std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+	std::map<utility::string_t, utility::string_t> formParams;
+	std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+
+	std::unordered_set<utility::string_t> responseHttpContentTypes;
+	responseHttpContentTypes.insert(utility::conversions::to_string_t("application/zip"));
+
+	utility::string_t responseHttpContentType;
+
+	// use JSON if possible
+	if (responseHttpContentTypes.size() == 0)
+	{
+		responseHttpContentType = utility::conversions::to_string_t("application/json");
+	}
+	// JSON
+	else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
+	{
+		responseHttpContentType = utility::conversions::to_string_t("application/json");
+	}
+	// multipart formdata
+	else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
+	{
+		responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+	}
+	else
+	{
+		//It's going to be binary, so just use the first one.
+		responseHttpContentType = *responseHttpContentTypes.begin();
+	}
+
+	headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
+
+	std::unordered_set<utility::string_t> consumeHttpContentTypes;
+	consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
+
+	queryParams[utility::conversions::to_string_t("sourceUrl")] = ApiClient::parameterToString(sourceUrl);
+
+	std::shared_ptr<IHttpBody> httpBody;
+	utility::string_t requestHttpContentType;
+
+	// use JSON if possible
+	if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
+	{
+		requestHttpContentType = utility::conversions::to_string_t("application/json");
+	}
+	// multipart formdata
+	else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
+	{
+		requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+	}
+	else
+	{
+		throw ApiException(415, utility::conversions::to_string_t("DocumentApi->GetDocumentImagesByUrl does not consume any supported media type"));
+	}
+
+
+	return m_ApiClient->callApi(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+		.then([=](web::http::http_response response)
+	{
+		// 1xx - informational : OK
+		// 2xx - successful       : OK
+		// 3xx - redirection   : OK
+		// 4xx - client error  : not OK
+		// 5xx - client error  : not OK
+		if (response.status_code() >= 400)
+		{
+			throw ApiException(response.status_code()
+				, utility::conversions::to_string_t("error calling GetDocumentImagesByUrl: ") + response.reason_phrase()
+				, std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+		}
+
+		return response.extract_vector();
+	})
+		.then([=](std::vector<unsigned char> response)
+	{
+		HttpContent result;
+		std::shared_ptr<std::stringstream> stream = std::make_shared<std::stringstream>(std::string(response.begin(), response.end()));
+		result.setData(stream);
+		return result;
+	});
 }
 
 }

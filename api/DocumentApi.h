@@ -52,6 +52,20 @@ public:
         boost::optional<utility::string_t> storage,
         boost::optional<utility::string_t> folder
     );
+	/// <summary>
+	/// Return list of HTML fragments matching the specified XPath query by the source page URL.
+	/// </summary>
+	/// <remarks>
+	/// 
+	/// </remarks>
+	/// <param name="sourceUrl">Source page URL.</param>
+	/// <param name="xPath">XPath query string.</param>
+	/// <param name="outFormat">Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.</param>
+	pplx::task<HttpContent> getDocumentFragmentByXPathByUrl(
+		utility::string_t sourceUrl,
+		utility::string_t xPath,
+		utility::string_t outFormat
+	);
     /// <summary>
     /// Return all HTML document images packaged as a ZIP archive.
     /// </summary>
@@ -66,6 +80,16 @@ public:
         boost::optional<utility::string_t> folder,
         boost::optional<utility::string_t> storage
     );
+	/// <summary>
+	/// Return all HTML page images packaged as a ZIP archive by the source page URL.
+	/// </summary>
+	/// <remarks>
+	/// 
+	/// </remarks>
+	/// <param name="sourceUrl">Source page URL.</param>
+	pplx::task<HttpContent> getDocumentImagesByUrl(
+		utility::string_t sourceUrl
+	);
 
 protected:
     std::shared_ptr<ApiClient> m_ApiClient;

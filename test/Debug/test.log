@@ -1,8 +1,2 @@
-﻿  TestTranslationApi.cpp
-  TestSummarizationApi.cpp
-  TestStorageApi.cpp
-  TestOcrApi.cpp
-  TestDocumentApi.cpp
-  TestConversionApi.cpp
-  Создание кода...
+﻿  TestDocumentApi.cpp
   test.vcxproj -> C:\CLOUD_WORK\Aspose.Html.SDK.CPP\Debug\test.exe
