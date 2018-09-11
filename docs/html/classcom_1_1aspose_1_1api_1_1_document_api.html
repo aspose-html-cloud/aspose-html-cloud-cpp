@@ -89,6 +89,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7fc312f9f1ad68d8d34b75504fc0dd26"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="classcom_1_1aspose_1_1model_1_1_http_content.html">HttpContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1aspose_1_1api_1_1_document_api.html#a7fc312f9f1ad68d8d34b75504fc0dd26">getDocumentFragmentByXPathByUrl</a> (utility::string_t sourceUrl, utility::string_t xPath, utility::string_t outFormat)</td></tr>
 <tr class="memdesc:a7fc312f9f1ad68d8d34b75504fc0dd26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return list of HTML fragments matching the specified XPath query by the source page URL.  <a href="#a7fc312f9f1ad68d8d34b75504fc0dd26">More...</a><br /></td></tr>
 <tr class="separator:a7fc312f9f1ad68d8d34b75504fc0dd26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e153b65c480f9a3e80e54440bf6565f"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="classcom_1_1aspose_1_1model_1_1_http_content.html">HttpContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1aspose_1_1api_1_1_document_api.html#a8e153b65c480f9a3e80e54440bf6565f">getDocumentFragmentsByCSSSelector</a> (utility::string_t name, utility::string_t selector, utility::string_t outFormat, boost::optional&lt; utility::string_t &gt; folder, boost::optional&lt; utility::string_t &gt; storage)</td></tr>
+<tr class="memdesc:a8e153b65c480f9a3e80e54440bf6565f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return list of HTML fragments matching the specified CSS selector.  <a href="#a8e153b65c480f9a3e80e54440bf6565f">More...</a><br /></td></tr>
+<tr class="separator:a8e153b65c480f9a3e80e54440bf6565f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1abeff185ac8490b41b78c3f6767dac"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="classcom_1_1aspose_1_1model_1_1_http_content.html">HttpContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1aspose_1_1api_1_1_document_api.html#aa1abeff185ac8490b41b78c3f6767dac">getDocumentFragmentsByCSSSelectorByUrl</a> (utility::string_t sourceUrl, utility::string_t selector, utility::string_t outFormat)</td></tr>
+<tr class="memdesc:aa1abeff185ac8490b41b78c3f6767dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return list of HTML fragments matching the specified CSS selector by the source page URL.  <a href="#aa1abeff185ac8490b41b78c3f6767dac">More...</a><br /></td></tr>
+<tr class="separator:aa1abeff185ac8490b41b78c3f6767dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b4ecb89c74e26958674657d53da915c"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="classcom_1_1aspose_1_1model_1_1_http_content.html">HttpContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1aspose_1_1api_1_1_document_api.html#a6b4ecb89c74e26958674657d53da915c">getDocumentImages</a> (utility::string_t name, boost::optional&lt; utility::string_t &gt; folder, boost::optional&lt; utility::string_t &gt; storage)</td></tr>
 <tr class="memdesc:a6b4ecb89c74e26958674657d53da915c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return all HTML document images packaged as a ZIP archive.  <a href="#a6b4ecb89c74e26958674657d53da915c">More...</a><br /></td></tr>
 <tr class="separator:a6b4ecb89c74e26958674657d53da915c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -242,6 +248,108 @@ std::shared_ptr&lt; <a class="el" href="classcom_1_1aspose_1_1api_1_1_api_client
   <table class="params">
     <tr><td class="paramname">sourceUrl</td><td>Source page URL.</td></tr>
     <tr><td class="paramname">xPath</td><td>XPath query string.</td></tr>
+    <tr><td class="paramname">outFormat</td><td>Output format. Possible values: &amp;#39;plain&amp;#39; and &amp;#39;json&amp;#39;.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8e153b65c480f9a3e80e54440bf6565f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e153b65c480f9a3e80e54440bf6565f">&#9670;&nbsp;</a></span>getDocumentFragmentsByCSSSelector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pplx::task&lt; <a class="el" href="classcom_1_1aspose_1_1model_1_1_http_content.html">HttpContent</a> &gt; com::aspose::api::DocumentApi::getDocumentFragmentsByCSSSelector </td>
+          <td>(</td>
+          <td class="paramtype">utility::string_t&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">utility::string_t&#160;</td>
+          <td class="paramname"><em>selector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">utility::string_t&#160;</td>
+          <td class="paramname"><em>outFormat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boost::optional&lt; utility::string_t &gt;&#160;</td>
+          <td class="paramname"><em>folder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boost::optional&lt; utility::string_t &gt;&#160;</td>
+          <td class="paramname"><em>storage</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return list of HTML fragments matching the specified CSS selector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The document name.</td></tr>
+    <tr><td class="paramname">selector</td><td>CSS selector string.</td></tr>
+    <tr><td class="paramname">outFormat</td><td>Output format. Possible values: &amp;#39;plain&amp;#39; and &amp;#39;json&amp;#39;.</td></tr>
+    <tr><td class="paramname">folder</td><td>The document folder. (optional)</td></tr>
+    <tr><td class="paramname">storage</td><td>The document storage. (optional)</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa1abeff185ac8490b41b78c3f6767dac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1abeff185ac8490b41b78c3f6767dac">&#9670;&nbsp;</a></span>getDocumentFragmentsByCSSSelectorByUrl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pplx::task&lt; <a class="el" href="classcom_1_1aspose_1_1model_1_1_http_content.html">HttpContent</a> &gt; com::aspose::api::DocumentApi::getDocumentFragmentsByCSSSelectorByUrl </td>
+          <td>(</td>
+          <td class="paramtype">utility::string_t&#160;</td>
+          <td class="paramname"><em>sourceUrl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">utility::string_t&#160;</td>
+          <td class="paramname"><em>selector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">utility::string_t&#160;</td>
+          <td class="paramname"><em>outFormat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return list of HTML fragments matching the specified CSS selector by the source page URL. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sourceUrl</td><td>Source page URL.</td></tr>
+    <tr><td class="paramname">selector</td><td>CSS selector string.</td></tr>
     <tr><td class="paramname">outFormat</td><td>Output format. Possible values: &amp;#39;plain&amp;#39; and &amp;#39;json&amp;#39;.</td></tr>
   </table>
   </dd>

@@ -66,6 +66,38 @@ public:
 		utility::string_t xPath,
 		utility::string_t outFormat
 	);
+	/// <summary>
+	/// Return list of HTML fragments matching the specified CSS selector.
+	/// </summary>
+	/// <remarks>
+	/// 
+	/// </remarks>
+	/// <param name="name">The document name.</param>
+	/// <param name="selector">CSS selector string.</param>
+	/// <param name="outFormat">Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.</param>
+	/// <param name="folder">The document folder. (optional)</param>
+	/// <param name="storage">The document storage. (optional)</param>
+	pplx::task<HttpContent> getDocumentFragmentsByCSSSelector(
+		utility::string_t name,
+		utility::string_t selector,
+		utility::string_t outFormat,
+		boost::optional<utility::string_t> folder,
+		boost::optional<utility::string_t> storage
+	);
+	/// <summary>
+	/// Return list of HTML fragments matching the specified CSS selector by the source page URL.
+	/// </summary>
+	/// <remarks>
+	/// 
+	/// </remarks>
+	/// <param name="sourceUrl">Source page URL.</param>
+	/// <param name="selector">CSS selector string.</param>
+	/// <param name="outFormat">Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.</param>
+	pplx::task<HttpContent> getDocumentFragmentsByCSSSelectorByUrl(
+		utility::string_t sourceUrl,
+		utility::string_t selector,
+		utility::string_t outFormat
+	);
     /// <summary>
     /// Return all HTML document images packaged as a ZIP archive.
     /// </summary>

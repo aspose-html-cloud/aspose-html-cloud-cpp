@@ -119,6 +119,45 @@ TEST_F(TestDocumentApi, getDocumentFragmentByXPathByUrl)
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_xpath_url.html")));
 }
 
+TEST_F(TestDocumentApi, getDocumentFragmentByCSS)
+{
+	//Upload document to storage
+	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test2.html.zip");
+	std::shared_ptr<HttpContent> file(new HttpContent());
+	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test2.html.zip"), std::ifstream::binary));
+	file->setData(if_stream);
+
+	boost::optional<utility::string_t> versionId = boost::none;
+	boost::optional<utility::string_t> storage = boost::none;
+	boost::optional<utility::string_t> folder = _XPLATSTR("HtmlTestDoc");
+
+	auto res = storage_api->putCreate(path_to_file, file, versionId, storage).get();
+
+	ASSERT_TRUE(res->getCode() == 200);
+	ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
+
+	// Get fragments from document
+	utility::string_t name = _XPLATSTR("test2.html.zip");
+	utility::string_t selector = _XPLATSTR("div p");
+	utility::string_t outFormat = _XPLATSTR("plain");
+
+	auto result = api->getDocumentFragmentsByCSSSelector(name, selector, outFormat, folder, storage).get();
+
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_css.html")));
+}
+
+TEST_F(TestDocumentApi, getDocumentFragmentByCSSByUrl)
+{
+
+	// Get fragments from document url
+	utility::string_t sourceUrl = _XPLATSTR("https://www.w3schools.com/cssref/css_selectors.asp");
+	utility::string_t selector = _XPLATSTR("a[href$='.asp']");
+	utility::string_t outFormat = _XPLATSTR("plain");
+
+	auto result = api->getDocumentFragmentsByCSSSelectorByUrl(sourceUrl, selector, outFormat).get();
+
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_css_url.html")));
+}
 
 TEST_F(TestDocumentApi, getDocumentImages)
 {

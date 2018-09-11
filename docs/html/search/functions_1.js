@@ -13,6 +13,8 @@ var searchData=
   ['getdocument',['getDocument',['../classcom_1_1aspose_1_1api_1_1_document_api.html#a05c618e6d0d00acf21bf598da1f0ca64',1,'com::aspose::api::DocumentApi']]],
   ['getdocumentfragmentbyxpath',['getDocumentFragmentByXPath',['../classcom_1_1aspose_1_1api_1_1_document_api.html#a46fd46204ae8a1f7955fbd1ebf3d4e1e',1,'com::aspose::api::DocumentApi']]],
   ['getdocumentfragmentbyxpathbyurl',['getDocumentFragmentByXPathByUrl',['../classcom_1_1aspose_1_1api_1_1_document_api.html#a7fc312f9f1ad68d8d34b75504fc0dd26',1,'com::aspose::api::DocumentApi']]],
+  ['getdocumentfragmentsbycssselector',['getDocumentFragmentsByCSSSelector',['../classcom_1_1aspose_1_1api_1_1_document_api.html#a8e153b65c480f9a3e80e54440bf6565f',1,'com::aspose::api::DocumentApi']]],
+  ['getdocumentfragmentsbycssselectorbyurl',['getDocumentFragmentsByCSSSelectorByUrl',['../classcom_1_1aspose_1_1api_1_1_document_api.html#aa1abeff185ac8490b41b78c3f6767dac',1,'com::aspose::api::DocumentApi']]],
   ['getdocumentimages',['getDocumentImages',['../classcom_1_1aspose_1_1api_1_1_document_api.html#a6b4ecb89c74e26958674657d53da915c',1,'com::aspose::api::DocumentApi']]],
   ['getdocumentimagesbyurl',['getDocumentImagesByUrl',['../classcom_1_1aspose_1_1api_1_1_document_api.html#a778e843b1006fa1e7db65ce613f16f61',1,'com::aspose::api::DocumentApi']]],
   ['getdownload',['getDownload',['../classcom_1_1aspose_1_1api_1_1_storage_api.html#ac82b6307aaece2d962b52d6efcdbc878',1,'com::aspose::api::StorageApi']]],
