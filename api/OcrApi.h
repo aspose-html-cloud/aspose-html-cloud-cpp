@@ -27,7 +27,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="name">The image file name.</param>
-    /// <param name="ocrEngineLang">OCR engine language - language  (optional, default to en)</param>
+    /// <param name="ocrEngineLang">OCR engine language - language  (optional, default to en). Allowed values is "en", "de", "fr", "ru".</param>
     /// <param name="folder">The source image folder. (optional)</param>
     /// <param name="storage">The source image storage. (optional)</param>
     pplx::task<HttpContent> getRecognizeAndImportToHtml(
@@ -43,8 +43,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="name">The image file name.</param>
-    /// <param name="srcLang">Source language - also supposed as the OCR engine language.</param>
-    /// <param name="resLang">Result language.</param>
+    /// <param name="srcLang">Source language - also supposed as the OCR engine language. Allowed values is "en", "de", "fr", "ru".</param>
+    /// <param name="resLang">Result language. Allowed values is "en", "de", "fr", "ru"</param>
     /// <param name="folder">The source image folder. (optional)</param>
     /// <param name="storage">The source image storage. (optional)</param>
     pplx::task<HttpContent> getRecognizeAndTranslateToHtml(

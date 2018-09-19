@@ -27,8 +27,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="name">Document name.</param>
-    /// <param name="srcLang">Source language.</param>
-    /// <param name="resLang">Result language.</param>
+    /// <param name="srcLang">Source language. Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").</param>
+    /// <param name="resLang">Result language. Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").</param>
     /// <param name="storage">The source document storage. (optional)</param>
     /// <param name="folder">The source document folder. (optional)</param>
     pplx::task<HttpContent> getTranslateDocument(
@@ -45,8 +45,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="sourceUrl">Source document URL.</param>
-    /// <param name="srcLang">Source language.</param>
-    /// <param name="resLang">Result language.</param>
+    /// <param name="srcLang">Source language.  Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").</param>
+    /// <param name="resLang">Result language.  Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").</param>
     pplx::task<HttpContent> getTranslateDocumentByUrl(
         utility::string_t sourceUrl,
         utility::string_t srcLang,
