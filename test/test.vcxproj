@@ -49,6 +49,7 @@
     </ClCompile>
     <ClCompile Include="TestBase.cpp" />
     <ClCompile Include="TestSummarizationApi.cpp" />
+    <ClCompile Include="TestTemplateMergeApi.cpp" />
     <ClCompile Include="TestTranslationApi.cpp" />
   </ItemGroup>
   <ItemGroup>

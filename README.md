@@ -74,6 +74,7 @@ All URIs are relative to *https://api.aspose.cloud/v1.1*
 - [OcrApi](./docs/html/classcom_1_1aspose_1_1api_1_1_ocr_api.html)
 - [SummarizationApi](./docs/html/classcom_1_1aspose_1_1api_1_1_summarization_api.html)
 - [TranslationApi](./docs/html/classcom_1_1aspose_1_1api_1_1_translation_api.html)
+- [TemplateMergeApi] (./docs/html/classcom_1_1aspose_1_1api_1_1_template_merge_api.html)
 
 Aspose HTML includes Aspose.Storage.Cloud to manipulate files on a remote server. This is used in tests for download test files to the server.
 - [StorageApi](./docs/html/classcom_1_1aspose_1_1api_1_1_storage_api.html)

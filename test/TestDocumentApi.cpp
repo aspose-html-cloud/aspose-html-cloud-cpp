@@ -56,29 +56,6 @@ protected:
 	StorageApi *storage_api;
 };
 
-TEST_F(TestDocumentApi, getDocument)
-{
-	//Upload document to storage
-	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test_get_doc.zip");
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test_get_doc.zip"), std::ifstream::binary));
-	file->setData(if_stream);
-
-	boost::optional<utility::string_t> versionId = boost::none;
-	boost::optional<utility::string_t> storage = boost::none;
-	boost::optional<utility::string_t> folder = _XPLATSTR("HtmlTestDoc");
-
-	auto res = storage_api->putCreate(path_to_file, file, versionId, storage).get();
-
-	ASSERT_TRUE(res->getCode() == 200);
-	ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
-
-	//Test get document from storage
-	auto result = api->getDocument(_XPLATSTR("test_get_doc.zip"), storage, folder).get();
-
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_doc.zip")));
-}
-
 TEST_F(TestDocumentApi, getDocumentFragmentByXPath)
 {
 	//Upload document to storage

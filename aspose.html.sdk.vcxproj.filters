@@ -108,6 +108,9 @@
     <ClCompile Include="OctetStreamBody.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="api\TemplateMergeApi.cpp">
+      <Filter>Source Files\Api</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApiClient.h">

@@ -21,20 +21,6 @@ public:
     DocumentApi( std::shared_ptr<ApiClient> apiClient );
     virtual ~DocumentApi();
     /// <summary>
-    /// Return the HTML document by the name from default or specified storage.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="name">The document name.</param>
-    /// <param name="storage">The document folder (optional)</param>
-    /// <param name="folder">The document folder. (optional)</param>
-    pplx::task<HttpContent> getDocument(
-        utility::string_t name,
-        boost::optional<utility::string_t> storage,
-        boost::optional<utility::string_t> folder
-    );
-    /// <summary>
     /// Return list of HTML fragments matching the specified XPath query. 
     /// </summary>
     /// <remarks>

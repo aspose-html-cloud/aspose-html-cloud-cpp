@@ -22,6 +22,7 @@ public:
     virtual ~TranslationApi();
     /// <summary>
     /// Translate the HTML document specified by the name from default or specified storage. 
+    /// Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
     /// </summary>
     /// <remarks>
     /// 
@@ -40,6 +41,7 @@ public:
     );
     /// <summary>
     /// Translate the HTML document from Web specified by its URL.
+    /// Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
     /// </summary>
     /// <remarks>
     /// 

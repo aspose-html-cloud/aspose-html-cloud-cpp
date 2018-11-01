@@ -22,6 +22,7 @@ public:
     virtual ~OcrApi();
     /// <summary>
     /// Recognize text from the image file in the storage and import it to HTML format.
+    /// Acceptable image formats is jpg, gif, png, bmp, tiff.
     /// </summary>
     /// <remarks>
     /// 
@@ -38,6 +39,7 @@ public:
     );
     /// <summary>
     /// Recognize text from the image file in the storage, import it to HTML format and translate to specified language.
+    /// Acceptable image formats is jpg, gif, png, bmp, tiff.
     /// </summary>
     /// <remarks>
     /// 

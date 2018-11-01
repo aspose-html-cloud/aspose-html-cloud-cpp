@@ -127,6 +127,7 @@
     <ClCompile Include="api\OcrApi.cpp" />
     <ClCompile Include="api\StorageApi.cpp" />
     <ClCompile Include="api\SummarizationApi.cpp" />
+    <ClCompile Include="api\TemplateMergeApi.cpp" />
     <ClCompile Include="api\TranslationApi.cpp" />
     <ClCompile Include="HttpContent.cpp" />
     <ClCompile Include="JsonBody.cpp" />

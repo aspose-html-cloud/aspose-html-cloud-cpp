@@ -9,5 +9,6 @@ var searchData=
   ['putconvertdocumenttopdf',['putConvertDocumentToPdf',['../classcom_1_1aspose_1_1api_1_1_conversion_api.html#a2909f3259bb1eebaccf0b14a878a6d81',1,'com::aspose::api::ConversionApi']]],
   ['putconvertdocumenttoxps',['putConvertDocumentToXps',['../classcom_1_1aspose_1_1api_1_1_conversion_api.html#a83df5f467bd07b1e0af95006b904a8c9',1,'com::aspose::api::ConversionApi']]],
   ['putcreate',['putCreate',['../classcom_1_1aspose_1_1api_1_1_storage_api.html#a48a1f3017511aec4e59d731aa7e9600f',1,'com::aspose::api::StorageApi']]],
-  ['putcreatefolder',['putCreateFolder',['../classcom_1_1aspose_1_1api_1_1_storage_api.html#adc77ee7d188357f65bd54524c55f5b08',1,'com::aspose::api::StorageApi']]]
+  ['putcreatefolder',['putCreateFolder',['../classcom_1_1aspose_1_1api_1_1_storage_api.html#adc77ee7d188357f65bd54524c55f5b08',1,'com::aspose::api::StorageApi']]],
+  ['putmergehtmltemplate',['putMergeHtmlTemplate',['../classcom_1_1aspose_1_1api_1_1_template_merge_api.html#a5a2c556f2c8d21d0d6514a5cc957d7c2',1,'com::aspose::api::TemplateMergeApi']]]
 ];
