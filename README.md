@@ -69,15 +69,15 @@ For use SDK see examples in [test](./test/)
 
 All URIs are relative to *https://api.aspose.cloud/v1.1*   
 
-- [ConversionApi](./docs/html/classcom_1_1aspose_1_1api_1_1_conversion_api.html)
-- [DocumentApi](./docs/html/classcom_1_1aspose_1_1api_1_1_document_api.html)
-- [OcrApi](./docs/html/classcom_1_1aspose_1_1api_1_1_ocr_api.html)
-- [SummarizationApi](./docs/html/classcom_1_1aspose_1_1api_1_1_summarization_api.html)
-- [TranslationApi](./docs/html/classcom_1_1aspose_1_1api_1_1_translation_api.html)
-- [TemplateMergeApi] (./docs/html/classcom_1_1aspose_1_1api_1_1_template_merge_api.html)
+- [ConversionApi](./docs/html/de/dcc/classcom_1_1aspose_1_1api_1_1_conversion_api.html)
+- [DocumentApi](./docs/html/dc/d9d/classcom_1_1aspose_1_1api_1_1_document_api.html)
+- [OcrApi](./docs/html/d1/d11/classcom_1_1aspose_1_1api_1_1_ocr_api.html)
+- [SummarizationApi](./docs/html/dc/dce/classcom_1_1aspose_1_1api_1_1_summarization_api.html)
+- [TranslationApi](./docs/html/d4/d7a/classcom_1_1aspose_1_1api_1_1_translation_api.html)
+- [TemplateMergeApi](./docs/html/d7/d0c/classcom_1_1aspose_1_1api_1_1_template_merge_api.html)
 
 Aspose HTML includes Aspose.Storage.Cloud to manipulate files on a remote server. This is used in tests for download test files to the server.
-- [StorageApi](./docs/html/classcom_1_1aspose_1_1api_1_1_storage_api.html)
+- [StorageApi](./docs/html/dd/d83/classcom_1_1aspose_1_1api_1_1_storage_api.html)
 
 
 ## oauth

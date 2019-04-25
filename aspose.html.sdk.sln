@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28701.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aspose.html.sdk", "aspose.html.sdk.vcxproj", "{68802316-DAF0-433E-BA00-C4A64607AC19}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{30FB60A4-E7D0-48A0-BBA3-B17871A4DF54}"
+	ProjectSection(ProjectDependencies) = postProject
+		{68802316-DAF0-433E-BA00-C4A64607AC19} = {68802316-DAF0-433E-BA00-C4A64607AC19}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

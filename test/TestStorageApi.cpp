@@ -26,10 +26,9 @@
 */
 
 
-#include "pch.h"
-#include "TestBase.h"
 #include "ApiConfiguration.h"
 #include "api/StorageApi.h"
+#include "TestBase.h"
 
 
 using namespace com::aspose::api;
@@ -38,20 +37,24 @@ using namespace com::aspose::model;
 
 class TestStorageApi : public TestBase
 {
+
+public:
+
+    StorageApi* api;
+
 protected:
-	void SetUp() 
+
+    void SetUp()
 	{
 		std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
 		std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
 		api = new StorageApi(apiClient);
 	}
 
-	void TearDown() 
+    void TearDown()
 	{
 		delete api;
 	}
-
-	StorageApi *api;
 
 };
 
@@ -434,7 +437,6 @@ TEST_F(TestStorageApi, getListFileVersion)
 	ASSERT_TRUE(list->getCode() == 200);
 	ASSERT_TRUE(list->getStatus() == _XPLATSTR("OK"));
 
-	std::wcout << list->toJson().serialize();
 }
 
 

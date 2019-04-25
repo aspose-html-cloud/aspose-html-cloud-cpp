@@ -25,9 +25,8 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
-#include "pch.h"
-#include "TestBase.h"
 
+#include "TestBase.h"
 
 
 TestBase::TestBase()
@@ -37,6 +36,18 @@ TestBase::TestBase()
 TestBase::~TestBase()
 {
 }
+
+const utility::string_t TestBase::clientId = _XPLATSTR("80e32ca5-a828-46a4-9d54-7199dfd3764a");
+//	const utility::string_t TestBase::clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+const utility::string_t TestBase::clientSecret = _XPLATSTR("60487a72d6325241191177e37ae52146");
+//	const utility::string_t TestBase::clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+//	const utility::string_t TestBase::basePath = _XPLATSTR("https://api-qa.aspose.cloud/v1.1");
+const utility::string_t TestBase::basePath = _XPLATSTR("http://sikorsky-js3.dynabic.com:9083/v1.1");
+//	const utility::string_t TestBase::authPath = _XPLATSTR("http://api-qa.aspose.cloud/oauth2/token");
+const utility::string_t TestBase::authPath = _XPLATSTR("http://sikorsky-js3.dynabic.com:9083/oauth2/token");
+
+const utility::string_t TestBase::testSource = _XPLATSTR("..\\testsource\\");
+const utility::string_t TestBase::testResult = _XPLATSTR("..\\testresult\\");
 
 bool TestBase::save_to_file(com::aspose::model::HttpContent content, utility::string_t name)
 {

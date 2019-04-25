@@ -25,19 +25,30 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
-#include "pch.h"
-#include "TestBase.h"
+
 #include "ApiConfiguration.h"
 #include "api/TemplateMergeApi.h"
 #include "api/StorageApi.h"
+#include "TestBase.h"
 
 using namespace com::aspose::api;
 
 class TestTemplateMergeApi : public TestBase
 {
+
+public:
+
+    TemplateMergeApi* api;
+    StorageApi* storage_api;
+
+    boost::optional<utility::string_t> storage;
+    utility::string_t template_name;
+    utility::string_t data_name;
+    boost::optional<utility::string_t> versionId;
+
 protected:
 
-	void SetUp()
+    void SetUp()
 	{
 		std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
 		std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
@@ -73,19 +84,12 @@ protected:
 		ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
 	}
 
-	void TearDown()
+    void TearDown()
 	{
 		delete api;
 		delete storage_api;
 	}
 
-	TemplateMergeApi *api;
-	StorageApi *storage_api;
-
-	boost::optional<utility::string_t> storage;
-	utility::string_t template_name;
-	utility::string_t data_name;
-	boost::optional<utility::string_t> versionId;
 };
 
 

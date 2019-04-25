@@ -1,0 +1,15 @@
+﻿  TestTranslationApi.cpp
+  TestTemplateMergeApi.cpp
+  TestSvgConversionApi.cpp
+  TestSummarizationApi.cpp
+  TestBase.cpp
+  TestStorageApi.cpp
+  TestOcrApi.cpp
+  TestDocumentApi.cpp
+  TestHtmlConversionApi.cpp
+  TestEpubConversionApi.cpp
+  gtest_main.cc
+  gtest-all.cc
+  Создание кода...
+  test.vcxproj -> C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\x64\Debug\test.exe
+  test.vcxproj -> C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\x64\Debug\test.pdb (Full PDB)

@@ -26,26 +26,29 @@
 */
 
 
-#include "pch.h"
-#include "TestBase.h"
 #include "ApiConfiguration.h"
 #include "api/OcrApi.h"
 #include "api/StorageApi.h"
+#include "TestBase.h"
 
 using namespace com::aspose::api;
 
 class TestOcrApi : public TestBase
 {
+
+public:
+
+    OcrApi* api;
+    StorageApi* storage_api;
+
 protected:
 
-	void SetUp()
+    void SetUp()
 	{
 		std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
 		std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
 		api = new OcrApi(apiClient);
 		storage_api = new StorageApi(apiClient);
-
-
 
 
 		//Upload file for conversion to server
@@ -63,14 +66,13 @@ protected:
 		ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
 	}
 
-	void TearDown()
+    void TearDown()
 	{
 		delete api;
 		delete storage_api;
 	}
 
-	OcrApi *api;
-	StorageApi *storage_api;
+
 };
 
 

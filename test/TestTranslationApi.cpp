@@ -26,20 +26,23 @@
 */
 
 
-#include "pch.h"
-#include "TestBase.h"
 #include "ApiConfiguration.h"
 #include "api/TranslationApi.h"
 #include "api/StorageApi.h"
-
+#include "TestBase.h"
 
 using namespace com::aspose::api;
 
 class TestTranslationApi : public TestBase
 {
+
+public:
+    TranslationApi* api;
+    StorageApi* storage_api;
+
 protected:
 
-	void SetUp()
+    void SetUp()
 	{
 		std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
 		std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
@@ -47,14 +50,13 @@ protected:
 		storage_api = new StorageApi(apiClient);
 	}
 
-	void TearDown()
+    void TearDown()
 	{
 		delete api;
 		delete storage_api;
 	}
 
-	TranslationApi *api;
-	StorageApi *storage_api;
+
 };
 
 TEST_F(TestTranslationApi, getTranslateDocument)

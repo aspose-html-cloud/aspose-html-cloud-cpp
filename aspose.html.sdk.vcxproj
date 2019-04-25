@@ -22,29 +22,30 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{68802316-DAF0-433E-BA00-C4A64607AC19}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -75,12 +76,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;ASPOSE_DLL_EXPORT_SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\CLOUD_WORK\Aspose.Html.SDK.CPP\model;C:\CLOUD_WORK\Aspose.Html.SDK.CPP;C:\boost_1_67_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;C:\boost_1_69_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -88,15 +89,17 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>C:\CLOUD_WORK\Aspose.Html.SDK.CPP\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;ASPOSE_DLL_EXPORT_SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>C:\boost_1_69_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -108,57 +111,66 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\boost_1_67_0;C:\CLOUD_WORK\Aspose.Html.SDK.CPP;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Boost\include\boost-1_69;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>ASPOSE_DLL_EXPORT_SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <NoEntryPoint>false</NoEntryPoint>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>C:\boost_1_67_0\lib;C:\CLOUD_WORK\Aspose.Html.SDK.CPP\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>cpprest141d_2_10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\libs;C:\Boost\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cpprest140d_2_9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\boost_1_69_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ASPOSE_DLL_EXPORT_SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ApiClient.cpp" />
-    <ClCompile Include="ApiConfiguration.cpp" />
-    <ClCompile Include="ApiException.cpp" />
-    <ClCompile Include="api\ConversionApi.cpp" />
-    <ClCompile Include="api\DocumentApi.cpp" />
-    <ClCompile Include="api\OcrApi.cpp" />
-    <ClCompile Include="api\StorageApi.cpp" />
-    <ClCompile Include="api\SummarizationApi.cpp" />
-    <ClCompile Include="api\TemplateMergeApi.cpp" />
-    <ClCompile Include="api\TranslationApi.cpp" />
-    <ClCompile Include="HttpContent.cpp" />
-    <ClCompile Include="JsonBody.cpp" />
-    <ClCompile Include="ModelBase.cpp" />
-    <ClCompile Include="model\DiscUsage.cpp" />
-    <ClCompile Include="model\DiscUsageResponse.cpp" />
-    <ClCompile Include="model\File.cpp" />
-    <ClCompile Include="model\FileExist.cpp" />
-    <ClCompile Include="model\FileExistResponse.cpp" />
-    <ClCompile Include="model\FileVersion.cpp" />
-    <ClCompile Include="model\FileVersionsResponse.cpp" />
-    <ClCompile Include="model\MessageResponse.cpp" />
-    <ClCompile Include="model\MoveFileResponse.cpp" />
-    <ClCompile Include="model\MoveFolderResponse.cpp" />
-    <ClCompile Include="model\RemoveFileResponse.cpp" />
-    <ClCompile Include="model\RemoveFolderResponse.cpp" />
-    <ClCompile Include="model\StorageExistResponse.cpp" />
-    <ClCompile Include="MultipartFormData.cpp" />
-    <ClCompile Include="OAuth2Token.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="OctetStreamBody.cpp" />
+    <ClCompile Include="src\ApiClient.cpp" />
+    <ClCompile Include="src\ApiConfiguration.cpp" />
+    <ClCompile Include="src\ApiException.cpp" />
+    <ClCompile Include="src\api\ConversionApi.cpp" />
+    <ClCompile Include="src\api\DocumentApi.cpp" />
+    <ClCompile Include="src\api\OcrApi.cpp" />
+    <ClCompile Include="src\api\StorageApi.cpp" />
+    <ClCompile Include="src\api\SummarizationApi.cpp" />
+    <ClCompile Include="src\api\TemplateMergeApi.cpp" />
+    <ClCompile Include="src\api\TranslationApi.cpp" />
+    <ClCompile Include="src\HttpContent.cpp" />
+    <ClCompile Include="src\JsonBody.cpp" />
+    <ClCompile Include="src\ModelBase.cpp" />
+    <ClCompile Include="src\model\DiscUsage.cpp" />
+    <ClCompile Include="src\model\DiscUsageResponse.cpp" />
+    <ClCompile Include="src\model\File.cpp" />
+    <ClCompile Include="src\model\FileExist.cpp" />
+    <ClCompile Include="src\model\FileExistResponse.cpp" />
+    <ClCompile Include="src\model\FileVersion.cpp" />
+    <ClCompile Include="src\model\FileVersionsResponse.cpp" />
+    <ClCompile Include="src\model\MessageResponse.cpp" />
+    <ClCompile Include="src\model\StorageExistResponse.cpp" />
+    <ClCompile Include="src\MultipartFormData.cpp" />
+    <ClCompile Include="src\OAuth2Token.cpp" />
+    <ClCompile Include="src\Object.cpp" />
+    <ClCompile Include="src\OctetStreamBody.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ApiClient.h" />
-    <ClInclude Include="ApiConfiguration.h" />
-    <ClInclude Include="ApiException.h" />
-    <ClInclude Include="api\ConversionApi.h" />
-    <ClInclude Include="api\DocumentApi.h" />
-    <ClInclude Include="api\OcrApi.h" />
-    <ClInclude Include="api\SummarizationApi.h" />
-    <ClInclude Include="api\TranslationApi.h" />
+    <ClInclude Include="include\defines.h" />
+    <ClInclude Include="include\api\TemplateMergeApi.h" />
+    <ClInclude Include="include\ApiClient.h" />
+    <ClInclude Include="include\ApiConfiguration.h" />
+    <ClInclude Include="include\ApiException.h" />
+    <ClInclude Include="include\api\ConversionApi.h" />
+    <ClInclude Include="include\api\DocumentApi.h" />
+    <ClInclude Include="include\api\OcrApi.h" />
+    <ClInclude Include="include\api\StorageApi.h" />
+    <ClInclude Include="include\api\SummarizationApi.h" />
+    <ClInclude Include="include\api\TranslationApi.h" />
     <ClInclude Include="cpprest\astreambuf.h" />
     <ClInclude Include="cpprest\asyncrt_utils.h" />
     <ClInclude Include="cpprest\base_uri.h" />
@@ -191,28 +203,47 @@
     <ClInclude Include="cpprest\version.h" />
     <ClInclude Include="cpprest\ws_client.h" />
     <ClInclude Include="cpprest\ws_msg.h" />
-    <ClInclude Include="HttpContent.h" />
-    <ClInclude Include="IHttpBody.h" />
-    <ClInclude Include="JsonBody.h" />
-    <ClInclude Include="ModelBase.h" />
-    <ClInclude Include="model\DiscUsage.h" />
-    <ClInclude Include="model\DiscUsageResponse.h" />
-    <ClInclude Include="model\File.h" />
-    <ClInclude Include="model\FileExist.h" />
-    <ClInclude Include="model\FileExistResponse.h" />
-    <ClInclude Include="model\FileVersion.h" />
-    <ClInclude Include="model\FileVersionsResponse.h" />
-    <ClInclude Include="model\MessageResponse.h" />
-    <ClInclude Include="model\MoveFileResponse.h" />
-    <ClInclude Include="model\MoveFolderResponse.h" />
-    <ClInclude Include="model\RemoveFileResponse.h" />
-    <ClInclude Include="model\RemoveFolderResponse.h" />
-    <ClInclude Include="model\StorageExistResponse.h" />
-    <ClInclude Include="MultipartFormData.h" />
-    <ClInclude Include="OAuth2Token.h" />
-    <ClInclude Include="Object.h" />
+    <ClInclude Include="include\HttpContent.h" />
+    <ClInclude Include="include\IHttpBody.h" />
+    <ClInclude Include="include\OctetStreamBody.h" />
+    <ClInclude Include="include\JsonBody.h" />
+    <ClInclude Include="include\ModelBase.h" />
+    <ClInclude Include="include\model\DiscUsage.h" />
+    <ClInclude Include="include\model\DiscUsageResponse.h" />
+    <ClInclude Include="include\model\File.h" />
+    <ClInclude Include="include\model\FileExist.h" />
+    <ClInclude Include="include\model\FileExistResponse.h" />
+    <ClInclude Include="include\model\FileVersion.h" />
+    <ClInclude Include="include\model\FileVersionsResponse.h" />
+    <ClInclude Include="include\model\MessageResponse.h" />
+    <ClInclude Include="include\model\StorageExistResponse.h" />
+    <ClInclude Include="include\MultipartFormData.h" />
+    <ClInclude Include="include\OAuth2Token.h" />
+    <ClInclude Include="include\Object.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\cpprestsdk.v120.winapp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winapp.msvcstl.dyn.rt-dyn.targets" Condition="Exists('packages\cpprestsdk.v120.winapp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winapp.msvcstl.dyn.rt-dyn.targets')" />
+    <Import Project="packages\cpprestsdk.v120.windesktop.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.windesktop.msvcstl.dyn.rt-dyn.targets" Condition="Exists('packages\cpprestsdk.v120.windesktop.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.windesktop.msvcstl.dyn.rt-dyn.targets')" />
+    <Import Project="packages\cpprestsdk.v120.winphone.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winphone.msvcstl.dyn.rt-dyn.targets" Condition="Exists('packages\cpprestsdk.v120.winphone.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winphone.msvcstl.dyn.rt-dyn.targets')" />
+    <Import Project="packages\cpprestsdk.v120.winphonesl.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winphonesl.msvcstl.dyn.rt-dyn.targets" Condition="Exists('packages\cpprestsdk.v120.winphonesl.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winphonesl.msvcstl.dyn.rt-dyn.targets')" />
+    <Import Project="packages\cpprestsdk.v120.winxp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winxp.msvcstl.dyn.rt-dyn.targets" Condition="Exists('packages\cpprestsdk.v120.winxp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winxp.msvcstl.dyn.rt-dyn.targets')" />
+    <Import Project="packages\cpprestsdk.v140.winapp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v140.winapp.msvcstl.dyn.rt-dyn.targets" Condition="Exists('packages\cpprestsdk.v140.winapp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v140.winapp.msvcstl.dyn.rt-dyn.targets')" />
+    <Import Project="packages\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.targets" Condition="Exists('packages\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\cpprestsdk.v120.winapp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winapp.msvcstl.dyn.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cpprestsdk.v120.winapp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winapp.msvcstl.dyn.rt-dyn.targets'))" />
+    <Error Condition="!Exists('packages\cpprestsdk.v120.windesktop.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.windesktop.msvcstl.dyn.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cpprestsdk.v120.windesktop.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.windesktop.msvcstl.dyn.rt-dyn.targets'))" />
+    <Error Condition="!Exists('packages\cpprestsdk.v120.winphone.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winphone.msvcstl.dyn.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cpprestsdk.v120.winphone.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winphone.msvcstl.dyn.rt-dyn.targets'))" />
+    <Error Condition="!Exists('packages\cpprestsdk.v120.winphonesl.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winphonesl.msvcstl.dyn.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cpprestsdk.v120.winphonesl.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winphonesl.msvcstl.dyn.rt-dyn.targets'))" />
+    <Error Condition="!Exists('packages\cpprestsdk.v120.winxp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winxp.msvcstl.dyn.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cpprestsdk.v120.winxp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v120.winxp.msvcstl.dyn.rt-dyn.targets'))" />
+    <Error Condition="!Exists('packages\cpprestsdk.v140.winapp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v140.winapp.msvcstl.dyn.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cpprestsdk.v140.winapp.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v140.winapp.msvcstl.dyn.rt-dyn.targets'))" />
+    <Error Condition="!Exists('packages\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.2.9.1\build\native\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.targets'))" />
+  </Target>
 </Project>

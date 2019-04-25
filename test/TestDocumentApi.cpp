@@ -26,19 +26,24 @@
 */
 
 
-#include "pch.h"
-#include "TestBase.h"
 #include "ApiConfiguration.h"
 #include "api/DocumentApi.h"
 #include "api/StorageApi.h"
+#include "TestBase.h"
 
 using namespace com::aspose::api;
 
 class TestDocumentApi : public TestBase
 {
+
+public:
+
+    DocumentApi* api;
+    StorageApi* storage_api;
+
 protected:
 
-	void SetUp()
+    void SetUp()
 	{
 		std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
 		std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
@@ -46,15 +51,25 @@ protected:
 		storage_api = new StorageApi(apiClient);
 	}
 
-	void TearDown()
+    void TearDown()
 	{
 		delete api;
 		delete storage_api;
 	}
 
-	DocumentApi *api;
-	StorageApi *storage_api;
 };
+
+
+TEST_F(TestDocumentApi, getDocumentByUrl)
+{
+
+	//Get web page and all linked resourses
+	auto result = api->getDocumentByUrl(_XPLATSTR("https://lenta.ru/")).get();
+
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_site_by_url.zip")));
+}
+
+
 
 TEST_F(TestDocumentApi, getDocumentFragmentByXPath)
 {
