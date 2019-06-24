@@ -2,31 +2,53 @@
 *.slo
 *.lo
 *.o
-*.obj
-
+*.d
+*.so
+*.[Oo]bj
+*.user
+*.aps
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.pdb
+*.idb
+*.res
+*.unsuccessfulbuild
+*.lastbuildstate
+*.tlog
+*.intermediate
+*.dll
+*.exp
+*.manifest
+*.rc
+*~
+Debug/
+Release/
 # Precompiled Headers
 *.gch
 *.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
 
 # Executables
 *.exe
 *.out
 *.app
 
-
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
 .vs
+x64/**/*
