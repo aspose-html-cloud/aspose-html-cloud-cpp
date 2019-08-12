@@ -25,7 +25,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="name">Document name(html,epub,svg formats).</param>
-    /// <param name="outFormat">Resulting image format(jpeg, png, bmp, tiff).</param>
+    /// <param name="outFormat">Resulting image format(jpeg, png, bmp, tiff, gif).</param>
     /// <param name="width">Resulting image width in points (1/96 inch). (optional)</param>
     /// <param name="height">Resulting image height in points (1/96 inch). (optional)</param>
     /// <param name="leftMargin">Left resulting image margin in points (1/96 inch). (optional)</param>
@@ -55,7 +55,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="sourceUrl">Source page URL.</param>
-    /// <param name="outFormat">Resulting image format(jpeg, png, bmp, tiff).</param>
+    /// <param name="outFormat">Resulting image format(jpeg, png, bmp, tiff, gif).</param>
     /// <param name="width">Resulting image width in points (1/96 inch). (optional)</param>
     /// <param name="height">Resulting image height in points (1/96 inch). (optional)</param>
     /// <param name="leftMargin">Left resulting image margin in points (1/96 inch). (optional)</param>
@@ -177,7 +177,7 @@ public:
 	/// 
 	/// </remarks>
 	/// <param name="outPath">Full resulting filename (ex. /folder1/folder2/result.jpg)</param>
-	/// <param name="outFormat">Resulting image format(jpeg, png, bmp, tiff).</param>
+	/// <param name="outFormat">Resulting image format(jpeg, png, bmp, tiff, gif).</param>
 	/// <param name="file">A file to be converted.</param>
 	/// <param name="width">Resulting document page width in points (1/96 inch). (optional)</param>
 	/// <param name="height">Resulting document page height in points (1/96 inch). (optional)</param>
@@ -186,7 +186,8 @@ public:
 	/// <param name="topMargin">Top resulting document page margin in points (1/96 inch). (optional)</param>
 	/// <param name="bottomMargin">Bottom resulting document page margin in points (1/96 inch). (optional)</param>
 	/// <param name="resolution">Resolution of resulting image. Default is 96 dpi. (optional)</param>
-    ASPOSE_DLL_EXPORT pplx::task<HttpContent> putConvertDocumentInRequestToImage(
+    /// <param name="storage">The source document storage. (optional)</param>
+    ASPOSE_DLL_EXPORT pplx::task<HttpContent> postConvertDocumentInRequestToImage(
 		utility::string_t outPath,
 		utility::string_t outFormat,
 		std::shared_ptr<HttpContent> file,
@@ -196,7 +197,8 @@ public:
 		boost::optional<int32_t> rightMargin,
 		boost::optional<int32_t> topMargin,
 		boost::optional<int32_t> bottomMargin,
-		boost::optional<int32_t> resolution
+		boost::optional<int32_t> resolution,
+        boost::optional<utility::string_t> storage
 	);
 	/// <summary>
 	/// Converts the HTML, EPUB, SVG document (in request content) to PDF and uploads resulting file to storage.
@@ -212,7 +214,8 @@ public:
 	/// <param name="rightMargin">Right resulting document page margin in points (1/96 inch). (optional)</param>
 	/// <param name="topMargin">Top resulting document page margin in points (1/96 inch). (optional)</param>
 	/// <param name="bottomMargin">Bottom resulting document page margin in points (1/96 inch). (optional)</param>
-    ASPOSE_DLL_EXPORT pplx::task<HttpContent> putConvertDocumentInRequestToPdf(
+    /// <param name="storage">The source document storage. (optional)</param>
+    ASPOSE_DLL_EXPORT pplx::task<HttpContent> postConvertDocumentInRequestToPdf(
 		utility::string_t outPath,
 		std::shared_ptr<HttpContent> file,
 		boost::optional<int32_t> width,
@@ -220,8 +223,9 @@ public:
 		boost::optional<int32_t> leftMargin,
 		boost::optional<int32_t> rightMargin,
 		boost::optional<int32_t> topMargin,
-		boost::optional<int32_t> bottomMargin
-	);
+		boost::optional<int32_t> bottomMargin,
+        boost::optional<utility::string_t> storage
+    );
 	/// <summary>
 	/// Converts the HTML, EPUB, SVG document (in request content) to XPS and uploads resulting file to storage.
 	/// </summary>
@@ -236,7 +240,8 @@ public:
 	/// <param name="rightMargin">Right resulting document page margin in points (1/96 inch). (optional)</param>
 	/// <param name="topMargin">Top resulting document page margin in points (1/96 inch). (optional)</param>
 	/// <param name="bottomMargin">Bottom resulting document page margin in points (1/96 inch). (optional)</param>
-    ASPOSE_DLL_EXPORT pplx::task<HttpContent> putConvertDocumentInRequestToXps(
+    /// <param name="storage">The source document storage. (optional)</param>
+    ASPOSE_DLL_EXPORT pplx::task<HttpContent> postConvertDocumentInRequestToXps(
 		utility::string_t outPath,
 		std::shared_ptr<HttpContent> file,
 		boost::optional<int32_t> width,
@@ -244,8 +249,9 @@ public:
 		boost::optional<int32_t> leftMargin,
 		boost::optional<int32_t> rightMargin,
 		boost::optional<int32_t> topMargin,
-		boost::optional<int32_t> bottomMargin
-	);
+		boost::optional<int32_t> bottomMargin,
+        boost::optional<utility::string_t> storage
+    );
 	/// <summary>
 	/// Converts the HTML, EPUB, SVG document (located on storage) to the specified image format and uploads resulting file to storage.
 	/// </summary>
@@ -254,7 +260,7 @@ public:
 	/// </remarks>
 	/// <param name="name">Document name(html, epub, svg formats).</param>
 	/// <param name="outPath">Full resulting filename (ex. /folder1/folder2/result.jpg)</param>
-	/// <param name="outFormat">Resulting image format(jpeg, png, bmp, tiff).</param>
+	/// <param name="outFormat">Resulting image format(jpeg, png, bmp, tiff, gif).</param>
 	/// <param name="width">Resulting document page width in points (1/96 inch). (optional)</param>
 	/// <param name="height">Resulting document page height in points (1/96 inch). (optional)</param>
 	/// <param name="leftMargin">Left resulting document page margin in points (1/96 inch). (optional)</param>
@@ -369,10 +375,12 @@ public:
 	/// <param name="outPath">Full resulting file path in the storage (ex. /folder1/folder2/result.md)</param>
 	/// <param name="file">A file to be converted.</param>
 	/// <param name="useGit">Use Git Markdown flavor to save. (optional, default to false)</param>
-    ASPOSE_DLL_EXPORT pplx::task<HttpContent> putConvertDocumentInRequestToMarkdown(
+    /// <param name="storage">The source and resulting document storage. (optional)</param>
+    ASPOSE_DLL_EXPORT pplx::task<HttpContent> postConvertDocumentInRequestToMarkdown(
 		utility::string_t outPath,
 		std::shared_ptr<HttpContent> file,
-		boost::optional<bool> useGit
+		boost::optional<bool> useGit,
+        boost::optional<utility::string_t> storage
 	);
 	/// <summary>
 	/// Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
@@ -393,6 +401,51 @@ public:
 		boost::optional<utility::string_t> storage
 	);
 
+    /// <summary>
+    /// Converts the Markdown document (located on storage) to HTML and returns resulting file in response content.
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="name">Document name.</param>
+    /// <param name="folder">Source document folder. (optional)</param>
+    /// <param name="storage">Source document storage. (optional)</param>
+    ASPOSE_DLL_EXPORT pplx::task<HttpContent> getConvertMarkdownToHtml(
+        utility::string_t name,
+        boost::optional<utility::string_t> folder,
+        boost::optional<utility::string_t> storage
+    );
+    /// <summary>
+    /// Converts the Markdown document (in request content) to HTML and uploads resulting file to storage by specified path.
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="outPath">Full resulting file path in the storage (ex. /folder1/folder2/result.html)</param>
+    /// <param name="file">A file to be converted.</param>
+    /// <param name="storage">The source and resulting document storage. (optional)</param>
+    ASPOSE_DLL_EXPORT pplx::task<HttpContent> postConvertMarkdownInRequestToHtml(
+        utility::string_t outPath,
+        std::shared_ptr<HttpContent> file,
+        boost::optional<utility::string_t> storage
+    );
+    /// <summary>
+    /// Converts the Markdown document (located on storage) to HTML and uploads resulting file to storage by specified path.
+    /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="name">Document name.</param>
+    /// <param name="outPath">Full resulting file path in the storage (ex. /folder1/folder2/result.html)</param>
+    /// <param name="folder">The source document folder. (optional)</param>
+    /// <param name="storage">The source and resulting document storage. (optional)</param>
+    ASPOSE_DLL_EXPORT pplx::task<HttpContent> putConvertMarkdownToHtml(
+        utility::string_t name,
+        utility::string_t outPath,
+        boost::optional<utility::string_t> folder,
+        boost::optional<utility::string_t> storage
+    );
+
 private:
     std::shared_ptr<ApiClient> m_ApiClient;
 };
@@ -402,4 +455,3 @@ private:
 }
 
 #endif /* COM_ASPOSE_API_ConversionApi_H_ */
-

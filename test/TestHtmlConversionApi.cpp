@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestHtmlConversionApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -57,51 +57,52 @@ protected:
 
     void SetUp()
 	{
-		std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-		std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-		api = new ConversionApi(apiClient);
-		storage_api = new StorageApi(apiClient);
+        try 
+        {
+            std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
+            std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
+            api = new ConversionApi(apiClient);
+            storage_api = new StorageApi(apiClient);
 
 
-		sourceUrl = _XPLATSTR("https://stallman.org/articles/anonymous-payments-thru-phones.html");
-		folder = _XPLATSTR("HtmlTestDoc");
-		storage = boost::none;
-		name = _XPLATSTR("test1.html");
-		versionId = _XPLATSTR("");
+            sourceUrl = _XPLATSTR("https://stallman.org/articles/anonymous-payments-thru-phones.html");
+            folder = _XPLATSTR("HtmlTestDoc");
+            storage = boost::none;
+            name = _XPLATSTR("test1.html");
 
-		width = 800;
-		height = 1000;
-		leftMargin = 50;
-		rightMargin = 50;
-		topMargin = 100;
-		bottomMargin = 100;
-		resolution = 300;
+            width = 800;
+            height = 1000;
+            leftMargin = 50;
+            rightMargin = 50;
+            topMargin = 100;
+            bottomMargin = 100;
+            resolution = 300;
 
-		//Upload file for conversion to server
-		utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test1.html");
-		std::shared_ptr<HttpContent> file(new HttpContent());
-		std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test1.html"), std::ifstream::binary));
-		file->setData(if_stream);
+            //Upload file for conversion to server
+            std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
+            utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test1.html");
 
-		auto res = storage_api->putCreate(path_to_file, file, versionId, storage).get();
+            auto res = storage_api->uploadFile(path_to_file, file, storage).get();
 
-		ASSERT_TRUE(res->getCode() == 200);
-		ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
-	}
+            ASSERT_FALSE(res->errorsIsSet());
+        }
+        catch (std::exception& e)
+        {
+            api = nullptr;
+            storage_api = nullptr;
+            std::cout << e.what() << '\n';
+        }
+    }
 
     void TearDown()
-	{
-		delete api;
-		delete storage_api;
-	}
-
-
+    {
+        if (api != nullptr) { delete api; }
+        if (storage_api != nullptr) { delete storage_api; }
+    }
 };
 
-
 // Convert html document
-
-TEST_F(TestHtmlConversionApi, ConvertDocToJpeg)
+TEST_F(TestHtmlConversionApi, testGetHtmlToJpeg)
 {
 	//Convert to jpeg
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("jpeg"), 
@@ -109,8 +110,7 @@ TEST_F(TestHtmlConversionApi, ConvertDocToJpeg)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToJpg.jpg")));
 }
-
-TEST_F(TestHtmlConversionApi, ConvertDocToPng)
+TEST_F(TestHtmlConversionApi, testGetHtmlToPng)
 {
 	//Convert to png
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("png"),
@@ -118,8 +118,7 @@ TEST_F(TestHtmlConversionApi, ConvertDocToPng)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToPng.png")));
 }
-
-TEST_F(TestHtmlConversionApi, ConvertDocToBmp)
+TEST_F(TestHtmlConversionApi, testGetHtmlToBmp)
 {
 	//Convert to bmp
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("bmp"),
@@ -127,8 +126,7 @@ TEST_F(TestHtmlConversionApi, ConvertDocToBmp)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToBmp.bmp")));
 }
-
-TEST_F(TestHtmlConversionApi, ConvertDocToTiff)
+TEST_F(TestHtmlConversionApi, testGetHtmlToTiff)
 {
 	//Convert to tiff
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("tiff"),
@@ -136,26 +134,25 @@ TEST_F(TestHtmlConversionApi, ConvertDocToTiff)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToTiff.tiff")));
 }
-
-TEST_F(TestHtmlConversionApi, ConvertDocToPdf)
+TEST_F(TestHtmlConversionApi, testGetHtmlToPdf)
 {
 	//Convert to pdf
-	auto result = api->getConvertDocumentToPdf(name, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage).get();
+	auto result = api->getConvertDocumentToPdf(name, width, height, leftMargin, 
+        rightMargin, topMargin, bottomMargin, folder, storage).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToPdf.pdf")));
 }
-
-TEST_F(TestHtmlConversionApi, ConvertDocToXps)
+TEST_F(TestHtmlConversionApi, testGetHtmlToXps)
 {
 	//Convert to xps
-	auto result = api->getConvertDocumentToXps(name, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage).get();
+	auto result = api->getConvertDocumentToXps(name, width, height, leftMargin, 
+        rightMargin, topMargin, bottomMargin, folder, storage).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToXps.xps")));
 }
 
 //Convert URL
-
-TEST_F(TestHtmlConversionApi, ConvertUrlToJpeg)
+TEST_F(TestHtmlConversionApi, testGetUrlToJpeg)
 {
 	//Convert to jpeg
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("jpeg"),
@@ -163,8 +160,7 @@ TEST_F(TestHtmlConversionApi, ConvertUrlToJpeg)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToJpg.jpg")));
 }
-
-TEST_F(TestHtmlConversionApi, ConvertUrlToPng)
+TEST_F(TestHtmlConversionApi, testGetUrlToPng)
 {
 	//Convert to png
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("png"),
@@ -172,8 +168,7 @@ TEST_F(TestHtmlConversionApi, ConvertUrlToPng)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToPng.png")));
 }
-
-TEST_F(TestHtmlConversionApi, ConvertUrlToBmp)
+TEST_F(TestHtmlConversionApi, testGetUrlToBmp)
 {
 	//Convert to bmp
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("bmp"),
@@ -181,8 +176,7 @@ TEST_F(TestHtmlConversionApi, ConvertUrlToBmp)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToBmp.bmp")));
 }
-
-TEST_F(TestHtmlConversionApi, ConvertUrlToTiff)
+TEST_F(TestHtmlConversionApi, testGetUrlToTiff)
 {
 	//Convert to tiff
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("tiff"),
@@ -190,51 +184,44 @@ TEST_F(TestHtmlConversionApi, ConvertUrlToTiff)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToTiff.tiff")));
 }
-
-TEST_F(TestHtmlConversionApi, ConvertUrlToPdf)
+TEST_F(TestHtmlConversionApi, testGetUrlToPdf)
 {
 	//Convert to pdf
 	auto result = api->getConvertDocumentToPdfByUrl(sourceUrl, width, height, leftMargin, rightMargin, topMargin, bottomMargin).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToPdf.pdf")));
 }
-
-TEST_F(TestHtmlConversionApi, ConvertUrlToXps)
+TEST_F(TestHtmlConversionApi, testGetUrlToXps)
 {
 	//Convert to xps
 	auto result = api->getConvertDocumentToXpsByUrl(sourceUrl, width, height, leftMargin, rightMargin, topMargin, bottomMargin).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToXps.xps")));
 }
-
-TEST_F(TestHtmlConversionApi, putConvertDocumentInRequestToImage)
+TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToImage)
 {
 	//Prepare file stream to upload
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test1.html"), std::ifstream::binary));
-	file->setData(if_stream);
+    utility::string_t name = _XPLATSTR("test1.html");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
 	//Parameters
-	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertHtmlInRequestToImage.jpg");
+	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/postConvertHtmlInRequestToImage.jpg");
 	utility::string_t outFormat = _XPLATSTR("jpeg");
 
 	//Convert to jpeg and save to storage
-	auto result = api->putConvertDocumentInRequestToImage(outPath, outFormat, file, width, 
-		height, leftMargin, rightMargin, topMargin, bottomMargin, resolution).get();
+	auto result = api->postConvertDocumentInRequestToImage(outPath, outFormat, file, width, 
+		height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertHtmlInRequestToImage.jpg")));
+	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("postConvertHtmlInRequestToImage.jpg")));
 
 	//Clear file
 	auto result_del = storage_api->deleteFile(outPath, versionId, storage).get();
@@ -243,42 +230,34 @@ TEST_F(TestHtmlConversionApi, putConvertDocumentInRequestToImage)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }
-
-TEST_F(TestHtmlConversionApi, putConvertDocumentInRequestToPdf)
+TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToPdf)
 {
 	//Prepare file stream to upload
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test1.html"), std::ifstream::binary));
-	file->setData(if_stream);
+    utility::string_t name = _XPLATSTR("test1.html");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
 	//Parameters
-	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertHtmlInRequestToPdf.pdf");
+	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/postConvertHtmlInRequestToPdf.pdf");
 
 	//Convert to pdf and save to storage
-	auto result = api->putConvertDocumentInRequestToPdf(outPath, file, width, height, leftMargin, rightMargin, 
-		topMargin, bottomMargin).get();
+	auto result = api->postConvertDocumentInRequestToPdf(outPath, file, width, height, leftMargin, rightMargin, 
+		topMargin, bottomMargin, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertHtmlInRequestToPdf.pdf")));
+	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("postConvertHtmlInRequestToPdf.pdf")));
 
 	//Clear file
 	auto result_del = storage_api->deleteFile(outPath, versionId, storage).get();
@@ -287,42 +266,34 @@ TEST_F(TestHtmlConversionApi, putConvertDocumentInRequestToPdf)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }
-
-TEST_F(TestHtmlConversionApi, putConvertDocumentInRequestToXps)
+TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToXps)
 {
 	//Prepare file stream to upload
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test1.html"), std::ifstream::binary));
-	file->setData(if_stream);
+    utility::string_t name = _XPLATSTR("test1.html");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
 	//Parameters
-	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertHtmlInRequestToXps.xps");
+	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/postConvertHtmlInRequestToXps.xps");
 
 	//Convert to xps and save to storage
-	auto result = api->putConvertDocumentInRequestToXps(outPath, file, width, height, leftMargin, rightMargin,
-		topMargin, bottomMargin).get();
+	auto result = api->postConvertDocumentInRequestToXps(outPath, file, width, height, leftMargin, rightMargin,
+		topMargin, bottomMargin, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertHtmlInRequestToXps.xps")));
+	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("postConvertHtmlInRequestToXps.xps")));
 
 	//Clear file
 	auto result_del = storage_api->deleteFile(outPath, versionId, storage).get();
@@ -331,16 +302,12 @@ TEST_F(TestHtmlConversionApi, putConvertDocumentInRequestToXps)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }
-
-TEST_F(TestHtmlConversionApi, putConvertDocumentToImage)
+TEST_F(TestHtmlConversionApi, testPutHtmlToImage)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertHtmlToImage.png");
@@ -350,16 +317,13 @@ TEST_F(TestHtmlConversionApi, putConvertDocumentToImage)
 			bottomMargin, resolution, folder, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertHtmlToImage.png")));
 
@@ -370,17 +334,12 @@ TEST_F(TestHtmlConversionApi, putConvertDocumentToImage)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
-
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }
-
-TEST_F(TestHtmlConversionApi, putConvertDocumentToPdf)
+TEST_F(TestHtmlConversionApi, testPutHtmlToPdf)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertHtmlToPdf.pdf");
@@ -390,16 +349,13 @@ TEST_F(TestHtmlConversionApi, putConvertDocumentToPdf)
 		topMargin, bottomMargin, folder, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertHtmlToPdf.pdf")));
 
@@ -410,16 +366,12 @@ TEST_F(TestHtmlConversionApi, putConvertDocumentToPdf)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }
-
-TEST_F(TestHtmlConversionApi, putConvertDocumentToXps)
+TEST_F(TestHtmlConversionApi, testPutHtmlToXps)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertHtmlToXps.xps");
@@ -429,16 +381,13 @@ TEST_F(TestHtmlConversionApi, putConvertDocumentToXps)
 		leftMargin, rightMargin, topMargin, bottomMargin, folder, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertHtmlToXps.xps")));
 
@@ -449,43 +398,32 @@ TEST_F(TestHtmlConversionApi, putConvertDocumentToXps)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }
-
-TEST_F(TestHtmlConversionApi, getConvertDocumentToMHTMLByUrlTest)
+TEST_F(TestHtmlConversionApi, testGetHtmlToMHTMLByUrlTest)
 {
-
 	utility::string_t sourceUrl = _XPLATSTR("https://www.yahoo.com");
 	//Convert to mhtml
 	auto result = api->getConvertDocumentToMHTMLByUrl(sourceUrl).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToMhtml.mht")));
 }
-
-TEST_F(TestHtmlConversionApi, getConvertDocumentToMarkdown)
+TEST_F(TestHtmlConversionApi, testGetHtmlToMarkdown)
 {
 	//Upload document to storage
+    utility::string_t name = _XPLATSTR("test_md.html");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
+
 	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test_md.html");
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test_md.html"), std::ifstream::binary));
-	file->setData(if_stream);
-	boost::optional<utility::string_t> versionId = boost::none;
-	boost::optional<utility::string_t> storage = boost::none;
-	boost::optional<utility::string_t> folder = _XPLATSTR("HtmlTestDoc");
 
-	auto res = storage_api->putCreate(path_to_file, file, versionId, storage).get();
+	auto res = storage_api->uploadFile(path_to_file, file, storage).get();
 
-	ASSERT_TRUE(res->getCode() == 200);
-	ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
+    ASSERT_FALSE(res->errorsIsSet());
 
 	// Get convert html to markdown format
-	utility::string_t name = _XPLATSTR("test_md.html");
 	boost::optional<bool> useGit = true;
 	
 	auto result = api->getConvertDocumentToMarkdown(name, useGit, folder, storage).get();
@@ -498,25 +436,42 @@ TEST_F(TestHtmlConversionApi, getConvertDocumentToMarkdown)
 	ASSERT_TRUE(result_del->getCode() == 200);
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 }
+TEST_F(TestHtmlConversionApi, postConvertDocumentInRequestToMarkdown)
+{
+    //Prepare document
+    utility::string_t name = _XPLATSTR("test_md.html");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
-TEST_F(TestHtmlConversionApi, putConvertDocumentToMarkdown)
+    // Post convert html to markdown format
+    utility::string_t outPath = _XPLATSTR("HtmlTestDoc/test_post_to_markdown.md");
+    boost::optional<bool> useGit = false;
+    api->postConvertDocumentInRequestToMarkdown(outPath, file, useGit, storage).get();
+
+    // Download file from storage
+    auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
+
+    ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("test_put_to_markdown.md")));
+
+    //Clear test file in the storage
+    auto result_del_test = storage_api->deleteFile(outPath, versionId, storage).get();
+
+    ASSERT_TRUE(result_del_test->getCode() == 200);
+    ASSERT_TRUE(result_del_test->getStatus() == _XPLATSTR("OK"));
+}
+TEST_F(TestHtmlConversionApi, testPutHtmlToMarkdown)
 {
 	//Upload document to storage
-	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test_md.html");
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test_md.html"), std::ifstream::binary));
-	file->setData(if_stream);
-	boost::optional<utility::string_t> versionId = boost::none;
-	boost::optional<utility::string_t> storage = boost::none;
-	boost::optional<utility::string_t> folder = _XPLATSTR("HtmlTestDoc");
+    utility::string_t name = _XPLATSTR("test_md.html");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
+    
+    utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test_md.html");
+    boost::optional<utility::string_t> versionId = boost::none;
 
-	auto res = storage_api->putCreate(path_to_file, file, versionId, storage).get();
+	auto res = storage_api->uploadFile(path_to_file, file, storage).get();
 
-	ASSERT_TRUE(res->getCode() == 200);
-	ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
+	ASSERT_FALSE(res->errorsIsSet());
 
 	// Put convert html to markdown format
-	utility::string_t name = _XPLATSTR("test_md.html");
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/test_put_to_markdown.md");
 	boost::optional<bool> useGit = false;
 
@@ -529,7 +484,7 @@ TEST_F(TestHtmlConversionApi, putConvertDocumentToMarkdown)
 	ASSERT_TRUE(result_del_test->getStatus() == _XPLATSTR("OK"));
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("test_put_to_markdown.md")));
 
@@ -539,4 +494,3 @@ TEST_F(TestHtmlConversionApi, putConvertDocumentToMarkdown)
 	ASSERT_TRUE(result_del->getCode() == 200);
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 }
-

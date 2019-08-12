@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestOcrApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,38 +45,42 @@ protected:
 
     void SetUp()
 	{
-		std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-		std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-		api = new OcrApi(apiClient);
-		storage_api = new StorageApi(apiClient);
+        try 
+        {
+            std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
+            std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
+            api = new OcrApi(apiClient);
+            storage_api = new StorageApi(apiClient);
 
 
-		//Upload file for conversion to server
-		utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test_ocr.jpg");
-		boost::optional<utility::string_t>  versionId = boost::none;
-		boost::optional<utility::string_t> storage = boost::none;
+            //Upload file for conversion to server
+            utility::string_t name = _XPLATSTR("test_ocr.jpg");
+            std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
-		std::shared_ptr<HttpContent> file(new HttpContent());
-		std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test_ocr.jpg"), std::ifstream::binary));
-		file->setData(if_stream);
+            utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test_ocr.jpg");
+            boost::optional<utility::string_t>  versionId = boost::none;
+            boost::optional<utility::string_t> storage = boost::none;
 
-		auto res = storage_api->putCreate(path_to_file, file, versionId, storage).get();
+            auto res = storage_api->uploadFile(path_to_file, file, storage).get();
 
-		ASSERT_TRUE(res->getCode() == 200);
-		ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
-	}
+            ASSERT_FALSE(res->errorsIsSet());
+        }
+        catch (std::exception& e)
+        {
+            api = nullptr;
+            storage_api = nullptr;
+            std::cout << e.what() << '\n';
+        }
+    }
 
     void TearDown()
-	{
-		delete api;
-		delete storage_api;
-	}
-
-
+    {
+        if (api != nullptr) { delete api; }
+        if (storage_api != nullptr) { delete storage_api; }
+    }
 };
 
-
-TEST_F(TestOcrApi, getRecognizeAndImportToHtml)
+TEST_F(TestOcrApi, testGetRecognizeAndImportToHtml)
 {
 	utility::string_t name = _XPLATSTR("test_ocr.jpg");
 	boost::optional<utility::string_t> ocrEngineLang = _XPLATSTR("en");
@@ -87,8 +91,7 @@ TEST_F(TestOcrApi, getRecognizeAndImportToHtml)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("RecognizeToHtml.html")));
 }
-
-TEST_F(TestOcrApi, getRecognizeAndTranslateToHtml)
+TEST_F(TestOcrApi, testGetRecognizeAndTranslateToHtml)
 {
 	utility::string_t name = _XPLATSTR("test_ocr.jpg");
 	utility::string_t srcLang = _XPLATSTR("en");

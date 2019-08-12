@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HttpContent.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,6 +35,15 @@ namespace model {
 
 HttpContent::HttpContent()
 {
+}
+
+HttpContent::HttpContent(const utility::string_t& path, const utility::string_t& name)
+    : m_Data(new std::ifstream(path + name, std::ifstream::binary))
+    , m_ContentDisposition(_XPLATSTR("form-data"))
+    , m_Name(_XPLATSTR("file"))
+    , m_FileName(name)
+{
+     
 }
 
 HttpContent::~HttpContent()

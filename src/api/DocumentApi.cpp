@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -214,7 +214,7 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -306,7 +306,7 @@ pplx::task<HttpContent> DocumentApi::getDocumentFragmentByXPathByUrl(utility::st
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
@@ -407,7 +407,7 @@ pplx::task<HttpContent> DocumentApi::getDocumentFragmentsByCSSSelector(utility::
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
@@ -503,7 +503,7 @@ pplx::task<HttpContent> DocumentApi::getDocumentFragmentsByCSSSelectorByUrl(util
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
@@ -600,7 +600,7 @@ pplx::task<HttpContent> DocumentApi::getDocumentImages(utility::string_t name, b
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -688,7 +688,7 @@ pplx::task<HttpContent> DocumentApi::getDocumentImagesByUrl(utility::string_t so
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK

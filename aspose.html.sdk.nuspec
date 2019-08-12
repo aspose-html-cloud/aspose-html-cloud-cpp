@@ -1,18 +1,75 @@
-<?xml version="1.0"?>
-<package >
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>aspose.html.sdk</id>
-    <version>19.1</version>
-    <title>Aspose</title>
+    <id>aspose.html.sdk.v140</id>
+    <version>19.1.0</version>
+    <title></title>
     <authors>Aspose</authors>
     <owners>Aspose</owners>
-    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
-    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>description</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-    <copyright>Copyright 2019</copyright>
-    <tags>Tag1 Tag2</tags>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://products.aspose.cloud/html/cpp</projectUrl>
+    <iconUrl>https://www.aspose.cloud/templates/asposecloud/App_Themes/V3/images/sdk/272x272/aspose_html-for-cpp.png</iconUrl>
+    <description>Aspose HTML SDK for C++ is a programming SDK that allows software developers to manipulate and convert HTML documents from within their own applications. A Wrapper of RESTful APIs, Aspose HTML SDK for C++ speeds up HTML programming and conversion.
+Aspose Html SDK for C++ is a cross-platform C++ library that enables your applications to perform a great range of html document processing tasks. With Aspose.Html C++ you can load, save and convert html between the following formats: JPG, GIF, BMP, PDF, TIFF, MHTML. With Aspose.Html you can generate, modify, convert, translate, recognize images in html documents.
+
+Aspose Html SDK for C++ is well documented to help you create your solutions on different platforms.
+
+Platform Independence
+
+Aspose Html SDK for C++ library can be assembled for different platforms using various modern compilers which support C++14, such as Microsoft Visual C++, GCC, Clang and MinGW.</description>
+    <releaseNotes>Release of Aspose HTML SDK for .CPP SDK (v.19.1)</releaseNotes>
+    <copyright>Aspose 2002-2019. All Rights Reserved.</copyright>
+    <language>en-US</language>
+    <tags>native aspose.html html translate translation conversion pdf xps image xpath ocr css md mhtml template downloader</tags>
+    <dependencies>
+      <dependency id="cpprestsdk" version="2.9.1.1" />
+    </dependencies>
   </metadata>
+  <files>
+    <file src="build\native\include\api\ConversionApi.h" target="build\native\include\api\ConversionApi.h" />
+    <file src="build\native\include\api\DocumentApi.h" target="build\native\include\api\DocumentApi.h" />
+    <file src="build\native\include\api\OcrApi.h" target="build\native\include\api\OcrApi.h" />
+    <file src="build\native\include\api\StorageApi.h" target="build\native\include\api\StorageApi.h" />
+    <file src="build\native\include\api\SummarizationApi.h" target="build\native\include\api\SummarizationApi.h" />
+    <file src="build\native\include\api\TemplateMergeApi.h" target="build\native\include\api\TemplateMergeApi.h" />
+    <file src="build\native\include\api\TranslationApi.h" target="build\native\include\api\TranslationApi.h" />
+    <file src="build\native\include\model\DiscUsage.h" target="build\native\include\model\DiscUsage.h" />
+    <file src="build\native\include\model\DiscUsageResponse.h" target="build\native\include\model\DiscUsageResponse.h" />
+    <file src="build\native\include\model\File.h" target="build\native\include\model\File.h" />
+    <file src="build\native\include\model\FileExist.h" target="build\native\include\model\FileExist.h" />
+    <file src="build\native\include\model\FileExistResponse.h" target="build\native\include\model\FileExistResponse.h" />
+    <file src="build\native\include\model\FileVersion.h" target="build\native\include\model\FileVersion.h" />
+    <file src="build\native\include\model\FileVersionsResponse.h" target="build\native\include\model\FileVersionsResponse.h" />
+    <file src="build\native\include\model\MessageResponse.h" target="build\native\include\model\MessageResponse.h" />
+    <file src="build\native\include\model\StorageExistResponse.h" target="build\native\include\model\StorageExistResponse.h" />
+    <file src="build\native\include\ApiClient.h" target="build\native\include\ApiClient.h" />
+    <file src="build\native\include\ApiConfiguration.h" target="build\native\include\ApiConfiguration.h" />
+    <file src="build\native\include\ApiException.h" target="build\native\include\ApiException.h" />
+    <file src="build\native\include\defines.h" target="build\native\include\defines.h" />
+    <file src="build\native\include\HttpContent.h" target="build\native\include\HttpContent.h" />
+    <file src="build\native\include\IHttpBody.h" target="build\native\include\IHttpBody.h" />
+    <file src="build\native\include\JsonBody.h" target="build\native\include\JsonBody.h" />
+    <file src="build\native\include\ModelBase.h" target="build\native\include\ModelBase.h" />
+    <file src="build\native\include\MultipartFormData.h" target="build\native\include\MultipartFormData.h" />
+    <file src="build\native\include\OAuth2Token.h" target="build\native\include\OAuth2Token.h" />
+    <file src="build\native\include\Object.h" target="build\native\include\Object.h" />
+    <file src="build\native\include\OctetStreamBody.h" target="build\native\include\OctetStreamBody.h" />
+    <file src="build\native\aspose.html.sdk.v140.targets" target="build\native\aspose.html.sdk.v140.targets" />
+    <file src="lib\native\v140\x64\Debug\aspose.html.sdk.dll" target="lib\native\v140\x64\Debug\aspose.html.sdk.dll" />
+    <file src="lib\native\v140\x64\Debug\aspose.html.sdk.lib" target="lib\native\v140\x64\Debug\aspose.html.sdk.lib" />
+    <file src="lib\native\v140\x64\Debug\aspose.html.sdk.pdb" target="lib\native\v140\x64\Debug\aspose.html.sdk.pdb" />
+    <file src="lib\native\v140\x64\Release\aspose.html.sdk.dll" target="lib\native\v140\x64\Release\aspose.html.sdk.dll" />
+    <file src="lib\native\v140\x64\Release\aspose.html.sdk.lib" target="lib\native\v140\x64\Release\aspose.html.sdk.lib" />
+    <file src="lib\native\v140\x64\Release\aspose.html.sdk.pdb" target="lib\native\v140\x64\Release\aspose.html.sdk.pdb" />
+    <file src="lib\native\v140\x86\Debug\aspose.html.sdk.dll" target="lib\native\v140\x86\Debug\aspose.html.sdk.dll" />
+    <file src="lib\native\v140\x86\Debug\aspose.html.sdk.lib" target="lib\native\v140\x86\Debug\aspose.html.sdk.lib" />
+    <file src="lib\native\v140\x86\Debug\aspose.html.sdk.pdb" target="lib\native\v140\x86\Debug\aspose.html.sdk.pdb" />
+    <file src="lib\native\v140\x86\Release\aspose.html.sdk.dll" target="lib\native\v140\x86\Release\aspose.html.sdk.dll" />
+    <file src="lib\native\v140\x86\Release\aspose.html.sdk.lib" target="lib\native\v140\x86\Release\aspose.html.sdk.lib" />
+    <file src="lib\native\v140\x86\Release\aspose.html.sdk.pdb" target="lib\native\v140\x86\Release\aspose.html.sdk.pdb" />
+    <file src="license\3rd-party\boost_1_69_0\LICENSE_1_0.txt" target="license\3rd-party\boost_1_69_0\LICENSE_1_0.txt" />
+    <file src="license\3rd-party\cpprestsdk\License.txt" target="license\3rd-party\cpprestsdk\License.txt" />
+    <file src="license\End User License Agreement.html" target="license\End User License Agreement.html" />
+  </files>
 </package>

@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OcrApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -127,7 +127,7 @@ pplx::task<HttpContent> OcrApi::getRecognizeAndImportToHtml(utility::string_t na
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -226,7 +226,7 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK

@@ -34,7 +34,7 @@ public:
     /// </remarks>
     /// <param name="name">The document name.</param>
     /// <param name="xPath">XPath query string.</param>
-    /// <param name="outFormat">Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.</param>
+    /// <param name="outFormat">Output format. Possible values: 'plain' and 'json'.</param>
     /// <param name="storage">The document storage. (optional)</param>
     /// <param name="folder">The document folder. (optional)</param>
     ASPOSE_DLL_EXPORT pplx::task<HttpContent> getDocumentFragmentByXPath(
@@ -52,7 +52,7 @@ public:
 	/// </remarks>
 	/// <param name="sourceUrl">Source page URL.</param>
 	/// <param name="xPath">XPath query string.</param>
-	/// <param name="outFormat">Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.</param>
+	/// <param name="outFormat">Output format. Possible values: 'plain' and 'json'.</param>
     ASPOSE_DLL_EXPORT pplx::task<HttpContent> getDocumentFragmentByXPathByUrl(
 		utility::string_t sourceUrl,
 		utility::string_t xPath,
@@ -66,7 +66,7 @@ public:
 	/// </remarks>
 	/// <param name="name">The document name.</param>
 	/// <param name="selector">CSS selector string.</param>
-	/// <param name="outFormat">Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.</param>
+	/// <param name="outFormat">Output format. Possible values: 'plain' and 'json'.</param>
 	/// <param name="folder">The document folder. (optional)</param>
 	/// <param name="storage">The document storage. (optional)</param>
     ASPOSE_DLL_EXPORT pplx::task<HttpContent> getDocumentFragmentsByCSSSelector(
@@ -84,7 +84,7 @@ public:
 	/// </remarks>
 	/// <param name="sourceUrl">Source page URL.</param>
 	/// <param name="selector">CSS selector string.</param>
-	/// <param name="outFormat">Output format. Possible values: &#39;plain&#39; and &#39;json&#39;.</param>
+	/// <param name="outFormat">Output format. Possible values: 'plain' and 'json'.</param>
     ASPOSE_DLL_EXPORT pplx::task<HttpContent> getDocumentFragmentsByCSSSelectorByUrl(
 		utility::string_t sourceUrl,
 		utility::string_t selector,

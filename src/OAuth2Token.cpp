@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OAuth2Token.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -57,13 +57,15 @@ namespace com {
 						web::json::value answer = web::json::value::parse(target.c_str(), err);
 						if (err.value() == 0) {
 							m_acc_token = answer[_XPLATSTR("access_token")].as_string();
-							m_refr_token = answer[_XPLATSTR("refresh_token")].as_string();
+/*
+                            m_refr_token = answer[_XPLATSTR("refresh_token")].as_string();
 							m_expires = answer[_XPLATSTR(".expires")].as_string();
 							m_issued = answer[_XPLATSTR(".issued")].as_string();
 							m_time_refr_min = answer[_XPLATSTR("clientRefreshTokenLifeTimeInMinutes")].as_string();
 							m_token_type = answer[_XPLATSTR("token_type")].as_string();
 							m_expires_in = answer[_XPLATSTR("expires_in")].as_integer();
-						}
+	*/				
+                        }
 					}
 				});
 			}

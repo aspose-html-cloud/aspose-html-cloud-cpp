@@ -15,7 +15,7 @@
     <Filter Include="Source Files\models">
       <UniqueIdentifier>{9d41a8a6-454c-4dd2-9862-4319f262a54d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Header Files">
+    <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
@@ -75,211 +75,226 @@
     <ClCompile Include="src\model\DiscUsage.cpp">
       <Filter>Source Files\models</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\DiscUsageResponse.cpp">
+    <ClCompile Include="src\model\MessageResponse.cpp">
       <Filter>Source Files\models</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\File.cpp">
+    <ClCompile Include="src\model\FilesUploadResult.cpp">
       <Filter>Source Files\models</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\FileExist.cpp">
+    <ClCompile Include="src\model\Error.cpp">
       <Filter>Source Files\models</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\FileExistResponse.cpp">
+    <ClCompile Include="src\model\ErrorDetails.cpp">
+      <Filter>Source Files\models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\ObjectExist.cpp">
+      <Filter>Source Files\models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\FilesList.cpp">
+      <Filter>Source Files\models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\StorageFile.cpp">
+      <Filter>Source Files\models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\StorageExist.cpp">
+      <Filter>Source Files\models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\FileVersions.cpp">
       <Filter>Source Files\models</Filter>
     </ClCompile>
     <ClCompile Include="src\model\FileVersion.cpp">
       <Filter>Source Files\models</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\FileVersionsResponse.cpp">
-      <Filter>Source Files\models</Filter>
-    </ClCompile>
-    <ClCompile Include="src\model\MessageResponse.cpp">
-      <Filter>Source Files\models</Filter>
-    </ClCompile>
-    <ClCompile Include="src\model\StorageExistResponse.cpp">
-      <Filter>Source Files\models</Filter>
+    <ClCompile Include="src\api\ImportApi.cpp">
+      <Filter>Source Files\Api</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cpprest\astreambuf.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\asyncrt_utils.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\base_uri.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\containerstream.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\filestream.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\http_client.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\http_headers.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\http_listener.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\http_msg.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\interopstream.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\json.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\oauth1.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\oauth2.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\producerconsumerstream.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\rawptrstream.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\streams.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\uri.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\uri_builder.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\version.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\ws_client.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\ws_msg.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\details\basic_types.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\details\cpprest_compat.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\details\fileio.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\details\http_helpers.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\details\http_server.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\details\http_server_api.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\details\nosal.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\details\resource.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\details\web_utilities.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\details\x509_cert_utilities.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cpprest\details\SafeInt3.hpp">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ApiClient.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ApiConfiguration.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ApiException.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\HttpContent.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\IHttpBody.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\OctetStreamBody.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ModelBase.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\JsonBody.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\OAuth2Token.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\MultipartFormData.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Object.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\api\ConversionApi.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\api\TemplateMergeApi.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\api\TranslationApi.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\api\DocumentApi.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\api\OcrApi.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\api\StorageApi.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\api\SummarizationApi.h">
-      <Filter>Source Files\Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\model\DiscUsage.h">
-      <Filter>Source Files\models</Filter>
-    </ClInclude>
-    <ClInclude Include="include\model\DiscUsageResponse.h">
-      <Filter>Source Files\models</Filter>
-    </ClInclude>
-    <ClInclude Include="include\model\File.h">
-      <Filter>Source Files\models</Filter>
-    </ClInclude>
-    <ClInclude Include="include\model\FileExist.h">
-      <Filter>Source Files\models</Filter>
-    </ClInclude>
-    <ClInclude Include="include\model\FileExistResponse.h">
-      <Filter>Source Files\models</Filter>
-    </ClInclude>
-    <ClInclude Include="include\model\FileVersion.h">
-      <Filter>Source Files\models</Filter>
-    </ClInclude>
-    <ClInclude Include="include\model\FileVersionsResponse.h">
       <Filter>Source Files\models</Filter>
     </ClInclude>
     <ClInclude Include="include\model\MessageResponse.h">
       <Filter>Source Files\models</Filter>
     </ClInclude>
-    <ClInclude Include="include\model\StorageExistResponse.h">
+    <ClInclude Include="include\defines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\FilesUploadResult.h">
       <Filter>Source Files\models</Filter>
     </ClInclude>
-    <ClInclude Include="include\defines.h">
-      <Filter>Source Files\Header Files</Filter>
+    <ClInclude Include="include\model\Error.h">
+      <Filter>Source Files\models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\ErrorDetails.h">
+      <Filter>Source Files\models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\ObjectExist.h">
+      <Filter>Source Files\models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\FilesList.h">
+      <Filter>Source Files\models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\StorageFile.h">
+      <Filter>Source Files\models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\StorageExist.h">
+      <Filter>Source Files\models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\FileVersions.h">
+      <Filter>Source Files\models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\FileVersion.h">
+      <Filter>Source Files\models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

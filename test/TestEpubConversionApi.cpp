@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestEpubConversionApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -56,130 +56,126 @@ protected:
 
     void SetUp()
 	{
-		std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-		std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-		api = new ConversionApi(apiClient);
-		storage_api = new StorageApi(apiClient);
+        try
+        {
+            std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
+            apiConfig->setUserAgent(_XPLATSTR("Cpp Web Kit"));
+            std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
+            api = new ConversionApi(apiClient);
+            storage_api = new StorageApi(apiClient);
+            folder = _XPLATSTR("HtmlTestDoc");
+            storage = boost::none;
+            name = _XPLATSTR("georgia.epub");
 
+            width = 800;
+            height = 1000;
+            leftMargin = 50;
+            rightMargin = 50;
+            topMargin = 100;
+            bottomMargin = 100;
+            resolution = 300;
 
-		folder = _XPLATSTR("HtmlTestDoc");
-		storage = boost::none;
-		name = _XPLATSTR("georgia.epub");
-		versionId = _XPLATSTR("");
+            //Upload file for conversion to server
+            utility::string_t file_name = _XPLATSTR("georgia.epub");
+            utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/") + file_name;
+            std::shared_ptr<HttpContent> file(new HttpContent(testSource, file_name));
 
-		width = 800;
-		height = 1000;
-		leftMargin = 50;
-		rightMargin = 50;
-		topMargin = 100;
-		bottomMargin = 100;
-		resolution = 300;
+            auto res = storage_api->uploadFile(path_to_file, file, storage).get();
 
-		//Upload file for conversion to server
-		utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/georgia.epub");
-		std::shared_ptr<HttpContent> file(new HttpContent());
-		std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("georgia.epub"), std::ifstream::binary));
-		file->setData(if_stream);
-
-		auto res = storage_api->putCreate(path_to_file, file, versionId, storage).get();
-
-		ASSERT_TRUE(res->getCode() == 200);
-		ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
-	}
+            ASSERT_FALSE(res->errorsIsSet());
+        }
+        catch (std::exception& e)
+        {
+            api = nullptr;
+            storage_api = nullptr;
+            std::cout << e.what() << '\n';
+        }
+    }
 
     void TearDown()
-	{
-		delete api;
-		delete storage_api;
-	}
-
-
+    {
+        if (api != nullptr) { delete api; }
+        if (storage_api != nullptr) { delete storage_api; }
+    }
 };
 
-
 // Convert epub document
-
-TEST_F(TestEpubConversionApi, ConvertEpubToJpeg)
+TEST_F(TestEpubConversionApi, testGetEpubToJpeg)
 {
 	//Convert to jpeg
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("jpeg"), 
-		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage).get();
+		width, height, leftMargin, rightMargin, topMargin, bottomMargin, 
+        resolution, folder, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToJpg.jpg")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToJpg.zip")));
 }
-
-TEST_F(TestEpubConversionApi, ConvertEpubToPng)
+TEST_F(TestEpubConversionApi, testGetEpubToPng)
 {
 	//Convert to png
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("png"),
-		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage).get();
+		width, height, leftMargin, rightMargin, topMargin, bottomMargin, 
+        resolution, folder, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToPng.png")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToPng.zip")));
 }
-
-TEST_F(TestEpubConversionApi, ConvertEpubToBmp)
+TEST_F(TestEpubConversionApi, testGetEpubToBmp)
 {
 	//Convert to bmp
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("bmp"),
-		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage).get();
+		width, height, leftMargin, rightMargin, topMargin, bottomMargin, 
+        resolution, folder, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToBmp.bmp")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToBmp.zip")));
 }
-
-TEST_F(TestEpubConversionApi, ConvertEpubToTiff)
+TEST_F(TestEpubConversionApi, testGetEpubToTiff)
 {
 	//Convert to tiff
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("tiff"),
-		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage).get();
+		width, height, leftMargin, rightMargin, topMargin, bottomMargin, 
+        resolution, folder, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToTiff.tiff")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToTiff.zip")));
 }
-
-TEST_F(TestEpubConversionApi, ConvertEpubToPdf)
+TEST_F(TestEpubConversionApi, testGetEpubToPdf)
 {
 	//Convert to pdf
-	auto result = api->getConvertDocumentToPdf(name, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage).get();
+	auto result = api->getConvertDocumentToPdf(name, width, height, leftMargin, rightMargin, 
+        topMargin, bottomMargin, folder, storage).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToPdf.pdf")));
 }
-
-TEST_F(TestEpubConversionApi, ConvertEpubToXps)
+TEST_F(TestEpubConversionApi, testGetEpubToXps)
 {
 	//Convert to xps
-	auto result = api->getConvertDocumentToXps(name, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage).get();
+	auto result = api->getConvertDocumentToXps(name, width, height, leftMargin, rightMargin, 
+        topMargin, bottomMargin, folder, storage).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToXps.xps")));
 }
-
-
-TEST_F(TestEpubConversionApi, putConvertEpubInRequestToImage)
+TEST_F(TestEpubConversionApi, testPostEpubInRequestToImage)
 {
 	//Prepare file stream to upload
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("georgia.epub"), std::ifstream::binary));
-	file->setData(if_stream);
+    auto name = _XPLATSTR("georgia.epub");
+	std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
 	//Parameters
-	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertEpubInRequestToImage.jpg");
+	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/postConvertEpubInRequestToJpeg.zip");
 	utility::string_t outFormat = _XPLATSTR("jpeg");
 
 	//Convert to jpeg and save to storage
-	auto result = api->putConvertDocumentInRequestToImage(outPath, outFormat, file, width, 
-		height, leftMargin, rightMargin, topMargin, bottomMargin, resolution).get();
+	auto result = api->postConvertDocumentInRequestToImage(outPath, outFormat, file, width, 
+		height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertEpubInRequestToImage.jpg")));
+	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("postConvertEpubInRequestToJpeg.zip")));
 
 	//Clear file
 	auto result_del = storage_api->deleteFile(outPath, versionId, storage).get();
@@ -188,42 +184,34 @@ TEST_F(TestEpubConversionApi, putConvertEpubInRequestToImage)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }
-
-TEST_F(TestEpubConversionApi, putConvertEpubInRequestToPdf)
+TEST_F(TestEpubConversionApi, testPostEpubInRequestToPdf)
 {
 	//Prepare file stream to upload
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("georgia.epub"), std::ifstream::binary));
-	file->setData(if_stream);
+    utility::string_t name = _XPLATSTR("georgia.epub");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
 	//Parameters
-	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertEpubInRequestToPdf.pdf");
+	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/postConvertEpubInRequestToPdf.pdf");
 
 	//Convert to pdf and save to storage
-	auto result = api->putConvertDocumentInRequestToPdf(outPath, file, width, height, leftMargin, rightMargin, 
-		topMargin, bottomMargin).get();
+	auto result = api->postConvertDocumentInRequestToPdf(outPath, file, width, height, 
+        leftMargin, rightMargin, topMargin, bottomMargin, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertEpubInRequestToPdf.pdf")));
+	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("postConvertEpubInRequestToPdf.pdf")));
 
 	//Clear file
 	auto result_del = storage_api->deleteFile(outPath, versionId, storage).get();
@@ -232,42 +220,34 @@ TEST_F(TestEpubConversionApi, putConvertEpubInRequestToPdf)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }
-
-TEST_F(TestEpubConversionApi, putConvertEpubInRequestToXps)
+TEST_F(TestEpubConversionApi, testPostEpubInRequestToXps)
 {
 	//Prepare file stream to upload
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("georgia.epub"), std::ifstream::binary));
-	file->setData(if_stream);
+    utility::string_t name = _XPLATSTR("georgia.epub");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
 	//Parameters
-	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertEpubInRequestToXps.xps");
+	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/postConvertEpubInRequestToXps.xps");
 
 	//Convert to xps and save to storage
-	auto result = api->putConvertDocumentInRequestToXps(outPath, file, width, height, leftMargin, rightMargin,
-		topMargin, bottomMargin).get();
+	auto result = api->postConvertDocumentInRequestToXps(outPath, file, width, height, leftMargin, 
+        rightMargin, topMargin, bottomMargin, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertEpubInRequestToXps.xps")));
+	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("postConvertEpubInRequestToXps.xps")));
 
 	//Clear file
 	auto result_del = storage_api->deleteFile(outPath, versionId, storage).get();
@@ -276,37 +256,30 @@ TEST_F(TestEpubConversionApi, putConvertEpubInRequestToXps)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }
-
-TEST_F(TestEpubConversionApi, putConvertEpubToImage)
+TEST_F(TestEpubConversionApi, testPutConvertEpubToImage)
 {
 	//Parameters
-	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertEpubToImage.png");
+	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertEpubToPNG.zip");
 	utility::string_t outFormat = _XPLATSTR("png");
 
 	auto result = api->putConvertDocumentToImage(name, outPath, outFormat, width, height, leftMargin, rightMargin, topMargin,
 			bottomMargin, resolution, folder, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertEpubToImage.png")));
+	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertEpubToPNG.zip")));
 
 	//Clear file
 	auto result_del = storage_api->deleteFile(outPath, versionId, storage).get();
@@ -315,17 +288,12 @@ TEST_F(TestEpubConversionApi, putConvertEpubToImage)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
-
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }
-
-TEST_F(TestEpubConversionApi, putConvertEpubToPdf)
+TEST_F(TestEpubConversionApi, testPutConvertEpubToPdf)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertEpubToPdf.pdf");
@@ -335,16 +303,13 @@ TEST_F(TestEpubConversionApi, putConvertEpubToPdf)
 		topMargin, bottomMargin, folder, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertEpubToPdf.pdf")));
 
@@ -355,16 +320,12 @@ TEST_F(TestEpubConversionApi, putConvertEpubToPdf)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }
-
-TEST_F(TestEpubConversionApi, putConvertEpubToXps)
+TEST_F(TestEpubConversionApi, testPutConvertEpubToXps)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertEpubToXps.xps");
@@ -374,16 +335,13 @@ TEST_F(TestEpubConversionApi, putConvertEpubToXps)
 		leftMargin, rightMargin, topMargin, bottomMargin, folder, storage).get();
 
 	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	auto result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 
 	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertEpubToXps.xps")));
 
@@ -394,11 +352,8 @@ TEST_F(TestEpubConversionApi, putConvertEpubToXps)
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+	result_exist = storage_api->objectExists(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+	ASSERT_FALSE(result_exist->isExists());
+	ASSERT_FALSE(result_exist->isFolder());
 }

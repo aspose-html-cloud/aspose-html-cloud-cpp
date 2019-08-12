@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TemplateMergeApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,7 +29,6 @@
 #include "api/TemplateMergeApi.h"
 #include "IHttpBody.h"
 #include "JsonBody.h"
-#include "OctetStreamBody.h"
 #include <unordered_set>
 #include <boost/algorithm/string/replace.hpp>
 
@@ -93,9 +92,8 @@ pplx::task<HttpContent> TemplateMergeApi::getMergeHtmlTemplate(utility::string_t
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    {
-        queryParams[utility::conversions::to_string_t("dataPath")] = ApiClient::parameterToString(dataPath);
-    }
+    queryParams[utility::conversions::to_string_t("dataPath")] = ApiClient::parameterToString(dataPath);
+ 
     if (options)
     {
         queryParams[utility::conversions::to_string_t("options")] = ApiClient::parameterToString(*options);
@@ -132,7 +130,7 @@ pplx::task<HttpContent> TemplateMergeApi::getMergeHtmlTemplate(utility::string_t
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -153,13 +151,13 @@ pplx::task<HttpContent> TemplateMergeApi::getMergeHtmlTemplate(utility::string_t
         return result;
     });
 }
-pplx::task<HttpContent> TemplateMergeApi::putMergeHtmlTemplate(utility::string_t templateName, utility::string_t outPath, std::shared_ptr<HttpContent> file, boost::optional<utility::string_t> options, boost::optional<utility::string_t> folder, boost::optional<utility::string_t> storage)
+pplx::task<HttpContent> TemplateMergeApi::postMergeHtmlTemplate(utility::string_t templateName, utility::string_t outPath, std::shared_ptr<HttpContent> file, boost::optional<utility::string_t> options, boost::optional<utility::string_t> folder, boost::optional<utility::string_t> storage)
 {
 
     // verify the required parameter 'file' is set
     if (file == nullptr)
     {
-        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling TemplateMergeApi->putMergeHtmlTemplate"));
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling TemplateMergeApi->postMergeHtmlTemplate"));
     }
 
 
@@ -178,17 +176,17 @@ pplx::task<HttpContent> TemplateMergeApi::putMergeHtmlTemplate(utility::string_t
     utility::string_t responseHttpContentType;
 
     // use JSON if possible
-    if ( responseHttpContentTypes.size() == 0 )
+    if (responseHttpContentTypes.size() == 0)
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // JSON
-    else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // multipart formdata
-    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
@@ -201,10 +199,11 @@ pplx::task<HttpContent> TemplateMergeApi::putMergeHtmlTemplate(utility::string_t
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
-    consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/octet-stream") );
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("multipart/form-data"));
 
     queryParams[utility::conversions::to_string_t("outPath")] = ApiClient::parameterToString(outPath);
-    
+    fileParams[utility::conversions::to_string_t("file")] = file;
+
     if (options)
     {
         queryParams[utility::conversions::to_string_t("options")] = ApiClient::parameterToString(*options);
@@ -218,9 +217,7 @@ pplx::task<HttpContent> TemplateMergeApi::putMergeHtmlTemplate(utility::string_t
         queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
     }
 
-	std::shared_ptr<OctetStreamBody> httpBody(new OctetStreamBody());
-	httpBody->add(file);
-	
+    std::shared_ptr<IHttpBody> httpBody;
 	utility::string_t requestHttpContentType;
 
 	// use JSON if possible
@@ -240,21 +237,21 @@ pplx::task<HttpContent> TemplateMergeApi::putMergeHtmlTemplate(utility::string_t
 	}
 	else
 	{
-		throw ApiException(415, utility::conversions::to_string_t("ConversionApi->putConvertDocumentInRequestToImage does not consume any supported media type"));
+		throw ApiException(415, utility::conversions::to_string_t("ConversionApi->postConvertDocumentInRequestToImage does not consume any supported media type"));
 	}
 
-    return m_ApiClient->callApi(path, utility::conversions::to_string_t("PUT"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+    return m_ApiClient->callApi(path, utility::conversions::to_string_t("POST"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling putMergeHtmlTemplate: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling postMergeHtmlTemplate: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 

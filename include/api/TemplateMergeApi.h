@@ -48,7 +48,7 @@ public:
     /// <param name="options">Template merge options: reserved for further implementation. (optional)</param>
     /// <param name="folder">The template document folder. (optional)</param>
     /// <param name="storage">The template document and data source storage. (optional)</param>
-    ASPOSE_DLL_EXPORT pplx::task<HttpContent> putMergeHtmlTemplate(
+    ASPOSE_DLL_EXPORT pplx::task<HttpContent> postMergeHtmlTemplate(
         utility::string_t templateName,
         utility::string_t outPath,
         std::shared_ptr<HttpContent> file,

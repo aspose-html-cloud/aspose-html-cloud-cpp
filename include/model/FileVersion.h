@@ -1,18 +1,17 @@
 #ifndef COM_ASPOSE_MODEL_FileVersion_H_
 #define COM_ASPOSE_MODEL_FileVersion_H_
 
-
+#include "model/StorageFile.h"
 #include <cpprest/details/basic_types.h>
-#include "model/File.h"
 
 namespace com {
 namespace aspose {
 namespace model {
 
 /// <summary>
-/// 
+/// File Version
 /// </summary>
-class FileVersion : public File
+class  FileVersion : public StorageFile
 {
 public:
     ASPOSE_DLL_EXPORT FileVersion();
@@ -33,26 +32,23 @@ public:
     /// FileVersion members
 
     /// <summary>
-    /// 
+    /// File Version ID.
     /// </summary>
     ASPOSE_DLL_EXPORT utility::string_t getVersionId() const;
     ASPOSE_DLL_EXPORT bool versionIdIsSet() const;
     ASPOSE_DLL_EXPORT void unsetVersionId();
     ASPOSE_DLL_EXPORT void setVersionId(utility::string_t value);
     /// <summary>
-    /// 
+    /// Specifies whether the file is (true) or is not (false) the latest version of an file.
     /// </summary>
     ASPOSE_DLL_EXPORT bool isIsLatest() const;
-    ASPOSE_DLL_EXPORT bool isLatestIsSet() const;
-    ASPOSE_DLL_EXPORT void unsetIsLatest();
     ASPOSE_DLL_EXPORT void setIsLatest(bool value);
 
-private:
+protected:
     utility::string_t m_VersionId;
     bool m_VersionIdIsSet;
     bool m_IsLatest;
-    bool m_IsLatestIsSet;
-};
+    };
 
 }
 }

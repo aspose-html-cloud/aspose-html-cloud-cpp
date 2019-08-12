@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestTemplateMergeApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -50,51 +50,53 @@ protected:
 
     void SetUp()
 	{
-		std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-		std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-		api = new TemplateMergeApi(apiClient);
-		storage_api = new StorageApi(apiClient);
+        try
+        {
+            std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
+            std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
+            api = new TemplateMergeApi(apiClient);
+            storage_api = new StorageApi(apiClient);
 
-		storage = boost::none;
-		template_name = _XPLATSTR("HtmlTemplate.html");
-        data_name = _XPLATSTR("XmlSourceData.xml");
-		versionId = _XPLATSTR("");
+            storage = boost::none;
+            template_name = _XPLATSTR("HtmlTemplate.html");
+            data_name = _XPLATSTR("XmlSourceData.xml");
+            versionId = _XPLATSTR("");
 
 
-		//Upload template file to server
-		utility::string_t path_to_template = _XPLATSTR("HtmlTestDoc/HtmlTemplate.html");
-		std::shared_ptr<HttpContent> template_file(new HttpContent());
-		std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + template_name, std::ifstream::binary));
-		template_file->setData(if_stream);
+            //Upload template file to server
+            utility::string_t template_name = _XPLATSTR("HtmlTemplate.html");
+            std::shared_ptr<HttpContent> template_file(new HttpContent(testSource, template_name));
+            utility::string_t path_to_template = _XPLATSTR("HtmlTestDoc/HtmlTemplate.html");
 
-		auto res = storage_api->putCreate(path_to_template, template_file, versionId, storage).get();
+            auto res = storage_api->uploadFile(path_to_template, template_file, storage).get();
 
-		ASSERT_TRUE(res->getCode() == 200);
-		ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
-        
-		//Upload data file to server
-		utility::string_t path_to_data = _XPLATSTR("HtmlTestDoc/XmlSourceData.xml");
-		std::shared_ptr<HttpContent> data_file(new HttpContent());
-		std::shared_ptr<std::ifstream> stream(new std::ifstream(testSource + data_name, std::ifstream::binary));
-		data_file->setData(stream);
+            ASSERT_FALSE(res->errorsIsSet());
 
-		res = storage_api->putCreate(path_to_data, data_file, versionId, storage).get();
+            //Upload data file to server
+            utility::string_t data_name = _XPLATSTR("XmlSourceData.xml");
+            std::shared_ptr<HttpContent> data_file(new HttpContent(testSource, data_name));
+            utility::string_t path_to_data = _XPLATSTR("HtmlTestDoc/XmlSourceData.xml");
 
-		ASSERT_TRUE(res->getCode() == 200);
-		ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
-	}
+            res = storage_api->uploadFile(path_to_data, data_file, storage).get();
+
+            ASSERT_FALSE(res->errorsIsSet());
+        }
+        catch (std::exception& e)
+        {
+            api = nullptr;
+            storage_api = nullptr;
+            std::cout << e.what() << '\n';
+        }
+    }
 
     void TearDown()
-	{
-		delete api;
-		delete storage_api;
-	}
-
+    {
+        if (api != nullptr) { delete api; }
+        if (storage_api != nullptr) { delete storage_api; }
+    }
 };
 
-
-
-TEST_F(TestTemplateMergeApi, getMergeHtmlTemplate)
+TEST_F(TestTemplateMergeApi, testGetMergeHtmlTemplate)
 {
 
 	//Parameters
@@ -108,50 +110,41 @@ TEST_F(TestTemplateMergeApi, getMergeHtmlTemplate)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("getTemplateMerge.html")));
 }
-
-TEST_F(TestTemplateMergeApi, putMergeHtmlTemplate)
+TEST_F(TestTemplateMergeApi, testPostMergeHtmlTemplate)
 {
-	//Prepare file stream to upload
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("XmlSourceData.xml"), std::ifstream::binary));
-	file->setData(if_stream);
+    //Prepare file stream to upload
+    utility::string_t name = _XPLATSTR("XmlSourceData.xml");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
-	//Parameters
-	utility::string_t templateName = _XPLATSTR("HtmlTemplate.html");
-	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putTemplateResult.html");
-	boost::optional<utility::string_t> options = _XPLATSTR("");
-	boost::optional<utility::string_t> folder = _XPLATSTR("HtmlTestDoc");
-	boost::optional<utility::string_t> storage = boost::none;
+    //Parameters
+    utility::string_t templateName = _XPLATSTR("HtmlTemplate.html");
+    utility::string_t outPath = _XPLATSTR("HtmlTestDoc/postTemplateResult.html");
+    boost::optional<utility::string_t> options = _XPLATSTR("");
+    boost::optional<utility::string_t> folder = _XPLATSTR("HtmlTestDoc");
+    boost::optional<utility::string_t> storageName = boost::none;
 
-	auto result = api->putMergeHtmlTemplate(templateName, outPath, file, options, folder, storage).get();
+    auto result = api->postMergeHtmlTemplate(templateName, outPath, file, options, folder, storageName).get();
 
-	
-	// Check exist file
-	auto result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
+    // Check exist file
+    auto result_exist = storage_api->objectExists(outPath, versionId, storageName).get();
 
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
+    ASSERT_TRUE(result_exist->isExists());
+    ASSERT_FALSE(result_exist->isFolder());
 
-	ASSERT_TRUE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+    // Download file from storage
+    auto result_download = storage_api->downloadFile(outPath, versionId, storageName).get();
 
-	// Download file from storage
-	auto result_download = storage_api->getDownload(outPath, versionId, storage).get();
+    ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("postTemplateMerhe.html")));
 
-	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putTemplateMerhe.html")));
+    //Clear file
+    auto result_del = storage_api->deleteFile(outPath, versionId, storageName).get();
 
-	//Clear file
-	auto result_del = storage_api->deleteFile(outPath, versionId, storage).get();
+    ASSERT_TRUE(result_del->getCode() == 200);
+    ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
-	ASSERT_TRUE(result_del->getCode() == 200);
-	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
+    // Check not exist file
+    result_exist = storage_api->objectExists(outPath, versionId, storageName).get();
 
-	// Check not exist file
-	result_exist = storage_api->getIsExist(outPath, versionId, storage).get();
-
-	ASSERT_TRUE(result_exist->getCode() == 200);
-	ASSERT_TRUE(result_exist->getStatus() == _XPLATSTR("OK"));
-
-	ASSERT_FALSE(result_exist->getFileExist()->isExist());
-	ASSERT_FALSE(result_exist->getFileExist()->isFolder());
+    ASSERT_FALSE(result_exist->isExists());
+    ASSERT_FALSE(result_exist->isFolder());
 }

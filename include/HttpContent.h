@@ -19,6 +19,8 @@ class HttpContent
 {
 public:
     ASPOSE_DLL_EXPORT HttpContent();
+    ASPOSE_DLL_EXPORT HttpContent(const utility::string_t &path, const utility::string_t &name);
+
     ASPOSE_DLL_EXPORT ~HttpContent();
 
     ASPOSE_DLL_EXPORT utility::string_t getContentDisposition();

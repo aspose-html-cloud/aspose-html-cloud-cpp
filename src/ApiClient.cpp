@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiClient.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,7 +53,6 @@ void ApiClient::setConfiguration(std::shared_ptr<ApiConfiguration> configuration
 {
     m_Configuration = configuration;
 }
-
 
 utility::string_t ApiClient::parameterToString(utility::string_t value)
 {
@@ -108,9 +107,9 @@ pplx::task<web::http::http_response> ApiClient::callApi(
         throw ApiException(400, utility::conversions::to_string_t("Operations with file parameters must be called with multipart/form-data"));
     }
 
-	// Set timeout 20 min
+	// Set timeout 30 min
 	web::http::client::http_client_config httpConfig;
-	utility::seconds timeout(1200);
+	utility::seconds timeout(1800);
 	httpConfig.set_timeout(timeout);
 	m_Configuration->setHttpConfig(httpConfig);
 
@@ -183,6 +182,7 @@ pplx::task<web::http::http_response> ApiClient::callApi(
     {
         builder.append_query(kvp.first, kvp.second);
     }
+
     request.set_request_uri(builder.to_uri());
     request.set_method(method);
     if ( !request.headers().has( web::http::header_names::user_agent ) )

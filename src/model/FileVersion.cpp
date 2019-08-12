@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FileVersion.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,9 +25,7 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
-
 #include "model/FileVersion.h"
-
 
 namespace com {
 namespace aspose {
@@ -38,7 +36,6 @@ FileVersion::FileVersion()
     m_VersionId = utility::conversions::to_string_t("");
     m_VersionIdIsSet = false;
     m_IsLatest = false;
-    m_IsLatestIsSet = false;
 }
 
 FileVersion::~FileVersion()
@@ -52,32 +49,30 @@ void FileVersion::validate()
 
 web::json::value FileVersion::toJson() const
 {
-    web::json::value val = this->File::toJson();
+    web::json::value val = this->StorageFile::toJson();
 
     if(m_VersionIdIsSet)
     {
-        val[utility::conversions::to_string_t("VersionId")] = ModelBase::toJson(m_VersionId);
+        val[utility::conversions::to_string_t("versionId")] = ModelBase::toJson(m_VersionId);
     }
-    if(m_IsLatestIsSet)
-    {
-        val[utility::conversions::to_string_t("IsLatest")] = ModelBase::toJson(m_IsLatest);
-    }
+    val[utility::conversions::to_string_t("isLatest")] = ModelBase::toJson(m_IsLatest);
 
     return val;
 }
 
 void FileVersion::fromJson(web::json::value& val)
 {
-    this->File::fromJson(val);
+    this->StorageFile::fromJson(val);
 
-    if(val.has_field(utility::conversions::to_string_t("VersionId")))
+    if(val.has_field(utility::conversions::to_string_t("versionId")))
     {
-        setVersionId(ModelBase::stringFromJson(val[utility::conversions::to_string_t("VersionId")]));
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("versionId")];
+        if(!fieldValue.is_null())
+        {
+            setVersionId(ModelBase::stringFromJson(fieldValue));
+        }
     }
-    if(val.has_field(utility::conversions::to_string_t("IsLatest")))
-    {
-        setIsLatest(ModelBase::boolFromJson(val[utility::conversions::to_string_t("IsLatest")]));
-    }
+    setIsLatest(ModelBase::boolFromJson(val[utility::conversions::to_string_t("isLatest")]));
 }
 
 void FileVersion::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
@@ -90,27 +85,27 @@ void FileVersion::toMultipart(std::shared_ptr<MultipartFormData> multipart, cons
 
     if(m_NameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Name"), m_Name));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("name"), m_Name));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("IsFolder"), m_IsFolder));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("ModifiedDate"), m_ModifiedDate));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Size"), m_Size));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("isFolder"), m_IsFolder));
+    if(m_ModifiedDateIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("modifiedDate"), m_ModifiedDate));
+        
+    }
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("size"), m_Size));
     if(m_PathIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("Path"), m_Path));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("path"), m_Path));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("IsDirectory"), m_IsDirectory));
     if(m_VersionIdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("VersionId"), m_VersionId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("versionId"), m_VersionId));
         
     }
-    if(m_IsLatestIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("IsLatest"), m_IsLatest));
-    }
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("isLatest"), m_IsLatest));
 }
 
 void FileVersion::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -121,33 +116,31 @@ void FileVersion::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, co
         namePrefix += utility::conversions::to_string_t(".");
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t("Name")))
+    if(multipart->hasContent(utility::conversions::to_string_t("name")))
     {
-        setName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Name"))));
+        setName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("name"))));
     }
-    setIsFolder(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("IsFolder"))));
-    setModifiedDate(ModelBase::dateFromHttpContent(multipart->getContent(utility::conversions::to_string_t("ModifiedDate"))));
-    setSize(ModelBase::int64_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Size"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("Path")))
+    setIsFolder(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("isFolder"))));
+    if(multipart->hasContent(utility::conversions::to_string_t("modifiedDate")))
     {
-        setPath(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Path"))));
+        setModifiedDate(ModelBase::dateFromHttpContent(multipart->getContent(utility::conversions::to_string_t("modifiedDate"))));
     }
-    setIsDirectory(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("IsDirectory"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("VersionId")))
+    setSize(ModelBase::int64_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("size"))));
+    if(multipart->hasContent(utility::conversions::to_string_t("path")))
     {
-        setVersionId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("VersionId"))));
+        setPath(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("path"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("IsLatest")))
+    if(multipart->hasContent(utility::conversions::to_string_t("versionId")))
     {
-        setIsLatest(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("IsLatest"))));
+        setVersionId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("versionId"))));
     }
+    setIsLatest(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("isLatest"))));
 }
 
 utility::string_t FileVersion::getVersionId() const
 {
     return m_VersionId;
 }
-
 
 void FileVersion::setVersionId(utility::string_t value)
 {
@@ -169,20 +162,10 @@ bool FileVersion::isIsLatest() const
     return m_IsLatest;
 }
 
-
 void FileVersion::setIsLatest(bool value)
 {
     m_IsLatest = value;
-    m_IsLatestIsSet = true;
-}
-bool FileVersion::isLatestIsSet() const
-{
-    return m_IsLatestIsSet;
-}
-
-void FileVersion::unsetIsLatest()
-{
-    m_IsLatestIsSet = false;
+    
 }
 
 }

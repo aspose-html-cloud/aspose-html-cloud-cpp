@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StorageApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,8 +40,7 @@ namespace api {
 
 using namespace com::aspose::model;
 
-StorageApi::StorageApi( std::shared_ptr<ApiClient> apiClient )
-    : m_ApiClient(apiClient)
+StorageApi::StorageApi( std::shared_ptr<ApiClient> apiClient ) : m_ApiClient(apiClient)
 {
 }
 
@@ -49,12 +48,10 @@ StorageApi::~StorageApi()
 {
 }
 
-pplx::task<std::shared_ptr<DiscUsageResponse>> StorageApi::getDiscUsage(boost::optional<utility::string_t> storage)
+pplx::task<std::shared_ptr<DiscUsage>> StorageApi::getDiscUsage(boost::optional<utility::string_t> storageName)
 {
-
-
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/disc");
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/disc");
     
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
@@ -91,9 +88,9 @@ pplx::task<std::shared_ptr<DiscUsageResponse>> StorageApi::getDiscUsage(boost::o
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (storage)
+    if (storageName)
     {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+        queryParams[utility::conversions::to_string_t("storageName")] = ApiClient::parameterToString(*storageName);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -119,7 +116,7 @@ pplx::task<std::shared_ptr<DiscUsageResponse>> StorageApi::getDiscUsage(boost::o
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -146,7 +143,7 @@ pplx::task<std::shared_ptr<DiscUsageResponse>> StorageApi::getDiscUsage(boost::o
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<DiscUsageResponse> result(new DiscUsageResponse());
+        std::shared_ptr<DiscUsage> result(new DiscUsage());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -163,91 +160,86 @@ pplx::task<std::shared_ptr<DiscUsageResponse>> StorageApi::getDiscUsage(boost::o
         return result;
     });
 }
-pplx::task<std::shared_ptr<FileExistResponse>> StorageApi::getIsExist(utility::string_t path_to_storage, boost::optional<utility::string_t> versionId, boost::optional<utility::string_t> storage)
+pplx::task<std::shared_ptr<ObjectExist>> StorageApi::objectExists(utility::string_t path_to_object, boost::optional<utility::string_t> versionId, boost::optional<utility::string_t> storageName)
 {
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/exist/{path}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("path") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(path_to_object));
 
-
-    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/exist");
-    
     std::map<utility::string_t, utility::string_t> queryParams;
-    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
     std::map<utility::string_t, utility::string_t> formParams;
     std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
-    responseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+    responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
     utility::string_t responseHttpContentType;
 
     // use JSON if possible
-    if ( responseHttpContentTypes.size() == 0 )
+    if (responseHttpContentTypes.size() == 0)
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // JSON
-    else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // multipart formdata
-    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
     else
     {
-        throw ApiException(400, utility::conversions::to_string_t("StorageApi->getIsExist does not produce any supported media type"));
+        throw ApiException(400, utility::conversions::to_string_t("StorageApi->objectExists does not produce any supported media type"));
     }
 
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
-    consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
+    if (storageName)
     {
-        queryParams[utility::conversions::to_string_t("path")] = ApiClient::parameterToString(path_to_storage);
+        queryParams[utility::conversions::to_string_t("storageName")] = ApiClient::parameterToString(*storageName);
     }
     if (versionId)
     {
         queryParams[utility::conversions::to_string_t("versionId")] = ApiClient::parameterToString(*versionId);
     }
-    if (storage)
-    {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
 
     // use JSON if possible
-    if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
+    if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
     {
         requestHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // multipart formdata
-    else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
+    else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("StorageApi->getIsExist does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("StorageApi->objectExists does not consume any supported media type"));
     }
-
 
     return m_ApiClient->callApi(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling getIsExist: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling objectExists: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
@@ -258,7 +250,7 @@ pplx::task<std::shared_ptr<FileExistResponse>> StorageApi::getIsExist(utility::s
             if( contentType.find(responseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getIsExist: unexpected response type: ") + contentType
+                    , utility::conversions::to_string_t("error calling objectExists: unexpected response type: ") + contentType
                     , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
             }
         }
@@ -267,7 +259,7 @@ pplx::task<std::shared_ptr<FileExistResponse>> StorageApi::getIsExist(utility::s
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<FileExistResponse> result(new FileExistResponse());
+        std::shared_ptr<ObjectExist> result(new ObjectExist());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -278,19 +270,17 @@ pplx::task<std::shared_ptr<FileExistResponse>> StorageApi::getIsExist(utility::s
         else
         {
             throw ApiException(500
-                , utility::conversions::to_string_t("error calling getIsExist: unsupported response type"));
+                , utility::conversions::to_string_t("error calling objectExists: unsupported response type"));
         }
 
         return result;
     });
 }
-pplx::task<std::shared_ptr<StorageExistResponse>> StorageApi::getIsStorageExist(utility::string_t name)
+pplx::task<std::shared_ptr<StorageExist>> StorageApi::storageExists(utility::string_t storageName)
 {
-
-
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/{name}/exist");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(name));
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/{name}/exist");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(storageName));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
@@ -319,7 +309,7 @@ pplx::task<std::shared_ptr<StorageExistResponse>> StorageApi::getIsStorageExist(
     }
     else
     {
-        throw ApiException(400, utility::conversions::to_string_t("StorageApi->getIsStorageExist does not produce any supported media type"));
+        throw ApiException(400, utility::conversions::to_string_t("StorageApi->storageExists does not produce any supported media type"));
     }
 
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
@@ -343,22 +333,21 @@ pplx::task<std::shared_ptr<StorageExistResponse>> StorageApi::getIsStorageExist(
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("StorageApi->getIsStorageExist does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("StorageApi->storageExists does not consume any supported media type"));
     }
-
 
     return m_ApiClient->callApi(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling getIsStorageExist: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling storageExists: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
@@ -369,7 +358,7 @@ pplx::task<std::shared_ptr<StorageExistResponse>> StorageApi::getIsStorageExist(
             if( contentType.find(responseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getIsStorageExist: unexpected response type: ") + contentType
+                    , utility::conversions::to_string_t("error calling storageExists: unexpected response type: ") + contentType
                     , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
             }
         }
@@ -378,7 +367,7 @@ pplx::task<std::shared_ptr<StorageExistResponse>> StorageApi::getIsStorageExist(
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<StorageExistResponse> result(new StorageExistResponse());
+        std::shared_ptr<StorageExist> result(new StorageExist());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -389,93 +378,88 @@ pplx::task<std::shared_ptr<StorageExistResponse>> StorageApi::getIsStorageExist(
         else
         {
             throw ApiException(500
-                , utility::conversions::to_string_t("error calling getIsStorageExist: unsupported response type"));
+                , utility::conversions::to_string_t("error calling storageExists: unsupported response type"));
         }
 
         return result;
     });
 }
-pplx::task<std::shared_ptr<FileVersionsResponse>> StorageApi::getListFileVersions(utility::string_t path_to_file, boost::optional<utility::string_t> storage)
+pplx::task<std::shared_ptr<FileVersions>> StorageApi::getFileVersions(utility::string_t path_to_file, boost::optional<utility::string_t> storageName)
 {
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/version/{path}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("path") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(path_to_file));
 
-
-    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/version");
-    
     std::map<utility::string_t, utility::string_t> queryParams;
-    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
     std::map<utility::string_t, utility::string_t> formParams;
     std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
-    responseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+    responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
     utility::string_t responseHttpContentType;
 
     // use JSON if possible
-    if ( responseHttpContentTypes.size() == 0 )
+    if (responseHttpContentTypes.size() == 0)
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // JSON
-    else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // multipart formdata
-    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
     else
     {
-        throw ApiException(400, utility::conversions::to_string_t("StorageApi->getListFileVersions does not produce any supported media type"));
+        throw ApiException(400, utility::conversions::to_string_t("StorageApi->getFileVersions does not produce any supported media type"));
     }
 
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
-    consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
+    if (storageName)
     {
-        queryParams[utility::conversions::to_string_t("path")] = ApiClient::parameterToString(path_to_file);
-    }
-    if (storage)
-    {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+        queryParams[utility::conversions::to_string_t("storageName")] = ApiClient::parameterToString(*storageName);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
 
     // use JSON if possible
-    if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
+    if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
     {
         requestHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // multipart formdata
-    else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
+    else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("StorageApi->getListFileVersions does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("StorageApi->getFileVersions does not consume any supported media type"));
     }
-
 
     return m_ApiClient->callApi(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling getListFileVersions: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling getFileVersions: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
@@ -486,7 +470,7 @@ pplx::task<std::shared_ptr<FileVersionsResponse>> StorageApi::getListFileVersion
             if( contentType.find(responseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getListFileVersions: unexpected response type: ") + contentType
+                    , utility::conversions::to_string_t("error calling getFileVersions: unexpected response type: ") + contentType
                     , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
             }
         }
@@ -495,7 +479,7 @@ pplx::task<std::shared_ptr<FileVersionsResponse>> StorageApi::getListFileVersion
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<FileVersionsResponse> result(new FileVersionsResponse());
+        std::shared_ptr<FileVersions> result(new FileVersions());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -506,22 +490,21 @@ pplx::task<std::shared_ptr<FileVersionsResponse>> StorageApi::getListFileVersion
         else
         {
             throw ApiException(500
-                , utility::conversions::to_string_t("error calling getListFileVersions: unsupported response type"));
+                , utility::conversions::to_string_t("error calling getFileVersions: unsupported response type"));
         }
 
         return result;
     });
 }
 
-pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFile(utility::string_t path_to_file, boost::optional<utility::string_t> versionId, boost::optional<utility::string_t> storage)
+pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFile(utility::string_t path_to_file, boost::optional<utility::string_t> versionId, boost::optional<utility::string_t> storageName)
 {
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/file/{path}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("path") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(path_to_file));
 
-
-    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/file");
-    
     std::map<utility::string_t, utility::string_t> queryParams;
-    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
     std::map<utility::string_t, utility::string_t> formParams;
     std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
 
@@ -555,16 +538,13 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFile(utility::str
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    {
-        queryParams[utility::conversions::to_string_t("path")] = ApiClient::parameterToString(path_to_file);
-    }
     if (versionId)
     {
         queryParams[utility::conversions::to_string_t("versionId")] = ApiClient::parameterToString(*versionId);
     }
-    if (storage)
+    if (storageName)
     {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+        queryParams[utility::conversions::to_string_t("storageName")] = ApiClient::parameterToString(*storageName);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -585,12 +565,11 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFile(utility::str
         throw ApiException(415, utility::conversions::to_string_t("StorageApi->deleteFile does not consume any supported media type"));
     }
 
-
     return m_ApiClient->callApi(path, utility::conversions::to_string_t("DELETE"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -602,10 +581,10 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFile(utility::str
         }
 
         // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
+        if (response.headers().has(utility::conversions::to_string_t("Content-Type")))
         {
             utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
+            if (contentType.find(responseHttpContentType) == std::string::npos)
             {
                 throw ApiException(500
                     , utility::conversions::to_string_t("error calling deleteFile: unexpected response type: ") + contentType
@@ -613,36 +592,22 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFile(utility::str
             }
         }
 
-        return response.extract_string();
-    })
-    .then([=](utility::string_t response)
-    {
         std::shared_ptr<MessageResponse> result(new MessageResponse());
 
-        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
-        {
-            web::json::value json = web::json::value::parse(response);
-
-            result->fromJson(json);
-        }
-        else
-        {
-            throw ApiException(500
-                , utility::conversions::to_string_t("error calling deleteFile: unsupported response type"));
-        }
+        result->setCode(response.status_code());
+        result->setStatus(response.reason_phrase());
 
         return result;
     });
 }
-pplx::task<HttpContent> StorageApi::getDownload(utility::string_t path_to_file, boost::optional<utility::string_t> versionId, boost::optional<utility::string_t> storage)
+pplx::task<HttpContent> StorageApi::downloadFile(utility::string_t path_to_file, boost::optional<utility::string_t> versionId, boost::optional<utility::string_t> storageName)
 {
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/file/{path}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("path") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(path_to_file));
 
-
-    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/file");
-    
     std::map<utility::string_t, utility::string_t> queryParams;
-    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
     std::map<utility::string_t, utility::string_t> formParams;
     std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
 
@@ -650,24 +615,18 @@ pplx::task<HttpContent> StorageApi::getDownload(utility::string_t path_to_file, 
     responseHttpContentTypes.insert( utility::conversions::to_string_t("multipart/form-data") );
 
     utility::string_t responseHttpContentType;
-
-    responseHttpContentType = utility::conversions::to_string_t("application/octet-stream");
-
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    {
-        queryParams[utility::conversions::to_string_t("path")] = ApiClient::parameterToString(path_to_file);
-    }
     if (versionId)
     {
         queryParams[utility::conversions::to_string_t("versionId")] = ApiClient::parameterToString(*versionId);
     }
-    if (storage)
+    if (storageName)
     {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+        queryParams[utility::conversions::to_string_t("storageName")] = ApiClient::parameterToString(*storageName);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -685,7 +644,7 @@ pplx::task<HttpContent> StorageApi::getDownload(utility::string_t path_to_file, 
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("StorageApi->getDownload does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("StorageApi->downloadFile does not consume any supported media type"));
     }
 
 
@@ -693,14 +652,14 @@ pplx::task<HttpContent> StorageApi::getDownload(utility::string_t path_to_file, 
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling getDownload: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling downloadFile: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
@@ -711,7 +670,7 @@ pplx::task<HttpContent> StorageApi::getDownload(utility::string_t path_to_file, 
             if( contentType.find(responseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getDownload: unexpected response type: ") + contentType
+                    , utility::conversions::to_string_t("error calling downloadFile: unexpected response type: ") + contentType
                     , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
             }
         }
@@ -726,20 +685,19 @@ pplx::task<HttpContent> StorageApi::getDownload(utility::string_t path_to_file, 
         return result;
     });
 }
-pplx::task<std::shared_ptr<MessageResponse>> StorageApi::postMoveFile(utility::string_t src, utility::string_t dest, boost::optional<utility::string_t> versionId, boost::optional<utility::string_t> storage, boost::optional<utility::string_t> destStorage)
+pplx::task<std::shared_ptr<MessageResponse>> StorageApi::moveFile(utility::string_t srcPath, utility::string_t destPath, boost::optional<utility::string_t> versionId, boost::optional<utility::string_t> srcStorageName, boost::optional<utility::string_t> destStorageName)
 {
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/file/move/{srcPath}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("srcPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(srcPath));
 
-
-    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/file");
-    
     std::map<utility::string_t, utility::string_t> queryParams;
-    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
     std::map<utility::string_t, utility::string_t> formParams;
     std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
-    responseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+    responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
     utility::string_t responseHttpContentType;
 
@@ -760,7 +718,7 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::postMoveFile(utility::s
     }
     else
     {
-        throw ApiException(400, utility::conversions::to_string_t("StorageApi->postMoveFile does not produce any supported media type"));
+        throw ApiException(400, utility::conversions::to_string_t("StorageApi->moveFile does not produce any supported media type"));
     }
 
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
@@ -768,23 +726,19 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::postMoveFile(utility::s
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("multipart/form-data") );
 
+    queryParams[utility::conversions::to_string_t("destPath")] = ApiClient::parameterToString(destPath);
+
+    if (srcStorageName)
     {
-        queryParams[utility::conversions::to_string_t("src")] = ApiClient::parameterToString(src);
+        queryParams[utility::conversions::to_string_t("srcStorageName")] = ApiClient::parameterToString(*srcStorageName);
     }
+    if (destStorageName)
     {
-        queryParams[utility::conversions::to_string_t("dest")] = ApiClient::parameterToString(dest);
+        queryParams[utility::conversions::to_string_t("destStorageName")] = ApiClient::parameterToString(*destStorageName);
     }
     if (versionId)
     {
         queryParams[utility::conversions::to_string_t("versionId")] = ApiClient::parameterToString(*versionId);
-    }
-    if (storage)
-    {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
-    }
-    if (destStorage)
-    {
-        queryParams[utility::conversions::to_string_t("destStorage")] = ApiClient::parameterToString(*destStorage);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -802,22 +756,21 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::postMoveFile(utility::s
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("StorageApi->postMoveFile does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("StorageApi->moveFile does not consume any supported media type"));
     }
 
-
-    return m_ApiClient->callApi(path, utility::conversions::to_string_t("POST"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+    return m_ApiClient->callApi(path, utility::conversions::to_string_t("PUT"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling postMoveFile: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling moveFile: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
@@ -828,45 +781,30 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::postMoveFile(utility::s
             if( contentType.find(responseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postMoveFile: unexpected response type: ") + contentType
+                    , utility::conversions::to_string_t("error calling moveFile: unexpected response type: ") + contentType
                     , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
             }
         }
-
-        return response.extract_string();
-    })
-    .then([=](utility::string_t response)
-    {
         std::shared_ptr<MessageResponse> result(new MessageResponse());
 
-        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
-        {
-            web::json::value json = web::json::value::parse(response);
-
-            result->fromJson(json);
-        }
-        else
-        {
-            throw ApiException(500
-                , utility::conversions::to_string_t("error calling postMoveFile: unsupported response type"));
-        }
+        result->setCode(response.status_code());
+        result->setStatus(response.reason_phrase());
 
         return result;
     });
 }
-pplx::task<std::shared_ptr<MessageResponse>> StorageApi::putCreate(utility::string_t path_to_file, std::shared_ptr<HttpContent> file, boost::optional<utility::string_t> versionId, boost::optional<utility::string_t> storage)
+pplx::task<std::shared_ptr<FilesUploadResult>> StorageApi::uploadFile(utility::string_t path_to_file, std::shared_ptr<HttpContent> file, boost::optional<utility::string_t> storageName)
 {
-
     // verify the required parameter 'file' is set
     if (file == nullptr)
     {
-        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling StorageApi->putCreate"));
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling StorageApi->uploadFile"));
     }
 
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/file/{path}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("path") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(path_to_file));
 
-    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/file");
-    
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
@@ -901,22 +839,16 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::putCreate(utility::stri
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
-    consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/octet-stream") );
-
-    queryParams[utility::conversions::to_string_t("path")] = ApiClient::parameterToString(path_to_file);
+    consumeHttpContentTypes.insert( utility::conversions::to_string_t("multipart/form-data") );
  
-	if (versionId)
+    fileParams[utility::conversions::to_string_t("file")] = file;
+
+    if (storageName)
     {
-        queryParams[utility::conversions::to_string_t("versionId")] = ApiClient::parameterToString(*versionId);
-    }
-    if (storage)
-    {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+        queryParams[utility::conversions::to_string_t("storageName")] = ApiClient::parameterToString(*storageName);
     }
 
-
-	std::shared_ptr<OctetStreamBody> httpBody(new OctetStreamBody());
-	httpBody->add(file);
+    std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
 
     // use JSON if possible
@@ -929,14 +861,9 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::putCreate(utility::stri
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
-	// application/octet-stream 
-	else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("application/octet-stream")) != consumeHttpContentTypes.end())
-	{
-		requestHttpContentType = utility::conversions::to_string_t("application/octet-stream");
-	}
 	else
     {
-        throw ApiException(415, utility::conversions::to_string_t("StorageApi->putCreate does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("StorageApi->uploadFile does not consume any supported media type"));
     }
 
 
@@ -944,14 +871,14 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::putCreate(utility::stri
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling putCreate: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling uploadFile: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
@@ -962,7 +889,7 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::putCreate(utility::stri
             if( contentType.find(responseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putCreate: unexpected response type: ") + contentType
+                    , utility::conversions::to_string_t("error calling uploadFile: unexpected response type: ") + contentType
                     , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
             }
         }
@@ -971,7 +898,7 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::putCreate(utility::stri
     })
     .then([=](utility::string_t response)
     {
-		std::shared_ptr<MessageResponse> result(new MessageResponse());
+		std::shared_ptr<FilesUploadResult> result(new FilesUploadResult());
 
 		if (responseHttpContentType == utility::conversions::to_string_t("application/json"))
 		{
@@ -982,42 +909,41 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::putCreate(utility::stri
 		else
 		{
 			throw ApiException(500
-				, utility::conversions::to_string_t("error calling putCreate: unsupported response type"));
+				, utility::conversions::to_string_t("error calling uploadFile: unsupported response type"));
 		}
 
 		return result;
 	});
 }
 
-pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFolder(utility::string_t path_to_folder, boost::optional<utility::string_t> storage, boost::optional<bool> recursive)
+pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFolder(utility::string_t path_to_folder, boost::optional<utility::string_t> storageName, boost::optional<bool> recursive)
 {
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/folder/{path}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("path") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(path_to_folder));
 
-
-    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/folder");
-    
     std::map<utility::string_t, utility::string_t> queryParams;
-    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
     std::map<utility::string_t, utility::string_t> formParams;
     std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
-    responseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+    responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
     utility::string_t responseHttpContentType;
 
     // use JSON if possible
-    if ( responseHttpContentTypes.size() == 0 )
+    if (responseHttpContentTypes.size() == 0)
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // JSON
-    else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // multipart formdata
-    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
@@ -1029,30 +955,27 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFolder(utility::s
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
-    consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
+    if (storageName)
     {
-        queryParams[utility::conversions::to_string_t("path")] = ApiClient::parameterToString(path_to_folder);
+        queryParams[utility::conversions::to_string_t("storageName")] = ApiClient::parameterToString(*storageName);
     }
-    if (storage)
+    if (recursive && ApiClient::parameterToString(*recursive) == utility::conversions::to_string_t("1"))
     {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
-    }
-    if (recursive)
-    {
-        queryParams[utility::conversions::to_string_t("recursive")] = ApiClient::parameterToString(*recursive);
+        queryParams[utility::conversions::to_string_t("recursive")] = utility::conversions::to_string_t("true");
     }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
 
     // use JSON if possible
-    if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
+    if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
     {
         requestHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // multipart formdata
-    else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
+    else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
@@ -1061,12 +984,11 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFolder(utility::s
         throw ApiException(415, utility::conversions::to_string_t("StorageApi->deleteFolder does not consume any supported media type"));
     }
 
-
     return m_ApiClient->callApi(path, utility::conversions::to_string_t("DELETE"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -1078,10 +1000,10 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFolder(utility::s
         }
 
         // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
+        if (response.headers().has(utility::conversions::to_string_t("Content-Type")))
         {
             utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
+            if (contentType.find(responseHttpContentType) == std::string::npos)
             {
                 throw ApiException(500
                     , utility::conversions::to_string_t("error calling deleteFolder: unexpected response type: ") + contentType
@@ -1089,110 +1011,89 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::deleteFolder(utility::s
             }
         }
 
-        return response.extract_string();
-    })
-    .then([=](utility::string_t response)
-    {
         std::shared_ptr<MessageResponse> result(new MessageResponse());
-
-        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
-        {
-            web::json::value json = web::json::value::parse(response);
-
-            result->fromJson(json);
-        }
-        else
-        {
-            throw ApiException(500
-                , utility::conversions::to_string_t("error calling deleteFolder: unsupported response type"));
-        }
+        result->setCode(response.status_code());
+        result->setStatus(response.reason_phrase());
 
         return result;
     });
 }
-pplx::task<HttpContent> StorageApi::getListFiles(boost::optional<utility::string_t> path_to_folder, boost::optional<utility::string_t> storage)
+pplx::task<std::shared_ptr<FilesList>> StorageApi::getFilesList(utility::string_t path_to_folder, boost::optional<utility::string_t> storageName)
 {
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/folder/{path}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("path") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(path_to_folder));
 
-
-    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/folder");
-    
     std::map<utility::string_t, utility::string_t> queryParams;
-    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
     std::map<utility::string_t, utility::string_t> formParams;
     std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
-    responseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+    responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
     utility::string_t responseHttpContentType;
 
     // use JSON if possible
-    if ( responseHttpContentTypes.size() == 0 )
+    if (responseHttpContentTypes.size() == 0)
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // JSON
-    else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // multipart formdata
-    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
     else
     {
-        //It's going to be binary, so just use the first one.
-        responseHttpContentType = *responseHttpContentTypes.begin();
+        throw ApiException(400, utility::conversions::to_string_t("StorageApi->getFilesList does not produce any supported media type"));
     }
 
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
-    consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
-    if (path_to_folder)
+    if (storageName)
     {
-        queryParams[utility::conversions::to_string_t("path")] = ApiClient::parameterToString(*path_to_folder);
-    }
-    if (storage)
-    {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+        queryParams[utility::conversions::to_string_t("storageName")] = ApiClient::parameterToString(*storageName);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
 
     // use JSON if possible
-    if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
+    if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
     {
         requestHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // multipart formdata
-    else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
+    else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("StorageApi->getListFiles does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("StorageApi->getFilesList does not consume any supported media type"));
     }
-
 
     return m_ApiClient->callApi(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling getListFiles: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling getFilesList: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
@@ -1203,120 +1104,7 @@ pplx::task<HttpContent> StorageApi::getListFiles(boost::optional<utility::string
             if( contentType.find(responseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getListFiles: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
-        return response.extract_vector();
-    })
-    .then([=](std::vector<unsigned char> response)
-    {
-        HttpContent result;
-        std::shared_ptr<std::stringstream> stream = std::make_shared<std::stringstream>(std::string(response.begin(), response.end()));
-        result.setData(stream);
-        return result;
-    });
-}
-pplx::task<std::shared_ptr<MessageResponse>> StorageApi::postMoveFolder(utility::string_t src, utility::string_t dest, boost::optional<utility::string_t> storage, boost::optional<utility::string_t> destStorage)
-{
-
-
-    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/folder");
-    
-    std::map<utility::string_t, utility::string_t> queryParams;
-    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
-    std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
-
-    std::unordered_set<utility::string_t> responseHttpContentTypes;
-    responseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-
-    utility::string_t responseHttpContentType;
-
-    // use JSON if possible
-    if ( responseHttpContentTypes.size() == 0 )
-    {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
-    }
-    // JSON
-    else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
-    {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
-    }
-    // multipart formdata
-    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
-    {
-        responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
-    }
-    else
-    {
-        throw ApiException(400, utility::conversions::to_string_t("StorageApi->postMoveFolder does not produce any supported media type"));
-    }
-
-    headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
-
-    std::unordered_set<utility::string_t> consumeHttpContentTypes;
-    consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-
-    {
-        queryParams[utility::conversions::to_string_t("src")] = ApiClient::parameterToString(src);
-    }
-    {
-        queryParams[utility::conversions::to_string_t("dest")] = ApiClient::parameterToString(dest);
-    }
-    if (storage)
-    {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
-    }
-    if (destStorage)
-    {
-        queryParams[utility::conversions::to_string_t("destStorage")] = ApiClient::parameterToString(*destStorage);
-    }
-
-    std::shared_ptr<IHttpBody> httpBody;
-    utility::string_t requestHttpContentType;
-
-    // use JSON if possible
-    if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
-    {
-        requestHttpContentType = utility::conversions::to_string_t("application/json");
-    }
-    // multipart formdata
-    else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
-    {
-        requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
-    }
-    else
-    {
-        throw ApiException(415, utility::conversions::to_string_t("StorageApi->postMoveFolder does not consume any supported media type"));
-    }
-
-
-    return m_ApiClient->callApi(path, utility::conversions::to_string_t("POST"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
-    .then([=](web::http::http_response response)
-    {
-        // 1xx - informational : OK
-        // 2xx - successful       : OK
-        // 3xx - redirection   : OK
-        // 4xx - client error  : not OK
-        // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling postMoveFolder: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
-
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling postMoveFolder: unexpected response type: ") + contentType
+                    , utility::conversions::to_string_t("error calling getFilesList: unexpected response type: ") + contentType
                     , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
             }
         }
@@ -1325,146 +1113,230 @@ pplx::task<std::shared_ptr<MessageResponse>> StorageApi::postMoveFolder(utility:
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<MessageResponse> result(new MessageResponse());
+        std::shared_ptr<FilesList> result(new FilesList());
 
-        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        if (responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
             web::json::value json = web::json::value::parse(response);
 
             result->fromJson(json);
         }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
         else
         {
             throw ApiException(500
-                , utility::conversions::to_string_t("error calling postMoveFolder: unsupported response type"));
+                , utility::conversions::to_string_t("error calling getFilesList: unsupported response type"));
         }
 
         return result;
     });
 }
-pplx::task<std::shared_ptr<MessageResponse>> StorageApi::putCreateFolder(utility::string_t path_to_folder, boost::optional<utility::string_t> storage, boost::optional<utility::string_t> destStorage)
+pplx::task<std::shared_ptr<MessageResponse>> StorageApi::moveFolder(utility::string_t srcPath, utility::string_t destPath, boost::optional<utility::string_t> srcStorageName, boost::optional<utility::string_t> destStorageName)
 {
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/folder/move/{srcPath}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("srcPath") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(srcPath));
 
-
-    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/storage/folder");
-    
     std::map<utility::string_t, utility::string_t> queryParams;
-    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
     std::map<utility::string_t, utility::string_t> formParams;
     std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
 
     std::unordered_set<utility::string_t> responseHttpContentTypes;
-    responseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+    responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
     utility::string_t responseHttpContentType;
 
     // use JSON if possible
-    if ( responseHttpContentTypes.size() == 0 )
+    if (responseHttpContentTypes.size() == 0)
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // JSON
-    else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // multipart formdata
-    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
     else
     {
-        //It's going to be binary, so just use the first one.
-        responseHttpContentType = *responseHttpContentTypes.begin();
+        throw ApiException(400, utility::conversions::to_string_t("StorageApi->moveFolder does not produce any supported media type"));
     }
 
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
-    consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
+    queryParams[utility::conversions::to_string_t("destPath")] = ApiClient::parameterToString(destPath);
+    
+    if (srcStorageName)
     {
-        queryParams[utility::conversions::to_string_t("path")] = ApiClient::parameterToString(path_to_folder);
+        queryParams[utility::conversions::to_string_t("srcStorageName")] = ApiClient::parameterToString(*srcStorageName);
     }
-    if (storage)
+    if (destStorageName)
     {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
-    }
-    if (destStorage)
-    {
-        queryParams[utility::conversions::to_string_t("destStorage")] = ApiClient::parameterToString(*destStorage);
+        queryParams[utility::conversions::to_string_t("destStorageName")] = ApiClient::parameterToString(*destStorageName);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
 
     // use JSON if possible
-    if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
+    if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
     {
         requestHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // multipart formdata
-    else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
+    else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("StorageApi->putCreateFolder does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("FolderApi->moveFolder does not consume any supported media type"));
     }
-
 
     return m_ApiClient->callApi(path, utility::conversions::to_string_t("PUT"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling putCreateFolder: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling moveFolder: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
         // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
+        if (response.headers().has(utility::conversions::to_string_t("Content-Type")))
         {
             utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
+            if (contentType.find(responseHttpContentType) == std::string::npos)
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling putCreateFolder: unexpected response type: ") + contentType
+                    , utility::conversions::to_string_t("error calling moveFolder: unexpected response type: ") + contentType
                     , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
             }
         }
 
-        return response.extract_string();
-    })
-    .then([=](utility::string_t response)
-    {
-		std::shared_ptr<MessageResponse> result(new MessageResponse());
+        std::shared_ptr<MessageResponse> result(new MessageResponse());
+        result->setCode(response.status_code());
+        result->setStatus(response.reason_phrase());
 
-		if (responseHttpContentType == utility::conversions::to_string_t("application/json"))
-		{
-			web::json::value json = web::json::value::parse(response);
-
-			result->fromJson(json);
-		}
-		else
-		{
-			throw ApiException(500
-				, utility::conversions::to_string_t("error calling postMoveFolder: unsupported response type"));
-		}
-
-		return result;
+        return result;
     });
 }
+pplx::task<std::shared_ptr<MessageResponse>> StorageApi::createFolder(utility::string_t path_to_folder, boost::optional<utility::string_t> storageName)
+{
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/folder/{path}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("path") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(path_to_folder));
 
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::map<utility::string_t, utility::string_t> formParams;
+    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.size() == 0)
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, utility::conversions::to_string_t("StorageApi->createFolder does not produce any supported media type"));
+    }
+
+    headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
+
+    if (storageName)
+    {
+        queryParams[utility::conversions::to_string_t("storageName")] = ApiClient::parameterToString(*storageName);
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, utility::conversions::to_string_t("StorageApi->createFolder does not consume any supported media type"));
+    }
+
+    return m_ApiClient->callApi(path, utility::conversions::to_string_t("PUT"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful    : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+        if (response.status_code() >= 400)
+        {
+            throw ApiException(response.status_code()
+                , utility::conversions::to_string_t("error calling createFolder: ") + response.reason_phrase()
+                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+        }
+
+        // check response content type
+        if (response.headers().has(utility::conversions::to_string_t("Content-Type")))
+        {
+            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
+            if (contentType.find(responseHttpContentType) == std::string::npos)
+            {
+                throw ApiException(500
+                    , utility::conversions::to_string_t("error calling createFolder: unexpected response type: ") + contentType
+                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+            }
+        }
+
+        std::shared_ptr<MessageResponse> result(new MessageResponse());
+
+        result->setCode(response.status_code());
+        result->setStatus(response.reason_phrase());
+
+        return result;
+    });
+}
 
 }
 }

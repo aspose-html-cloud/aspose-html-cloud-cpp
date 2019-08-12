@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestDocumentApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,22 +45,29 @@ protected:
 
     void SetUp()
 	{
-		std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-		std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-		api = new DocumentApi(apiClient);
-		storage_api = new StorageApi(apiClient);
-	}
+        try 
+        {
+            std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
+            std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
+            api = new DocumentApi(apiClient);
+            storage_api = new StorageApi(apiClient);
+        }
+        catch (std::exception& e)
+        {
+            api = nullptr;
+            storage_api = nullptr;
+            std::cout << e.what() << '\n';
+        }
+    }
 
     void TearDown()
 	{
-		delete api;
-		delete storage_api;
-	}
-
+        if (api != nullptr) { delete api; }
+        if (storage_api != nullptr) { delete storage_api; }
+    }
 };
 
-
-TEST_F(TestDocumentApi, getDocumentByUrl)
+TEST_F(TestDocumentApi, testGetHtmlByUrl)
 {
 
 	//Get web page and all linked resourses
@@ -68,28 +75,21 @@ TEST_F(TestDocumentApi, getDocumentByUrl)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_site_by_url.zip")));
 }
-
-
-
-TEST_F(TestDocumentApi, getDocumentFragmentByXPath)
+TEST_F(TestDocumentApi, testGetHtmlFragmentByXPath)
 {
 	//Upload document to storage
-	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test2.html.zip");
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test2.html.zip"), std::ifstream::binary));
-	file->setData(if_stream);
+    utility::string_t name = _XPLATSTR("test2.html.zip");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
-	boost::optional<utility::string_t> versionId = boost::none;
+	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test2.html.zip");
 	boost::optional<utility::string_t> storage = boost::none;
 	boost::optional<utility::string_t> folder = _XPLATSTR("HtmlTestDoc");
 
-	auto res = storage_api->putCreate(path_to_file, file, versionId, storage).get();
+	auto res = storage_api->uploadFile(path_to_file, file, storage).get();
 
-	ASSERT_TRUE(res->getCode() == 200);
-	ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
+	ASSERT_FALSE(res->errorsIsSet());
 
 	// Get fragments from document
-	utility::string_t name = _XPLATSTR("test2.html.zip");
 	utility::string_t xPath = _XPLATSTR(".//p");
 	utility::string_t outFormat = _XPLATSTR("plain");
 
@@ -97,8 +97,7 @@ TEST_F(TestDocumentApi, getDocumentFragmentByXPath)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_xpath.html")));
 }
-
-TEST_F(TestDocumentApi, getDocumentFragmentByXPathByUrl)
+TEST_F(TestDocumentApi, testGetHtmlFragmentByXPathByUrl)
 {
 
 	// Get fragments from document url
@@ -110,26 +109,21 @@ TEST_F(TestDocumentApi, getDocumentFragmentByXPathByUrl)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_xpath_url.html")));
 }
-
-TEST_F(TestDocumentApi, getDocumentFragmentByCSS)
+TEST_F(TestDocumentApi, testGetHtmlFragmentByCSS)
 {
 	//Upload document to storage
-	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test2.html.zip");
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test2.html.zip"), std::ifstream::binary));
-	file->setData(if_stream);
+    utility::string_t name = _XPLATSTR("test2.html.zip");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
-	boost::optional<utility::string_t> versionId = boost::none;
+	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test2.html.zip");
 	boost::optional<utility::string_t> storage = boost::none;
 	boost::optional<utility::string_t> folder = _XPLATSTR("HtmlTestDoc");
 
-	auto res = storage_api->putCreate(path_to_file, file, versionId, storage).get();
+	auto res = storage_api->uploadFile(path_to_file, file, storage).get();
 
-	ASSERT_TRUE(res->getCode() == 200);
-	ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
+	ASSERT_FALSE(res->errorsIsSet());
 
 	// Get fragments from document
-	utility::string_t name = _XPLATSTR("test2.html.zip");
 	utility::string_t selector = _XPLATSTR("div p");
 	utility::string_t outFormat = _XPLATSTR("plain");
 
@@ -137,8 +131,7 @@ TEST_F(TestDocumentApi, getDocumentFragmentByCSS)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_css.html")));
 }
-
-TEST_F(TestDocumentApi, getDocumentFragmentByCSSByUrl)
+TEST_F(TestDocumentApi, testGetHtmlFragmentByCSSByUrl)
 {
 
 	// Get fragments from document url
@@ -150,31 +143,26 @@ TEST_F(TestDocumentApi, getDocumentFragmentByCSSByUrl)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_css_url.html")));
 }
-
-TEST_F(TestDocumentApi, getDocumentImages)
+TEST_F(TestDocumentApi, testGetHtmlImages)
 {
 	//Upload document to storage
-	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test3.html.zip");
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test3.html.zip"), std::ifstream::binary));
-	file->setData(if_stream);
+    utility::string_t name = _XPLATSTR("test3.html.zip");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
-	boost::optional<utility::string_t> versionId = boost::none;
+	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test3.html.zip");
 	boost::optional<utility::string_t> storage = boost::none;
 	boost::optional<utility::string_t> folder = _XPLATSTR("HtmlTestDoc");
 
-	auto res = storage_api->putCreate(path_to_file, file, versionId, storage).get();
+	auto res = storage_api->uploadFile(path_to_file, file, storage).get();
 
-	ASSERT_TRUE(res->getCode() == 200);
-	ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
+    ASSERT_FALSE(res->errorsIsSet());
 
 	//Get images from document
 	auto result = api->getDocumentImages(_XPLATSTR("test3.html.zip"), folder, storage).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_img_result.zip")));
 }
-
-TEST_F(TestDocumentApi, getDocumentImagesByUrl)
+TEST_F(TestDocumentApi, testGetHtmlImagesByUrl)
 {
 
 	//Get images from url

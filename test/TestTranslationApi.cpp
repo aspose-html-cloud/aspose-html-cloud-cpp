@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestTranslationApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -44,39 +44,44 @@ protected:
 
     void SetUp()
 	{
-		std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-		std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-		api = new TranslationApi(apiClient);
-		storage_api = new StorageApi(apiClient);
+        try 
+        {
+            std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
+            std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
+            api = new TranslationApi(apiClient);
+            storage_api = new StorageApi(apiClient);
+        }
+        catch(std::exception& e)
+        {
+            api = nullptr;
+            storage_api = nullptr;
+            std::cout << e.what() << '\n';
+        }
 	}
 
     void TearDown()
 	{
-		delete api;
-		delete storage_api;
+        if (api != nullptr) { delete api; }
+        if (storage_api != nullptr) { delete storage_api; }
 	}
-
-
 };
 
-TEST_F(TestTranslationApi, getTranslateDocument)
+TEST_F(TestTranslationApi, testGetTranslateDocument)
 {
 	//Upload file for conversion to server
+    utility::string_t name = _XPLATSTR("test_en.html");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
+
 	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test_en.html");
-	std::shared_ptr<HttpContent> file(new HttpContent());
-	std::shared_ptr<std::ifstream> if_stream(new std::ifstream(testSource + _XPLATSTR("test_en.html"), std::ifstream::binary));
-	file->setData(if_stream);
-	boost::optional<utility::string_t> versionId = boost::none;
+
+    boost::optional<utility::string_t> versionId = boost::none;
 	boost::optional<utility::string_t> storage = boost::none;
 
+	auto res = storage_api->uploadFile(path_to_file, file, storage).get();
 
-	auto res = storage_api->putCreate(path_to_file, file, versionId, storage).get();
-
-	ASSERT_TRUE(res->getCode() == 200);
-	ASSERT_TRUE(res->getStatus() == _XPLATSTR("OK"));
+    ASSERT_FALSE(res->errorsIsSet()); 
 
 	//Translate document
-	utility::string_t name = _XPLATSTR("test_en.html");
 	utility::string_t srcLang = _XPLATSTR("en");
 	utility::string_t resLang = _XPLATSTR("de");
 	boost::optional<utility::string_t> folder = _XPLATSTR("HtmlTestDoc");
@@ -86,8 +91,7 @@ TEST_F(TestTranslationApi, getTranslateDocument)
 	//Save result
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("Translate_en_de.html")));
 }
-
-TEST_F(TestTranslationApi, getTranslateDocumentByUrl)
+TEST_F(TestTranslationApi, testGetTranslateDocumentByUrl)
 {
 	utility::string_t source_url = _XPLATSTR("https://www.le.ac.uk/oerresources/bdra/html/page_02.htm");
 	utility::string_t srcLang = _XPLATSTR("en"); 
@@ -99,5 +103,3 @@ TEST_F(TestTranslationApi, getTranslateDocumentByUrl)
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("TranslateUrl_en_fr.html")));
 
 }
-
-

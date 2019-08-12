@@ -2,8 +2,8 @@
 
 AsposeHtml - the C++ library for the Aspose.HTML Cloud API Reference
 
-- API version: 1.1
-- Package version: 1.0.1
+- API version: 3.0
+- Package version: 19.5.0
 
 ## Requirements
 - C++11
@@ -23,8 +23,8 @@ To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cl
 ```code
     const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
     const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v1.1");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/oauth2/token");
+    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
+    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
 
     //Helper directory with data for test
     const utility::string_t testResult = _XPLATSTR("..\\testresult\\");
@@ -67,9 +67,10 @@ For use SDK see examples in [test](./test/)
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.aspose.cloud/v1.1*   
+All URIs are relative to *https://api.aspose.cloud/v3.0*   
 
 - [ConversionApi](./docs/html/de/dcc/classcom_1_1aspose_1_1api_1_1_conversion_api.html)
+- [ImportApi](./docs/html/d9/d35/classcom_1_1aspose_1_1api_1_1_import_api.html)
 - [DocumentApi](./docs/html/dc/d9d/classcom_1_1aspose_1_1api_1_1_document_api.html)
 - [OcrApi](./docs/html/d1/d11/classcom_1_1aspose_1_1api_1_1_ocr_api.html)
 - [SummarizationApi](./docs/html/dc/dce/classcom_1_1aspose_1_1api_1_1_summarization_api.html)
@@ -84,7 +85,7 @@ Aspose HTML includes Aspose.Storage.Cloud to manipulate files on a remote server
 
 - **Type**: OAuth
 - **Flow**: application
-- **Authorization URL**: "https://api.aspose.cloud/oauth2/token"
+- **Authorization URL**: "https://api.aspose.cloud/connect/token"
 - **Scopes**: N/A
 
 [Tests](./test/) contain various examples of using the Aspose.HTML SDK.

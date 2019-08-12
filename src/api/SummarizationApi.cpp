@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SummarizationApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -125,7 +125,7 @@ pplx::task<HttpContent> SummarizationApi::getDetectHtmlKeywords(utility::string_
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -197,7 +197,7 @@ pplx::task<HttpContent> SummarizationApi::getDetectHtmlKeywordsByUrl(utility::st
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK

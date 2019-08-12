@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ConversionApi.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,7 +29,6 @@
 #include "api/ConversionApi.h"
 #include "IHttpBody.h"
 #include "JsonBody.h"
-#include "OctetStreamBody.h"
 #include <unordered_set>
 #include <boost/algorithm/string/replace.hpp>
 
@@ -49,7 +48,20 @@ ConversionApi::~ConversionApi()
 {
 }
 
-pplx::task<HttpContent> ConversionApi::getConvertDocumentToImage(utility::string_t name, utility::string_t outFormat, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin, boost::optional<int32_t> resolution, boost::optional<utility::string_t> folder, boost::optional<utility::string_t> storage)
+pplx::task<HttpContent> 
+ConversionApi::getConvertDocumentToImage(
+    utility::string_t name, 
+    utility::string_t outFormat, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin, 
+    boost::optional<int32_t> resolution, 
+    boost::optional<utility::string_t> folder, 
+    boost::optional<utility::string_t> storage
+)
 {
 
 
@@ -96,39 +108,48 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToImage(utility::string
 
     if (width)
     {
-        queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
+        queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
     }
     if (height)
     {
-        queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
+        queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
     }
     if (leftMargin)
     {
-        queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
+        queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
     }
     if (rightMargin)
     {
-        queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
+        queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
     }
     if (topMargin)
     {
-        queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
+        queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
     }
     if (bottomMargin)
     {
-        queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
+        queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
     }
     if (resolution)
     {
-        queryParams[utility::conversions::to_string_t("resolution")] = ApiClient::parameterToString(*resolution);
+        queryParams[utility::conversions::to_string_t("resolution")] 
+            = ApiClient::parameterToString(*resolution);
     }
     if (folder)
     {
-        queryParams[utility::conversions::to_string_t("folder")] = ApiClient::parameterToString(*folder);
+        queryParams[utility::conversions::to_string_t("folder")] 
+            = ApiClient::parameterToString(*folder);
     }
     if (storage)
     {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+        queryParams[utility::conversions::to_string_t("storage")] 
+            = ApiClient::parameterToString(*storage);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -154,7 +175,7 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToImage(utility::string
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -175,10 +196,19 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToImage(utility::string
         return result;
     });
 }
-pplx::task<HttpContent> ConversionApi::getConvertDocumentToImageByUrl(utility::string_t sourceUrl, utility::string_t outFormat, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin, boost::optional<int32_t> resolution)
+pplx::task<HttpContent> 
+ConversionApi::getConvertDocumentToImageByUrl(
+    utility::string_t sourceUrl, 
+    utility::string_t outFormat, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin, 
+    boost::optional<int32_t> resolution
+)
 {
-
-
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
     utility::string_t path = utility::conversions::to_string_t("/html/convert/image/{outFormat}");
     boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("outFormat") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(outFormat));
@@ -220,35 +250,44 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToImageByUrl(utility::s
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
     {
-        queryParams[utility::conversions::to_string_t("sourceUrl")] = ApiClient::parameterToString(sourceUrl);
+        queryParams[utility::conversions::to_string_t("sourceUrl")] 
+            = ApiClient::parameterToString(sourceUrl);
     }
     if (width)
     {
-        queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
+        queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
     }
     if (height)
     {
-        queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
+        queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
     }
     if (leftMargin)
     {
-        queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
+        queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
     }
     if (rightMargin)
     {
-        queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
+        queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
     }
     if (topMargin)
     {
-        queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
+        queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
     }
     if (bottomMargin)
     {
-        queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
+        queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
     }
     if (resolution)
     {
-        queryParams[utility::conversions::to_string_t("resolution")] = ApiClient::parameterToString(*resolution);
+        queryParams[utility::conversions::to_string_t("resolution")] 
+            
+            = ApiClient::parameterToString(*resolution);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -274,7 +313,7 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToImageByUrl(utility::s
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -295,10 +334,18 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToImageByUrl(utility::s
         return result;
     });
 }
-pplx::task<HttpContent> ConversionApi::getConvertDocumentToPdf(utility::string_t name, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin, boost::optional<utility::string_t> folder, boost::optional<utility::string_t> storage)
+pplx::task<HttpContent> ConversionApi::getConvertDocumentToPdf(
+    utility::string_t name, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin, 
+    boost::optional<utility::string_t> folder, 
+    boost::optional<utility::string_t> storage
+)
 {
-
-
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
     utility::string_t path = utility::conversions::to_string_t("/html/{name}/convert/pdf");
     boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(name));
@@ -341,35 +388,43 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToPdf(utility::string_t
 
     if (width)
     {
-        queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
+        queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
     }
     if (height)
     {
-        queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
+        queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
     }
     if (leftMargin)
     {
-        queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
+        queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
     }
     if (rightMargin)
     {
-        queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
+        queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
     }
     if (topMargin)
     {
-        queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
+        queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
     }
     if (bottomMargin)
     {
-        queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
+        queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
     }
     if (folder)
     {
-        queryParams[utility::conversions::to_string_t("folder")] = ApiClient::parameterToString(*folder);
+        queryParams[utility::conversions::to_string_t("folder")] 
+            = ApiClient::parameterToString(*folder);
     }
     if (storage)
     {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+        queryParams[utility::conversions::to_string_t("storage")] 
+            = ApiClient::parameterToString(*storage);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -395,7 +450,7 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToPdf(utility::string_t
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -416,7 +471,16 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToPdf(utility::string_t
         return result;
     });
 }
-pplx::task<HttpContent> ConversionApi::getConvertDocumentToPdfByUrl(utility::string_t sourceUrl, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin)
+pplx::task<HttpContent> 
+ConversionApi::getConvertDocumentToPdfByUrl(
+    utility::string_t sourceUrl, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin
+)
 {
 
 
@@ -459,32 +523,38 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToPdfByUrl(utility::str
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    {
-        queryParams[utility::conversions::to_string_t("sourceUrl")] = ApiClient::parameterToString(sourceUrl);
-    }
+    queryParams[utility::conversions::to_string_t("sourceUrl")] 
+        = ApiClient::parameterToString(sourceUrl);
+
     if (width)
     {
-        queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
+        queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
     }
     if (height)
     {
-        queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
+        queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
     }
     if (leftMargin)
     {
-        queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
+        queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
     }
     if (rightMargin)
     {
-        queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
+        queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
     }
     if (topMargin)
     {
-        queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
+        queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
     }
     if (bottomMargin)
     {
-        queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
+        queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -510,7 +580,7 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToPdfByUrl(utility::str
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -531,10 +601,19 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToPdfByUrl(utility::str
         return result;
     });
 }
-pplx::task<HttpContent> ConversionApi::getConvertDocumentToXps(utility::string_t name, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin, boost::optional<utility::string_t> folder, boost::optional<utility::string_t> storage)
+pplx::task<HttpContent> 
+ConversionApi::getConvertDocumentToXps(
+    utility::string_t name, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin, 
+    boost::optional<utility::string_t> folder, 
+    boost::optional<utility::string_t> storage
+)
 {
-
-
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
     utility::string_t path = utility::conversions::to_string_t("/html/{name}/convert/xps");
     boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(name));
@@ -577,35 +656,43 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToXps(utility::string_t
 
     if (width)
     {
-        queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
+        queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
     }
     if (height)
     {
-        queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
+        queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
     }
     if (leftMargin)
     {
-        queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
+        queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
     }
     if (rightMargin)
     {
-        queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
+        queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
     }
     if (topMargin)
     {
-        queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
+        queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
     }
     if (bottomMargin)
     {
-        queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
+        queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
     }
     if (folder)
     {
-        queryParams[utility::conversions::to_string_t("folder")] = ApiClient::parameterToString(*folder);
+        queryParams[utility::conversions::to_string_t("folder")] 
+            = ApiClient::parameterToString(*folder);
     }
     if (storage)
     {
-        queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+        queryParams[utility::conversions::to_string_t("storage")] 
+            = ApiClient::parameterToString(*storage);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -631,7 +718,7 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToXps(utility::string_t
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -652,10 +739,17 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToXps(utility::string_t
         return result;
     });
 }
-pplx::task<HttpContent> ConversionApi::getConvertDocumentToXpsByUrl(utility::string_t sourceUrl, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin)
+pplx::task<HttpContent> 
+ConversionApi::getConvertDocumentToXpsByUrl(
+    utility::string_t sourceUrl, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin
+)
 {
-
-
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
     utility::string_t path = utility::conversions::to_string_t("/html/convert/xps");
     
@@ -695,32 +789,38 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToXpsByUrl(utility::str
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    {
-        queryParams[utility::conversions::to_string_t("sourceUrl")] = ApiClient::parameterToString(sourceUrl);
-    }
+    queryParams[utility::conversions::to_string_t("sourceUrl")] 
+        = ApiClient::parameterToString(sourceUrl);
+
     if (width)
     {
-        queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
+        queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
     }
     if (height)
     {
-        queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
+        queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
     }
     if (leftMargin)
     {
-        queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
+        queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
     }
     if (rightMargin)
     {
-        queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
+        queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
     }
     if (topMargin)
     {
-        queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
+        queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
     }
     if (bottomMargin)
     {
-        queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
+        queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -746,7 +846,7 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToXpsByUrl(utility::str
     .then([=](web::http::http_response response)
     {
         // 1xx - informational : OK
-        // 2xx - successful       : OK
+        // 2xx - successful    : OK
         // 3xx - redirection   : OK
         // 4xx - client error  : not OK
         // 5xx - client error  : not OK
@@ -768,15 +868,26 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToXpsByUrl(utility::str
     });
 }
 
-pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToImage(utility::string_t outPath, utility::string_t outFormat, std::shared_ptr<HttpContent> file, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin, boost::optional<int32_t> resolution)
+pplx::task<HttpContent> 
+ConversionApi::postConvertDocumentInRequestToImage(
+    utility::string_t outPath, 
+    utility::string_t outFormat, 
+    std::shared_ptr<HttpContent> file, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin, 
+    boost::optional<int32_t> resolution,
+    boost::optional<utility::string_t> storage
+)
 {
-
 	// verify the required parameter 'file' is set
 	if (file == nullptr)
 	{
-		throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling ConversionApi->putConvertDocumentInRequestToImage"));
+		throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling ConversionApi->postConvertDocumentInRequestToImage"));
 	}
-
 
 	std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
 	utility::string_t path = utility::conversions::to_string_t("/html/convert/image/{outFormat}");
@@ -816,42 +927,48 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToImage(utilit
 	headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
 
 	std::unordered_set<utility::string_t> consumeHttpContentTypes;
-	consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/octet-stream"));
+	consumeHttpContentTypes.insert(utility::conversions::to_string_t("multipart/form-data"));
 
 	queryParams[utility::conversions::to_string_t("outPath")] = ApiClient::parameterToString(outPath);
+    fileParams[utility::conversions::to_string_t("file")] = file;
 
-	if (width)
+    if (width)
 	{
-		queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
+		queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
 	}
 	if (height)
 	{
-		queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
+		queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
 	}
 	if (leftMargin)
 	{
-		queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
+		queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
 	}
 	if (rightMargin)
 	{
-		queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
+		queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
 	}
 	if (topMargin)
 	{
-		queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
+		queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
 	}
 	if (bottomMargin)
 	{
-		queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
+		queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
 	}
 	if (resolution)
 	{
-		queryParams[utility::conversions::to_string_t("resolution")] = ApiClient::parameterToString(*resolution);
+		queryParams[utility::conversions::to_string_t("resolution")] 
+            = ApiClient::parameterToString(*resolution);
 	}
 
-	std::shared_ptr<OctetStreamBody> httpBody(new OctetStreamBody());
-	httpBody->add(file);
-
+	std::shared_ptr<IHttpBody> httpBody;
 	utility::string_t requestHttpContentType;
 
 	// use JSON if possible
@@ -864,29 +981,24 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToImage(utilit
 	{
 		requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
 	}
-	// application/octet-stream 
-	else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("application/octet-stream")) != consumeHttpContentTypes.end())
-	{
-		requestHttpContentType = utility::conversions::to_string_t("application/octet-stream");
-	}
 	else
 	{
-		throw ApiException(415, utility::conversions::to_string_t("ConversionApi->putConvertDocumentInRequestToImage does not consume any supported media type"));
+		throw ApiException(415, utility::conversions::to_string_t("ConversionApi->postConvertDocumentInRequestToImage does not consume any supported media type"));
 	}
 
-
-	return m_ApiClient->callApi(path, utility::conversions::to_string_t("PUT"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+	return m_ApiClient->callApi(path, utility::conversions::to_string_t("POST"), queryParams, 
+        httpBody, headerParams, formParams, fileParams, requestHttpContentType)
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
 		if (response.status_code() >= 400)
 		{
 			throw ApiException(response.status_code()
-				, utility::conversions::to_string_t("error calling putConvertDocumentInRequestToImage: ") + response.reason_phrase()
+				, utility::conversions::to_string_t("error calling postConvertDocumentInRequestToImage: ") + response.reason_phrase()
 				, std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
 		}
 
@@ -897,7 +1009,7 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToImage(utilit
 			if (contentType.find(responseHttpContentType) == std::string::npos)
 			{
 				throw ApiException(500
-					, utility::conversions::to_string_t("error calling putConvertDocumentInRequestToImage: unexpected response type: ") + contentType
+					, utility::conversions::to_string_t("error calling postConvertDocumentInRequestToImage: unexpected response type: ") + contentType
 					, std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
 			}
 		}
@@ -912,120 +1024,133 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToImage(utilit
 		return result;
 	});
 }
-pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToPdf(utility::string_t outPath, std::shared_ptr<HttpContent> file, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin)
+pplx::task<HttpContent> 
+ConversionApi::postConvertDocumentInRequestToPdf(
+    utility::string_t outPath, 
+    std::shared_ptr<HttpContent> file, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin, 
+    boost::optional<utility::string_t> storage
+) 
 {
+    // verify the required parameter 'file' is set
+    if (file == nullptr)
+    {
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling ConversionApi->postConvertDocumentInRequestToImage"));
+    }
 
-	// verify the required parameter 'file' is set
-	if (file == nullptr)
-	{
-		throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling ConversionApi->putConvertDocumentInRequestToPdf"));
-	}
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/convert/pdf");
 
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::map<utility::string_t, utility::string_t> formParams;
+    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
 
-	std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
-	utility::string_t path = utility::conversions::to_string_t("/html/convert/pdf");
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
-	std::map<utility::string_t, utility::string_t> queryParams;
-	std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
-	std::map<utility::string_t, utility::string_t> formParams;
-	std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+    utility::string_t responseHttpContentType;
 
-	std::unordered_set<utility::string_t> responseHttpContentTypes;
-	responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
+    // use JSON if possible
+    if (responseHttpContentTypes.size() == 0)
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        //It's going to be binary, so just use the first one.
+        responseHttpContentType = *responseHttpContentTypes.begin();
+    }
 
-	utility::string_t responseHttpContentType;
+    headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
 
-	// use JSON if possible
-	if (responseHttpContentTypes.size() == 0)
-	{
-		responseHttpContentType = utility::conversions::to_string_t("application/json");
-	}
-	// JSON
-	else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
-	{
-		responseHttpContentType = utility::conversions::to_string_t("application/json");
-	}
-	// multipart formdata
-	else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
-	{
-		responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
-	}
-	else
-	{
-		//It's going to be binary, so just use the first one.
-		responseHttpContentType = *responseHttpContentTypes.begin();
-	}
-
-	headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
-
-	std::unordered_set<utility::string_t> consumeHttpContentTypes;
-	consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/octet-stream"));
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("multipart/form-data"));
 
     queryParams[utility::conversions::to_string_t("outPath")] = ApiClient::parameterToString(outPath);
+    fileParams[utility::conversions::to_string_t("file")] = file;
 
-	if (width)
-	{
-		queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
-	}
-	if (height)
-	{
-		queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
-	}
-	if (leftMargin)
-	{
-		queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
-	}
-	if (rightMargin)
-	{
-		queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
-	}
-	if (topMargin)
-	{
-		queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
-	}
-	if (bottomMargin)
-	{
-		queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
-	}
+    if (width)
+    {
+        queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
+    }
+    if (height)
+    {
+        queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
+    }
+    if (leftMargin)
+    {
+        queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
+    }
+    if (rightMargin)
+    {
+        queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
+    }
+    if (topMargin)
+    {
+        queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
+    }
+    if (bottomMargin)
+    {
+        queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
+    }
+    if (storage)
+    {
+        queryParams[utility::conversions::to_string_t("storage")] 
+            = ApiClient::parameterToString(*storage);
+    }
 
-	std::shared_ptr<OctetStreamBody> httpBody(new OctetStreamBody());
-	httpBody->add(file);
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
 
-	utility::string_t requestHttpContentType;
+    // use JSON if possible
+    if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, utility::conversions::to_string_t("ConversionApi->postConvertDocumentInRequestToPdf does not consume any supported media type"));
+    }
 
-	// use JSON if possible
-	if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
-	{
-		requestHttpContentType = utility::conversions::to_string_t("application/json");
-	}
-	// multipart formdata
-	else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
-	{
-		requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
-	}
-	// application/octet-stream 
-	else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("application/octet-stream")) != consumeHttpContentTypes.end())
-	{
-		requestHttpContentType = utility::conversions::to_string_t("application/octet-stream");
-	}
-	else
-	{
-		throw ApiException(415, utility::conversions::to_string_t("ConversionApi->putConvertDocumentInRequestToImage does not consume any supported media type"));
-	}
-
-
-	return m_ApiClient->callApi(path, utility::conversions::to_string_t("PUT"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+	return m_ApiClient->callApi(path, utility::conversions::to_string_t("POST"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
 		if (response.status_code() >= 400)
 		{
 			throw ApiException(response.status_code()
-				, utility::conversions::to_string_t("error calling putConvertDocumentInRequestToPdf: ") + response.reason_phrase()
+				, utility::conversions::to_string_t("error calling postConvertDocumentInRequestToPdf: ") + response.reason_phrase()
 				, std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
 		}
 
@@ -1036,7 +1161,7 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToPdf(utility:
 			if (contentType.find(responseHttpContentType) == std::string::npos)
 			{
 				throw ApiException(500
-					, utility::conversions::to_string_t("error calling putConvertDocumentInRequestToPdf: unexpected response type: ") + contentType
+					, utility::conversions::to_string_t("error calling postConvertDocumentInRequestToPdf: unexpected response type: ") + contentType
 					, std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
 			}
 		}
@@ -1051,15 +1176,24 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToPdf(utility:
 		return result;
 	});
 }
-pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToXps(utility::string_t outPath, std::shared_ptr<HttpContent> file, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin)
+pplx::task<HttpContent> 
+ConversionApi::postConvertDocumentInRequestToXps(
+    utility::string_t outPath, 
+    std::shared_ptr<HttpContent> file, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin,
+    boost::optional<utility::string_t> storage
+)
 {
-
 	// verify the required parameter 'file' is set
 	if (file == nullptr)
 	{
-		throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling ConversionApi->putConvertDocumentInRequestToXps"));
+		throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling ConversionApi->postConvertDocumentInRequestToXps"));
 	}
-
 
 	std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
 	utility::string_t path = utility::conversions::to_string_t("/html/convert/xps");
@@ -1097,40 +1231,51 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToXps(utility:
 
 	headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
 
-	std::unordered_set<utility::string_t> consumeHttpContentTypes;
-	consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/octet-stream"));
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("multipart/form-data"));
 
-	queryParams[utility::conversions::to_string_t("outPath")] = ApiClient::parameterToString(outPath);
+	queryParams[utility::conversions::to_string_t("outPath")] 
+        = ApiClient::parameterToString(outPath);
+    fileParams[utility::conversions::to_string_t("file")] = file;
 
-	if (width)
+    if (width)
 	{
-		queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
+		queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
 	}
 	if (height)
 	{
-		queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
+		queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
 	}
 	if (leftMargin)
 	{
-		queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
+		queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
 	}
 	if (rightMargin)
 	{
-		queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
+		queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
 	}
 	if (topMargin)
 	{
-		queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
+		queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
 	}
 	if (bottomMargin)
 	{
-		queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
+		queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
 	}
+    if (storage)
+    {
+        queryParams[utility::conversions::to_string_t("storage")]
+            = ApiClient::parameterToString(*storage);
+    }
 
-	std::shared_ptr<OctetStreamBody> httpBody(new OctetStreamBody());
-	httpBody->add(file);
-
-	utility::string_t requestHttpContentType;
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
 
 	// use JSON if possible
 	if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
@@ -1149,21 +1294,21 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToXps(utility:
 	}
 	else
 	{
-		throw ApiException(415, utility::conversions::to_string_t("ConversionApi->putConvertDocumentInRequestToImage does not consume any supported media type"));
+		throw ApiException(415, utility::conversions::to_string_t("ConversionApi->postConvertDocumentInRequestToImage does not consume any supported media type"));
 	}
 
-	return m_ApiClient->callApi(path, utility::conversions::to_string_t("PUT"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+	return m_ApiClient->callApi(path, utility::conversions::to_string_t("POST"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
 		if (response.status_code() >= 400)
 		{
 			throw ApiException(response.status_code()
-				, utility::conversions::to_string_t("error calling putConvertDocumentInRequestToXps: ") + response.reason_phrase()
+				, utility::conversions::to_string_t("error calling postConvertDocumentInRequestToXps: ") + response.reason_phrase()
 				, std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
 		}
 
@@ -1174,7 +1319,7 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToXps(utility:
 			if (contentType.find(responseHttpContentType) == std::string::npos)
 			{
 				throw ApiException(500
-					, utility::conversions::to_string_t("error calling putConvertDocumentInRequestToXps: unexpected response type: ") + contentType
+					, utility::conversions::to_string_t("error calling postConvertDocumentInRequestToXps: unexpected response type: ") + contentType
 					, std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
 			}
 		}
@@ -1189,10 +1334,22 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToXps(utility:
 		return result;
 	});
 }
-pplx::task<HttpContent> ConversionApi::putConvertDocumentToImage(utility::string_t name, utility::string_t outPath, utility::string_t outFormat, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin, boost::optional<int32_t> resolution, boost::optional<utility::string_t> folder, boost::optional<utility::string_t> storage)
+pplx::task<HttpContent> 
+ConversionApi::putConvertDocumentToImage(
+    utility::string_t name, 
+    utility::string_t outPath, 
+    utility::string_t outFormat, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin, 
+    boost::optional<int32_t> resolution, 
+    boost::optional<utility::string_t> folder, 
+    boost::optional<utility::string_t> storage
+)
 {
-
-
 	std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
 	utility::string_t path = utility::conversions::to_string_t("/html/{name}/convert/image/{outFormat}");
 	boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(name));
@@ -1235,43 +1392,53 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToImage(utility::string
 	consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
 	{
-		queryParams[utility::conversions::to_string_t("outPath")] = ApiClient::parameterToString(outPath);
+		queryParams[utility::conversions::to_string_t("outPath")] 
+            = ApiClient::parameterToString(outPath);
 	}
 	if (width)
 	{
-		queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
+		queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
 	}
 	if (height)
 	{
-		queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
+		queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
 	}
 	if (leftMargin)
 	{
-		queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
+		queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
 	}
 	if (rightMargin)
 	{
-		queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
+		queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
 	}
 	if (topMargin)
 	{
-		queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
+		queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
 	}
 	if (bottomMargin)
 	{
-		queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
+		queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
 	}
 	if (resolution)
 	{
-		queryParams[utility::conversions::to_string_t("resolution")] = ApiClient::parameterToString(*resolution);
+		queryParams[utility::conversions::to_string_t("resolution")] 
+            = ApiClient::parameterToString(*resolution);
 	}
 	if (folder)
 	{
-		queryParams[utility::conversions::to_string_t("folder")] = ApiClient::parameterToString(*folder);
+		queryParams[utility::conversions::to_string_t("folder")] 
+            = ApiClient::parameterToString(*folder);
 	}
 	if (storage)
 	{
-		queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+		queryParams[utility::conversions::to_string_t("storage")] 
+            = ApiClient::parameterToString(*storage);
 	}
 
 	std::shared_ptr<IHttpBody> httpBody;
@@ -1297,7 +1464,7 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToImage(utility::string
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
@@ -1330,10 +1497,20 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToImage(utility::string
 		return result;
 	});
 }
-pplx::task<HttpContent> ConversionApi::putConvertDocumentToPdf(utility::string_t name, utility::string_t outPath, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin, boost::optional<utility::string_t> folder, boost::optional<utility::string_t> storage)
+pplx::task<HttpContent> 
+ConversionApi::putConvertDocumentToPdf(
+    utility::string_t name, 
+    utility::string_t outPath, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin, 
+    boost::optional<utility::string_t> folder, 
+    boost::optional<utility::string_t> storage
+)
 {
-
-
 	std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
 	utility::string_t path = utility::conversions::to_string_t("/html/{name}/convert/pdf");
 	boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(name));
@@ -1374,40 +1551,48 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToPdf(utility::string_t
 	std::unordered_set<utility::string_t> consumeHttpContentTypes;
 	consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
+    queryParams[utility::conversions::to_string_t("outPath")] 
+        = ApiClient::parameterToString(outPath);
+
+    if (width)
 	{
-		queryParams[utility::conversions::to_string_t("outPath")] = ApiClient::parameterToString(outPath);
-	}
-	if (width)
-	{
-		queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
+		queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
 	}
 	if (height)
 	{
-		queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
+		queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
 	}
 	if (leftMargin)
 	{
-		queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
+		queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
 	}
 	if (rightMargin)
 	{
-		queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
+		queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
 	}
 	if (topMargin)
 	{
-		queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
+		queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
 	}
 	if (bottomMargin)
 	{
-		queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
+		queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
 	}
 	if (folder)
 	{
-		queryParams[utility::conversions::to_string_t("folder")] = ApiClient::parameterToString(*folder);
+		queryParams[utility::conversions::to_string_t("folder")] 
+            = ApiClient::parameterToString(*folder);
 	}
 	if (storage)
 	{
-		queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+		queryParams[utility::conversions::to_string_t("storage")] 
+            = ApiClient::parameterToString(*storage);
 	}
 
 	std::shared_ptr<IHttpBody> httpBody;
@@ -1433,7 +1618,7 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToPdf(utility::string_t
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
@@ -1466,7 +1651,19 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToPdf(utility::string_t
 		return result;
 	});
 }
-pplx::task<HttpContent> ConversionApi::putConvertDocumentToXps(utility::string_t name, utility::string_t outPath, boost::optional<int32_t> width, boost::optional<int32_t> height, boost::optional<int32_t> leftMargin, boost::optional<int32_t> rightMargin, boost::optional<int32_t> topMargin, boost::optional<int32_t> bottomMargin, boost::optional<utility::string_t> folder, boost::optional<utility::string_t> storage)
+pplx::task<HttpContent> 
+ConversionApi::putConvertDocumentToXps(
+    utility::string_t name, 
+    utility::string_t outPath, 
+    boost::optional<int32_t> width, 
+    boost::optional<int32_t> height, 
+    boost::optional<int32_t> leftMargin, 
+    boost::optional<int32_t> rightMargin, 
+    boost::optional<int32_t> topMargin, 
+    boost::optional<int32_t> bottomMargin, 
+    boost::optional<utility::string_t> folder, 
+    boost::optional<utility::string_t> storage
+)
 {
 
 
@@ -1509,39 +1706,48 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToXps(utility::string_t
 	std::unordered_set<utility::string_t> consumeHttpContentTypes;
 	consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
-	queryParams[utility::conversions::to_string_t("outPath")] = ApiClient::parameterToString(outPath);
+	queryParams[utility::conversions::to_string_t("outPath")] 
+        = ApiClient::parameterToString(outPath);
 
 	if (width)
 	{
-		queryParams[utility::conversions::to_string_t("width")] = ApiClient::parameterToString(*width);
+		queryParams[utility::conversions::to_string_t("width")] 
+            = ApiClient::parameterToString(*width);
 	}
 	if (height)
 	{
-		queryParams[utility::conversions::to_string_t("height")] = ApiClient::parameterToString(*height);
+		queryParams[utility::conversions::to_string_t("height")] 
+            = ApiClient::parameterToString(*height);
 	}
 	if (leftMargin)
 	{
-		queryParams[utility::conversions::to_string_t("leftMargin")] = ApiClient::parameterToString(*leftMargin);
+		queryParams[utility::conversions::to_string_t("leftMargin")] 
+            = ApiClient::parameterToString(*leftMargin);
 	}
 	if (rightMargin)
 	{
-		queryParams[utility::conversions::to_string_t("rightMargin")] = ApiClient::parameterToString(*rightMargin);
+		queryParams[utility::conversions::to_string_t("rightMargin")] 
+            = ApiClient::parameterToString(*rightMargin);
 	}
 	if (topMargin)
 	{
-		queryParams[utility::conversions::to_string_t("topMargin")] = ApiClient::parameterToString(*topMargin);
+		queryParams[utility::conversions::to_string_t("topMargin")] 
+            = ApiClient::parameterToString(*topMargin);
 	}
 	if (bottomMargin)
 	{
-		queryParams[utility::conversions::to_string_t("bottomMargin")] = ApiClient::parameterToString(*bottomMargin);
+		queryParams[utility::conversions::to_string_t("bottomMargin")] 
+            = ApiClient::parameterToString(*bottomMargin);
 	}
 	if (folder)
 	{
-		queryParams[utility::conversions::to_string_t("folder")] = ApiClient::parameterToString(*folder);
+		queryParams[utility::conversions::to_string_t("folder")] 
+            = ApiClient::parameterToString(*folder);
 	}
 	if (storage)
 	{
-		queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+		queryParams[utility::conversions::to_string_t("storage")] 
+            = ApiClient::parameterToString(*storage);
 	}
 
 	std::shared_ptr<IHttpBody> httpBody;
@@ -1565,7 +1771,7 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToXps(utility::string_t
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
@@ -1599,7 +1805,8 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToXps(utility::string_t
 
 }
 
-pplx::task<HttpContent> ConversionApi::getConvertDocumentToMHTMLByUrl(utility::string_t sourceUrl)
+pplx::task<HttpContent> 
+ConversionApi::getConvertDocumentToMHTMLByUrl(utility::string_t sourceUrl)
 {
 
 
@@ -1669,7 +1876,7 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToMHTMLByUrl(utility::s
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
@@ -1695,7 +1902,8 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToMarkdown(
 	utility::string_t name,
 	boost::optional<bool> useGit,
 	boost::optional<utility::string_t> folder,
-	boost::optional<utility::string_t> storage)
+	boost::optional<utility::string_t> storage
+)
 {
 	std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
 	utility::string_t path = utility::conversions::to_string_t("/html/{name}/convert/md");
@@ -1738,15 +1946,18 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToMarkdown(
 
 	if (useGit == true)
 	{
-		queryParams[utility::conversions::to_string_t("useGit")] = utility::conversions::to_string_t("true");
+		queryParams[utility::conversions::to_string_t("useGit")] 
+            = utility::conversions::to_string_t("true");
 	}
 	if (folder)
 	{
-		queryParams[utility::conversions::to_string_t("folder")] = ApiClient::parameterToString(*folder);
+		queryParams[utility::conversions::to_string_t("folder")] 
+            = ApiClient::parameterToString(*folder);
 	}
 	if (storage)
 	{
-		queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+		queryParams[utility::conversions::to_string_t("storage")] 
+            = ApiClient::parameterToString(*storage);
 	}
 
 	std::shared_ptr<IHttpBody> httpBody;
@@ -1770,7 +1981,7 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToMarkdown(
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
@@ -1792,7 +2003,14 @@ pplx::task<HttpContent> ConversionApi::getConvertDocumentToMarkdown(
 	});
 }
 
-pplx::task<HttpContent> ConversionApi::putConvertDocumentToMarkdown(utility::string_t name, utility::string_t outPath, boost::optional<bool> useGit, boost::optional<utility::string_t> folder, boost::optional<utility::string_t> storage)
+pplx::task<HttpContent> 
+ConversionApi::putConvertDocumentToMarkdown(
+    utility::string_t name, 
+    utility::string_t outPath, 
+    boost::optional<bool> useGit, 
+    boost::optional<utility::string_t> folder, 
+    boost::optional<utility::string_t> storage
+)
 {
 	std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
 	utility::string_t path = utility::conversions::to_string_t("/html/{name}/convert/md");
@@ -1834,19 +2052,23 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToMarkdown(utility::str
 	std::unordered_set<utility::string_t> consumeHttpContentTypes;
 	consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
 
-	queryParams[utility::conversions::to_string_t("outPath")] = ApiClient::parameterToString(outPath);
+	queryParams[utility::conversions::to_string_t("outPath")] 
+        = ApiClient::parameterToString(outPath);
 
 	if (useGit == true)
 	{
-		queryParams[utility::conversions::to_string_t("useGit")] = utility::conversions::to_string_t("true");
+		queryParams[utility::conversions::to_string_t("useGit")] 
+            = utility::conversions::to_string_t("true");
 	}
 	if (folder)
 	{
-		queryParams[utility::conversions::to_string_t("folder")] = ApiClient::parameterToString(*folder);
+		queryParams[utility::conversions::to_string_t("folder")] 
+            = ApiClient::parameterToString(*folder);
 	}
 	if (storage)
 	{
-		queryParams[utility::conversions::to_string_t("storage")] = ApiClient::parameterToString(*storage);
+		queryParams[utility::conversions::to_string_t("storage")] 
+            = ApiClient::parameterToString(*storage);
 	}
 
 	std::shared_ptr<IHttpBody> httpBody;
@@ -1870,7 +2092,7 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToMarkdown(utility::str
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
@@ -1891,12 +2113,18 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentToMarkdown(utility::str
 	});
 }
 
-pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToMarkdown(utility::string_t outPath, std::shared_ptr<HttpContent> file, boost::optional<bool> useGit)
+pplx::task<HttpContent> 
+ConversionApi::postConvertDocumentInRequestToMarkdown(
+    utility::string_t outPath, 
+    std::shared_ptr<HttpContent> file, 
+    boost::optional<bool> useGit,
+    boost::optional<utility::string_t> storage
+)
 {
 	// verify the required parameter 'file' is set
 	if (file == nullptr)
 	{
-		throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling ConversionApi->PutConvertDocumentInRequestToMarkdown"));
+		throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling ConversionApi->postConvertDocumentInRequestToMarkdown"));
 	}
 
 	std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
@@ -1939,20 +2167,20 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToMarkdown(uti
 	consumeHttpContentTypes.insert(utility::conversions::to_string_t("multipart/form-data"));
 
 	queryParams[utility::conversions::to_string_t("outPath")] = ApiClient::parameterToString(outPath);
+	fileParams[utility::conversions::to_string_t("file")] = file;
 
-//	if (file != nullptr)
-//	{
-//		fileParams[utility::conversions::to_string_t("file")] = file;
-//	}
-	if (useGit == true)
+    if (useGit == true)
 	{
 		queryParams[utility::conversions::to_string_t("useGit")] = utility::conversions::to_string_t("true");
 	}
+    if (storage)
+    {
+        queryParams[utility::conversions::to_string_t("storage")]
+            = ApiClient::parameterToString(*storage);
+    }
 
-	std::shared_ptr<OctetStreamBody> httpBody(new OctetStreamBody());
-	httpBody->add(file);
-
-	utility::string_t requestHttpContentType;
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
 
 	// use JSON if possible
 	if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
@@ -1966,20 +2194,20 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToMarkdown(uti
 	}
 	else
 	{
-		throw ApiException(415, utility::conversions::to_string_t("ConversionApi->PutConvertDocumentInRequestToMarkdown does not consume any supported media type"));
+		throw ApiException(415, utility::conversions::to_string_t("ConversionApi->PostConvertDocumentInRequestToMarkdown does not consume any supported media type"));
 	}
-	return m_ApiClient->callApi(path, utility::conversions::to_string_t("PUT"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+	return m_ApiClient->callApi(path, utility::conversions::to_string_t("POST"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
 		.then([=](web::http::http_response response)
 	{
 		// 1xx - informational : OK
-		// 2xx - successful       : OK
+		// 2xx - successful    : OK
 		// 3xx - redirection   : OK
 		// 4xx - client error  : not OK
 		// 5xx - client error  : not OK
 		if (response.status_code() >= 400)
 		{
 			throw ApiException(response.status_code()
-				, utility::conversions::to_string_t("error calling PutConvertDocumentInRequestToMarkdown: ") + response.reason_phrase()
+				, utility::conversions::to_string_t("error calling postConvertDocumentInRequestToMarkdown: ") + response.reason_phrase()
 				, std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
 		}
 		return response.extract_vector();
@@ -1991,6 +2219,312 @@ pplx::task<HttpContent> ConversionApi::putConvertDocumentInRequestToMarkdown(uti
 		result.setData(stream);
 		return result;
 	});
+}
+
+pplx::task<HttpContent> ConversionApi::getConvertMarkdownToHtml(
+    utility::string_t name,
+    boost::optional<utility::string_t> folder,
+    boost::optional<utility::string_t> storage
+)
+{
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/{name}/import/md");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(name));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::map<utility::string_t, utility::string_t> formParams;
+    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.size() == 0)
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        //It's going to be binary, so just use the first one.
+        responseHttpContentType = *responseHttpContentTypes.begin();
+    }
+
+    headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
+
+    if (folder)
+    {
+        queryParams[utility::conversions::to_string_t("folder")]
+            = ApiClient::parameterToString(*folder);
+    }
+    if (storage)
+    {
+        queryParams[utility::conversions::to_string_t("storage")]
+            = ApiClient::parameterToString(*storage);
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, utility::conversions::to_string_t("ConversionApi->GetConvertMarkdownToHtml does not consume any supported media type"));
+    }
+    return m_ApiClient->callApi(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+        .then([=](web::http::http_response response)
+            {
+                // 1xx - informational : OK
+                // 2xx - successful    : OK
+                // 3xx - redirection   : OK
+                // 4xx - client error  : not OK
+                // 5xx - client error  : not OK
+                if (response.status_code() >= 400)
+                {
+                    throw ApiException(response.status_code()
+                        , utility::conversions::to_string_t("error calling GetConvertMarkdownToHtml: ") + response.reason_phrase()
+                        , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+                }
+
+                return response.extract_vector();
+            })
+        .then([=](std::vector<unsigned char> response)
+            {
+                HttpContent result;
+                std::shared_ptr<std::stringstream> stream = std::make_shared<std::stringstream>(std::string(response.begin(), response.end()));
+                result.setData(stream);
+                return result;
+            });
+}
+
+pplx::task<HttpContent>
+ConversionApi::putConvertMarkdownToHtml(
+    utility::string_t name,
+    utility::string_t outPath,
+    boost::optional<utility::string_t> folder,
+    boost::optional<utility::string_t> storage
+)
+{
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/{name}/import/md");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(name));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::map<utility::string_t, utility::string_t> formParams;
+    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.size() == 0)
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        //It's going to be binary, so just use the first one.
+        responseHttpContentType = *responseHttpContentTypes.begin();
+    }
+
+    headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
+
+    queryParams[utility::conversions::to_string_t("outPath")]
+        = ApiClient::parameterToString(outPath);
+
+    if (folder)
+    {
+        queryParams[utility::conversions::to_string_t("folder")]
+            = ApiClient::parameterToString(*folder);
+    }
+    if (storage)
+    {
+        queryParams[utility::conversions::to_string_t("storage")]
+            = ApiClient::parameterToString(*storage);
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, utility::conversions::to_string_t("ConversionApi->putConvertMarkdownToHtml does not consume any supported media type"));
+    }
+    return m_ApiClient->callApi(path, utility::conversions::to_string_t("PUT"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+        .then([=](web::http::http_response response)
+            {
+                // 1xx - informational : OK
+                // 2xx - successful    : OK
+                // 3xx - redirection   : OK
+                // 4xx - client error  : not OK
+                // 5xx - client error  : not OK
+                if (response.status_code() >= 400)
+                {
+                    throw ApiException(response.status_code()
+                        , utility::conversions::to_string_t("error calling putConvertMarkdownToHtml: ") + response.reason_phrase()
+                        , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+                }
+                return response.extract_vector();
+            })
+        .then([=](std::vector<unsigned char> response)
+            {
+                HttpContent result;
+                std::shared_ptr<std::stringstream> stream = std::make_shared<std::stringstream>(std::string(response.begin(), response.end()));
+                result.setData(stream);
+                return result;
+            });
+}
+
+pplx::task<HttpContent>
+ConversionApi::postConvertMarkdownInRequestToHtml(
+    utility::string_t outPath,
+    std::shared_ptr<HttpContent> file,
+    boost::optional<utility::string_t> storage
+)
+{
+    // verify the required parameter 'file' is set
+    if (file == nullptr)
+    {
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling ConversionApi->postConvertMarkdownInRequestToHtml"));
+    }
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
+    utility::string_t path = utility::conversions::to_string_t("/html/import/md");
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams(apiConfiguration->getDefaultHeaders());
+    std::map<utility::string_t, utility::string_t> formParams;
+    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert(utility::conversions::to_string_t("application/json"));
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if (responseHttpContentTypes.size() == 0)
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // JSON
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if (responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end())
+    {
+        responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        //It's going to be binary, so just use the first one.
+        responseHttpContentType = *responseHttpContentTypes.begin();
+    }
+
+    headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert(utility::conversions::to_string_t("multipart/form-data"));
+
+    queryParams[utility::conversions::to_string_t("outPath")] = ApiClient::parameterToString(outPath);
+    fileParams[utility::conversions::to_string_t("file")] = file;
+
+    if (storage)
+    {
+        queryParams[utility::conversions::to_string_t("storage")]
+            = ApiClient::parameterToString(*storage);
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if (consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if (consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end())
+    {
+        requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, utility::conversions::to_string_t("ConversionApi->postConvertMarkdownInRequestToHtml does not consume any supported media type"));
+    }
+    return m_ApiClient->callApi(path, utility::conversions::to_string_t("POST"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+        .then([=](web::http::http_response response)
+            {
+                // 1xx - informational : OK
+                // 2xx - successful    : OK
+                // 3xx - redirection   : OK
+                // 4xx - client error  : not OK
+                // 5xx - client error  : not OK
+                if (response.status_code() >= 400)
+                {
+                    throw ApiException(response.status_code()
+                        , utility::conversions::to_string_t("error calling postConvertMarkdownInRequestToHtml: ") + response.reason_phrase()
+                        , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+                }
+                return response.extract_vector();
+            })
+        .then([=](std::vector<unsigned char> response)
+            {
+                HttpContent result;
+                std::shared_ptr<std::stringstream> stream = std::make_shared<std::stringstream>(std::string(response.begin(), response.end()));
+                result.setData(stream);
+                return result;
+            });
 }
 
 }

@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DiscUsage.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -52,16 +52,16 @@ web::json::value DiscUsage::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    val[utility::conversions::to_string_t("UsedSize")] = ModelBase::toJson(m_UsedSize);
-    val[utility::conversions::to_string_t("TotalSize")] = ModelBase::toJson(m_TotalSize);
+    val[utility::conversions::to_string_t("usedSize")] = ModelBase::toJson(m_UsedSize);
+    val[utility::conversions::to_string_t("totalSize")] = ModelBase::toJson(m_TotalSize);
 
     return val;
 }
 
 void DiscUsage::fromJson(web::json::value& val)
 {
-    setUsedSize(ModelBase::int64_tFromJson(val[utility::conversions::to_string_t("UsedSize")]));
-    setTotalSize(ModelBase::int64_tFromJson(val[utility::conversions::to_string_t("TotalSize")]));
+    setUsedSize(ModelBase::int64_tFromJson(val[utility::conversions::to_string_t("usedSize")]));
+    setTotalSize(ModelBase::int64_tFromJson(val[utility::conversions::to_string_t("totalSize")]));
 }
 
 void DiscUsage::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
@@ -72,8 +72,8 @@ void DiscUsage::toMultipart(std::shared_ptr<MultipartFormData> multipart, const 
         namePrefix += utility::conversions::to_string_t(".");
     }
 
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("UsedSize"), m_UsedSize));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("TotalSize"), m_TotalSize));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("usedSize"), m_UsedSize));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("totalSize"), m_TotalSize));
 }
 
 void DiscUsage::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -84,8 +84,8 @@ void DiscUsage::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, cons
         namePrefix += utility::conversions::to_string_t(".");
     }
 
-    setUsedSize(ModelBase::int64_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("UsedSize"))));
-    setTotalSize(ModelBase::int64_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("TotalSize"))));
+    setUsedSize(ModelBase::int64_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("usedSize"))));
+    setTotalSize(ModelBase::int64_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("totalSize"))));
 }
 
 int64_t DiscUsage::getUsedSize() const
@@ -110,6 +110,7 @@ void DiscUsage::setTotalSize(int64_t value)
     m_TotalSize = value;
     
 }
+
 }
 }
 }

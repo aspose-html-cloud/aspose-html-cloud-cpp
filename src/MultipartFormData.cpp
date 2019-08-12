@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="MultipartFormData.cpp">
-*  Copyright (c) 2018 Aspose.HTML for Cloud
+*  Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -117,8 +117,8 @@ void MultipartFormData::writeTo( std::ostream& target )
 		data->read( &dataBytes[0], dataBytes.size() );
 
 		std::copy( dataBytes.begin(), dataBytes.end(), std::ostreambuf_iterator<char>( target ) );
-    }
 
+    }
     target << "\r\n--" << utility::conversions::to_utf8string( m_Boundary ) << "--\r\n";
 }
 
