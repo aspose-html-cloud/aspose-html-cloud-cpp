@@ -123,7 +123,7 @@ void FileVersion::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, co
     setIsFolder(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("isFolder"))));
     if(multipart->hasContent(utility::conversions::to_string_t("modifiedDate")))
     {
-        setModifiedDate(ModelBase::dateFromHttpContent(multipart->getContent(utility::conversions::to_string_t("modifiedDate"))));
+        setModifiedDate(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("modifiedDate"))));
     }
     setSize(ModelBase::int64_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("size"))));
     if(multipart->hasContent(utility::conversions::to_string_t("path")))

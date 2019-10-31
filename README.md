@@ -3,7 +3,7 @@
 AsposeHtml - the C++ library for the Aspose.HTML Cloud API Reference
 
 - API version: 3.0
-- Package version: 19.5.0
+- Package version: 19.6.0
 
 ## Requirements
 - C++11
@@ -72,9 +72,6 @@ All URIs are relative to *https://api.aspose.cloud/v3.0*
 - [ConversionApi](./docs/html/de/dcc/classcom_1_1aspose_1_1api_1_1_conversion_api.html)
 - [ImportApi](./docs/html/d9/d35/classcom_1_1aspose_1_1api_1_1_import_api.html)
 - [DocumentApi](./docs/html/dc/d9d/classcom_1_1aspose_1_1api_1_1_document_api.html)
-- [OcrApi](./docs/html/d1/d11/classcom_1_1aspose_1_1api_1_1_ocr_api.html)
-- [SummarizationApi](./docs/html/dc/dce/classcom_1_1aspose_1_1api_1_1_summarization_api.html)
-- [TranslationApi](./docs/html/d4/d7a/classcom_1_1aspose_1_1api_1_1_translation_api.html)
 - [TemplateMergeApi](./docs/html/d7/d0c/classcom_1_1aspose_1_1api_1_1_template_merge_api.html)
 
 Aspose HTML includes Aspose.Storage.Cloud to manipulate files on a remote server. This is used in tests for download test files to the server.

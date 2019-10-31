@@ -36,7 +36,7 @@ StorageFile::StorageFile()
     m_Name = utility::conversions::to_string_t("");
     m_NameIsSet = false;
     m_IsFolder = false;
-    m_ModifiedDate = utility::datetime();
+    m_ModifiedDate = utility::string_t();
     m_ModifiedDateIsSet = false;
     m_Size = 0L;
     m_Path = utility::conversions::to_string_t("");
@@ -90,7 +90,7 @@ void StorageFile::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[utility::conversions::to_string_t("modifiedDate")];
         if(!fieldValue.is_null())
         {
-            setModifiedDate(ModelBase::dateFromJson(fieldValue));
+            setModifiedDate(ModelBase::stringFromJson(fieldValue));
         }
     }
     setSize(ModelBase::int64_tFromJson(val[utility::conversions::to_string_t("size")]));
@@ -146,7 +146,7 @@ void StorageFile::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, co
     setIsFolder(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("isFolder"))));
     if(multipart->hasContent(utility::conversions::to_string_t("modifiedDate")))
     {
-        setModifiedDate(ModelBase::dateFromHttpContent(multipart->getContent(utility::conversions::to_string_t("modifiedDate"))));
+        setModifiedDate(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("modifiedDate"))));
     }
     setSize(ModelBase::int64_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("size"))));
     if(multipart->hasContent(utility::conversions::to_string_t("path")))
@@ -187,13 +187,13 @@ void StorageFile::setIsFolder(bool value)
     m_IsFolder = value;
     
 }
-utility::datetime StorageFile::getModifiedDate() const
+utility::string_t StorageFile::getModifiedDate() const
 {
     return m_ModifiedDate;
 }
 
 
-void StorageFile::setModifiedDate(utility::datetime value)
+void StorageFile::setModifiedDate(utility::string_t value)
 {
     m_ModifiedDate = value;
     m_ModifiedDateIsSet = true;

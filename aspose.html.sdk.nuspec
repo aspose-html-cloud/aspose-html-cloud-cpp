@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>aspose.html.sdk.v140</id>
-    <version>19.1.0</version>
+    <version>19.6.0</version>
     <title></title>
     <authors>Aspose</authors>
     <owners>Aspose</owners>
@@ -11,7 +11,7 @@
     <projectUrl>https://products.aspose.cloud/html/cpp</projectUrl>
     <iconUrl>https://www.aspose.cloud/templates/asposecloud/App_Themes/V3/images/sdk/272x272/aspose_html-for-cpp.png</iconUrl>
     <description>Aspose HTML SDK for C++ is a programming SDK that allows software developers to manipulate and convert HTML documents from within their own applications. A Wrapper of RESTful APIs, Aspose HTML SDK for C++ speeds up HTML programming and conversion.
-Aspose Html SDK for C++ is a cross-platform C++ library that enables your applications to perform a great range of html document processing tasks. With Aspose.Html C++ you can load, save and convert html between the following formats: JPG, GIF, BMP, PDF, TIFF, MHTML. With Aspose.Html you can generate, modify, convert, translate, recognize images in html documents.
+Aspose Html SDK for C++ is a cross-platform C++ library that enables your applications to perform a great range of html document processing tasks. With Aspose.Html C++ you can load, save and convert html between the following formats: JPG, GIF, BMP, PDF, TIFF, MHTML. With Aspose.Html you can generate, modify, convert in html documents.
 
 Aspose Html SDK for C++ is well documented to help you create your solutions on different platforms.
 
@@ -21,7 +21,7 @@ Aspose Html SDK for C++ library can be assembled for different platforms using v
     <releaseNotes>Release of Aspose HTML SDK for .CPP SDK (v.19.1)</releaseNotes>
     <copyright>Aspose 2002-2019. All Rights Reserved.</copyright>
     <language>en-US</language>
-    <tags>native aspose.html html translate translation conversion pdf xps image xpath ocr css md mhtml template downloader</tags>
+    <tags>native aspose.html html conversion pdf xps image xpath css md mhtml template downloader</tags>
     <dependencies>
       <dependency id="cpprestsdk" version="2.9.1.1" />
     </dependencies>
@@ -29,11 +29,8 @@ Aspose Html SDK for C++ library can be assembled for different platforms using v
   <files>
     <file src="build\native\include\api\ConversionApi.h" target="build\native\include\api\ConversionApi.h" />
     <file src="build\native\include\api\DocumentApi.h" target="build\native\include\api\DocumentApi.h" />
-    <file src="build\native\include\api\OcrApi.h" target="build\native\include\api\OcrApi.h" />
     <file src="build\native\include\api\StorageApi.h" target="build\native\include\api\StorageApi.h" />
-    <file src="build\native\include\api\SummarizationApi.h" target="build\native\include\api\SummarizationApi.h" />
     <file src="build\native\include\api\TemplateMergeApi.h" target="build\native\include\api\TemplateMergeApi.h" />
-    <file src="build\native\include\api\TranslationApi.h" target="build\native\include\api\TranslationApi.h" />
     <file src="build\native\include\model\DiscUsage.h" target="build\native\include\model\DiscUsage.h" />
     <file src="build\native\include\model\DiscUsageResponse.h" target="build\native\include\model\DiscUsageResponse.h" />
     <file src="build\native\include\model\File.h" target="build\native\include\model\File.h" />

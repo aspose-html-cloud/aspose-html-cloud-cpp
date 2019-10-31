@@ -28,7 +28,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -81,7 +81,7 @@
       <WarningLevel>Level1</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;C:\boost_1_69_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_70_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -99,7 +99,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>C:\boost_1_69_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_70_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -124,7 +124,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\boost_1_69_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_70_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>ASPOSE_DLL_EXPORT_SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -138,11 +138,8 @@
     <ClCompile Include="src\api\ConversionApi.cpp" />
     <ClCompile Include="src\api\DocumentApi.cpp" />
     <ClCompile Include="src\api\ImportApi.cpp" />
-    <ClCompile Include="src\api\OcrApi.cpp" />
     <ClCompile Include="src\api\StorageApi.cpp" />
-    <ClCompile Include="src\api\SummarizationApi.cpp" />
     <ClCompile Include="src\api\TemplateMergeApi.cpp" />
-    <ClCompile Include="src\api\TranslationApi.cpp" />
     <ClCompile Include="src\HttpContent.cpp" />
     <ClCompile Include="src\JsonBody.cpp" />
     <ClCompile Include="src\ModelBase.cpp" />
@@ -170,10 +167,7 @@
     <ClInclude Include="include\ApiException.h" />
     <ClInclude Include="include\api\ConversionApi.h" />
     <ClInclude Include="include\api\DocumentApi.h" />
-    <ClInclude Include="include\api\OcrApi.h" />
     <ClInclude Include="include\api\StorageApi.h" />
-    <ClInclude Include="include\api\SummarizationApi.h" />
-    <ClInclude Include="include\api\TranslationApi.h" />
     <ClInclude Include="cpprest\astreambuf.h" />
     <ClInclude Include="cpprest\asyncrt_utils.h" />
     <ClInclude Include="cpprest\base_uri.h" />
@@ -231,12 +225,12 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="packages\cpprestsdk.v.141.2.10.7\build\native\cpprestsdk.v.141.targets" Condition="Exists('packages\cpprestsdk.v.141.2.10.7\build\native\cpprestsdk.v.141.targets')" />
+    <Import Project="packages\cpprestsdk.v141.2.10.12.1\build\native\cpprestsdk.v141.targets" Condition="Exists('packages\cpprestsdk.v141.2.10.12.1\build\native\cpprestsdk.v141.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\cpprestsdk.v.141.2.10.7\build\native\cpprestsdk.v.141.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cpprestsdk.v.141.2.10.7\build\native\cpprestsdk.v.141.targets'))" />
+    <Error Condition="!Exists('packages\cpprestsdk.v141.2.10.12.1\build\native\cpprestsdk.v141.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cpprestsdk.v141.2.10.12.1\build\native\cpprestsdk.v141.targets'))" />
   </Target>
 </Project>

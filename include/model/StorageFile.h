@@ -45,12 +45,12 @@ public:
     ASPOSE_DLL_EXPORT bool isFolder() const;
     ASPOSE_DLL_EXPORT void setIsFolder(bool value);
     /// <summary>
-    /// File or folder last modified DateTime.
+    /// File or folder last modified DateTime (string).
     /// </summary>
-    ASPOSE_DLL_EXPORT utility::datetime getModifiedDate() const;
+    ASPOSE_DLL_EXPORT utility::string_t getModifiedDate() const;
     ASPOSE_DLL_EXPORT bool modifiedDateIsSet() const;
     ASPOSE_DLL_EXPORT void unsetModifiedDate();
-    ASPOSE_DLL_EXPORT void setModifiedDate(utility::datetime value);
+    ASPOSE_DLL_EXPORT void setModifiedDate(utility::string_t value);
     /// <summary>
     /// File or folder size.
     /// </summary>
@@ -68,10 +68,10 @@ protected:
     utility::string_t m_Name;
     bool m_NameIsSet;
     bool m_IsFolder;
-        utility::datetime m_ModifiedDate;
+    utility::string_t m_ModifiedDate;
     bool m_ModifiedDateIsSet;
     int64_t m_Size;
-        utility::string_t m_Path;
+    utility::string_t m_Path;
     bool m_PathIsSet;
 };
 
