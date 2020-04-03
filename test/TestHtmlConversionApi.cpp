@@ -108,7 +108,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToJpeg)
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("jpeg"), 
 		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToJpg.jpg")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToJpg.zip")));
 }
 TEST_F(TestHtmlConversionApi, testGetHtmlToPng)
 {
@@ -116,7 +116,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToPng)
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("png"),
 		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToPng.png")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToPng.zip")));
 }
 TEST_F(TestHtmlConversionApi, testGetHtmlToBmp)
 {
@@ -124,7 +124,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToBmp)
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("bmp"),
 		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToBmp.bmp")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToBmp.zip")));
 }
 TEST_F(TestHtmlConversionApi, testGetHtmlToTiff)
 {
@@ -132,7 +132,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToTiff)
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("tiff"),
 		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToTiff.tiff")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToTiff.zip")));
 }
 TEST_F(TestHtmlConversionApi, testGetHtmlToPdf)
 {
@@ -158,7 +158,7 @@ TEST_F(TestHtmlConversionApi, testGetUrlToJpeg)
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("jpeg"),
 		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToJpg.jpg")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToJpg.zip")));
 }
 TEST_F(TestHtmlConversionApi, testGetUrlToPng)
 {
@@ -166,7 +166,7 @@ TEST_F(TestHtmlConversionApi, testGetUrlToPng)
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("png"),
 		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToPng.png")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToPng.zip")));
 }
 TEST_F(TestHtmlConversionApi, testGetUrlToBmp)
 {
@@ -174,7 +174,7 @@ TEST_F(TestHtmlConversionApi, testGetUrlToBmp)
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("bmp"),
 		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToBmp.bmp")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToBmp.zip")));
 }
 TEST_F(TestHtmlConversionApi, testGetUrlToTiff)
 {
@@ -182,7 +182,7 @@ TEST_F(TestHtmlConversionApi, testGetUrlToTiff)
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("tiff"),
 		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToTiff.tiff")));
+	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToTiff.zip")));
 }
 TEST_F(TestHtmlConversionApi, testGetUrlToPdf)
 {
@@ -205,7 +205,7 @@ TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToImage)
     std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
 	//Parameters
-	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/postConvertHtmlInRequestToImage.jpg");
+	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/postConvertHtmlInRequestToJpg.zip");
 	utility::string_t outFormat = _XPLATSTR("jpeg");
 
 	//Convert to jpeg and save to storage
@@ -221,7 +221,7 @@ TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToImage)
 	// Download file from storage
 	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("postConvertHtmlInRequestToImage.jpg")));
+	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("postConvertHtmlInRequestToJpg.zip")));
 
 	//Clear file
 	auto result_del = storage_api->deleteFile(outPath, versionId, storage).get();
@@ -310,7 +310,7 @@ TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToXps)
 TEST_F(TestHtmlConversionApi, testPutHtmlToImage)
 {
 	//Parameters
-	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertHtmlToImage.png");
+	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertHtmlToPng.zip");
 	utility::string_t outFormat = _XPLATSTR("png");
 
 	auto result = api->putConvertDocumentToImage(name, outPath, outFormat, width, height, leftMargin, rightMargin, topMargin,
@@ -325,7 +325,7 @@ TEST_F(TestHtmlConversionApi, testPutHtmlToImage)
 	// Download file from storage
 	auto result_download = storage_api->downloadFile(outPath, versionId, storage).get();
 
-	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertHtmlToImage.png")));
+	ASSERT_TRUE(TestBase::save_to_file(result_download, testResult + _XPLATSTR("putConvertHtmlToPng.zip")));
 
 	//Clear file
 	auto result_del = storage_api->deleteFile(outPath, versionId, storage).get();

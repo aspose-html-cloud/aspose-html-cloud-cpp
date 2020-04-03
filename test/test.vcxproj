@@ -77,13 +77,13 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>C:\boost_1_70_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost;D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>aspose.html.sdk.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -98,13 +98,13 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>C:\boost_1_70_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost;D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>aspose.html.sdk.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -116,7 +116,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>C:\boost_1_70_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost;D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
@@ -125,7 +125,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <AdditionalDependencies>aspose.html.sdk.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -137,7 +137,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>C:\boost_1_70_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost;D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -145,7 +145,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <AdditionalDependencies>aspose.html.sdk.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

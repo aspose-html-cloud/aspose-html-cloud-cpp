@@ -54,7 +54,7 @@ To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cl
 
         
     //Save result to files
-    std::ofstream saved_data(testresult + _XPLATSTR("ConvertResult.png"), std::ios::out | std::ios::binary);
+    std::ofstream saved_data(testresult + _XPLATSTR("ConvertResult.zip"), std::ios::out | std::ios::binary);
 
     result.writeTo(saved_data);
     saved_data.close();

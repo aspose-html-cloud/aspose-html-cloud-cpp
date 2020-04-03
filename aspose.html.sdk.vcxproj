@@ -81,7 +81,7 @@
       <WarningLevel>Level1</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\boost_1_70_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -99,7 +99,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>C:\boost_1_70_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost;D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -111,7 +111,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\boost_1_70_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost;D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PreprocessorDefinitions>ASPOSE_DLL_EXPORT_SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -124,11 +124,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\boost_1_70_0;C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost;D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>ASPOSE_DLL_EXPORT_SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\WORK\SDK\Aspose.HTML.Cloud.SDK.CPP\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
