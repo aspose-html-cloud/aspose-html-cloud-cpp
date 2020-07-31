@@ -35,14 +35,10 @@ TestBase::~TestBase()
 {
 }
 
-//const utility::string_t TestBase::clientId = _XPLATSTR("80e32ca5-a828-46a4-9d54-7199dfd3764a");
-//const utility::string_t TestBase::clientSecret = _XPLATSTR("60487a72d6325241191177e37ae52146");
-const utility::string_t TestBase::basePath = _XPLATSTR("https://api-qa.aspose.cloud/v3.0");
-const utility::string_t TestBase::authPath = _XPLATSTR("https://api-qa.aspose.cloud/connect/token");
-
-const utility::string_t TestBase::clientId = _XPLATSTR("html.cloud");
-const utility::string_t TestBase::clientSecret = _XPLATSTR("html.cloud");
-//const utility::string_t TestBase::basePath = _XPLATSTR("http://localhost:5000/v3.0");
+const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
+const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
 
 
 const utility::string_t TestBase::testSource = _XPLATSTR("..\\testsource\\");
