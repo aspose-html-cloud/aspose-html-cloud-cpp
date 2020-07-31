@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestDocumentApi.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,11 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
-#include "ApiConfiguration.h"
-#include "api/DocumentApi.h"
-#include "api/StorageApi.h"
 #include "TestBase.h"
 
 using namespace com::aspose::api;
@@ -67,7 +62,7 @@ protected:
     }
 };
 
-TEST_F(TestDocumentApi, testGetHtmlByUrl)
+TEST_F(TestDocumentApi, DISABLED_testGetHtmlByUrl)
 {
 
 	//Get web page and all linked resourses
@@ -75,7 +70,7 @@ TEST_F(TestDocumentApi, testGetHtmlByUrl)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_site_by_url.zip")));
 }
-TEST_F(TestDocumentApi, testGetHtmlFragmentByXPath)
+TEST_F(TestDocumentApi, DISABLED_testGetHtmlFragmentByXPath)
 {
 	//Upload document to storage
     utility::string_t name = _XPLATSTR("test2.html.zip");
@@ -97,7 +92,7 @@ TEST_F(TestDocumentApi, testGetHtmlFragmentByXPath)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_xpath.html")));
 }
-TEST_F(TestDocumentApi, testGetHtmlFragmentByXPathByUrl)
+TEST_F(TestDocumentApi, DISABLED_testGetHtmlFragmentByXPathByUrl)
 {
 
 	// Get fragments from document url
@@ -109,7 +104,7 @@ TEST_F(TestDocumentApi, testGetHtmlFragmentByXPathByUrl)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_xpath_url.html")));
 }
-TEST_F(TestDocumentApi, testGetHtmlFragmentByCSS)
+TEST_F(TestDocumentApi, DISABLED_testGetHtmlFragmentByCSS)
 {
 	//Upload document to storage
     utility::string_t name = _XPLATSTR("test2.html.zip");
@@ -131,7 +126,7 @@ TEST_F(TestDocumentApi, testGetHtmlFragmentByCSS)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_css.html")));
 }
-TEST_F(TestDocumentApi, testGetHtmlFragmentByCSSByUrl)
+TEST_F(TestDocumentApi, DISABLED_testGetHtmlFragmentByCSSByUrl)
 {
 
 	// Get fragments from document url
@@ -143,7 +138,7 @@ TEST_F(TestDocumentApi, testGetHtmlFragmentByCSSByUrl)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_css_url.html")));
 }
-TEST_F(TestDocumentApi, testGetHtmlImages)
+TEST_F(TestDocumentApi, DISABLED_testGetHtmlImages)
 {
 	//Upload document to storage
     utility::string_t name = _XPLATSTR("test3.html.zip");
@@ -162,7 +157,7 @@ TEST_F(TestDocumentApi, testGetHtmlImages)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("test_get_img_result.zip")));
 }
-TEST_F(TestDocumentApi, testGetHtmlImagesByUrl)
+TEST_F(TestDocumentApi, DISABLED_testGetHtmlImagesByUrl)
 {
 
 	//Get images from url

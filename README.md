@@ -3,14 +3,17 @@
 AsposeHtml - the C++ library for the Aspose.HTML Cloud API Reference
 
 - API version: 3.0
-- Package version: 19.6.0
-
-## Requirements
-- C++11
-- [Boost](https://www.boost.org/)
-- [C++ REST SDK](https://github.com/Microsoft/cpprestsdk)
+- Package version: 20.8.0
 
 ## Installation
+
+Get ready package or build from source.
+
+### Install from command line
+
+```code
+PM> Install-Package Aspose.Html-Cloud.Cpp -Version 20.8.0
+```
 
 ### Load from git
 
@@ -21,6 +24,11 @@ AsposeHtml - the C++ library for the Aspose.HTML Cloud API Reference
 To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cloud](https://www.aspose.cloud/) and lookup/create App Key and SID at [Cloud Dashboard](https://dashboard.aspose.cloud/#/apps). There is free quota available. For more details, see [Aspose Cloud Pricing](https://purchase.aspose.cloud/pricing).
 
 ```code
+
+// Get keys from aspose site.
+// There is free quota available. 
+// For more details, see https://purchase.aspose.cloud/pricing
+
     const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
     const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
@@ -61,22 +69,23 @@ To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cl
     
     delete api;
 ```
-
-
-For use SDK see examples in [test](./test/)
-
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.aspose.cloud/v3.0*   
 
-- [ConversionApi](./docs/html/de/dcc/classcom_1_1aspose_1_1api_1_1_conversion_api.html)
-- [ImportApi](./docs/html/d9/d35/classcom_1_1aspose_1_1api_1_1_import_api.html)
-- [DocumentApi](./docs/html/dc/d9d/classcom_1_1aspose_1_1api_1_1_document_api.html)
-- [TemplateMergeApi](./docs/html/d7/d0c/classcom_1_1aspose_1_1api_1_1_template_merge_api.html)
+## Examples
+- [ConversionApi](./docs/ConversionApi.md)
+- [ImportApi](./docs/ImportApi.md)
+- [DocumentApi](./docs/DocumentApi.md)
+- [SeoApi](./docs/SeoApi.md)
+- [TemplateMergeApi](./docs/TemplateMergeApi.md)
+- [StorageApi](./docs/StorageApi.md)
 
-Aspose HTML includes Aspose.Storage.Cloud to manipulate files on a remote server. This is used in tests for download test files to the server.
-- [StorageApi](./docs/html/dd/d83/classcom_1_1aspose_1_1api_1_1_storage_api.html)
 
+## Requirements (for build from source)
+- C++11
+- [Boost](https://www.boost.org/)
+- [C++ REST SDK](https://github.com/Microsoft/cpprestsdk)
 
 ## oauth
 
@@ -87,4 +96,4 @@ Aspose HTML includes Aspose.Storage.Cloud to manipulate files on a remote server
 
 [Tests](./test/) contain various examples of using the Aspose.HTML SDK.
 
-[Docs](./docs/html/) Documentation for Aspose.HTML Api SDK
+[All API in html format](./docs/html/) Documentation for Aspose.HTML Api SDK

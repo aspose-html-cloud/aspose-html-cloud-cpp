@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="MessageResponse.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -69,6 +69,12 @@ void MessageResponse::fromJson(web::json::value& val)
     {
         setStatus(ModelBase::stringFromJson(val[utility::conversions::to_string_t("Status")]));
     }
+}
+
+std::string MessageResponse::toString() const
+{
+    auto val = toJson().serialize();
+    return utility::conversions::to_utf8string(val);
 }
 
 void MessageResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ObjectExist.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -60,6 +60,12 @@ void ObjectExist::fromJson(web::json::value& val)
 {
     setExists(ModelBase::boolFromJson(val[utility::conversions::to_string_t("exists")]));
     setIsFolder(ModelBase::boolFromJson(val[utility::conversions::to_string_t("isFolder")]));
+}
+
+std::string ObjectExist::toString() const
+{
+    auto val = toJson().serialize();
+    return utility::conversions::to_utf8string(val);
 }
 
 void ObjectExist::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

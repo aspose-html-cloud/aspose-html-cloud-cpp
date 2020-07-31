@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestStorageApi.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,11 +24,8 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
-#include "ApiConfiguration.h"
-#include "api/StorageApi.h"
 #include "TestBase.h"
+
 
 
 using namespace com::aspose::api;
@@ -66,7 +63,7 @@ protected:
 };
 
 //      TEST FILE API      
-TEST_F(TestStorageApi, testUploadFile)
+TEST_F(TestStorageApi, /*DISABLED_*/testUploadFile)
 {
     utility::string_t name = _XPLATSTR("test_download.jpg");
     std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
@@ -103,7 +100,7 @@ TEST_F(TestStorageApi, testUploadFile)
     ASSERT_TRUE(result_delete->getCode() == 200);
     ASSERT_TRUE(result_delete->getStatus() == _XPLATSTR("OK"));
 }
-TEST_F(TestStorageApi, testDeleteFile)
+TEST_F(TestStorageApi, /*DISABLED_*/testDeleteFile)
 {
     // Upload file to storage
     utility::string_t name = _XPLATSTR("test_download.jpg");
@@ -124,7 +121,7 @@ TEST_F(TestStorageApi, testDeleteFile)
 	ASSERT_TRUE(result_delete->getCode() == 200);
 	ASSERT_TRUE(result_delete->getStatus() == _XPLATSTR("OK"));
 }
-TEST_F(TestStorageApi, testDownloadFile)
+TEST_F(TestStorageApi, /*DISABLED_*/testDownloadFile)
 {
 	//Create file in storage
     utility::string_t name = _XPLATSTR("test.txt");
@@ -162,7 +159,36 @@ TEST_F(TestStorageApi, testDownloadFile)
 	ASSERT_TRUE(result_clear->getCode() == 200);
 	ASSERT_TRUE(result_clear->getStatus() == _XPLATSTR("OK"));
 }
-TEST_F(TestStorageApi, testMoveFile)
+TEST_F(TestStorageApi, /*DISABLED_*/testCopyFile)
+{
+	// Create file for copy
+    utility::string_t name = _XPLATSTR("test_for_copy.txt");
+	utility::string_t srcPath = _XPLATSTR("HtmlTestDoc/test_for_copy.txt");
+    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
+    boost::optional<utility::string_t> srcStorageName = _XPLATSTR("");
+
+    auto result = api->uploadFile(srcPath, file, srcStorageName).get();
+
+    ASSERT_FALSE(result->errorsIsSet());
+
+    //Copy file in the storage
+    utility::string_t destPath = _XPLATSTR("HtmlTestDoc/copied_file.txt");
+	boost::optional<utility::string_t> versionId = _XPLATSTR("");
+	boost::optional<utility::string_t> destStorageName = _XPLATSTR("");
+
+    auto res_copy = api->copyFile(srcPath, destPath, versionId, srcStorageName, destStorageName).get();
+
+	ASSERT_TRUE(res_copy->getCode() == 200);
+	ASSERT_TRUE(res_copy->getStatus() == _XPLATSTR("OK"));
+
+	//Clear copy file
+	auto result_del = api->deleteFile(destPath, versionId, destStorageName).get();
+
+	ASSERT_TRUE(result_del->getCode() == 200);
+	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
+}
+
+TEST_F(TestStorageApi, /*DISABLED_*/testMoveFile)
 {
 	// Create file for move
     utility::string_t name = _XPLATSTR("test_for_moved.txt");
@@ -192,7 +218,7 @@ TEST_F(TestStorageApi, testMoveFile)
 }
 
 //      TEST FOLDER API      
-TEST_F(TestStorageApi, testcreateFolder)
+TEST_F(TestStorageApi, /*DISABLED_*/testcreateFolder)
 {
 	// Create folder
 	utility::string_t path = _XPLATSTR("HtmlTestDoc/TestFolder");
@@ -223,7 +249,7 @@ TEST_F(TestStorageApi, testcreateFolder)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestStorageApi, testDeleteFolderRecursive)
+TEST_F(TestStorageApi, /*DISABLED_*/testDeleteFolderRecursive)
 {
 	// Create folder
 	utility::string_t folder_name = _XPLATSTR("HtmlTestDoc/TestDeleteFolder");
@@ -255,7 +281,7 @@ TEST_F(TestStorageApi, testDeleteFolderRecursive)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestStorageApi, testDeleteFolderNotRecursive)
+TEST_F(TestStorageApi, /*DISABLED_*/testDeleteFolderNotRecursive)
 {
     // Create folder
     utility::string_t folder_name = _XPLATSTR("HtmlTestDoc/TestDeleteFolder");
@@ -287,7 +313,7 @@ TEST_F(TestStorageApi, testDeleteFolderNotRecursive)
     ASSERT_FALSE(result_exist->isExists());
     ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestStorageApi, testGetListFiles)
+TEST_F(TestStorageApi, /*DISABLED_*/testGetListFiles)
 {
 	utility::string_t folder_name = _XPLATSTR("HtmlTestDoc");
 	boost::optional<utility::string_t> storageName = _XPLATSTR("");
@@ -299,8 +325,7 @@ TEST_F(TestStorageApi, testGetListFiles)
 	//Save file locally
 	if (saved_data.is_open())
 	{
-        utility::string_t res = result->toJson().serialize();
-        saved_data << utility::conversions::to_utf8string(res);
+        saved_data << result->toString();
 		saved_data.close();
         ASSERT_TRUE(true);
 	}
@@ -310,7 +335,52 @@ TEST_F(TestStorageApi, testGetListFiles)
 		ASSERT_TRUE(false);
 	}
 }
-TEST_F(TestStorageApi, testMoveFolder)
+TEST_F(TestStorageApi, /*DISABLED_*/testCopyFolder)
+{
+	utility::string_t srcPath = _XPLATSTR("TestForCopyFolder");
+	utility::string_t destPath = _XPLATSTR("TestCopiedFolder");
+	boost::optional<utility::string_t> versionId = _XPLATSTR("");
+	boost::optional<utility::string_t> srcStorageName = _XPLATSTR("");
+	boost::optional<utility::string_t> destStorageName = _XPLATSTR("");
+	boost::optional<bool> recursive = true;
+
+	// Create folder for copy
+	auto create = api->createFolder(srcPath, srcStorageName).get();
+
+	ASSERT_TRUE(create->getCode() == 200);
+	ASSERT_TRUE(create->getStatus() == _XPLATSTR("OK"));
+
+	//Check is folder exist
+	auto result_exist = api->objectExists(srcPath, versionId, srcStorageName).get();
+
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_TRUE(result_exist->isFolder());
+
+	// Copy folder
+	auto copy = api->copyFolder(srcPath, destPath, srcStorageName, destStorageName).get();
+
+	ASSERT_TRUE(copy->getCode() == 200);
+	ASSERT_TRUE(copy->getStatus() == _XPLATSTR("OK"));
+
+	//Check is srcFolder exist
+	result_exist = api->objectExists(srcPath, versionId, srcStorageName).get();
+
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_TRUE(result_exist->isFolder());
+
+	// Check is destFolder exist
+	result_exist = api->objectExists(destPath, versionId, destStorageName).get();
+
+	ASSERT_TRUE(result_exist->isExists());
+	ASSERT_TRUE(result_exist->isFolder());
+
+	// Delete destFolder
+	auto result_del = api->deleteFolder(destPath, destStorageName, recursive).get();
+
+	ASSERT_TRUE(result_del->getCode() == 200);
+	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
+}
+TEST_F(TestStorageApi, /*DISABLED_*/testMoveFolder)
 {
 	utility::string_t srcPath = _XPLATSTR("TestForMoveFolder");
 	utility::string_t destPath = _XPLATSTR("TestMovedFolder");
@@ -357,7 +427,7 @@ TEST_F(TestStorageApi, testMoveFolder)
 }
 
 //      TEST STORAGE API      
-TEST_F(TestStorageApi, testGetDiskUsage)
+TEST_F(TestStorageApi, /*DISABLED_*/testGetDiskUsage)
 {
 	boost::optional<utility::string_t> storageName = _XPLATSTR("");
 
@@ -366,7 +436,7 @@ TEST_F(TestStorageApi, testGetDiskUsage)
 	ASSERT_TRUE(result->getTotalSize() > 0);
 	ASSERT_TRUE(result->getUsedSize() > 0);
 }
-TEST_F(TestStorageApi, testGetIsExist)
+TEST_F(TestStorageApi, /*DISABLED_*/testGetIsExist)
 {
 	//Create file in storage
     utility::string_t name = _XPLATSTR("test.txt");
@@ -398,21 +468,21 @@ TEST_F(TestStorageApi, testGetIsExist)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestStorageApi, testGetIsStorageExistNotExist)
+TEST_F(TestStorageApi, /*DISABLED_*/testGetIsStorageExistNotExist)
 {
 	utility::string_t storage_not_exist = _XPLATSTR("NotExistStorage");
 
     auto result = api->storageExists(storage_not_exist).get();
     ASSERT_FALSE(result->isExists());
 }
-TEST_F(TestStorageApi, testGetIsStorageExistExist)
+TEST_F(TestStorageApi, /*DISABLED_*/testGetIsStorageExistExist)
 {
     utility::string_t storage_exist = _XPLATSTR("");
 
     auto result = api->storageExists(storage_exist).get();
     ASSERT_TRUE(result->isExists());
 }
-TEST_F(TestStorageApi, testGetListFileVersion)
+TEST_F(TestStorageApi, /*DISABLED_*/testGetListFileVersion)
 {
 	//Create several files in storage
     utility::string_t name = _XPLATSTR("test.txt");
@@ -438,8 +508,7 @@ TEST_F(TestStorageApi, testGetListFileVersion)
     //Save file locally
     if (saved_data.is_open())
     {
-        utility::string_t res = list->toJson().serialize();
-        saved_data << utility::conversions::to_utf8string(res);
+        saved_data << list->toString();
         saved_data.close();
         ASSERT_TRUE(true);
     }

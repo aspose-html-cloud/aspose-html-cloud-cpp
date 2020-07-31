@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestHtmlConversionApi.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,10 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-#include "ApiConfiguration.h"
-#include "api/ConversionApi.h"
-#include "api/StorageApi.h"
 #include "TestBase.h"
 
 using namespace com::aspose::api;
@@ -102,7 +98,7 @@ protected:
 };
 
 // Convert html document
-TEST_F(TestHtmlConversionApi, testGetHtmlToJpeg)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetHtmlToJpeg)
 {
 	//Convert to jpeg
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("jpeg"), 
@@ -110,7 +106,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToJpeg)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToJpg.zip")));
 }
-TEST_F(TestHtmlConversionApi, testGetHtmlToPng)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetHtmlToPng)
 {
 	//Convert to png
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("png"),
@@ -118,7 +114,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToPng)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToPng.zip")));
 }
-TEST_F(TestHtmlConversionApi, testGetHtmlToBmp)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetHtmlToBmp)
 {
 	//Convert to bmp
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("bmp"),
@@ -126,7 +122,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToBmp)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToBmp.zip")));
 }
-TEST_F(TestHtmlConversionApi, testGetHtmlToTiff)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetHtmlToTiff)
 {
 	//Convert to tiff
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("tiff"),
@@ -134,7 +130,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToTiff)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToTiff.zip")));
 }
-TEST_F(TestHtmlConversionApi, testGetHtmlToPdf)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetHtmlToPdf)
 {
 	//Convert to pdf
 	auto result = api->getConvertDocumentToPdf(name, width, height, leftMargin, 
@@ -142,7 +138,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToPdf)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertHtmlToPdf.pdf")));
 }
-TEST_F(TestHtmlConversionApi, testGetHtmlToXps)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetHtmlToXps)
 {
 	//Convert to xps
 	auto result = api->getConvertDocumentToXps(name, width, height, leftMargin, 
@@ -152,7 +148,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToXps)
 }
 
 //Convert URL
-TEST_F(TestHtmlConversionApi, testGetUrlToJpeg)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetUrlToJpeg)
 {
 	//Convert to jpeg
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("jpeg"),
@@ -160,7 +156,7 @@ TEST_F(TestHtmlConversionApi, testGetUrlToJpeg)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToJpg.zip")));
 }
-TEST_F(TestHtmlConversionApi, testGetUrlToPng)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetUrlToPng)
 {
 	//Convert to png
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("png"),
@@ -168,7 +164,7 @@ TEST_F(TestHtmlConversionApi, testGetUrlToPng)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToPng.zip")));
 }
-TEST_F(TestHtmlConversionApi, testGetUrlToBmp)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetUrlToBmp)
 {
 	//Convert to bmp
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("bmp"),
@@ -176,7 +172,7 @@ TEST_F(TestHtmlConversionApi, testGetUrlToBmp)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToBmp.zip")));
 }
-TEST_F(TestHtmlConversionApi, testGetUrlToTiff)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetUrlToTiff)
 {
 	//Convert to tiff
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("tiff"),
@@ -184,21 +180,21 @@ TEST_F(TestHtmlConversionApi, testGetUrlToTiff)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToTiff.zip")));
 }
-TEST_F(TestHtmlConversionApi, testGetUrlToPdf)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetUrlToPdf)
 {
 	//Convert to pdf
 	auto result = api->getConvertDocumentToPdfByUrl(sourceUrl, width, height, leftMargin, rightMargin, topMargin, bottomMargin).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToPdf.pdf")));
 }
-TEST_F(TestHtmlConversionApi, testGetUrlToXps)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetUrlToXps)
 {
 	//Convert to xps
 	auto result = api->getConvertDocumentToXpsByUrl(sourceUrl, width, height, leftMargin, rightMargin, topMargin, bottomMargin).get();
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToXps.xps")));
 }
-TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToImage)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testPostHtmlInRequestToImage)
 {
 	//Prepare file stream to upload
     utility::string_t name = _XPLATSTR("test1.html");
@@ -235,7 +231,7 @@ TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToImage)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToPdf)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testPostHtmlInRequestToPdf)
 {
 	//Prepare file stream to upload
     utility::string_t name = _XPLATSTR("test1.html");
@@ -271,7 +267,7 @@ TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToPdf)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToXps)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testPostHtmlInRequestToXps)
 {
 	//Prepare file stream to upload
     utility::string_t name = _XPLATSTR("test1.html");
@@ -307,7 +303,7 @@ TEST_F(TestHtmlConversionApi, testPostHtmlInRequestToXps)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestHtmlConversionApi, testPutHtmlToImage)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testPutHtmlToImage)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertHtmlToPng.zip");
@@ -339,7 +335,7 @@ TEST_F(TestHtmlConversionApi, testPutHtmlToImage)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestHtmlConversionApi, testPutHtmlToPdf)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testPutHtmlToPdf)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertHtmlToPdf.pdf");
@@ -371,7 +367,7 @@ TEST_F(TestHtmlConversionApi, testPutHtmlToPdf)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestHtmlConversionApi, testPutHtmlToXps)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testPutHtmlToXps)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertHtmlToXps.xps");
@@ -403,7 +399,7 @@ TEST_F(TestHtmlConversionApi, testPutHtmlToXps)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestHtmlConversionApi, testGetHtmlToMHTMLByUrlTest)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetHtmlToMHTMLByUrlTest)
 {
 	utility::string_t sourceUrl = _XPLATSTR("https://www.yahoo.com");
 	//Convert to mhtml
@@ -411,7 +407,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToMHTMLByUrlTest)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertUrlToMhtml.mht")));
 }
-TEST_F(TestHtmlConversionApi, testGetHtmlToMarkdown)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testGetHtmlToMarkdown)
 {
 	//Upload document to storage
     utility::string_t name = _XPLATSTR("test_md.html");
@@ -436,7 +432,7 @@ TEST_F(TestHtmlConversionApi, testGetHtmlToMarkdown)
 	ASSERT_TRUE(result_del->getCode() == 200);
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 }
-TEST_F(TestHtmlConversionApi, postConvertDocumentInRequestToMarkdown)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testConvertDocumentInRequestToMarkdown)
 {
     //Prepare document
     utility::string_t name = _XPLATSTR("test_md.html");
@@ -458,7 +454,7 @@ TEST_F(TestHtmlConversionApi, postConvertDocumentInRequestToMarkdown)
     ASSERT_TRUE(result_del_test->getCode() == 200);
     ASSERT_TRUE(result_del_test->getStatus() == _XPLATSTR("OK"));
 }
-TEST_F(TestHtmlConversionApi, testPutHtmlToMarkdown)
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testPutHtmlToMarkdown)
 {
 	//Upload document to storage
     utility::string_t name = _XPLATSTR("test_md.html");

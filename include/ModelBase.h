@@ -21,6 +21,7 @@ public:
 
     virtual web::json::value toJson() const = 0;
     virtual void fromJson(web::json::value& json) = 0;
+    virtual std::string toString() const = 0;
 
     virtual void toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) const = 0;
     virtual void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) = 0;

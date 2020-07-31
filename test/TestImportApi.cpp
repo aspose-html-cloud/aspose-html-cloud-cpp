@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestImportApi.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,10 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-#include "ApiConfiguration.h"
-#include "api/ImportApi.h"
-#include "api/StorageApi.h"
 #include "TestBase.h"
 
 using namespace com::aspose::api;
@@ -72,7 +68,7 @@ protected:
         if (storage_api != nullptr) { delete storage_api; }
     }
 };
-TEST_F(TestImportApi, testGetMarkdownToHtml)
+TEST_F(TestImportApi, DISABLED_testGetMarkdownToHtml)
 {
 	//Upload document to storage
     utility::string_t name = _XPLATSTR("testpage1.md");
@@ -94,7 +90,7 @@ TEST_F(TestImportApi, testGetMarkdownToHtml)
 	ASSERT_TRUE(result_del->getCode() == 200);
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 }
-TEST_F(TestImportApi, postConvertMarkdownInRequestToHtml)
+TEST_F(TestImportApi, DISABLED_testPostConvertMarkdownInRequestToHtml)
 {
     //Prepare document
     utility::string_t name = _XPLATSTR("testpage1.md");
@@ -115,7 +111,7 @@ TEST_F(TestImportApi, postConvertMarkdownInRequestToHtml)
     ASSERT_TRUE(result_del_test->getCode() == 200);
     ASSERT_TRUE(result_del_test->getStatus() == _XPLATSTR("OK"));
 }
-TEST_F(TestImportApi, testPutMarkdownToHtml)
+TEST_F(TestImportApi, DISABLED_testPutMarkdownToHtml)
 {
 	//Upload document to storage
     utility::string_t name = _XPLATSTR("testpage1.md");

@@ -18836,7 +18836,7 @@ namespace testing {
 // Declares the flags.
 
 // This flag temporary enables the disabled tests.
-GTEST_DECLARE_bool_(also_run_disabled_tests);
+GTEST_DECLARE_bool_(also_run_DISABLED_tests);
 
 // This flag brings the debugger on an assertion failure.
 GTEST_DECLARE_bool_(break_on_failure);
@@ -19800,7 +19800,7 @@ class GTEST_API_ TestInfo {
   bool is_in_another_shard() const { return is_in_another_shard_; }
 
   // Returns true if this test should run, that is if the test is not
-  // disabled (or it is disabled but the also_run_disabled_tests flag has
+  // disabled (or it is disabled but the also_run_DISABLED_tests flag has
   // been specified) and its full name matches the user-specified filter.
   //
   // Google Test allows the user to filter the tests by their full names.
@@ -19882,7 +19882,7 @@ class GTEST_API_ TestInfo {
   internal::CodeLocation location_;
   const internal::TypeId fixture_class_id_;   // ID of the test fixture class
   bool should_run_;                 // True iff this test should run
-  bool is_disabled_;                // True iff this test is disabled
+  bool is_DISABLED_;                // True iff this test is disabled
   bool matches_filter_;             // True if this test matches the
                                     // user-specified filter.
   bool is_in_another_shard_;        // Will be run in another shard.
@@ -19941,10 +19941,10 @@ class GTEST_API_ TestCase {
   int failed_test_count() const;
 
   // Gets the number of disabled tests that will be reported in the XML report.
-  int reportable_disabled_test_count() const;
+  int reportable_DISABLED_test_count() const;
 
   // Gets the number of disabled tests in this test case.
-  int disabled_test_count() const;
+  int DISABLED_test_count() const;
 
   // Gets the number of tests to be printed in the XML report.
   int reportable_test_count() const;
@@ -20027,12 +20027,12 @@ class GTEST_API_ TestCase {
   // Returns true iff the test is disabled and will be reported in the XML
   // report.
   static bool TestReportableDisabled(const TestInfo* test_info) {
-    return test_info->is_reportable() && test_info->is_disabled_;
+    return test_info->is_reportable() && test_info->is_DISABLED_;
   }
 
   // Returns true iff test is disabled.
   static bool TestDisabled(const TestInfo* test_info) {
-    return test_info->is_disabled_;
+    return test_info->is_DISABLED_;
   }
 
   // Returns true iff this test will appear in the XML report.
@@ -20345,10 +20345,10 @@ class GTEST_API_ UnitTest {
   int failed_test_count() const;
 
   // Gets the number of disabled tests that will be reported in the XML report.
-  int reportable_disabled_test_count() const;
+  int reportable_DISABLED_test_count() const;
 
   // Gets the number of disabled tests.
-  int disabled_test_count() const;
+  int DISABLED_test_count() const;
 
   // Gets the number of tests to be printed in the XML report.
   int reportable_test_count() const;

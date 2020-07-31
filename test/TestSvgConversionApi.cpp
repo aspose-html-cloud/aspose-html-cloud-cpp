@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestSvgConversionApi.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,10 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-#include "ApiConfiguration.h"
-#include "api/ConversionApi.h"
-#include "api/StorageApi.h"
 #include "TestBase.h"
 
 using namespace com::aspose::api;
@@ -103,7 +99,7 @@ protected:
 };
 
 // Convert svg document
-TEST_F(TestSvgConversionApi, testGetSvgToJpeg)
+TEST_F(TestSvgConversionApi, DISABLED_testGetSvgToJpeg)
 {
 	//Convert to jpeg
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("jpeg"), width, height, leftMargin, 
@@ -111,7 +107,7 @@ TEST_F(TestSvgConversionApi, testGetSvgToJpeg)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertSvgToJpg.jpg")));
 }
-TEST_F(TestSvgConversionApi, testGetSvgToPng)
+TEST_F(TestSvgConversionApi, DISABLED_testGetSvgToPng)
 {
 	//Convert to png
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("png"), width, height, leftMargin, 
@@ -119,7 +115,7 @@ TEST_F(TestSvgConversionApi, testGetSvgToPng)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertSvgToPng.png")));
 }
-TEST_F(TestSvgConversionApi, testGetSvgToBmp)
+TEST_F(TestSvgConversionApi, DISABLED_testGetSvgToBmp)
 {
 	//Convert to bmp
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("bmp"), width, height, leftMargin, 
@@ -127,7 +123,7 @@ TEST_F(TestSvgConversionApi, testGetSvgToBmp)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertSvgToBmp.bmp")));
 }
-TEST_F(TestSvgConversionApi, testGetSvgToTiff)
+TEST_F(TestSvgConversionApi, DISABLED_testGetSvgToTiff)
 {
 	//Convert to tiff
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("tiff"), width, height, leftMargin, 
@@ -135,7 +131,7 @@ TEST_F(TestSvgConversionApi, testGetSvgToTiff)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertSvgToTiff.tiff")));
 }
-TEST_F(TestSvgConversionApi, testGetSvgToPdf)
+TEST_F(TestSvgConversionApi, DISABLED_testGetSvgToPdf)
 {
 	//Convert to pdf
 	auto result = api->getConvertDocumentToPdf(name, width, height, leftMargin, rightMargin,
@@ -143,7 +139,7 @@ TEST_F(TestSvgConversionApi, testGetSvgToPdf)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertSvgToPdf.pdf")));
 }
-TEST_F(TestSvgConversionApi, testGetSvgToXps)
+TEST_F(TestSvgConversionApi, DISABLED_testGetSvgToXps)
 {
 	//Convert to xps
 	auto result = api->getConvertDocumentToXps(name, width, height, leftMargin, 
@@ -151,7 +147,7 @@ TEST_F(TestSvgConversionApi, testGetSvgToXps)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertSvgToXps.xps")));
 }
-TEST_F(TestSvgConversionApi, testPostSvgInRequestToImage)
+TEST_F(TestSvgConversionApi, DISABLED_testPostSvgInRequestToImage)
 {
 	//Prepare file stream to upload
     utility::string_t name = _XPLATSTR("Map-World.svg");
@@ -188,7 +184,7 @@ TEST_F(TestSvgConversionApi, testPostSvgInRequestToImage)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestSvgConversionApi, testPostSvgInRequestToPdf)
+TEST_F(TestSvgConversionApi, DISABLED_testPostSvgInRequestToPdf)
 {
 	//Prepare file stream to upload
     utility::string_t name = _XPLATSTR("Map-World.svg");
@@ -224,7 +220,7 @@ TEST_F(TestSvgConversionApi, testPostSvgInRequestToPdf)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestSvgConversionApi, testPostSvgInRequestToXps)
+TEST_F(TestSvgConversionApi, DISABLED_testPostSvgInRequestToXps)
 {
 	//Prepare file stream to upload
     utility::string_t name = _XPLATSTR("Map-World.svg");
@@ -260,7 +256,7 @@ TEST_F(TestSvgConversionApi, testPostSvgInRequestToXps)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestSvgConversionApi, testPutSvgToImage)
+TEST_F(TestSvgConversionApi, DISABLED_testPutSvgToImage)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertSvgToImage.png");
@@ -292,7 +288,7 @@ TEST_F(TestSvgConversionApi, testPutSvgToImage)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestSvgConversionApi, testPutSvgToPdf)
+TEST_F(TestSvgConversionApi, DISABLED_testPutSvgToPdf)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertSvgToPdf.pdf");
@@ -324,7 +320,7 @@ TEST_F(TestSvgConversionApi, testPutSvgToPdf)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestSvgConversionApi, testPutSvgToXps)
+TEST_F(TestSvgConversionApi, DISABLED_testPutSvgToXps)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertSvgToXps.xps");

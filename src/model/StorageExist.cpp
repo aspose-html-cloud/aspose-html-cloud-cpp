@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StorageExist.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -57,6 +57,12 @@ web::json::value StorageExist::toJson() const
 void StorageExist::fromJson(web::json::value& val)
 {
     setExists(ModelBase::boolFromJson(val[utility::conversions::to_string_t("exists")]));
+}
+
+std::string StorageExist::toString() const
+{
+    auto val = toJson().serialize();
+    return utility::conversions::to_utf8string(val);
 }
 
 void StorageExist::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

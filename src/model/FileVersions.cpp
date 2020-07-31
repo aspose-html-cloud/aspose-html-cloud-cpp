@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FileVersions.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -86,6 +86,12 @@ void FileVersions::fromJson(web::json::value& val)
         }
         }
     }
+}
+
+std::string FileVersions::toString() const
+{
+    auto val = toJson().serialize();
+    return utility::conversions::to_utf8string(val);
 }
 
 void FileVersions::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

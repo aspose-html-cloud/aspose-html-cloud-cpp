@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ApiClient.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ApiConfiguration.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ApiException.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\ConversionApi.cpp">
+      <Filter>src\api</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\DiscUsage.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\DocumentApi.cpp">
+      <Filter>src\api</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\FilesList.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\FilesUploadResult.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\FileVersion.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\FileVersions.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HttpContent.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\ImportApi.cpp">
+      <Filter>src\api</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JsonBody.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\MessageResponse.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelBase.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MultipartFormData.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OAuth2Token.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\ObjectExist.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OctetStreamBody.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\StorageApi.cpp">
+      <Filter>src\api</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\StorageExist.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\StorageFile.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\TemplateMergeApi.cpp">
+      <Filter>src\api</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\SeoApi.cpp">
+      <Filter>src\api</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\Error.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\ErrorDetails.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\ApiClient.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ApiConfiguration.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ApiException.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\defines.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\api\ConversionApi.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\DiscUsage.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\api\DocumentApi.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\Error.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\ErrorDetails.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\FilesList.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\FilesUploadResult.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\FileVersion.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\FileVersions.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\HttpContent.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IHttpBody.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\JsonBody.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\MessageResponse.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ModelBase.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MultipartFormData.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OAuth2Token.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\ObjectExist.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OctetStreamBody.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\api\StorageApi.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\StorageExist.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\StorageFile.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\api\TemplateMergeApi.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\api\SeoApi.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AsposeHtmlCloud.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{13842e20-48d2-40cd-adb8-0a25b650c4e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{d023bd5a-4f61-47ba-80c3-2d68929ab0e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\api">
+      <UniqueIdentifier>{217a3604-c8d2-49d4-ade4-665067ed9d1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\model">
+      <UniqueIdentifier>{416a1b34-115c-41b8-90ef-b1e9907c099b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

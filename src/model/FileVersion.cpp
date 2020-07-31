@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FileVersion.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -73,6 +73,12 @@ void FileVersion::fromJson(web::json::value& val)
         }
     }
     setIsLatest(ModelBase::boolFromJson(val[utility::conversions::to_string_t("isLatest")]));
+}
+
+std::string FileVersion::toString() const
+{
+    auto val = toJson().serialize();
+    return utility::conversions::to_utf8string(val);
 }
 
 void FileVersion::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

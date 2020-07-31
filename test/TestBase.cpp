@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestBase.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,8 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 #include "TestBase.h"
 
 
@@ -39,12 +37,12 @@ TestBase::~TestBase()
 
 //const utility::string_t TestBase::clientId = _XPLATSTR("80e32ca5-a828-46a4-9d54-7199dfd3764a");
 //const utility::string_t TestBase::clientSecret = _XPLATSTR("60487a72d6325241191177e37ae52146");
-//const utility::string_t TestBase::basePath = _XPLATSTR("https://api-qa.aspose.cloud/v3.0");
+const utility::string_t TestBase::basePath = _XPLATSTR("https://api-qa.aspose.cloud/v3.0");
 const utility::string_t TestBase::authPath = _XPLATSTR("https://api-qa.aspose.cloud/connect/token");
 
 const utility::string_t TestBase::clientId = _XPLATSTR("html.cloud");
 const utility::string_t TestBase::clientSecret = _XPLATSTR("html.cloud");
-const utility::string_t TestBase::basePath = _XPLATSTR("http://localhost:5000/v3.0");
+//const utility::string_t TestBase::basePath = _XPLATSTR("http://localhost:5000/v3.0");
 
 
 const utility::string_t TestBase::testSource = _XPLATSTR("..\\testsource\\");
@@ -66,5 +64,4 @@ bool TestBase::save_to_file(com::aspose::model::HttpContent content, utility::st
 		std::cout << "Unable to open file";
 		return false;
 	}
-
 }

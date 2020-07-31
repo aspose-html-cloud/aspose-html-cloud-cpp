@@ -52,5 +52,5 @@ Release/
 !**/packages/build/
 .vs
 x64/**/*
-testresult/
+testresult/*.*
 *.pfx

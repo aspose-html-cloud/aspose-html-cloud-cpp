@@ -478,7 +478,7 @@ namespace internal {
 GTEST_API_ extern const TypeId kTestTypeIdInGoogleTest;
 
 // Names of the flags (needed for parsing Google Test flags).
-const char kAlsoRunDisabledTestsFlag[] = "also_run_disabled_tests";
+const char kAlsoRunDisabledTestsFlag[] = "also_run_DISABLED_tests";
 const char kBreakOnFailureFlag[] = "break_on_failure";
 const char kCatchExceptionsFlag[] = "catch_exceptions";
 const char kColorFlag[] = "color";
@@ -556,7 +556,7 @@ class GTestFlagSaver {
  public:
   // The c'tor.
   GTestFlagSaver() {
-    also_run_disabled_tests_ = GTEST_FLAG(also_run_disabled_tests);
+    also_run_DISABLED_tests_ = GTEST_FLAG(also_run_DISABLED_tests);
     break_on_failure_ = GTEST_FLAG(break_on_failure);
     catch_exceptions_ = GTEST_FLAG(catch_exceptions);
     color_ = GTEST_FLAG(color);
@@ -578,7 +578,7 @@ class GTestFlagSaver {
 
   // The d'tor is not virtual.  DO NOT INHERIT FROM THIS CLASS.
   ~GTestFlagSaver() {
-    GTEST_FLAG(also_run_disabled_tests) = also_run_disabled_tests_;
+    GTEST_FLAG(also_run_DISABLED_tests) = also_run_DISABLED_tests_;
     GTEST_FLAG(break_on_failure) = break_on_failure_;
     GTEST_FLAG(catch_exceptions) = catch_exceptions_;
     GTEST_FLAG(color) = color_;
@@ -600,7 +600,7 @@ class GTestFlagSaver {
 
  private:
   // Fields for saving the original values of flags.
-  bool also_run_disabled_tests_;
+  bool also_run_DISABLED_tests_;
   bool break_on_failure_;
   bool catch_exceptions_;
   std::string color_;
@@ -938,10 +938,10 @@ class GTEST_API_ UnitTestImpl {
   int failed_test_count() const;
 
   // Gets the number of disabled tests that will be reported in the XML report.
-  int reportable_disabled_test_count() const;
+  int reportable_DISABLED_test_count() const;
 
   // Gets the number of disabled tests.
-  int disabled_test_count() const;
+  int DISABLED_test_count() const;
 
   // Gets the number of tests to be printed in the XML report.
   int reportable_test_count() const;
@@ -1632,8 +1632,8 @@ static const char* GetDefaultFilter() {
 }
 
 GTEST_DEFINE_bool_(
-    also_run_disabled_tests,
-    internal::BoolFromGTestEnv("also_run_disabled_tests", false),
+    also_run_DISABLED_tests,
+    internal::BoolFromGTestEnv("also_run_DISABLED_tests", false),
     "Run disabled tests too, in addition to the tests normally being run.");
 
 GTEST_DEFINE_bool_(
@@ -2194,14 +2194,14 @@ int UnitTestImpl::failed_test_count() const {
 }
 
 // Gets the number of disabled tests that will be reported in the XML report.
-int UnitTestImpl::reportable_disabled_test_count() const {
+int UnitTestImpl::reportable_DISABLED_test_count() const {
   return SumOverTestCaseList(test_cases_,
-                             &TestCase::reportable_disabled_test_count);
+                             &TestCase::reportable_DISABLED_test_count);
 }
 
 // Gets the number of disabled tests.
-int UnitTestImpl::disabled_test_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::disabled_test_count);
+int UnitTestImpl::DISABLED_test_count() const {
+  return SumOverTestCaseList(test_cases_, &TestCase::DISABLED_test_count);
 }
 
 // Gets the number of tests to be printed in the XML report.
@@ -3952,7 +3952,7 @@ TestInfo::TestInfo(const std::string& a_test_case_name,
       location_(a_code_location),
       fixture_class_id_(fixture_class_id),
       should_run_(false),
-      is_disabled_(false),
+      is_DISABLED_(false),
       matches_filter_(false),
       factory_(factory),
       result_() {}
@@ -4120,12 +4120,12 @@ int TestCase::failed_test_count() const {
 }
 
 // Gets the number of disabled tests that will be reported in the XML report.
-int TestCase::reportable_disabled_test_count() const {
+int TestCase::reportable_DISABLED_test_count() const {
   return CountIf(test_info_list_, TestReportableDisabled);
 }
 
 // Gets the number of disabled tests in this test case.
-int TestCase::disabled_test_count() const {
+int TestCase::DISABLED_test_count() const {
   return CountIf(test_info_list_, TestDisabled);
 }
 
@@ -4679,8 +4679,8 @@ void PrettyUnitTestResultPrinter::OnTestIterationEnd(const UnitTest& unit_test,
                         num_failures == 1 ? "TEST" : "TESTS");
   }
 
-  int num_disabled = unit_test.reportable_disabled_test_count();
-  if (num_disabled && !GTEST_FLAG(also_run_disabled_tests)) {
+  int num_disabled = unit_test.reportable_DISABLED_test_count();
+  if (num_disabled && !GTEST_FLAG(also_run_DISABLED_tests)) {
     if (!num_failures) {
       printf("\n");  // Add a spacer if no FAILURE banner is displayed.
     }
@@ -5144,7 +5144,7 @@ void XmlUnitTestResultPrinter::PrintXmlTestCase(std::ostream* stream,
                      StreamableToString(test_case.failed_test_count()));
   OutputXmlAttribute(
       stream, kTestsuite, "disabled",
-      StreamableToString(test_case.reportable_disabled_test_count()));
+      StreamableToString(test_case.reportable_DISABLED_test_count()));
   OutputXmlAttribute(stream, kTestsuite, "errors", "0");
   OutputXmlAttribute(stream, kTestsuite, "time",
                      FormatTimeInMillisAsSeconds(test_case.elapsed_time()));
@@ -5172,7 +5172,7 @@ void XmlUnitTestResultPrinter::PrintXmlUnitTest(std::ostream* stream,
                      StreamableToString(unit_test.failed_test_count()));
   OutputXmlAttribute(
       stream, kTestsuites, "disabled",
-      StreamableToString(unit_test.reportable_disabled_test_count()));
+      StreamableToString(unit_test.reportable_DISABLED_test_count()));
   OutputXmlAttribute(stream, kTestsuites, "errors", "0");
   OutputXmlAttribute(
       stream, kTestsuites, "timestamp",
@@ -5460,13 +5460,13 @@ int UnitTest::successful_test_count() const {
 int UnitTest::failed_test_count() const { return impl()->failed_test_count(); }
 
 // Gets the number of disabled tests that will be reported in the XML report.
-int UnitTest::reportable_disabled_test_count() const {
-  return impl()->reportable_disabled_test_count();
+int UnitTest::reportable_DISABLED_test_count() const {
+  return impl()->reportable_DISABLED_test_count();
 }
 
 // Gets the number of disabled tests.
-int UnitTest::disabled_test_count() const {
-  return impl()->disabled_test_count();
+int UnitTest::DISABLED_test_count() const {
+  return impl()->DISABLED_test_count();
 }
 
 // Gets the number of tests to be printed in the XML report.
@@ -6249,7 +6249,7 @@ int UnitTestImpl::FilterTests(ReactionToSharding shard_tests) {
                                                    kDisableTestFilter) ||
           internal::UnitTestOptions::MatchesFilter(test_name,
                                                    kDisableTestFilter);
-      test_info->is_disabled_ = is_disabled;
+      test_info->is_DISABLED_ = is_disabled;
 
       const bool matches_filter =
           internal::UnitTestOptions::FilterMatchesTest(test_case_name,
@@ -6257,7 +6257,7 @@ int UnitTestImpl::FilterTests(ReactionToSharding shard_tests) {
       test_info->matches_filter_ = matches_filter;
 
       const bool is_runnable =
-          (GTEST_FLAG(also_run_disabled_tests) || !is_disabled) &&
+          (GTEST_FLAG(also_run_DISABLED_tests) || !is_disabled) &&
           matches_filter;
 
       const bool is_in_another_shard =
@@ -6608,7 +6608,7 @@ static const char kColorEncodedHelpMessage[] =
 "      Run only the tests whose name matches one of the positive patterns but\n"
 "      none of the negative patterns. '?' matches any single character; '*'\n"
 "      matches any substring; ':' separates two patterns.\n"
-"  @G--" GTEST_FLAG_PREFIX_ "also_run_disabled_tests@D\n"
+"  @G--" GTEST_FLAG_PREFIX_ "also_run_DISABLED_tests@D\n"
 "      Run all disabled tests too.\n"
 "\n"
 "Test Execution:\n"
@@ -6662,7 +6662,7 @@ static const char kColorEncodedHelpMessage[] =
 
 static bool ParseGoogleTestFlag(const char* const arg) {
   return ParseBoolFlag(arg, kAlsoRunDisabledTestsFlag,
-                       &GTEST_FLAG(also_run_disabled_tests)) ||
+                       &GTEST_FLAG(also_run_DISABLED_tests)) ||
       ParseBoolFlag(arg, kBreakOnFailureFlag,
                     &GTEST_FLAG(break_on_failure)) ||
       ParseBoolFlag(arg, kCatchExceptionsFlag,

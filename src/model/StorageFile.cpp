@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StorageFile.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -102,6 +102,12 @@ void StorageFile::fromJson(web::json::value& val)
             setPath(ModelBase::stringFromJson(fieldValue));
         }
     }
+}
+
+std::string StorageFile::toString() const
+{
+    auto val = toJson().serialize();
+    return utility::conversions::to_utf8string(val);
 }
 
 void StorageFile::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DiscUsage.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -62,6 +62,12 @@ void DiscUsage::fromJson(web::json::value& val)
 {
     setUsedSize(ModelBase::int64_tFromJson(val[utility::conversions::to_string_t("usedSize")]));
     setTotalSize(ModelBase::int64_tFromJson(val[utility::conversions::to_string_t("totalSize")]));
+}
+
+std::string DiscUsage::toString() const
+{
+    auto val = toJson().serialize();
+    return utility::conversions::to_utf8string(val);
 }
 
 void DiscUsage::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

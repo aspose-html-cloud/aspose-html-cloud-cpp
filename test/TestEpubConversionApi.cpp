@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestEpubConversionApi.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,9 +25,6 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
-#include "ApiConfiguration.h"
-#include "api/ConversionApi.h"
-#include "api/StorageApi.h"
 #include "TestBase.h"
 
 using namespace com::aspose::api;
@@ -100,7 +97,7 @@ protected:
 };
 
 // Convert epub document
-TEST_F(TestEpubConversionApi, testGetEpubToJpeg)
+TEST_F(TestEpubConversionApi, DISABLED_testGetEpubToJpeg)
 {
 	//Convert to jpeg
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("jpeg"), 
@@ -109,7 +106,7 @@ TEST_F(TestEpubConversionApi, testGetEpubToJpeg)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToJpg.zip")));
 }
-TEST_F(TestEpubConversionApi, testGetEpubToPng)
+TEST_F(TestEpubConversionApi, DISABLED_testGetEpubToPng)
 {
 	//Convert to png
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("png"),
@@ -118,7 +115,7 @@ TEST_F(TestEpubConversionApi, testGetEpubToPng)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToPng.zip")));
 }
-TEST_F(TestEpubConversionApi, testGetEpubToBmp)
+TEST_F(TestEpubConversionApi, DISABLED_testGetEpubToBmp)
 {
 	//Convert to bmp
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("bmp"),
@@ -127,7 +124,7 @@ TEST_F(TestEpubConversionApi, testGetEpubToBmp)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToBmp.zip")));
 }
-TEST_F(TestEpubConversionApi, testGetEpubToTiff)
+TEST_F(TestEpubConversionApi, DISABLED_testGetEpubToTiff)
 {
 	//Convert to tiff
 	auto result = api->getConvertDocumentToImage(name, _XPLATSTR("tiff"),
@@ -136,7 +133,7 @@ TEST_F(TestEpubConversionApi, testGetEpubToTiff)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToTiff.zip")));
 }
-TEST_F(TestEpubConversionApi, testGetEpubToPdf)
+TEST_F(TestEpubConversionApi, DISABLED_testGetEpubToPdf)
 {
 	//Convert to pdf
 	auto result = api->getConvertDocumentToPdf(name, width, height, leftMargin, rightMargin, 
@@ -144,7 +141,7 @@ TEST_F(TestEpubConversionApi, testGetEpubToPdf)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToPdf.pdf")));
 }
-TEST_F(TestEpubConversionApi, testGetEpubToXps)
+TEST_F(TestEpubConversionApi, DISABLED_testGetEpubToXps)
 {
 	//Convert to xps
 	auto result = api->getConvertDocumentToXps(name, width, height, leftMargin, rightMargin, 
@@ -152,7 +149,7 @@ TEST_F(TestEpubConversionApi, testGetEpubToXps)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("ConvertEpubToXps.xps")));
 }
-TEST_F(TestEpubConversionApi, testPostEpubInRequestToImage)
+TEST_F(TestEpubConversionApi, DISABLED_testPostEpubInRequestToImage)
 {
 	//Prepare file stream to upload
     auto name = _XPLATSTR("georgia.epub");
@@ -189,7 +186,7 @@ TEST_F(TestEpubConversionApi, testPostEpubInRequestToImage)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestEpubConversionApi, testPostEpubInRequestToPdf)
+TEST_F(TestEpubConversionApi, DISABLED_testPostEpubInRequestToPdf)
 {
 	//Prepare file stream to upload
     utility::string_t name = _XPLATSTR("georgia.epub");
@@ -225,7 +222,7 @@ TEST_F(TestEpubConversionApi, testPostEpubInRequestToPdf)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestEpubConversionApi, testPostEpubInRequestToXps)
+TEST_F(TestEpubConversionApi, DISABLED_testPostEpubInRequestToXps)
 {
 	//Prepare file stream to upload
     utility::string_t name = _XPLATSTR("georgia.epub");
@@ -261,7 +258,7 @@ TEST_F(TestEpubConversionApi, testPostEpubInRequestToXps)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestEpubConversionApi, testPutConvertEpubToImage)
+TEST_F(TestEpubConversionApi, DISABLED_testPutConvertEpubToImage)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertEpubToPNG.zip");
@@ -293,7 +290,7 @@ TEST_F(TestEpubConversionApi, testPutConvertEpubToImage)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestEpubConversionApi, testPutConvertEpubToPdf)
+TEST_F(TestEpubConversionApi, DISABLED_testPutConvertEpubToPdf)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertEpubToPdf.pdf");
@@ -325,7 +322,7 @@ TEST_F(TestEpubConversionApi, testPutConvertEpubToPdf)
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 }
-TEST_F(TestEpubConversionApi, testPutConvertEpubToXps)
+TEST_F(TestEpubConversionApi, DISABLED_testPutConvertEpubToXps)
 {
 	//Parameters
 	utility::string_t outPath = _XPLATSTR("HtmlTestDoc/putConvertEpubToXps.xps");

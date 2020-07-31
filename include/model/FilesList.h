@@ -4,6 +4,7 @@
 #include "ModelBase.h"
 #include "StorageFile.h"
 #include <vector>
+#include <cpprest/json.h>
 
 namespace com {
 namespace aspose {
@@ -24,6 +25,7 @@ public:
     ASPOSE_DLL_EXPORT void validate() override;
 
     ASPOSE_DLL_EXPORT web::json::value toJson() const override;
+    ASPOSE_DLL_EXPORT std::string toString() const override;
     ASPOSE_DLL_EXPORT void fromJson(web::json::value& json) override;
 
     ASPOSE_DLL_EXPORT void toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) const override;

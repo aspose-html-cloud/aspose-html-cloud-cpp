@@ -1,9 +1,7 @@
 #ifndef __TestBase__
 #define __TestBase__
 
-
-
-#include "HttpContent.h"
+#include "AsposeHtmlCloud.h"
 //Equal U in boost, cpprest, gtest
 #undef U
 #include "gtest/gtest.h"
@@ -24,7 +22,4 @@ public:
 
 	static bool save_to_file(com::aspose::model::HttpContent content, utility::string_t file_name);
 };
-
-
-
 #endif // __TestBase__

@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FilesList.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -44,6 +44,26 @@ void FilesList::validate()
 {
     // TODO: implement validation
 }
+
+std::string FilesList::toString() const
+{
+    web::json::value val = web::json::value::object();
+
+    {
+        std::vector<web::json::value> jsonArray;
+        for (auto& item : m_Value)
+        {
+            jsonArray.push_back(ModelBase::toJson(item));
+        }
+        if (jsonArray.size() > 0)
+        {
+            val[utility::conversions::to_string_t("Value")] = web::json::value::array(jsonArray);
+        }
+    }
+
+    return utility::conversions::to_utf8string(val.serialize());
+}
+
 
 web::json::value FilesList::toJson() const
 {

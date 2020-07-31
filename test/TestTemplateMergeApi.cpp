@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestTemplateMergeApi.cpp">
-*  Copyright (c) 2019 Aspose.HTML for Cloud
+*  Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,11 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
-#include "ApiConfiguration.h"
-#include "api/TemplateMergeApi.h"
-#include "api/StorageApi.h"
 #include "TestBase.h"
 
 using namespace com::aspose::api;
@@ -96,7 +91,7 @@ protected:
     }
 };
 
-TEST_F(TestTemplateMergeApi, testGetMergeHtmlTemplate)
+TEST_F(TestTemplateMergeApi, DISABLED_testGetMergeHtmlTemplate)
 {
 
 	//Parameters
@@ -110,7 +105,7 @@ TEST_F(TestTemplateMergeApi, testGetMergeHtmlTemplate)
 
 	ASSERT_TRUE(TestBase::save_to_file(result, testResult + _XPLATSTR("getTemplateMerge.html")));
 }
-TEST_F(TestTemplateMergeApi, testPostMergeHtmlTemplate)
+TEST_F(TestTemplateMergeApi, DISABLED_testPostMergeHtmlTemplate)
 {
     //Prepare file stream to upload
     utility::string_t name = _XPLATSTR("XmlSourceData.xml");
