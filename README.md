@@ -55,51 +55,50 @@ PM> Install-Package Aspose.Html-Cloud.Cpp -Version 20.8.0
 ## Getting Started
 To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cloud](https://www.aspose.cloud/) and lookup/create App Key and SID at [Cloud Dashboard](https://dashboard.aspose.cloud/#/apps). There is free quota available. For more details, see [Aspose Cloud Pricing](https://purchase.aspose.cloud/pricing).
 
+## Convert HTML to PNG in C++
+
 ```code
+	// Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
 
-// Get keys from aspose site.
-// There is free quota available.
-// For more details, see https://purchase.aspose.cloud/pricing
+	const utility::string_t clientId = _XPLATSTR("MY_CLIENT_ID");
+	const utility::string_t clientSecret = _XPLATSTR("MY_CLIENT_SECRET");
+	const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
+	const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
 
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
+	//Helper directory with data for test
+	const utility::string_t testResult = _XPLATSTR("..\\testresult\\");
 
-    //Helper directory with data for test
-    const utility::string_t testResult = _XPLATSTR("..\\testresult\\");
+	//Create configuration for authorization
+	std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
 
-    //Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
+	//Create client from configuration
+	std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
 
-    //Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
+	//Create ConversionApi
+	ConversionApi *api = new ConversionApi(apiClient);
 
-    //Create ConversionApi
-    ConversionApi *api = new ConversionApi(apiClient);
+	//Parameters for conversion
+	utility::string_t sourceUrl = _XPLATSTR("https://stallman.org/articles/anonymous-payments-thru-phones.html");
+	boost::optional<int32_t> width = 800;
+	boost::optional<int32_t> height = 1000;
+	boost::optional<int32_t> leftMargin = 20;
+	boost::optional<int32_t> rightMargin = 20;
+	boost::optional<int32_t> topMargin = 20;
+	boost::optional<int32_t> bottomMargin = 20;
+	boost::optional<int32_t> resolution = 300;
 
-    //Parameters for conversion
-    utility::string_t sourceUrl = _XPLATSTR("https://stallman.org/articles/anonymous-payments-thru-phones.html");
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-    boost::optional<int32_t> resolution = 300;
-
-    //Convert to png
+	//Convert to png
 	auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("png"),
 		width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution).get();
 
 
-    //Save result to files
-    std::ofstream saved_data(testresult + _XPLATSTR("ConvertResult.zip"), std::ios::out | std::ios::binary);
+	//Save result to files
+	std::ofstream saved_data(testresult + _XPLATSTR("ConvertResult.zip"), std::ios::out | std::ios::binary);
 
-    result.writeTo(saved_data);
-    saved_data.close();
+	result.writeTo(saved_data);
+	saved_data.close();
 
-    delete api;
+	delete api;
 ```
 ## Documentation for API Endpoints
 
