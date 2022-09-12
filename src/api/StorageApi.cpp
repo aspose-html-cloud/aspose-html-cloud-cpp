@@ -51,7 +51,7 @@ StorageApi::~StorageApi()
 pplx::task<std::shared_ptr<DiscUsage>> StorageApi::getDiscUsage(boost::optional<utility::string_t> storageName)
 {
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/html/storage/disc");
+    utility::string_t path = utility::conversions::to_string_t("/html/storage/disc/usage");
     
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
