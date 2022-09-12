@@ -29,24 +29,24 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -146,14 +146,13 @@
     <ClCompile Include="src\ApiConfiguration.cpp" />
     <ClCompile Include="src\ApiException.cpp" />
     <ClCompile Include="src\api\ConversionApi.cpp" />
-    <ClCompile Include="src\api\DocumentApi.cpp" />
-    <ClCompile Include="src\api\ImportApi.cpp" />
-    <ClCompile Include="src\api\SeoApi.cpp" />
     <ClCompile Include="src\api\StorageApi.cpp" />
-    <ClCompile Include="src\api\TemplateMergeApi.cpp" />
     <ClCompile Include="src\HttpContent.cpp" />
     <ClCompile Include="src\JsonBody.cpp" />
     <ClCompile Include="src\ModelBase.cpp" />
+    <ClCompile Include="src\model\ConversionOptions.cpp" />
+    <ClCompile Include="src\model\ConversionRequest.cpp" />
+    <ClCompile Include="src\model\ConversionResult.cpp" />
     <ClCompile Include="src\model\DiscUsage.cpp" />
     <ClCompile Include="src\model\Error.cpp" />
     <ClCompile Include="src\model\ErrorDetails.cpp" />
@@ -170,18 +169,17 @@
     <ClCompile Include="src\OctetStreamBody.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\api\SeoApi.h" />
     <ClInclude Include="include\AsposeHtmlCloud.h" />
     <ClInclude Include="include\defines.h" />
-    <ClInclude Include="include\api\TemplateMergeApi.h" />
     <ClInclude Include="include\ApiClient.h" />
     <ClInclude Include="include\ApiConfiguration.h" />
     <ClInclude Include="include\ApiException.h" />
     <ClInclude Include="include\api\ConversionApi.h" />
-    <ClInclude Include="include\api\DocumentApi.h" />
     <ClInclude Include="include\api\StorageApi.h" />
     <ClInclude Include="include\HttpContent.h" />
     <ClInclude Include="include\IHttpBody.h" />
+    <ClInclude Include="include\model\ConversionOptions.h" />
+    <ClInclude Include="include\model\ConversionRequest.h" />
     <ClInclude Include="include\model\Error.h" />
     <ClInclude Include="include\model\ErrorDetails.h" />
     <ClInclude Include="include\model\FilesList.h" />
@@ -201,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

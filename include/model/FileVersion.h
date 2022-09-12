@@ -1,8 +1,9 @@
-#ifndef COM_ASPOSE_MODEL_FileVersion_H_
-#define COM_ASPOSE_MODEL_FileVersion_H_
+#ifndef _COM_ASPOSE_MODEL_FileVersion_H_
+#define _COM_ASPOSE_MODEL_FileVersion_H_
 
-#include "model/StorageFile.h"
 #include <cpprest/details/basic_types.h>
+#include "model/StorageFile.h"
+
 
 namespace com {
 namespace aspose {
@@ -55,4 +56,4 @@ protected:
 }
 }
 
-#endif /* COM_ASPOSE_MODEL_FileVersion_H_ */
+#endif /* _COM_ASPOSE_MODEL_FileVersion_H_ */

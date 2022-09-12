@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestBase.cpp">
-*  Copyright (c) 2020 Aspose.HTML for Cloud
+*  Copyright (c) 2022 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,14 +35,14 @@ TestBase::~TestBase()
 {
 }
 
-const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
+const utility::string_t TestBase::basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
+const utility::string_t TestBase::authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
+const utility::string_t TestBase::clientId = _XPLATSTR("2225baa2-097b-4731-9831-d0d56c28230f");
+const utility::string_t TestBase::clientSecret = _XPLATSTR("c8dda7d6445d82635b8797d1c8edd153");
 
 
-const utility::string_t TestBase::testSource = _XPLATSTR("..\\testsource\\");
-const utility::string_t TestBase::testResult = _XPLATSTR("..\\testresult\\");
+const utility::string_t TestBase::testSource = _XPLATSTR("e:\\WORK\\HTML\\SDK_NEW\\CppSDK\\testsource\\");
+const utility::string_t TestBase::testResult = _XPLATSTR("e:\\WORK\\HTML\\SDK_NEW\\CppSDK\\testresult\\");
 
 bool TestBase::save_to_file(com::aspose::model::HttpContent content, utility::string_t name)
 {

@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FilesUploadResult.cpp">
-*  Copyright (c) 2020 Aspose.HTML for Cloud
+*  Copyright (c) 2022 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -58,7 +58,7 @@ web::json::value FilesUploadResult::toJson() const
         }
         if(jsonArray.size() > 0)
         {
-            val[utility::conversions::to_string_t("Uploaded")] = web::json::value::array(jsonArray);
+            val[utility::conversions::to_string_t("uploaded")] = web::json::value::array(jsonArray);
         }
     }
     {
@@ -69,7 +69,7 @@ web::json::value FilesUploadResult::toJson() const
         }
         if(jsonArray.size() > 0)
         {
-            val[utility::conversions::to_string_t("Errors")] = web::json::value::array(jsonArray);
+            val[utility::conversions::to_string_t("errors")] = web::json::value::array(jsonArray);
         }
     }
 
@@ -81,9 +81,9 @@ void FilesUploadResult::fromJson(web::json::value& val)
     {
         m_Uploaded.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("Uploaded")))
+        if(val.has_field(utility::conversions::to_string_t("uploaded")))
         {
-        for( auto& item : val[utility::conversions::to_string_t("Uploaded")].as_array() )
+        for( auto& item : val[utility::conversions::to_string_t("uploaded")].as_array() )
         {
             m_Uploaded.push_back(ModelBase::stringFromJson(item));
         }
@@ -92,9 +92,9 @@ void FilesUploadResult::fromJson(web::json::value& val)
     {
         m_Errors.clear();
         std::vector<web::json::value> jsonArray;
-        if(val.has_field(utility::conversions::to_string_t("Errors")))
+        if(val.has_field(utility::conversions::to_string_t("errors")))
         {
-        for( auto& item : val[utility::conversions::to_string_t("Errors")].as_array() )
+        for( auto& item : val[utility::conversions::to_string_t("errors")].as_array() )
         {
             if(item.is_null())
             {
@@ -161,10 +161,10 @@ void FilesUploadResult::fromMultiPart(std::shared_ptr<MultipartFormData> multipa
 
     {
         m_Uploaded.clear();
-        if(multipart->hasContent(utility::conversions::to_string_t("Uploaded")))
+        if(multipart->hasContent(utility::conversions::to_string_t("uploaded")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Uploaded"))));
+        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("uploaded"))));
         for( auto& item : jsonArray.as_array() )
         {
             m_Uploaded.push_back(ModelBase::stringFromJson(item));
@@ -173,10 +173,10 @@ void FilesUploadResult::fromMultiPart(std::shared_ptr<MultipartFormData> multipa
     }
     {
         m_Errors.clear();
-        if(multipart->hasContent(utility::conversions::to_string_t("Errors")))
+        if(multipart->hasContent(utility::conversions::to_string_t("errors")))
         {
 
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("Errors"))));
+        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("errors"))));
         for( auto& item : jsonArray.as_array() )
         {
             if(item.is_null())

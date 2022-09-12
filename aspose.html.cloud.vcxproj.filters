@@ -16,9 +16,6 @@
     <ClCompile Include="src\model\DiscUsage.cpp">
       <Filter>src\model</Filter>
     </ClCompile>
-    <ClCompile Include="src\api\DocumentApi.cpp">
-      <Filter>src\api</Filter>
-    </ClCompile>
     <ClCompile Include="src\model\FilesList.cpp">
       <Filter>src\model</Filter>
     </ClCompile>
@@ -33,9 +30,6 @@
     </ClCompile>
     <ClCompile Include="src\HttpContent.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\api\ImportApi.cpp">
-      <Filter>src\api</Filter>
     </ClCompile>
     <ClCompile Include="src\JsonBody.cpp">
       <Filter>src</Filter>
@@ -67,16 +61,19 @@
     <ClCompile Include="src\model\StorageFile.cpp">
       <Filter>src\model</Filter>
     </ClCompile>
-    <ClCompile Include="src\api\TemplateMergeApi.cpp">
-      <Filter>src\api</Filter>
-    </ClCompile>
-    <ClCompile Include="src\api\SeoApi.cpp">
-      <Filter>src\api</Filter>
-    </ClCompile>
     <ClCompile Include="src\model\Error.cpp">
       <Filter>src\model</Filter>
     </ClCompile>
     <ClCompile Include="src\model\ErrorDetails.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\ConversionResult.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\ConversionOptions.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\ConversionRequest.cpp">
       <Filter>src\model</Filter>
     </ClCompile>
   </ItemGroup>
@@ -97,9 +94,6 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\model\DiscUsage.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\api\DocumentApi.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\model\Error.h">
@@ -156,18 +150,19 @@
     <ClInclude Include="include\model\StorageFile.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\api\TemplateMergeApi.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\api\SeoApi.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\AsposeHtmlCloud.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\ConversionOptions.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\ConversionRequest.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

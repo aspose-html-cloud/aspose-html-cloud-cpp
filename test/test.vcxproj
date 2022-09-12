@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -49,15 +49,10 @@
   <ItemGroup>
     <ClCompile Include="gtest\gtest-all.cc" />
     <ClCompile Include="gtest_main.cc" />
-    <ClCompile Include="TestEpubConversionApi.cpp" />
+    <ClCompile Include="JsonTests.cpp" />
     <ClCompile Include="TestHtmlConversionApi.cpp" />
-    <ClCompile Include="TestDocumentApi.cpp" />
-    <ClCompile Include="TestImportApi.cpp" />
-    <ClCompile Include="TestSeoApi.cpp" />
     <ClCompile Include="TestStorageApi.cpp" />
     <ClCompile Include="TestBase.cpp" />
-    <ClCompile Include="TestSvgConversionApi.cpp" />
-    <ClCompile Include="TestTemplateMergeApi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -100,6 +95,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <AdditionalIncludeDirectories>$(SolutionDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

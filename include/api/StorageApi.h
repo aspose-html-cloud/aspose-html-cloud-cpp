@@ -33,7 +33,7 @@ public:
     /// </remarks>
     /// <param name="storageName">User's storage name (optional)</param>
     ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<DiscUsage>> getDiscUsage(
-        boost::optional<utility::string_t> storageName
+        boost::optional<utility::string_t> storageName = boost::none
     );
     /// <summary>
     /// Check if a specific file or folder exists.
@@ -45,9 +45,9 @@ public:
     /// <param name="versionId">File's version (optional)</param>
     /// <param name="storageName">User's storage name (optional)</param>
     ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<ObjectExist>> objectExists(
-        utility::string_t path,
-        boost::optional<utility::string_t> versionId,
-        boost::optional<utility::string_t> storageName
+        const utility::string_t& path,
+        boost::optional<utility::string_t> versionId = boost::none,
+        boost::optional<utility::string_t> storageName = boost::none
     );
     /// <summary>
     /// Check if storage exists.
@@ -57,19 +57,7 @@ public:
     /// </remarks>
     /// <param name="storageName">Storage name</param>
     ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<StorageExist>> storageExists(
-        utility::string_t storageName
-    );
-    /// <summary>
-    /// Get the file's versions list.
-    /// </summary>
-    /// <remarks>
-    ///
-    /// </remarks>
-    /// <param name="path">File path e.g. /file.ext or /Folder1/file.ext</param>
-    /// <param name="storageName">User's storage name (optional)</param>
-    ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<FileVersions>> getFileVersions(
-        utility::string_t path,
-        boost::optional<utility::string_t> storageName
+        const utility::string_t& storageName
     );
     /// <summary>
     /// Remove a specific file.
@@ -81,9 +69,9 @@ public:
     /// <param name="versionId">File's version (optional)</param>
     /// <param name="storageName">User's storage name (optional)</param>
     ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<MessageResponse>> deleteFile(
-        utility::string_t path,
-        boost::optional<utility::string_t> versionId,
-        boost::optional<utility::string_t> storageName
+        const  utility::string_t& path,
+        boost::optional<utility::string_t> versionId = boost::none,
+        boost::optional<utility::string_t> storageName = boost::none
     );
     /// <summary>
     /// Download a specific file.
@@ -95,61 +83,24 @@ public:
     /// <param name="versionId">File's version (optional)</param>
     /// <param name="storageName">User's storage name (optional)</param>
     ASPOSE_DLL_EXPORT pplx::task<HttpContent> downloadFile(
-        utility::string_t path,
-        boost::optional<utility::string_t> versionId,
-        boost::optional<utility::string_t> storageName
+        const utility::string_t& path,
+        boost::optional<utility::string_t> versionId = boost::none,
+        boost::optional<utility::string_t> storageName = boost::none
     );
 
-    /// <summary>
-    /// Copy a specific file.
-    /// </summary>
-    /// <remarks>
-    ///
-    /// </remarks>
-    /// <param name="srcPath">Source file path e.g. /fileSource.ext</param>
-    /// <param name="destPath">Destination file path e.g. /fileDestination.ext</param>
-    /// <param name="versionId">Source file's version, (optional)</param>
-    /// <param name="srcStorageName">User's source storage name (optional)</param>
-    /// <param name="destStorageName">User's destination storage name (optional)</param>
-    ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<MessageResponse>> copyFile(
-        utility::string_t srcPath,
-        utility::string_t destPath,
-        boost::optional<utility::string_t> versionId,
-        boost::optional<utility::string_t> srcStorageName,
-        boost::optional<utility::string_t> destStorageName
-    );
-
-    /// <summary>
-    /// Move a specific file.
-    /// </summary>
-    /// <remarks>
-    ///
-    /// </remarks>
-    /// <param name="srcPath">Source file path e.g. /fileSource.ext</param>
-    /// <param name="destPath">Destination file path e.g. /fileDestination.ext</param>
-    /// <param name="versionId">Source file's version, (optional)</param>
-    /// <param name="srcStorageName">User's source storage name (optional)</param>
-    /// <param name="destStorageName">User's destination storage name (optional)</param>
-    ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<MessageResponse>> moveFile(
-        utility::string_t srcPath,
-        utility::string_t destPath,
-        boost::optional<utility::string_t> versionId,
-        boost::optional<utility::string_t> srcStorageName,
-        boost::optional<utility::string_t> destStorageName
-    );
     /// <summary>
     /// Upload a specific file.
     /// </summary>
     /// <remarks>
     ///
     /// </remarks>
-    /// <param name="path">Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext</param>
+    /// <param name="path">Path where to upload excluding filename e.g. / or /Folder1 </param>
     /// <param name="file">File to upload</param>
     /// <param name="storageName">User's storage name (optional)</param>
     ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<FilesUploadResult>> uploadFile(
-        utility::string_t path,
+        const utility::string_t& path,
         std::shared_ptr<HttpContent> file,
-        boost::optional<utility::string_t> storageName
+        boost::optional<utility::string_t> storageName = boost::none
     );
     /// <summary>
     /// Remove a specific folder.
@@ -161,9 +112,9 @@ public:
     /// <param name="storageName">User's storage name (optional)</param>
     /// <param name="recursive">Remove recursivelly inner folder/files. If false and folder contains data than exception is raised. (optional, default to false)</param>
     ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<MessageResponse>> deleteFolder(
-        utility::string_t path,
-        boost::optional<utility::string_t> storageName,
-        boost::optional<bool> recursive
+        const utility::string_t& path,
+        boost::optional<utility::string_t> storageName = boost::none,
+        boost::optional<bool> recursive = boost::none
     );
     /// <summary>
     /// Get all files and folders within a folder.
@@ -174,42 +125,8 @@ public:
     /// <param name="path">Folder path e.g. '/folder'</param>
     /// <param name="storageName">Storage name (optional)</param>
     ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<FilesList>> getFilesList(
-        utility::string_t path,
-        boost::optional<utility::string_t> storageName
-    );
-
-    /// <summary>
-    /// Copy a specific folder.
-    /// </summary>
-    /// <remarks>
-    ///
-    /// </remarks>
-    /// <param name="srcPath">Source folder path e.g. /Folder1</param>
-    /// <param name="destPath">Destination folder path e.g. /Folder2</param>
-    /// <param name="srcStorageName">User's source storage name (optional)</param>
-    /// <param name="destStorageName">User's destination storage name (optional)</param>
-    ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<MessageResponse>> copyFolder(
-        utility::string_t srcPath,
-        utility::string_t destPath,
-        boost::optional<utility::string_t> srcStorageName,
-        boost::optional<utility::string_t> destStorageName
-    );
-
-    /// <summary>
-    /// Move a specific folder.
-    /// </summary>
-    /// <remarks>
-    ///
-    /// </remarks>
-    /// <param name="srcPath">Source folder path e.g. /Folder1</param>
-    /// <param name="destPath">Destination folder path e.g. /Folder2</param>
-    /// <param name="srcStorageName">User's source storage name (optional)</param>
-    /// <param name="destStorageName">User's destination storage name (optional)</param>
-    ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<MessageResponse>> moveFolder(
-        utility::string_t srcPath,
-        utility::string_t destPath,
-        boost::optional<utility::string_t> srcStorageName,
-        boost::optional<utility::string_t> destStorageName
+        const utility::string_t& path,
+        boost::optional<utility::string_t> storageName = boost::none
     );
 
     /// <summary>
@@ -221,8 +138,8 @@ public:
     /// <param name="path">Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively</param>
     /// <param name="storageName">User's source storage name (optional)</param>
     ASPOSE_DLL_EXPORT pplx::task<std::shared_ptr<MessageResponse>> createFolder(
-        utility::string_t path,
-        boost::optional<utility::string_t> storageName
+        const utility::string_t& path,
+        boost::optional<utility::string_t> storageName = boost::none
     );
     
     

@@ -1,7 +1,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestStorageApi.cpp">
-*  Copyright (c) 2020 Aspose.HTML for Cloud
+*  Copyright (c) 2022 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,20 +65,26 @@ protected:
 //      TEST FILE API      
 TEST_F(TestStorageApi, /*DISABLED_*/testUploadFile)
 {
-    utility::string_t name = _XPLATSTR("test_download.jpg");
+    const utility::string_t name = _XPLATSTR("test_download.jpg");
     std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
+	auto path = testSource + name;
+	std::ifstream f(path.c_str());
+	ASSERT_TRUE(f.good());
     
-    utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/testFileUpload.jpg");
+    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
 	boost::optional<utility::string_t> storageName = _XPLATSTR("");
 
-	auto result = api->uploadFile(path_to_file, file, storageName).get();
-
+	auto result = api->uploadFile(folder, file, storageName).get();
+	
     ASSERT_FALSE(result->errorsIsSet());
+
+	ASSERT_TRUE(result->getUploaded().size() > 0);
+	ASSERT_TRUE(result->getErrors().size() == 0);
 
     boost::optional<utility::string_t> versionId = _XPLATSTR("");
 
     // Download file from storage
-    auto result_download = api->downloadFile(path_to_file, versionId, storageName).get();
+    auto result_download = api->downloadFile(folder + _XPLATSTR("/") + name, versionId, storageName).get();
 
     std::ofstream saved_data(testResult + _XPLATSTR("testUploadedFile.jpg"), std::ios::out | std::ios::binary);
 
@@ -95,7 +101,7 @@ TEST_F(TestStorageApi, /*DISABLED_*/testUploadFile)
     }
 
     //Delete file from storage
-    auto result_delete = api->deleteFile(path_to_file, versionId, storageName).get();
+    auto result_delete = api->deleteFile(folder + _XPLATSTR("/") + name, versionId, storageName).get();
 
     ASSERT_TRUE(result_delete->getCode() == 200);
     ASSERT_TRUE(result_delete->getStatus() == _XPLATSTR("OK"));
@@ -106,17 +112,17 @@ TEST_F(TestStorageApi, /*DISABLED_*/testDeleteFile)
     utility::string_t name = _XPLATSTR("test_download.jpg");
     std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
 
-    utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/testDeleteFile.jpg");
+    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
     boost::optional<utility::string_t> storageName = _XPLATSTR("");
 
-    auto result = api->uploadFile(path_to_file, file, storageName).get();
+    auto result = api->uploadFile(folder, file, storageName).get();
 
     ASSERT_FALSE(result->errorsIsSet());
     
     //Test delete file
 	boost::optional<utility::string_t> versionId = _XPLATSTR("");
 
-	auto result_delete = api->deleteFile(path_to_file, versionId, storageName).get();
+	auto result_delete = api->deleteFile(folder + _XPLATSTR("/") + name, versionId, storageName).get();
 
 	ASSERT_TRUE(result_delete->getCode() == 200);
 	ASSERT_TRUE(result_delete->getStatus() == _XPLATSTR("OK"));
@@ -129,15 +135,15 @@ TEST_F(TestStorageApi, /*DISABLED_*/testDownloadFile)
 
 	boost::optional<utility::string_t> storageName = _XPLATSTR("");
 
-    utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/testDowmloadFile.txt");
+    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
 
-	auto result = api->uploadFile(path_to_file, file, storageName).get();
+	auto result = api->uploadFile(folder, file, storageName).get();
 
     ASSERT_FALSE(result->errorsIsSet());
 
 	// Download file from storage
     boost::optional<utility::string_t> versionId = _XPLATSTR("");
-    auto result_download = api->downloadFile(path_to_file, versionId, storageName).get();
+    auto result_download = api->downloadFile(folder + _XPLATSTR("/") + name, versionId, storageName).get();
 
 	std::ofstream saved_data(testResult + _XPLATSTR("testDowmloadFile.txt"), std::ios::out | std::ios::binary);
 
@@ -154,67 +160,10 @@ TEST_F(TestStorageApi, /*DISABLED_*/testDownloadFile)
 	}
 
 	//Clear file
-	auto result_clear = api->deleteFile(path_to_file, versionId, storageName).get();
+	auto result_clear = api->deleteFile(folder + _XPLATSTR("/") + name, versionId, storageName).get();
 	
 	ASSERT_TRUE(result_clear->getCode() == 200);
 	ASSERT_TRUE(result_clear->getStatus() == _XPLATSTR("OK"));
-}
-TEST_F(TestStorageApi, /*DISABLED_*/testCopyFile)
-{
-	// Create file for copy
-    utility::string_t name = _XPLATSTR("test_for_copy.txt");
-	utility::string_t srcPath = _XPLATSTR("HtmlTestDoc/test_for_copy.txt");
-    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
-    boost::optional<utility::string_t> srcStorageName = _XPLATSTR("");
-
-    auto result = api->uploadFile(srcPath, file, srcStorageName).get();
-
-    ASSERT_FALSE(result->errorsIsSet());
-
-    //Copy file in the storage
-    utility::string_t destPath = _XPLATSTR("HtmlTestDoc/copied_file.txt");
-	boost::optional<utility::string_t> versionId = _XPLATSTR("");
-	boost::optional<utility::string_t> destStorageName = _XPLATSTR("");
-
-    auto res_copy = api->copyFile(srcPath, destPath, versionId, srcStorageName, destStorageName).get();
-
-	ASSERT_TRUE(res_copy->getCode() == 200);
-	ASSERT_TRUE(res_copy->getStatus() == _XPLATSTR("OK"));
-
-	//Clear copy file
-	auto result_del = api->deleteFile(destPath, versionId, destStorageName).get();
-
-	ASSERT_TRUE(result_del->getCode() == 200);
-	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
-}
-
-TEST_F(TestStorageApi, /*DISABLED_*/testMoveFile)
-{
-	// Create file for move
-    utility::string_t name = _XPLATSTR("test_for_moved.txt");
-	utility::string_t srcPath = _XPLATSTR("HtmlTestDoc/test_for_moved.txt");
-    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
-    boost::optional<utility::string_t> srcStorageName = _XPLATSTR("");
-
-    auto result = api->uploadFile(srcPath, file, srcStorageName).get();
-
-    ASSERT_FALSE(result->errorsIsSet());
-
-    //Move file in the storage
-    utility::string_t destPath = _XPLATSTR("HtmlTestDoc/moved_file.txt");
-	boost::optional<utility::string_t> versionId = _XPLATSTR("");
-	boost::optional<utility::string_t> destStorageName = _XPLATSTR("");
-
-    auto res_move = api->moveFile(srcPath, destPath, versionId, srcStorageName, destStorageName).get();
-
-	ASSERT_TRUE(res_move->getCode() == 200);
-	ASSERT_TRUE(res_move->getStatus() == _XPLATSTR("OK"));
-
-	//Clear moving file
-	auto result_del = api->deleteFile(destPath, versionId, destStorageName).get();
-
-	ASSERT_TRUE(result_del->getCode() == 200);
-	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 }
 
 //      TEST FOLDER API      
@@ -335,96 +284,6 @@ TEST_F(TestStorageApi, /*DISABLED_*/testGetListFiles)
 		ASSERT_TRUE(false);
 	}
 }
-TEST_F(TestStorageApi, /*DISABLED_*/testCopyFolder)
-{
-	utility::string_t srcPath = _XPLATSTR("TestForCopyFolder");
-	utility::string_t destPath = _XPLATSTR("TestCopiedFolder");
-	boost::optional<utility::string_t> versionId = _XPLATSTR("");
-	boost::optional<utility::string_t> srcStorageName = _XPLATSTR("");
-	boost::optional<utility::string_t> destStorageName = _XPLATSTR("");
-	boost::optional<bool> recursive = true;
-
-	// Create folder for copy
-	auto create = api->createFolder(srcPath, srcStorageName).get();
-
-	ASSERT_TRUE(create->getCode() == 200);
-	ASSERT_TRUE(create->getStatus() == _XPLATSTR("OK"));
-
-	//Check is folder exist
-	auto result_exist = api->objectExists(srcPath, versionId, srcStorageName).get();
-
-	ASSERT_TRUE(result_exist->isExists());
-	ASSERT_TRUE(result_exist->isFolder());
-
-	// Copy folder
-	auto copy = api->copyFolder(srcPath, destPath, srcStorageName, destStorageName).get();
-
-	ASSERT_TRUE(copy->getCode() == 200);
-	ASSERT_TRUE(copy->getStatus() == _XPLATSTR("OK"));
-
-	//Check is srcFolder exist
-	result_exist = api->objectExists(srcPath, versionId, srcStorageName).get();
-
-	ASSERT_TRUE(result_exist->isExists());
-	ASSERT_TRUE(result_exist->isFolder());
-
-	// Check is destFolder exist
-	result_exist = api->objectExists(destPath, versionId, destStorageName).get();
-
-	ASSERT_TRUE(result_exist->isExists());
-	ASSERT_TRUE(result_exist->isFolder());
-
-	// Delete destFolder
-	auto result_del = api->deleteFolder(destPath, destStorageName, recursive).get();
-
-	ASSERT_TRUE(result_del->getCode() == 200);
-	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
-}
-TEST_F(TestStorageApi, /*DISABLED_*/testMoveFolder)
-{
-	utility::string_t srcPath = _XPLATSTR("TestForMoveFolder");
-	utility::string_t destPath = _XPLATSTR("TestMovedFolder");
-	boost::optional<utility::string_t> versionId = _XPLATSTR("");
-	boost::optional<utility::string_t> srcStorageName = _XPLATSTR("");
-	boost::optional<utility::string_t> destStorageName = _XPLATSTR("");
-	boost::optional<bool> recursive = true;
-
-	// Create folder for moving
-	auto create = api->createFolder(srcPath, srcStorageName).get();
-
-	ASSERT_TRUE(create->getCode() == 200);
-	ASSERT_TRUE(create->getStatus() == _XPLATSTR("OK"));
-
-	//Check is folder exist
-	auto result_exist = api->objectExists(srcPath, versionId, srcStorageName).get();
-
-	ASSERT_TRUE(result_exist->isExists());
-	ASSERT_TRUE(result_exist->isFolder());
-
-	// Moving folder
-	auto move = api->moveFolder(srcPath, destPath, srcStorageName, destStorageName).get();
-
-	ASSERT_TRUE(move->getCode() == 200);
-	ASSERT_TRUE(move->getStatus() == _XPLATSTR("OK"));
-
-	//Check is srcFolder not exist
-	result_exist = api->objectExists(srcPath, versionId, srcStorageName).get();
-
-	ASSERT_FALSE(result_exist->isExists());
-	ASSERT_FALSE(result_exist->isFolder());
-
-	// Check is destFolder exist
-	result_exist = api->objectExists(destPath, versionId, destStorageName).get();
-
-	ASSERT_TRUE(result_exist->isExists());
-	ASSERT_TRUE(result_exist->isFolder());
-
-	// Delete destFolder
-	auto result_del = api->deleteFolder(destPath, destStorageName, recursive).get();
-
-	ASSERT_TRUE(result_del->getCode() == 200);
-	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
-}
 
 //      TEST STORAGE API      
 TEST_F(TestStorageApi, /*DISABLED_*/testGetDiskUsage)
@@ -441,29 +300,29 @@ TEST_F(TestStorageApi, /*DISABLED_*/testGetIsExist)
 	//Create file in storage
     utility::string_t name = _XPLATSTR("test.txt");
     std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
-	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/testExists.txt");
+	utility::string_t folder = _XPLATSTR("HtmlTestDoc");
 
 	boost::optional<utility::string_t> versionId = _XPLATSTR("");
 	boost::optional<utility::string_t> storageName = _XPLATSTR("");
 
-	auto result = api->uploadFile(path_to_file, file, storageName).get();
+	auto result = api->uploadFile(folder, file, storageName).get();
 
     ASSERT_FALSE(result->errorsIsSet());
 
 	// Check exist file
-	auto result_exist = api->objectExists(path_to_file, versionId, storageName).get();
+	auto result_exist = api->objectExists(folder + _XPLATSTR("/") + name, versionId, storageName).get();
 
 	ASSERT_TRUE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
 
 	//Clear file
-	auto result_del = api->deleteFile(path_to_file, versionId, storageName).get();
+	auto result_del = api->deleteFile(folder + _XPLATSTR("/") + name, versionId, storageName).get();
 
 	ASSERT_TRUE(result_del->getCode() == 200);
 	ASSERT_TRUE(result_del->getStatus() == _XPLATSTR("OK"));
 
 	// Check not exist file
-	result_exist = api->objectExists(path_to_file, versionId, storageName).get();
+	result_exist = api->objectExists(folder + _XPLATSTR("/") + name, versionId, storageName).get();
 
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
@@ -474,47 +333,4 @@ TEST_F(TestStorageApi, /*DISABLED_*/testGetIsStorageExistNotExist)
 
     auto result = api->storageExists(storage_not_exist).get();
     ASSERT_FALSE(result->isExists());
-}
-TEST_F(TestStorageApi, /*DISABLED_*/testGetIsStorageExistExist)
-{
-    utility::string_t storage_exist = _XPLATSTR("");
-
-    auto result = api->storageExists(storage_exist).get();
-    ASSERT_TRUE(result->isExists());
-}
-TEST_F(TestStorageApi, /*DISABLED_*/testGetListFileVersion)
-{
-	//Create several files in storage
-    utility::string_t name = _XPLATSTR("test.txt");
-    std::shared_ptr<HttpContent> file(new HttpContent(testSource, name));
-
-	utility::string_t path_to_file = _XPLATSTR("HtmlTestDoc/test.txt");
-	boost::optional<utility::string_t> storageName = _XPLATSTR("");
-
-	auto result = api->uploadFile(path_to_file, file, storageName).get();
-	ASSERT_FALSE(result->errorsIsSet());
-
-	result = api->uploadFile(path_to_file, file, storageName).get();
-    ASSERT_FALSE(result->errorsIsSet());
-	
-	result = api->uploadFile(path_to_file, file, storageName).get();
-    ASSERT_FALSE(result->errorsIsSet());
-
-	//Get file versions
-	auto list = api->getFileVersions(path_to_file, storageName).get();
-
-    std::ofstream saved_data(testResult + _XPLATSTR("file_list_version.json"), std::ios::out | std::ios::binary);
-
-    //Save file locally
-    if (saved_data.is_open())
-    {
-        saved_data << list->toString();
-        saved_data.close();
-        ASSERT_TRUE(true);
-    }
-    else
-    {
-        std::cout << "Unable to open file";
-        ASSERT_TRUE(false);
-    }
 }

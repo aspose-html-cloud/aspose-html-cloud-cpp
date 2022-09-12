@@ -1,49 +1,48 @@
 <a name="ConversionApi"></a>
 ## ConversionApi
 
-All URIs are relative to *https://api.aspose.cloud/v3.0*
+All URIs are relative to *https://api.aspose.cloud/v4.0*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getConvertDocumentToImage**](ConversionApi.md#getConvertDocumentToImage) | **GET** /html/\{name\}/convert/image/\{outFormat\} | Convert the HTML, EPUB, SVG document from the storage by its name to the specified image format.
-[**getConvertDocumentToImageByUrl**](ConversionApi.md#getConvertDocumentToImageByUrl) | **GET** /html/convert/image/\{outFormat\} | Convert the HTML page from the web by its URL to the specified image format.
-[**getConvertDocumentToPdf**](ConversionApi.md#getConvertDocumentToPdf) | **GET** /html/\{name\}/convert/pdf | Convert the HTML, EPUB, SVG document from the storage by its name to PDF.
-[**getConvertDocumentToPdfByUrl**](ConversionApi.md#getConvertDocumentToPdfByUrl) | **GET** /html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
-[**getConvertDocumentToXps**](ConversionApi.md#getConvertDocumentToXps) | **GET** /html/\{name\}/convert/xps | Convert the HTML, EPUB, SVG document from the storage by its name to XPS.
-[**getConvertDocumentToXpsByUrl**](ConversionApi.md#getConvertDocumentToXpsByUrl) | **GET** /html/convert/xps | Convert the HTML page from the web by its URL to XPS.
-[**postConvertDocumentInRequestToImage**](ConversionApi.md#postConvertDocumentInRequestToImage) | **POST** /html/convert/image/\{outFormat\} | Converts the HTML, EPUB, SVG document (in request content) to the specified image format and uploads resulting file to storage.
-[**postConvertDocumentInRequestToPdf**](ConversionApi.md#postConvertDocumentInRequestToPdf) | **POST** /html/convert/pdf | CConverts the HTML, EPUB, SVG document (in request content) to PDF and uploads resulting file to storage.
-[**postConvertDocumentInRequestToXps**](ConversionApi.md#postConvertDocumentInRequestToXps) | **POST** /html/convert/xps | Converts the HTML, EPUB, SVG document (in request content) to XPS and uploads resulting file to storage.
-[**putConvertDocumentToImage**](ConversionApi.md#putConvertDocumentToImage) | **PUT** /html/\{name\}/convert/image/\{outFormat\} | Converts the HTML, EPUB, SVG document (located on storage) to the specified image format and uploads resulting file to storage.
-[**putConvertDocumentToPdf**](ConversionApi.md#putConvertDocumentToPdf) | **PUT** /html/\{name\}/convert/pdf | Converts the HTML, EPUB, SVG document (located on storage) to PDF and uploads resulting file to storage.
-[**putConvertDocumentToXps**](ConversionApi.md#putConvertDocumentToXps) | **PUT** /html/\{name\}/convert/xps | Converts the HTML, EPUB, SVG document (located on storage) to XPS and uploads resulting file to storage.
-[**getConvertDocumentToMHTMLByUrl**](ConversionApi.md#getConvertDocumentToMHTMLByUrl) | **GET** /html/convert/mhtml | Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
-[**getConvertDocumentToMarkdown**](ConversionApi.md#getConvertDocumentToMarkdown) | **GET** /html/\{name\}/convert/md | Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
-[**postConvertDocumentInRequestToMarkdown**](ConversionApi.md#postConvertDocumentInRequestToMarkdown) | **POST** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
-[**putConvertDocumentToMarkdown**](ConversionApi.md#putConvertDocumentToMarkdown) | **PUT** /html/\{name\}/convert/md | Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+| Method                                                                  | Description                                                              |
+|-------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| [**сonvertLocalToLocal**](ConversionApi.md#convertlocaltolocal)         | Convert the HTML or EPUB document from the local disk to the local disk. |
+| [**сonvertLocalToStorage**](ConversionApi.md#convertlocaltostorage)     | Convert the HTML or EPUB document from the local disk to the storage.    |
+| [**сonvertStorageToLocal**](ConversionApi.md#convertstoragetolocal)     | Convert the HTML or EPUB document from the storage to the local disk.    |
+| [**сonvertStorageToStorage**](ConversionApi.md#convertstoragetostorage) | Convert the HTML or EPUB document from the storage to the storage.       |
+| [**сonvertUrlToLocal**](ConversionApi.md#converturltolocal)             | Convert the website to the local disk.                                   |
+| [**сonvertUrlToStorage**](ConversionApi.md#converturltostorage)         | Convert the website to the storage.                                      |
 
+## **convertLocalToLocal**
 
-<a name="getConvertDocumentToImage"></a>
-### **getConvertDocumentToImage**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> getConvertDocumentToImage(
->        utility::string_t name,                      // Document name(html, epub, svg formats).
->        utility::string_t outFormat,                 // Resulting image format(jpeg, png, bmp, tiff, gif).
->        boost::optional<int32_t> width,              // Resulting image width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,             // Resulting image height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,         // Left resulting image margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,        // Right resulting image margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,          // Top resulting image margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin,       // Bottom resulting image margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> resolution,         // Resolution of resulting image. Default is 96 dpi. (optional)
->        boost::optional<utility::string_t> folder,   // The source document folder in the storage. (optional)
->        boost::optional<utility::string_t> storage); // The source document storage. (optional)
+```cpp
+    /// <summary>
+    /// Convert the HTML or EPUB document from the local file to the local file.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="src">Full path to the source file.</param>
+    /// <param name="dst">Full path to the result file.</param>
+    /// <param name="options">Options for conversion.</param>
+    /// <param name="width">Resulting image width in pixels. (optional)</param>
+    /// <param name="height">Resulting image height in pixels. (optional)</param>
+    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
+    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
+    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
+    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertLocalToLocal(
+    const utility::string_t& src,
+    const utility::string_t& dst,
+    const std::shared_ptr<ConversionOptions> options = nullptr
+    ) const;
+```
 
-Convert the HTML, EPUB, SVG document from the storage by its name to the specified image format.
+Convert the HTML or EPUB document from the local file to the local file.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
 ### Example
-```code
+```cpp
 #include <AsposeHtmlCloud.h>
 
 using namespace com::aspose::api;
@@ -63,7 +62,7 @@ int main(int argc, char* argv[])
 
     const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
     const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
+    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
     const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
 
     // Create configuration for authorization
@@ -73,1171 +72,73 @@ int main(int argc, char* argv[])
     std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
 
     // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
-
-    // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
-
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
-
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
-
-    // Upload file for conversion to storage (path = w_cur_dir, name = "test.html")
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
-
-    // Path to file in the storage
-    utility::string_t path_to_file = folder + _XPLATSTR("/test.html");
-
-    // Upload file to the storage
-    auto res = storage_api->uploadFile(path_to_file, file, storage).get();
-
-    // Check for errors
-    assert(!res->errorsIsSet());
-
-    // Parameters for conversion
-    utility::string_t outFormat = _XPLATSTR("png");
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-    boost::optional<int32_t> resolution = 300;
-
-    // Convert html file to png
-    auto result = api->getConvertDocumentToImage(name, outFormat,
-        width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data(_XPLATSTR("ConvertResult.") + outFormat + _XPLATSTR(".zip"), std::ios::out | std::ios::binary);
-
-    result.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="getConvertDocumentToImageByUrl"></a>
-### **getConvertDocumentToImageByUrl**
->        ASPOSE_DLL_EXPORT pplx::task<HttpContent> getConvertDocumentToImageByUrl(
->        utility::string_t sourceUrl,           // Source page URL.
->        utility::string_t outFormat,           // Resulting image format(jpeg, png, bmp, tiff, gif).
->        boost::optional<int32_t> width,        // Resulting image width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,       // Resulting image height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,   // Left resulting image margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,  // Right resulting image margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,    // Top resulting image margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin, // Bottom resulting image margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> resolution);  // Resolution of resulting image. Default is 96 dpi. (optional)
-
-Convert the HTML page from the web by its URL to the specified image format.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-
-    // Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Source url for conversion
-    utility::string_t sourceUrl = _XPLATSTR("https://stallman.org/articles/anonymous-payments-thru-phones.html");
-
-    // Parameters for conversion
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-    boost::optional<int32_t> resolution = 300;
-
-    // Convert html document by url to jpeg
-    auto result = api->getConvertDocumentToImageByUrl(sourceUrl, _XPLATSTR("jpeg"),
-        width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution).get();
-
-    // Save result to files
-    std::ofstream saved_data(_XPLATSTR("ConvertUrlToJpg.zip"), std::ios::out | std::ios::binary);
-
-    result.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="getConvertDocumentToPdf"></a>
-### **getConvertDocumentToPdf**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> getConvertDocumentToPdf(
->        utility::string_t name,                      // Document name(html, epub, svg).
->        boost::optional<int32_t> width,              // Resulting document page width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,             // Resulting document page height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,         // Left resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,        // Right resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,          // Top resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin,       // Bottom resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<utility::string_t> folder,   // The source document folder. (optional)
->        boost::optional<utility::string_t> storage); // The source document storage. (optional)
-
-Convert the HTML, EPUB, SVG document from the storage by its name to PDF.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get current directory
-    std::string cur_dir(argv[0]);
-    int pos = cur_dir.find_last_of("/\\");
-    cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
-    std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
-
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-
-    // Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
-
-    // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
-
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
-
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
-
-    // Upload file for conversion to storage (path = w_cur_dir name = "test.html")
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
-
-    // Path to file in the storage
-    utility::string_t path_to_file = folder + _XPLATSTR("/") + name;
-
-    // Upload file to the storage
-    auto res = storage_api->uploadFile(path_to_file, file, storage).get();
-
-    // Check for errors
-    assert(!res->errorsIsSet());
-
-    // Parameters for conversion
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-
-    // Convert html file to pdf
-    auto result = api->getConvertDocumentToPdf(name, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data(_XPLATSTR("ConvertHtmlToPdf.pdf"), std::ios::out | std::ios::binary);
-
-    result.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="getConvertDocumentToPdfByUrl"></a>
-### **getConvertDocumentToPdfByUrl**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> getConvertDocumentToPdfByUrl(
->        utility::string_t sourceUrl,            // Source page URL.
->        boost::optional<int32_t> width,         // Resulting document page width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,        // Resulting document page height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,    // Left resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,   // Right resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,     // Top resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin); // Bottom resulting document page margin in points (1/96 inch). (optional)
-
-Convert the HTML page from the web by its URL to PDF.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-
-    // Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Source url for conversion
-    utility::string_t sourceUrl = _XPLATSTR("https://stallman.org/articles/anonymous-payments-thru-phones.html");
-
-    // Parameters for conversion
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-
-    // Convert html from url to pdf
-    auto result = api->getConvertDocumentToPdfByUrl(sourceUrl, width, height, leftMargin, rightMargin, topMargin, bottomMargin).get();
-
-    // Save result to files
-    std::ofstream saved_data(_XPLATSTR("ConvertToPdfFromUrl.pdf"), std::ios::out | std::ios::binary);
-
-    result.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="getConvertDocumentToXps"></a>
-### **getConvertDocumentToXps**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> getConvertDocumentToXps(
->        utility::string_t name,                      // Document name(html, epub, svg).
->        boost::optional<int32_t> width,              // Resulting document page width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,             // Resulting document page height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,         // Left resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,        // Right resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,          // Top resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin,       // Bottom resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<utility::string_t> folder,   // The source document folder. (optional)
->        boost::optional<utility::string_t> storage); // The source document storage. (optional)
-
-Convert the HTML, EPUB, SVG document from the storage by its name to XPS.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get current directory
-    std::string cur_dir(argv[0]);
-    int pos = cur_dir.find_last_of("/\\");
-    cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
-    std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
-
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-
-    // Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
-
-    // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
-
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
-
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
-
-    // Upload file for conversion to storage (path = w_cur_dir name = "test.html")
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
-
-    // Path to file in the storage
-    utility::string_t path_to_file = folder + _XPLATSTR("/test.html");
-
-    // Upload file to the storage
-    auto res = storage_api->uploadFile(path_to_file, file, storage).get();
-
-    // Check for errors
-    assert(!res->errorsIsSet());
-
-    // Parameters for conversion
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-
-    // Convert html file to xps
-    auto result = api->getConvertDocumentToXps(name, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data(_XPLATSTR("ConvertHtmlToXps.xps"), std::ios::out | std::ios::binary);
-
-    result.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="getConvertDocumentToXpsByUrl"></a>
-### **getConvertDocumentToXpsByUrl**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> getConvertDocumentToXpsByUrl(
->        utility::string_t sourceUrl,            // Source page URL.
->        boost::optional<int32_t> width,         // Resulting document page width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,        // Resulting document page height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,    // Left resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,   // Right resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,     // Top resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin); // Bottom resulting document page margin in points (1/96 inch). (optional)
-
-Convert the HTML page from the web by its URL to XPS.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-
-    // Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Source url for conversion
-    utility::string_t sourceUrl = _XPLATSTR("https://stallman.org/articles/anonymous-payments-thru-phones.html");
-
-    // Parameters for conversion
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-
-    // Convert html file from url to xps
-    auto result = api->getConvertDocumentToXpsByUrl(sourceUrl, width, height, leftMargin, rightMargin, topMargin, bottomMargin).get();
-
-    // Save result to files
-    std::ofstream saved_data(_XPLATSTR("ConvertToXpsFromUrl.xps"), std::ios::out | std::ios::binary);
-
-    result.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="postConvertDocumentInRequestToImage"></a>
-### **postConvertDocumentInRequestToImage**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> postConvertDocumentInRequestToImage(
->        utility::string_t outPath,                   // Full resulting filename (ex. /folder1/folder2/result.jpg)
->        utility::string_t outFormat,                 // Resulting image format(jpeg, png, bmp, tiff, gif).
->        std::shared_ptr<HttpContent> file,           // A file to be converted.
->        boost::optional<int32_t> width,              // Resulting document page width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,             // Resulting document page height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,         // Left resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,        // Right resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,          // Top resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin,       // Bottom resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> resolution,         // Resolution of resulting image. Default is 96 dpi. (optional)
->        boost::optional<utility::string_t> storage); // The source document storage. (optional)
-
-Converts the HTML, EPUB, SVG document (in request content) to the specified image format and uploads resulting file to storage.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get current directory
-    std::string cur_dir(argv[0]);
-    int pos = cur_dir.find_last_of("/\\");
-    cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
-    std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
-	
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-
-    // Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
-
-    // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
-
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
-
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
-
-    // Prepare file stream to upload
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
-
-    utility::string_t result_name = _XPLATSTR("postConvertHtmlInRequestToJpg.zip");
-
-    // Path to file in the storage for save result
-    utility::string_t path_to_file = folder + _XPLATSTR("/") + result_name;
-
-    // Parameters for conversion
-    utility::string_t outFormat = _XPLATSTR("jpeg");
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20; 
-    boost::optional<int32_t> resolution = 150;
-
-    // Convert html file in request to jpeg and save to storage
-    auto result = api->postConvertDocumentInRequestToImage(path_to_file, outFormat, file, 
-        width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, storage).get();
-
-    // Check exist file
-    boost::optional<utility::string_t> versionId = std::wstring(_XPLATSTR(""));
-    auto result_exist = storage_api->objectExists(path_to_file, versionId, storage).get();
-
-    assert(result_exist->isExists());
-    assert(!result_exist->isFolder());
-
-    // Download file from storage
-    auto result_download = storage_api->downloadFile(path_to_file, versionId, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data(result_name, std::ios::out | std::ios::binary);
-    result_download.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="postConvertDocumentInRequestToPdf"></a>
-### **postConvertDocumentInRequestToPdf**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> postConvertDocumentInRequestToPdf(
->        utility::string_t outPath,                   // Full resulting filename (ex. /folder1/folder2/result.pdf)
->        std::shared_ptr<HttpContent> file,           // A file to be converted.
->        boost::optional<int32_t> width,              // Resulting document page width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,             // Resulting document page height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,         // Left resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,        // Right resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,          // Top resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin,       // Bottom resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<utility::string_t> storage); // The source document storage. (optional)
-
-Converts the HTML, EPUB, SVG document (in request content) to PDF and uploads resulting file to storage.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get current directory
-    std::string cur_dir(argv[0]);
-    int pos = cur_dir.find_last_of("/\\");
-    cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
-    std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
-	
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-
-    // Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
-
-    // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
-
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
-
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
-
-    // Prepare file stream to upload
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
-
-    utility::string_t result_name = _XPLATSTR("postConvertHtmlInRequestToPdf.pdf");
-
-    // Path to file in the storage for save result
-    utility::string_t path_to_file = folder + _XPLATSTR("/") + result_name;
-
-    // Parameters for conversion
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-
-    // Convert to pdf and save to storage
-    auto result = api->postConvertDocumentInRequestToPdf(path_to_file, file,
-        width, height, leftMargin, rightMargin, topMargin, bottomMargin, storage).get();
-
-    // Check exist file
-    boost::optional<utility::string_t> versionId = std::wstring(_XPLATSTR(""));
-    auto result_exist = storage_api->objectExists(path_to_file, versionId, storage).get();
-
-    assert(result_exist->isExists());
-    assert(!result_exist->isFolder());
-
-    // Download file from storage
-    auto result_download = storage_api->downloadFile(path_to_file, versionId, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data(result_name, std::ios::out | std::ios::binary);
-    result_download.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="postConvertDocumentInRequestToXps"></a>
-### **postConvertDocumentInRequestToXps**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> postConvertDocumentInRequestToXps(
->        utility::string_t outPath,                   // Full resulting filename (ex. /folder1/folder2/result.pdf)
->        std::shared_ptr<HttpContent> file,           // A file to be converted.
->        boost::optional<int32_t> width,              // Resulting document page width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,             // Resulting document page height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,         // Left resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,        // Right resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,          // Top resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin,       // Bottom resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<utility::string_t> storage); // The source document storage. (optional)
-
-Converts the HTML, EPUB, SVG document (in request content) to XPS and uploads resulting file to storage.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get current directory
-    std::string cur_dir(argv[0]);
-    int pos = cur_dir.find_last_of("/\\");
-    cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
-    std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
-	
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-
-    // Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
-
-    // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
-
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
-
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
-
-    // Prepare file stream to upload
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
-
-    utility::string_t result_name = _XPLATSTR("postConvertHtmlInRequestToXps.xps");
-
-    // Path to file in the storage for save result
-    utility::string_t path_to_file = folder + _XPLATSTR("/") + result_name;
-
-    // Parameters for conversion
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-
-    // Convert to html file in request to xps and save to storage
-    auto result = api->postConvertDocumentInRequestToXps(path_to_file, file,
-        width, height, leftMargin, rightMargin, topMargin, bottomMargin, storage).get();
-
-    // Check exist file
-    boost::optional<utility::string_t> versionId = std::wstring(_XPLATSTR(""));
-    auto result_exist = storage_api->objectExists(path_to_file, versionId, storage).get();
-
-    assert(result_exist->isExists());
-    assert(!result_exist->isFolder());
-
-    // Download file from storage
-    auto result_download = storage_api->downloadFile(path_to_file, versionId, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data(result_name, std::ios::out | std::ios::binary);
-    result_download.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="putConvertDocumentToImage"></a>
-### **putConvertDocumentToImage**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> putConvertDocumentToImage(
->        utility::string_t name,                      // Document name(html, epub, svg formats).
->        utility::string_t outPath,                   // Full resulting filename (ex. /folder1/folder2/result.jpg)
->        utility::string_t outFormat,                 // Resulting image format(jpeg, png, bmp, tiff, gif).
->        boost::optional<int32_t> width,              // Resulting document page width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,             // Resulting document page height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,         // Left resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,        // Right resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,          // Top resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin,       // Bottom resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> resolution,         // Resolution of resulting image. Default is 96 dpi. (optional)
->        boost::optional<utility::string_t> folder,   // The source document folder. (optional)
->        boost::optional<utility::string_t> storage); // The source and resulting document storage. (optional)
-
-Converts the HTML, EPUB, SVG document (located on storage) to the specified image format and uploads resulting file to storage.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get current directory
-    std::string cur_dir(argv[0]);
-    int pos = cur_dir.find_last_of("/\\");
-    cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
-    std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
-	
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
+    std::shared_ptr<ConversionApi> api = std::make_shared<ConversionApi>(apiClient);
  
-    // Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
-
     // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
-
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
-
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
-
-    // Prepare file stream to upload
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
-
-    // Path to file in the storage
-    utility::string_t path_to_file = folder + _XPLATSTR("/") + name;
-
-    // Upload file to the storage
-    auto res = storage_api->uploadFile(path_to_file, file, storage).get();
-
-    // Check for errors
-    assert(!res->errorsIsSet());
-
-    utility::string_t result_name = _XPLATSTR("putConvertHtmlToPng.zip");
-
-    // Path to file in the storage for save result
-    utility::string_t  result_file = folder + _XPLATSTR("/") + result_name;
-
-    // Parameters for conversion
-    utility::string_t outFormat = _XPLATSTR("png");
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-    boost::optional<int32_t> resolution = 300;
-
-    // Convert html file in the storage to png and save to storage
-    auto result = api->putConvertDocumentToImage(name, result_file, outFormat,
-        width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage).get();
-
-    // Check exist file
-    boost::optional<utility::string_t> versionId = std::wstring(_XPLATSTR(""));
-    auto result_exist = storage_api->objectExists(result_file, versionId, storage).get();
-
-    assert(result_exist->isExists());
-    assert(!result_exist->isFolder());
-
-    // Download file from storage
-    auto result_download = storage_api->downloadFile(result_file, versionId, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data(result_name, std::ios::out | std::ios::binary);
-    result_download.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="putConvertDocumentToPdf"></a>
-### **putConvertDocumentToPdf**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> putConvertDocumentToPdf(
->        utility::string_t name,                      // Document name(html, epub, svg formats).
->        utility::string_t outPath,                   // Full resulting filename (ex. /folder1/folder2/result.pdf)
->        boost::optional<int32_t> width,              // Resulting document page width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,             // Resulting document page height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,         // Left resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,        // Right resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,          // Top resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin,       // Bottom resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<utility::string_t> folder,   // The source document folder. (optional)
->        boost::optional<utility::string_t> storage); // The source and resulting document storage. (optional)
-
-Converts the HTML, EPUB, SVG document (located on storage) to PDF and uploads resulting file to storage.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get current directory
-    std::string cur_dir(argv[0]);
-    int pos = cur_dir.find_last_of("/\\");
-    cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
-    std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
-	
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-
-    // Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
-
-    // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
-
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
-
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
-
-    // Prepare file stream to upload
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
-
-    // Path to file in the storage
-    utility::string_t path_to_file = folder + _XPLATSTR("/") + name;
-
-    // Upload file to the storage
-    auto res = storage_api->uploadFile(path_to_file, file, storage).get();
-
-    // Check for errors
-    assert(!res->errorsIsSet());
-
-    utility::string_t result_name = _XPLATSTR("putConvertHtmlToPdf.pdf");
-
-    // Path to file in the storage for save result
-    utility::string_t  result_file = folder + _XPLATSTR("/") + result_name;
-
-    // Parameters for conversion
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-
-    // Convert html file in the storage to pdf and save to the storage
-    auto result = api->putConvertDocumentToPdf(name, result_file, 
-        width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage).get();
-
-    // Check exist file
-    boost::optional<utility::string_t> versionId = std::wstring(_XPLATSTR(""));
-    auto result_exist = storage_api->objectExists(result_file, versionId, storage).get();
-
-    assert(result_exist->isExists());
-    assert(!result_exist->isFolder());
-
-    // Download file from storage
-    auto result_download = storage_api->downloadFile(result_file, versionId, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data(result_name, std::ios::out | std::ios::binary);
-    result_download.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="putConvertDocumentToXps"></a>
-### **putConvertDocumentToXps**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> putConvertDocumentToXps(
->        utility::string_t name,                      // Document name(html, epub, svg formats).
->        utility::string_t outPath,                   // Full resulting filename (ex. /folder1/folder2/result.xps)
->        boost::optional<int32_t> width,              // Resulting document page width in points (1/96 inch). (optional)
->        boost::optional<int32_t> height,             // Resulting document page height in points (1/96 inch). (optional)
->        boost::optional<int32_t> leftMargin,         // Left resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> rightMargin,        // Right resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> topMargin,          // Top resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<int32_t> bottomMargin,       // Bottom resulting document page margin in points (1/96 inch). (optional)
->        boost::optional<utility::string_t> folder,   // The source document folder. (optional)
->        boost::optional<utility::string_t> storage); // The source and resulting document storage. (optional)
-
-Converts the HTML, EPUB, SVG document (located on storage) to XPS and uploads resulting file to storage.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get current directory
-    std::string cur_dir(argv[0]);
-    int pos = cur_dir.find_last_of("/\\");
-    cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
-    std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
-	
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
+    utility::string_t src = w_cur_dir + _XPLATSTR("test.html");
+    utility::string_t dst = w_cur_dir + _XPLATSTR("result.jpeg");
     
-	// Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
-
-    // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
-
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
-
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
-
-    // Prepare file stream to upload
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
-
-    // Path to file in the storage
-    utility::string_t path_to_file = folder + _XPLATSTR("/") + name;
-
-    // Upload file to the storage
-    auto res = storage_api->uploadFile(path_to_file, file, storage).get();
-
-    // Check for errors
-    assert(!res->errorsIsSet());
-
-    utility::string_t result_name = _XPLATSTR("putConvertHtmlToXps.xps");
-
-    // Path to file in the storage for save result
-    utility::string_t  result_file = folder + _XPLATSTR("/") + result_name;
-
-    // Parameters for conversion
-    boost::optional<int32_t> width = 800;
-    boost::optional<int32_t> height = 1000;
-    boost::optional<int32_t> leftMargin = 20;
-    boost::optional<int32_t> rightMargin = 20;
-    boost::optional<int32_t> topMargin = 20;
-    boost::optional<int32_t> bottomMargin = 20;
-
-    // Convert html file in the storage to xps and save to the storage
-    auto result = api->putConvertDocumentToXps(name, result_file,
-        width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage).get();
-
-    // Check exist file
-    boost::optional<utility::string_t> versionId = std::wstring(_XPLATSTR(""));
-    auto result_exist = storage_api->objectExists(result_file, versionId, storage).get();
-
-    assert(result_exist->isExists());
-    assert(!result_exist->isFolder());
-
-    // Download file from storage
-    auto result_download = storage_api->downloadFile(result_file, versionId, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data(result_name, std::ios::out | std::ios::binary);
-    result_download.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
-}
-```
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-
-<a name="getConvertDocumentToMHTMLByUrl"></a>
-### **getConvertDocumentToMHTMLByUrl**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> getConvertDocumentToMHTMLByUrl(
->        utility::string_t sourceUrl); // Source page URL.
-
-Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
-
-[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
-
-### Example
-```code
-#include <AsposeHtmlCloud.h>
-
-using namespace com::aspose::api;
-
-int main(int argc, char* argv[])
-{
-    // Get keys from aspose site.
-    // There is free quota available. 
-    // For more details, see https://purchase.aspose.cloud/pricing
-    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
-    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
+    // Set options for conversion
+    std::shared_ptr<ConversionOptions> opts = std::make_shared<ConversionOptions>();
+    opts->setWidth(800)
+        ->setHeight(600)
+        ->setLeftMargin(10)
+        ->setRightMargin(10)
+        ->setTopMargin(10)
+        ->setBottomMargin(10);
     
-    // Create configuration for authorization
-    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
-
-    // Create client from configuration
-    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
-
-    // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    utility::string_t sourceUrl = _XPLATSTR("https://stallman.org/articles/anonymous-payments-thru-phones.html");
-    utility::string_t result_name = _XPLATSTR("ConvertHtmlToMhtmlByUrl.mht");
-
-    // Convert html by url to mhtml file and return result in body
-    auto result = api->getConvertDocumentToMHTMLByUrl(sourceUrl).get();
-
-    // Save result to files
-    std::ofstream saved_data(result_name, std::ios::out | std::ios::binary);
-    result.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
+    //Conversion
+    auto result = api->convertLocalToLocal(src, dst, opts);
+    
+    // Check the result file
+    auto re = result->getFile();
+    std::ifstream f(re.c_str());
+    if(!f.good())
+    {
+        throw std::runtime_error("Conversion failed");
+    }
 }
 ```
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
 
-<a name="getConvertDocumentToMarkdown"></a>
-### **getConvertDocumentToMarkdown**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> getConvertDocumentToMarkdown(
->         utility::string_t name,                      // Document name.
->         boost::optional<bool> useGit,                // Use Git Markdown flavor to save. (optional, default to false)
->         boost::optional<utility::string_t> folder,   // Source document folder. (optional)
->         boost::optional<utility::string_t> storage); // Source document storage. (optional)
+## **convertLocalToStorage**
 
-Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+```cpp
+    /// <summary>
+    /// Convert the HTML or EPUB document from the local file to the storage.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="src">Full path to the source file.</param>
+    /// <param name="dst">Path to the result file in the storage.</param>
+    /// <param name="storage">User's storage name.</param>
+    /// <param name="options">Options for conversion.</param>
+    /// <param name="width">Resulting image width in pixels. (optional)</param>
+    /// <param name="height">Resulting image height in pixels. (optional)</param>
+    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
+    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
+    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
+    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertLocalToStorage(
+    const utility::string_t& src,
+    const utility::string_t& dst,
+    const boost::optional<utility::string_t> storage = boost::none,
+    const std::shared_ptr<ConversionOptions> options = nullptr
+    ) const;
+```
+
+Convert the HTML or EPUB document from the local file to the storage.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
 ### Example
-```code
+```cpp
 #include <AsposeHtmlCloud.h>
 
 using namespace com::aspose::api;
+
 
 int main(int argc, char* argv[])
 {
@@ -1250,11 +151,12 @@ int main(int argc, char* argv[])
     // Get keys from aspose site.
     // There is free quota available. 
     // For more details, see https://purchase.aspose.cloud/pricing
+
     const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
     const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
+    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
     const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-    
+
     // Create configuration for authorization
     std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
 
@@ -1262,61 +164,291 @@ int main(int argc, char* argv[])
     std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
 
     // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
-
+    std::shared_ptr<ConversionApi> api = std::make_shared<ConversionApi>(apiClient);
+ 
     // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
+    utility::string_t src = w_cur_dir + _XPLATSTR("test.html");
+    utility::string_t dst = _XPLATSTR("FolderInStorage/result.pdf");
+    
+    // Set options for conversion
+    std::shared_ptr<ConversionOptions> opts = std::make_shared<ConversionOptions>();
+    opts->setWidth(800)
+        ->setHeight(600)
+        ->setLeftMargin(10)
+        ->setRightMargin(10)
+        ->setTopMargin(10)
+        ->setBottomMargin(10);
 
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
+    utility::string_t storage = _XPLATSTR("");
 
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
+    //Conversion
+    auto result = api->convertLocalToStorage(src, dst, storage, opts);
+    
+    // Check the result file
+ 
+    // Create StorageApi
+    std::shared_ptr<StorageApi> storage_api = std::make_shared<StorageApi>(apiClient);
+    
+    boost::optional<utility::string_t> versionId = _XPLATSTR("");
+    
+    // Result exists checking.
+    auto result_exist = storage_api->objectExists(result->getFile(), versionId, storage).get();
 
-    // Prepare file stream to upload
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
+    if(!result_exist->isExists())
+    {
+        throw std::runtime_error("Conversion failed");
+    }
+}
+```
+[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
-    // Path to file in the storage
-    utility::string_t path_to_file = folder + _XPLATSTR("/") + name;
+## **convertStorageToLocal**
 
+```cpp
+    /// <summary>
+    /// Convert the HTML or EPUB document from the storage to the local file.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="src">Path to the source file in the storage.</param>
+    /// <param name="dst">Full path to the result file in the local disk.</param>
+    /// <param name="storage">User's storage name.</param>
+    /// <param name="options">Options for conversion.</param>
+    /// <param name="width">Resulting image width in pixels. (optional)</param>
+    /// <param name="height">Resulting image height in pixels. (optional)</param>
+    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
+    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
+    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
+    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertStorageToLocal(
+    const utility::string_t& src,
+    const utility::string_t& dst,
+    const boost::optional<utility::string_t> storage = boost::none,
+    const std::shared_ptr<ConversionOptions> options = nullptr
+    ) const;
+```
+
+Convert the HTML or EPUB document from the storage to the local file.
+
+[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
+
+### Example
+```cpp
+#include <AsposeHtmlCloud.h>
+
+using namespace com::aspose::api;
+
+
+int main(int argc, char* argv[])
+{
+    // Get current directory
+    std::string cur_dir(argv[0]);
+    int pos = cur_dir.find_last_of("/\\");
+    cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
+    std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
+
+    // Get keys from aspose site.
+    // There is free quota available. 
+    // For more details, see https://purchase.aspose.cloud/pricing
+
+    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
+    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
+
+    // Create configuration for authorization
+    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
+
+    // Create client from configuration
+    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
+
+    // Create ConversionApi
+    std::shared_ptr<ConversionApi> api = std::make_shared<ConversionApi>(apiClient);
+ 
+    // File name for conversion
+    utility::string_t src = w_cur_dir + _XPLATSTR("test.html");
+    utility::string_t dst = w_cur_dir + _XPLATSTR("result.jpeg");
+    
+    // Set options for conversion
+    std::shared_ptr<ConversionOptions> opts = std::make_shared<ConversionOptions>();
+    opts->setWidth(800)
+        ->setHeight(600)
+        ->setLeftMargin(10)
+        ->setRightMargin(10)
+        ->setTopMargin(10)
+        ->setBottomMargin(10);
+    
     // Upload file to the storage
-    auto res = storage_api->uploadFile(path_to_file, file, storage).get();
+    // Create StorageApi
+    std::shared_ptr<StorageApi> storage_api = std::make_shared<StorageApi>(apiClient);
 
-    // Check for errors
-    assert(!res->errorsIsSet());
+    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, "test.html"));
+    utility::string_t folder = _XPLATSTR("/");
+    boost::optional<utility::string_t> storage = boost::none;
+    
+    auto res = storage_api->uploadFile(folder, file, storage).get();
 
-    // Convert html file in the storage to markdown and return markdown file
-    auto result = api->getConvertDocumentToMarkdown(name, false, folder, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data("getConvertDocumentToMarkdown.md", std::ios::out | std::ios::binary);
-    result.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
+    if(res->errorsIsSet())
+    {
+        throw std::runtime_error("Unable upload file to the storage");
+    }
+    
+    //Conversion
+    auto result = api->convertStorageToLocal(src, dst, storage, opts);
+    
+    // Check the result file
+    auto re = result->getFile();
+    std::ifstream f(re.c_str());
+    if(!f.good())
+    {
+        throw std::runtime_error("Conversion failed");
+    }
 }
 ```
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
 
-<a name="postConvertDocumentInRequestToMarkdown"></a>
-### **postConvertDocumentInRequestToMarkdown**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> postConvertDocumentInRequestToMarkdown(
->        utility::string_t outPath,                   // Full resulting file path in the storage (ex. /folder1/folder2/result.md)
->        std::shared_ptr<HttpContent> file,           // A file to be converted.
->        boost::optional<bool> useGit,                // Use Git Markdown flavor to save. (optional, default to false)
->        boost::optional<utility::string_t> storage); // The source and resulting document storage. (optional)
+## **convertStorageToStorage**
 
-Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+```cpp
+    /// <summary>
+    /// Convert the HTML or EPUB document from the storage to the storage.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="src">Path to the source file in the storage.</param>
+    /// <param name="dst">Path to the result file in the storage.</param>
+    /// <param name="storage">User's storage name.</param>
+    /// <param name="options">Options for conversion.</param>
+    /// <param name="width">Resulting image width in pixels. (optional)</param>
+    /// <param name="height">Resulting image height in pixels. (optional)</param>
+    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
+    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
+    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
+    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertStorageToStorage(
+    const utility::string_t& src,
+    const utility::string_t& dst,
+    const boost::optional<utility::string_t> storage = boost::none,
+    const std::shared_ptr<ConversionOptions> options = nullptr
+    ) const;
+```
+
+Convert the HTML or EPUB document from the storage to the storage.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
 ### Example
-```code
+```cpp
+#include <AsposeHtmlCloud.h>
+
+using namespace com::aspose::api;
+
+
+int main(int argc, char* argv[])
+{
+    // Get current directory
+    std::string cur_dir(argv[0]);
+    int pos = cur_dir.find_last_of("/\\");
+    cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
+    std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
+
+    // Get keys from aspose site.
+    // There is free quota available. 
+    // For more details, see https://purchase.aspose.cloud/pricing
+
+    const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+    const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
+    const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
+
+    // Create configuration for authorization
+    std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
+
+    // Create client from configuration
+    std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
+
+    // Create ConversionApi
+    std::shared_ptr<ConversionApi> api = std::make_shared<ConversionApi>(apiClient);
+ 
+    // File name for conversion
+    utility::string_t src = w_cur_dir + _XPLATSTR("test.html");
+    utility::string_t dst = w_cur_dir + _XPLATSTR("result.jpeg");
+    
+    // Set options for conversion
+    std::shared_ptr<ConversionOptions> opts = std::make_shared<ConversionOptions>();
+    opts->setWidth(800)
+        ->setHeight(600)
+        ->setLeftMargin(10)
+        ->setRightMargin(10)
+        ->setTopMargin(10)
+        ->setBottomMargin(10);
+    
+    // Upload file to the storage
+    // Create StorageApi
+    std::shared_ptr<StorageApi> storage_api = std::make_shared<StorageApi>(apiClient);
+
+    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, "test.html"));
+    utility::string_t folder = _XPLATSTR("/");
+    boost::optional<utility::string_t> storage = boost::none;
+    
+    auto res = storage_api->uploadFile(folder, file, storage).get();
+
+    if(res->errorsIsSet())
+    {
+        throw std::runtime_error("Unable upload file to the storage");
+    }
+    
+    //Conversion
+    auto result = api->convertStorageToStorage(src, dst, storage, opts);
+    
+    // Check the result file
+    boost::optional<utility::string_t> versionId = _XPLATSTR("");
+    
+    // Result exists checking.
+    auto result_exist = storage_api->objectExists(result->getFile(), versionId, storage).get();
+
+    if(!result_exist->isExists())
+    {
+        throw std::runtime_error("Conversion failed");
+    }
+}
+```
+[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
+
+## **convertUrlToLocal**
+
+```cpp
+    /// <summary>
+    /// Convert the website to the local file.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="src">Url of the website.</param>
+    /// <param name="dst">Path to the result file in the local disk.</param>
+    /// <param name="options">Options for conversion.</param>
+    /// <param name="width">Resulting image width in pixels. (optional)</param>
+    /// <param name="height">Resulting image height in pixels. (optional)</param>
+    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
+    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
+    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
+    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertUrlToLocal(
+    const utility::string_t& src,
+    const utility::string_t& dst,
+    const std::shared_ptr<ConversionOptions> options = nullptr
+    ) const;
+```
+
+Convert the website to the local file.
+
+[&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
+
+### Example
+```cpp
 #include <AsposeHtmlCloud.h>
 
 using namespace com::aspose::api;
@@ -1332,83 +464,85 @@ int main(int argc, char* argv[])
     // Get keys from aspose site.
     // There is free quota available. 
     // For more details, see https://purchase.aspose.cloud/pricing
+
     const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
     const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
+    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
     const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-    
-	// Create configuration for authorization
+
+    // Create configuration for authorization
     std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration(clientId, clientSecret, basePath, authPath));
 
     // Create client from configuration
     std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
 
     // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
-
-    // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
-
+    std::shared_ptr<ConversionApi> api = std::make_shared<ConversionApi>(apiClient);
+ 
     // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
-
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
-
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
-
-    // Prepare file stream to upload
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
-
-    utility::string_t result_name = _XPLATSTR("postConvertDocumentInRequestToMarkdown.md");
-
-    // Path to file in the storage for save result
-    utility::string_t path_to_result = folder + _XPLATSTR("/") + result_name;
-
-    // Convert html file in request to markdown and save result in the storage
-    auto result = api->postConvertDocumentInRequestToMarkdown(path_to_result, file, false, storage).get();
-
-    // Check exist file
-    boost::optional<utility::string_t> versionId = std::wstring(_XPLATSTR(""));
-    auto result_exist = storage_api->objectExists(path_to_result, versionId, storage).get();
-
-    assert(result_exist->isExists());
-    assert(!result_exist->isFolder());
-
-    // Download file from storage
-    auto result_download = storage_api->downloadFile(path_to_result, versionId, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data(result_name, std::ios::out | std::ios::binary);
-    result_download.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
+    utility::string_t src = _XPLATSTR("https://stallman.org/articles/anonymous-payments-thru-phones.html");
+    utility::string_t dst = w_cur_dir + _XPLATSTR("result.jpeg");
+    
+    // Set options for conversion
+    std::shared_ptr<ConversionOptions> opts = std::make_shared<ConversionOptions>();
+    opts->setWidth(800)
+        ->setHeight(600)
+        ->setLeftMargin(10)
+        ->setRightMargin(10)
+        ->setTopMargin(10)
+        ->setBottomMargin(10);
+    
+    //Conversion
+    auto result = api->convertUrlToLocal(src, dst, opts);
+    
+    // Check the result file
+    auto re = result->getFile();
+    std::ifstream f(re.c_str());
+    if(!f.good())
+    {
+        throw std::runtime_error("Conversion failed");
+    }
 }
 ```
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
+## **convertUrlToStorage**
 
-<a name="putConvertDocumentToMarkdown"></a>
-### **putConvertDocumentToMarkdown**
->     ASPOSE_DLL_EXPORT pplx::task<HttpContent> putConvertDocumentToMarkdown(
->        utility::string_t name,                      // Document name.
->        utility::string_t outPath,                   // Full resulting file path in the storage (ex. /folder1/folder2/result.md)
->        boost::optional<bool> useGit,                // Use Git Markdown flavor to save. (optional, default to false)
->        boost::optional<utility::string_t> folder,   // The source document folder. (optional)
->        boost::optional<utility::string_t> storage); // The source and resulting document storage. (optional)
+```cpp
+    /// <summary>
+    /// Convert the website to the storage.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="src">Url of the website.</param>
+    /// <param name="dst">Path to the result file in the storage.</param>
+    /// <param name="storage">User's storage name.</param>
+    /// <param name="options">Options for conversion.</param>
+    /// <param name="width">Resulting image width in pixels. (optional)</param>
+    /// <param name="height">Resulting image height in pixels. (optional)</param>
+    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
+    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
+    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
+    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertUrlToStorage(
+    const utility::string_t& src,
+    const utility::string_t& dst,
+    const boost::optional<utility::string_t> storage = boost::none,
+    const std::shared_ptr<ConversionOptions> options = nullptr
+    ) const;
+```
 
-Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+Convert the website to the storage.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
 ### Example
-```code
+```cpp
 #include <AsposeHtmlCloud.h>
 
 using namespace com::aspose::api;
+
 
 int main(int argc, char* argv[])
 {
@@ -1421,9 +555,10 @@ int main(int argc, char* argv[])
     // Get keys from aspose site.
     // There is free quota available. 
     // For more details, see https://purchase.aspose.cloud/pricing
+
     const utility::string_t clientId = _XPLATSTR("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
     const utility::string_t clientSecret = _XPLATSTR("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v3.0");
+    const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
     const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
 
     // Create configuration for authorization
@@ -1433,55 +568,38 @@ int main(int argc, char* argv[])
     std::shared_ptr<ApiClient> apiClient(new ApiClient(apiConfig));
 
     // Create ConversionApi
-    ConversionApi* api = new ConversionApi(apiClient);
+    std::shared_ptr<ConversionApi> api = std::make_shared<ConversionApi>(apiClient);
+ 
+    // File name for conversion
+    utility::string_t src = _XPLATSTR("https://stallman.org/articles/anonymous-payments-thru-phones.html");
+    utility::string_t dst = w_cur_dir + _XPLATSTR("result.jpeg");
+    
+    // Set options for conversion
+    std::shared_ptr<ConversionOptions> opts = std::make_shared<ConversionOptions>();
+    opts->setWidth(800)
+        ->setHeight(600)
+        ->setLeftMargin(10)
+        ->setRightMargin(10)
+        ->setTopMargin(10)
+        ->setBottomMargin(10);
+    
+    //Conversion
+    auto result = api->convertUrlToStorage(src, dst, storage, opts);
 
     // Create StorageApi
-    StorageApi* storage_api = new StorageApi(apiClient);
+    std::shared_ptr<StorageApi> storage_api = std::make_shared<StorageApi>(apiClient);
 
-    // File name for conversion
-    utility::string_t name = _XPLATSTR("test.html");
-
-    // Folder name in the storage (should already exist)
-    utility::string_t folder = _XPLATSTR("HtmlTestDoc");
-
-    // Storage, received at registration, default is none
-    boost::optional<utility::string_t> storage = boost::none;
-
-    // Prepare file stream to upload
-    std::shared_ptr<HttpContent> file(new HttpContent(w_cur_dir, name));
-
-    // Path to file in the storage
-    utility::string_t path_to_file = folder + _XPLATSTR("/") + name;
-
-    // Upload file to the storage
-    auto res = storage_api->uploadFile(path_to_file, file, storage).get();
-
-    // Check for errors
-    assert(!res->errorsIsSet());
-
-    auto result_name = _XPLATSTR("putConvertDocumentToMarkdown.md");
-    auto result_path = folder + _XPLATSTR("/") + result_name;
-
-    // Convert html file in the storage to markdown and save result in the storage
-    auto result = api->putConvertDocumentToMarkdown(name, result_path, false, folder, storage).get();
+    // Check the result file
+    boost::optional<utility::string_t> versionId = _XPLATSTR("");
     
-    // Check exist file
-    boost::optional<utility::string_t> versionId = std::wstring(_XPLATSTR(""));
-    auto result_exist = storage_api->objectExists(result_path, versionId, storage).get();
+    // Result exists checking.
+    auto result_exist = storage_api->objectExists(result->getFile(), versionId, storage).get();
 
-    assert(result_exist->isExists());
-    assert(!result_exist->isFolder());
-
-    // Download file from storage
-    auto result_download = storage_api->downloadFile(result_path, versionId, storage).get();
-
-    // Save result to files
-    std::ofstream saved_data(result_name, std::ios::out | std::ios::binary);
-    result_download.writeTo(saved_data);
-    saved_data.close();
-
-    delete api;
-    delete storage_api;
+    if(!result_exist->isExists())
+    {
+        throw std::runtime_error("Conversion failed");
+    }
 }
 ```
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
+

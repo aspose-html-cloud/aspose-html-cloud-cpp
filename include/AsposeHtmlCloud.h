@@ -13,11 +13,7 @@
 #include "OAuth2Token.h"
 #include "OctetStreamBody.h"
 #include "api/ConversionApi.h"
-#include "api/DocumentApi.h"
-#include "api/ImportApi.h"
-#include "api/SeoApi.h"
 #include "api/StorageApi.h"
-#include "api/TemplateMergeApi.h"
 #include "model/DiscUsage.h"
 #include "model/Error.h"
 #include "model/ErrorDetails.h"
@@ -29,5 +25,6 @@
 #include "model/ObjectExist.h"
 #include "model/StorageExist.h"
 #include "model/StorageFile.h"
-
+#include "model/ConversionOptions.h"
+#include "model/ConversionRequest.h"
 #endif //__ASPOSE_HTML_CLOUD_H__
