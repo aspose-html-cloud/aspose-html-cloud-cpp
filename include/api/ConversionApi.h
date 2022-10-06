@@ -31,12 +31,12 @@ public:
     /// <param name="src">Full path to the source file.</param>
     /// <param name="dst">Full path to the result file.</param>
     /// <param name="options">Options for conversion.</param>
-    /// <param name="width">Resulting image width in pixels. (optional)</param>
-    /// <param name="height">Resulting image height in pixels. (optional)</param>
-    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
-    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
-    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
-    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    /// <param name="width">Resulting width(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="height">Resulting height(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="leftMargin">Left margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="rightMargin">Right margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="topMargin">Top margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="bottomMargin">Bottom margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
     ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertLocalToLocal(
         const utility::string_t& src,
         const utility::string_t& dst,
@@ -53,12 +53,12 @@ public:
     /// <param name="dst">Path to the result file in the storage.</param>
     /// <param name="storage">User's storage name.</param>
     /// <param name="options">Options for conversion.</param>
-    /// <param name="width">Resulting image width in pixels. (optional)</param>
-    /// <param name="height">Resulting image height in pixels. (optional)</param>
-    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
-    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
-    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
-    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    /// <param name="width">Resulting width(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="height">Resulting height(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="leftMargin">Left margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="rightMargin">Right margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="topMargin">Top margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="bottomMargin">Bottom margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
     ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertLocalToStorage(
         const utility::string_t& src,
         const utility::string_t& dst,
@@ -75,12 +75,12 @@ public:
     /// <param name="dst">Full path to the result file in the local disk.</param>
     /// <param name="storage">User's storage name.</param>
     /// <param name="options">Options for conversion.</param>
-    /// <param name="width">Resulting image width in pixels. (optional)</param>
-    /// <param name="height">Resulting image height in pixels. (optional)</param>
-    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
-    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
-    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
-    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    /// <param name="width">Resulting width(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="height">Resulting height(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="leftMargin">Left margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="rightMargin">Right margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="topMargin">Top margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="bottomMargin">Bottom margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
     ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertStorageToLocal(
         const utility::string_t& src,
         const utility::string_t& dst,
@@ -98,12 +98,12 @@ public:
     /// <param name="dst">Path to the result file in the storage.</param>
     /// <param name="storage">User's storage name.</param>
     /// <param name="options">Options for conversion.</param>
-    /// <param name="width">Resulting image width in pixels. (optional)</param>
-    /// <param name="height">Resulting image height in pixels. (optional)</param>
-    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
-    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
-    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
-    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    /// <param name="width">Resulting width(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="height">Resulting height(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="leftMargin">Left margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="rightMargin">Right margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="topMargin">Top margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="bottomMargin">Bottom margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
     ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertStorageToStorage(
         const utility::string_t& src,
         const utility::string_t& dst,
@@ -120,12 +120,12 @@ public:
     /// <param name="src">Url of the website.</param>
     /// <param name="dst">Path to the result file in the local disk.</param>
     /// <param name="options">Options for conversion.</param>
-    /// <param name="width">Resulting image width in pixels. (optional)</param>
-    /// <param name="height">Resulting image height in pixels. (optional)</param>
-    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
-    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
-    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
-    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    /// <param name="width">Resulting width(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="height">Resulting height(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="leftMargin">Left margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="rightMargin">Right margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="topMargin">Top margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="bottomMargin">Bottom margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
     ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertUrlToLocal(
         const utility::string_t& src,
         const utility::string_t& dst,
@@ -142,12 +142,12 @@ public:
     /// <param name="dst">Path to the result file in the storage.</param>
     /// <param name="storage">User's storage name.</param>
     /// <param name="options">Options for conversion.</param>
-    /// <param name="width">Resulting image width in pixels. (optional)</param>
-    /// <param name="height">Resulting image height in pixels. (optional)</param>
-    /// <param name="leftMargin">Left resulting image margin in pixels. (optional)</param>
-    /// <param name="rightMargin">Right resulting image margin in pixels. (optional)</param>
-    /// <param name="topMargin">Top resulting image margin in pixels. (optional)</param>
-    /// <param name="bottomMargin">Bottom resulting image margin in pixels. (optional)</param>
+    /// <param name="width">Resulting width(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="height">Resulting height(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="leftMargin">Left margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="rightMargin">Right margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="topMargin">Top margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
+    /// <param name="bottomMargin">Bottom margin(for images in pixels, for PDF, XPS, DOCX in inches). (optional)</param>
     ASPOSE_DLL_EXPORT std::shared_ptr<ConversionResult> convertUrlToStorage(
         const utility::string_t& src,
         const utility::string_t& dst,

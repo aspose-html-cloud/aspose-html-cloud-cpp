@@ -66,12 +66,12 @@ int main(int argc, char* argv[])
     
     // Set options for conversion
     std::shared_ptr<ConversionOptions> opts = std::make_shared<ConversionOptions>();
-    opts->setWidth(800)
-        ->setHeight(600)
-        ->setLeftMargin(10)
-        ->setRightMargin(10)
-        ->setTopMargin(10)
-        ->setBottomMargin(10);
+    opts->setWidth(800)         // Size in pixels for images, for output formats PDF, XPS, DOCX - in inches.
+        ->setHeight(600)        // Size in pixels for images, for output formats PDF, XPS, DOCX - in inches.
+        ->setLeftMargin(10)     // Size in pixels for images, for output formats PDF, XPS, DOCX - in inches.
+        ->setRightMargin(10)    // Size in pixels for images, for output formats PDF, XPS, DOCX - in inches.
+        ->setTopMargin(10)      // Size in pixels for images, for output formats PDF, XPS, DOCX - in inches.
+        ->setBottomMargin(10);  // Size in pixels for images, for output formats PDF, XPS, DOCX - in inches.
     
     //Conversion
     auto result = api->convertLocalToLocal(src, dst, opts);

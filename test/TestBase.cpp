@@ -35,14 +35,18 @@ TestBase::~TestBase()
 {
 }
 
-const utility::string_t TestBase::basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
-const utility::string_t TestBase::authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-const utility::string_t TestBase::clientId = _XPLATSTR("2225baa2-097b-4731-9831-d0d56c28230f");
-const utility::string_t TestBase::clientSecret = _XPLATSTR("c8dda7d6445d82635b8797d1c8edd153");
+//const utility::string_t TestBase::basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
+//const utility::string_t TestBase::authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
+//const utility::string_t TestBase::clientId = _XPLATSTR("2225baa2-097b-4731-9831-d0d56c28230f");
+//const utility::string_t TestBase::clientSecret = _XPLATSTR("c8dda7d6445d82635b8797d1c8edd153");
 
+const utility::string_t TestBase::basePath = _XPLATSTR("http://localhost:5000/v4.0");
+const utility::string_t TestBase::authPath = _XPLATSTR("https://api-qa.aspose.cloud/connect/token");
+const utility::string_t TestBase::clientId = _XPLATSTR("html.cloud");
+const utility::string_t TestBase::clientSecret = _XPLATSTR("html.cloud");
 
-const utility::string_t TestBase::testSource = _XPLATSTR("e:\\WORK\\HTML\\SDK_NEW\\CppSDK\\testsource\\");
-const utility::string_t TestBase::testResult = _XPLATSTR("e:\\WORK\\HTML\\SDK_NEW\\CppSDK\\testresult\\");
+const utility::string_t TestBase::testSource = _XPLATSTR("e:\\WORK\\HTML\\SDK_READY\\aspose-html-cloud-cpp\\testsource\\");
+const utility::string_t TestBase::testResult = _XPLATSTR("e:\\WORK\\HTML\\SDK_READY\\aspose-html-cloud-cpp\\testresult\\");
 
 bool TestBase::save_to_file(com::aspose::model::HttpContent content, utility::string_t name)
 {

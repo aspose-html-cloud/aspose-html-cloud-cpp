@@ -24,23 +24,23 @@ public:
     ASPOSE_DLL_EXPORT void toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) const override;
     ASPOSE_DLL_EXPORT void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
-    ASPOSE_DLL_EXPORT ConversionOptions* setWidth(int value);
-    ASPOSE_DLL_EXPORT ConversionOptions* setHeight(int value);
-    ASPOSE_DLL_EXPORT ConversionOptions* setLeftMargin(int value);
-    ASPOSE_DLL_EXPORT ConversionOptions* setRightMargin(int value);
-    ASPOSE_DLL_EXPORT ConversionOptions* setTopMargin(int value);
-    ASPOSE_DLL_EXPORT ConversionOptions* setBottomMargin(int value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setWidth(double value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setHeight(double value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setLeftMargin(double value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setRightMargin(double value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setTopMargin(double value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setBottomMargin(double value);
 
 
 
 
 private:
-    boost::optional<int32_t> m_width;
-    boost::optional<int32_t> m_height;
-    boost::optional<int32_t> m_leftMargin;
-    boost::optional<int32_t> m_rightMargin;
-    boost::optional<int32_t> m_topMargin;
-    boost::optional<int32_t> m_bottomMargin;
+    boost::optional<double> m_width;
+    boost::optional<double> m_height;
+    boost::optional<double> m_leftMargin;
+    boost::optional<double> m_rightMargin;
+    boost::optional<double> m_topMargin;
+    boost::optional<double> m_bottomMargin;
 
 
 };

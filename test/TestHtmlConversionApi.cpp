@@ -41,12 +41,12 @@ public:
     boost::optional<utility::string_t> versionId;
 
     utility::string_t sourceUrl;
-    int32_t width;
-    int32_t height;
-    int32_t leftMargin;
-    int32_t rightMargin;
-    int32_t topMargin;
-    int32_t bottomMargin;
+    double width;
+    double height;
+    double leftMargin;
+    double rightMargin;
+    double topMargin;
+    double bottomMargin;
 
 protected:
 
@@ -93,6 +93,32 @@ TEST_F(TestHtmlConversionApi, /*DISABLED_*/testLocalToLocalDocuments)
         utility::string_t dst = testResult + L"testLocToLocDoc." + formats[i];
 
         auto result = api->convertLocalToLocal(src, dst);
+        auto re = result->getFile();
+
+        std::ifstream f(re.c_str());
+        ASSERT_TRUE(f.good());
+    }
+}
+
+TEST_F(TestHtmlConversionApi, /*DISABLED_*/testLocalToLocalDocumentsWithOpts)
+{
+
+    utility::string_t formats[] = { L"pdf", L"xps", L"docx" };
+    utility::string_t src = testSource + name;
+
+    for (int i = 0; i < sizeof(formats) / sizeof(formats[0]); ++i)
+    {
+        utility::string_t dst = testResult + L"testLocToLocDocWithOpts." + formats[i];
+
+        std::shared_ptr<ConversionOptions> opts_A4 = std::make_shared<ConversionOptions>();
+        opts_A4->setWidth(8.3)
+            ->setHeight(11.7)
+            ->setLeftMargin(0.2)
+            ->setRightMargin(0.2)
+            ->setTopMargin(0.2)
+            ->setBottomMargin(0.2);
+
+        auto result = api->convertLocalToLocal(src, dst, opts_A4);
         auto re = result->getFile();
 
         std::ifstream f(re.c_str());

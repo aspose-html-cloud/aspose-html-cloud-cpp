@@ -92,37 +92,37 @@ void ConversionOptions::fromMultiPart(std::shared_ptr<MultipartFormData> multipa
 {
 }
 
-ConversionOptions* ConversionOptions::setWidth(int value)
+ConversionOptions* ConversionOptions::setWidth(double value)
 {
     m_width = value;
     return this;
 }
 
-ConversionOptions* ConversionOptions::setHeight(int value) 
+ConversionOptions* ConversionOptions::setHeight(double value)
 {
     m_height = value;
     return this;
 }
 
-ConversionOptions* ConversionOptions::setLeftMargin(int value) 
+ConversionOptions* ConversionOptions::setLeftMargin(double value)
 {
     m_leftMargin = value;
     return this;
 }
 
-ConversionOptions* ConversionOptions::setRightMargin(int value)
+ConversionOptions* ConversionOptions::setRightMargin(double value)
 {
     m_rightMargin = value;
     return this;
 }
 
-ConversionOptions* ConversionOptions::setTopMargin(int value)
+ConversionOptions* ConversionOptions::setTopMargin(double value)
 {
     m_topMargin = value;
     return this;
 }
 
-ConversionOptions* ConversionOptions::setBottomMargin(int value)
+ConversionOptions* ConversionOptions::setBottomMargin(double value)
 {
     m_bottomMargin = value;
     return this;

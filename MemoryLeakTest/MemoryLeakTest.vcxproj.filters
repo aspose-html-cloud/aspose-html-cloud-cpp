@@ -20,9 +20,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="test.html">
       <Filter>Файлы ресурсов</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
