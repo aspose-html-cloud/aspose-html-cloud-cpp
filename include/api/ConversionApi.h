@@ -23,7 +23,7 @@ public:
     ASPOSE_DLL_EXPORT ~ConversionApi();
 
     /// <summary>
-    /// Convert the HTML or EPUB document from the local file to the local file.
+    /// Convert HTML, EPUB, Markdown, MHTML documents from the local file to the local file.
     /// </summary>
     /// <remarks>
     /// 
@@ -44,7 +44,7 @@ public:
     ) const;
 
     /// <summary>
-    /// Convert the HTML or EPUB document from the local file to the storage.
+    /// Convert HTML, EPUB, Markdown, MHTML documents from the local file to the storage.
     /// </summary>
     /// <remarks>
     /// 
@@ -66,7 +66,7 @@ public:
         const std::shared_ptr<ConversionOptions> options = nullptr
     ) const;
     /// <summary>
-    /// Convert the HTML or EPUB document from the storage to the local file.
+    /// Convert HTML, EPUB, Markdown, MHTML documents from the storage to the local file.
     /// </summary>
     /// <remarks>
     /// 
@@ -89,7 +89,7 @@ public:
     ) const;
 
     /// <summary>
-    /// Convert the HTML or EPUB document from the storage to the storage.
+    /// Convert HTML, EPUB, Markdown, MHTML documents from the storage to the storage.
     /// </summary>
     /// <remarks>
     /// 

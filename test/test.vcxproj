@@ -51,6 +51,8 @@
     <ClCompile Include="gtest_main.cc" />
     <ClCompile Include="JsonTests.cpp" />
     <ClCompile Include="TestHtmlConversionApi.cpp" />
+    <ClCompile Include="TestMarkdownConversionApi.cpp" />
+    <ClCompile Include="TestMhtmlConversionApi.cpp" />
     <ClCompile Include="TestStorageApi.cpp" />
     <ClCompile Include="TestBase.cpp" />
   </ItemGroup>

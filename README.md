@@ -3,7 +3,7 @@
 AsposeHtml - the C++ library for the Aspose.HTML Cloud API Reference
 
 - API version: 4.0
-- Package version: 22.9.1
+- Package version: 22.10.1
 
 ## Installation
 
@@ -12,7 +12,7 @@ Get ready package or build from source.
 ### Install from command line
 
 ```code
-PM> Install-Package Aspose.Html-Cloud.Cpp -Version 22.9.1
+PM> Install-Package Aspose.Html-Cloud.Cpp -Version 22.10.1
 ```
 
 ### Load from git
@@ -23,9 +23,11 @@ PM> Install-Package Aspose.Html-Cloud.Cpp -Version 22.9.1
 ## Getting Started
 To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cloud](https://www.aspose.cloud/) and lookup/create App Key and SID at [Cloud Dashboard](https://dashboard.aspose.cloud/#/apps). There is free quota available. For more details, see [Aspose Cloud Pricing](https://purchase.aspose.cloud/pricing).
 
-Possible conversions:
+### Possible conversions: 
 - HTML -> PDF, XPS, DOCX, MD, MHTML, JPEG, BMP, PNG, TIFF, GIF
 - EPUB -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
+- MD -> PDF, XPS, DOCX, HTML, MHTML, JPEG, BMP, PNG, TIFF, GIF
+- MHTML -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
 
 
 ```cpp
