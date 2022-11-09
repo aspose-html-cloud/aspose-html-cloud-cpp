@@ -30,6 +30,13 @@ public:
     ASPOSE_DLL_EXPORT ConversionOptions* setRightMargin(double value);
     ASPOSE_DLL_EXPORT ConversionOptions* setTopMargin(double value);
     ASPOSE_DLL_EXPORT ConversionOptions* setBottomMargin(double value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setJpegQuality(int value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setBackground(utility::string_t value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setUseGit(bool value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setErrorThreshold(double value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setMaxIteration(int value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setColorLimit(int value);
+    ASPOSE_DLL_EXPORT ConversionOptions* setLineWidth(double value);
 
 
 
@@ -41,8 +48,13 @@ private:
     boost::optional<double> m_rightMargin;
     boost::optional<double> m_topMargin;
     boost::optional<double> m_bottomMargin;
-
-
+    boost::optional<int> m_jpeg_quality;
+    boost::optional<utility::string_t> m_background;
+    boost::optional<bool> m_use_git;
+    boost::optional<double> m_error_threshold;
+    boost::optional<int> m_max_iterations;
+    boost::optional<int> m_colors_limit;
+    boost::optional<double> m_line_width;
 };
 
 

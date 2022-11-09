@@ -153,17 +153,25 @@ std::shared_ptr<ConversionResult> ConversionApi::convert(
         utility::string_t ext = src.substr(index + 1);
         std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
 
-        if (ext == _XPLATSTR("html") || ext == _XPLATSTR("htm"))
+        if (ext == _XPLATSTR("htm"))
         {
             inputFormat = _XPLATSTR("html");
         }
-        else if (ext == _XPLATSTR("mht") || ext == _XPLATSTR("mhtml"))
+        else if (ext == _XPLATSTR("mht"))
         {
             inputFormat = _XPLATSTR("mhtml");
         }
-        else if (ext == _XPLATSTR("xml") || ext == _XPLATSTR("xhtml"))
+        else if (ext == _XPLATSTR("xml"))
         {
             inputFormat = _XPLATSTR("xhtml");
+        }
+        else if (ext == _XPLATSTR("tif"))
+        {
+            inputFormat = _XPLATSTR("tiff");
+        }
+        else if (ext == _XPLATSTR("jpg"))
+        {
+            inputFormat = _XPLATSTR("jpeg");
         }
         else
         {

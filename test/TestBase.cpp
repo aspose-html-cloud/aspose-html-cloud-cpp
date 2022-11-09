@@ -45,8 +45,8 @@ const utility::string_t TestBase::authPath = _XPLATSTR("https://api-qa.aspose.cl
 const utility::string_t TestBase::clientId = _XPLATSTR("html.cloud");
 const utility::string_t TestBase::clientSecret = _XPLATSTR("html.cloud");
 
-const utility::string_t TestBase::testSource = _XPLATSTR("e:\\WORK\\HTML\\SDK_READY\\aspose-html-cloud-cpp\\testsource\\");
-const utility::string_t TestBase::testResult = _XPLATSTR("e:\\WORK\\HTML\\SDK_READY\\aspose-html-cloud-cpp\\testresult\\");
+const utility::string_t TestBase::testSource = _XPLATSTR("e:\\WORK\\HTML\\Cloud\\aspose-html-cloud-cpp\\testsource\\");
+const utility::string_t TestBase::testResult = _XPLATSTR("e:\\WORK\\HTML\\Cloud\\aspose-html-cloud-cpp\\testresult\\");
 
 bool TestBase::save_to_file(com::aspose::model::HttpContent content, utility::string_t name)
 {

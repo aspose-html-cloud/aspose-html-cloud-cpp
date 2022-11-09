@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>aspose.html.cloud.v143</id>
-    <version>22.10.1</version>
+    <version>22.11.1</version>
     <title>Aspose.Html.Cloud</title>
     <authors>Aspose</authors>
     <owners>Aspose</owners>
@@ -13,7 +13,7 @@
     <description>Aspose HTML SDK for C++ is a programming SDK that allows software developers to manipulate and convert HTML documents from within their own applications. A Wrapper of RESTful APIs, Aspose HTML SDK for C++ speeds up HTML programming and conversion.
 Aspose Html SDK for C++ is a cross-platform C++ library that enables your applications to perform a great range of html document processing tasks. With Aspose.Html C++ you can load, save and convert html and epub documents between the following formats: PDF, XPS, DOCX, MD, JPG, GIF, BMP, PDF, TIFF, MHTML.</description>
     <summary>SDK for conversion HTML and EPUB documents to PDF, XPS, DOCX, and image formats</summary>
-    <releaseNotes>Release of Aspose HTML SDK for .CPP SDK (v.22.10.1)Aspose HTML SDK for C++ is a programming SDK that allows software developers to manipulate and convert HTML documents from within their own applications. A Wrapper of RESTful APIs, Aspose HTML SDK for C++ speeds up HTML programming and conversion.
+    <releaseNotes>Release of Aspose HTML SDK for .CPP SDK (v.22.11.1)Aspose HTML SDK for C++ is a programming SDK that allows software developers to manipulate and convert HTML documents from within their own applications. A Wrapper of RESTful APIs, Aspose HTML SDK for C++ speeds up HTML programming and conversion.
 Aspose Html SDK for C++ is a cross-platform C++ library that enables your applications to perform a great range of html document processing tasks. With Aspose.Html C++ you can load, save and convert html and epub documents between the following formats: PDF, XPS, DOCX, MD, JPG, GIF, BMP, PDF, TIFF, MHTML. With Aspose.Html you can convert in html documents.
 
 Aspose Html SDK for C++ is well documented to help you create your solutions on different platforms.

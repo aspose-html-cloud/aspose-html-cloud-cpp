@@ -3,6 +3,8 @@
 - EPUB -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
 - MD -> PDF, XPS, DOCX, HTML, MHTML, JPEG, BMP, PNG, TIFF, GIF
 - MHTML -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
+- SVG -> PDF, XPS, JPEG, BMP, PNG, TIFF, GIF
+- JPEG, BMP, PNG, TIFF, GIF -> SVG
 
 
 <a name="ConversionApi"></a>
@@ -10,20 +12,20 @@
 
 All URIs are relative to *https://api.aspose.cloud/v4.0*
 
-| Method                                                                  | Description                                                              |
-|-------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| [**сonvertLocalToLocal**](ConversionApi.md#convertlocaltolocal)         | Convert the HTML or EPUB document from the local disk to the local disk. |
-| [**сonvertLocalToStorage**](ConversionApi.md#convertlocaltostorage)     | Convert the HTML or EPUB document from the local disk to the storage.    |
-| [**сonvertStorageToLocal**](ConversionApi.md#convertstoragetolocal)     | Convert the HTML or EPUB document from the storage to the local disk.    |
-| [**сonvertStorageToStorage**](ConversionApi.md#convertstoragetostorage) | Convert the HTML or EPUB document from the storage to the storage.       |
-| [**сonvertUrlToLocal**](ConversionApi.md#converturltolocal)             | Convert the website to the local disk.                                   |
-| [**сonvertUrlToStorage**](ConversionApi.md#converturltostorage)         | Convert the website to the storage.                                      |
+| Method                                                                  | Description                                               |
+|-------------------------------------------------------------------------|-----------------------------------------------------------|
+| [**сonvertLocalToLocal**](ConversionApi.md#convertlocaltolocal)         | Convert a document from the local disk to the local disk. |
+| [**сonvertLocalToStorage**](ConversionApi.md#convertlocaltostorage)     | Convert a document from the local disk to the storage.    |
+| [**сonvertStorageToLocal**](ConversionApi.md#convertstoragetolocal)     | Convert a document from the storage to the local disk.    |
+| [**сonvertStorageToStorage**](ConversionApi.md#convertstoragetostorage) | Convert a document from the storage to the storage.       |
+| [**сonvertUrlToLocal**](ConversionApi.md#converturltolocal)             | Convert the website to the local disk.                    |
+| [**сonvertUrlToStorage**](ConversionApi.md#converturltostorage)         | Convert the website to the storage.                       |
 
 ## **convertLocalToLocal**
 
 ```cpp
     /// <summary>
-    /// Convert the HTML or EPUB document from the local file to the local file.
+    /// Convert the a document from the local file to the local file.
     /// </summary>
     /// <remarks>
     /// 
@@ -44,7 +46,7 @@ All URIs are relative to *https://api.aspose.cloud/v4.0*
     ) const;
 ```
 
-Convert the HTML or EPUB document from the local file to the local file.
+Convert the a document from the local file to the local file.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
@@ -136,7 +138,7 @@ int main(int argc, char* argv[])
     ) const;
 ```
 
-Convert the HTML or EPUB document from the local file to the storage.
+Convert the a document from the local file to the storage.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
@@ -236,7 +238,7 @@ int main(int argc, char* argv[])
     ) const;
 ```
 
-Convert the HTML or EPUB document from the storage to the local file.
+Convert the a document from the storage to the local file.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
@@ -343,7 +345,7 @@ int main(int argc, char* argv[])
     ) const;
 ```
 
-Convert the HTML or EPUB document from the storage to the storage.
+Convert the a document from the storage to the storage.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 

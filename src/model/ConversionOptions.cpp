@@ -68,9 +68,34 @@ web::json::value ConversionOptions::toJson() const
     {
         val[utility::conversions::to_string_t("bottommargin")] = ModelBase::toJson(*m_bottomMargin);
     }
-
-
-
+    if (m_jpeg_quality)
+    {
+        val[utility::conversions::to_string_t("jpegquality")] = ModelBase::toJson(*m_jpeg_quality);
+    }
+    if (m_background)
+    {
+        val[utility::conversions::to_string_t("background")] = ModelBase::toJson(*m_background);
+    }
+    if (m_use_git)
+    {
+        val[utility::conversions::to_string_t("usegit")] = ModelBase::toJson(*m_use_git);
+    }
+    if (m_error_threshold)
+    {
+        val[utility::conversions::to_string_t("error_threshold")] = ModelBase::toJson(*m_error_threshold);
+    }
+    if (m_max_iterations)
+    {
+        val[utility::conversions::to_string_t("max_iterations")] = ModelBase::toJson(*m_max_iterations);
+    }
+    if (m_colors_limit)
+    {
+        val[utility::conversions::to_string_t("colors_limit")] = ModelBase::toJson(*m_colors_limit);
+    }
+    if (m_line_width)
+    {
+        val[utility::conversions::to_string_t("line_width")] = ModelBase::toJson(*m_line_width);
+    }
     return val;
 }
 
@@ -127,6 +152,49 @@ ConversionOptions* ConversionOptions::setBottomMargin(double value)
     m_bottomMargin = value;
     return this;
 }
+
+ConversionOptions* ConversionOptions::setJpegQuality(int value)
+{
+    m_jpeg_quality = value;
+    return this;
+}
+
+ConversionOptions* ConversionOptions::setBackground(utility::string_t value)
+{
+    m_background = value;
+    return this;
+}
+
+ConversionOptions* ConversionOptions::setUseGit(bool value)
+{
+    m_use_git = value;
+    return this;
+}
+
+ConversionOptions* ConversionOptions::setErrorThreshold(double value)
+{
+    m_error_threshold = value;
+    return this;
+}
+
+ConversionOptions* ConversionOptions::setMaxIteration(int value)
+{
+    m_max_iterations = value;
+    return this;
+}
+
+ConversionOptions* ConversionOptions::setColorLimit(int value)
+{
+    m_colors_limit = value;
+    return this;
+}
+
+ConversionOptions* ConversionOptions::setLineWidth(double value)
+{
+    m_line_width = value;
+    return this;
+}
+
 
 
 }

@@ -3,7 +3,7 @@
 AsposeHtml - the C++ library for the Aspose.HTML Cloud API Reference
 
 - API version: 4.0
-- Package version: 22.10.1
+- Package version: 22.11.1
 
 ## Installation
 
@@ -12,7 +12,7 @@ Get ready package or build from source.
 ### Install from command line
 
 ```code
-PM> Install-Package Aspose.Html-Cloud.Cpp -Version 22.10.1
+PM> Install-Package Aspose.Html-Cloud.Cpp -Version 22.11.1
 ```
 
 ### Load from git
@@ -28,6 +28,8 @@ To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cl
 - EPUB -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
 - MD -> PDF, XPS, DOCX, HTML, MHTML, JPEG, BMP, PNG, TIFF, GIF
 - MHTML -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
+- SVG -> PDF, XPS, JPEG, BMP, PNG, TIFF, GIF
+- JPEG, BMP, PNG, TIFF, GIF -> SVG
 
 
 ```cpp
@@ -87,6 +89,33 @@ int main(int argc, char* argv[])
     }
 }
 ```
+
+### ConversionOptions
+| Method                                                                            | Description                                                                      | Note     |
+|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|----------|
+| **ConversionOptions\* ConversionOptions::setWidth(double value)**                 | Width in inches for PDF, XPS, DOCX output formats. In pixels for images.         | Optional |
+| **ConversionOptions\* ConversionOptions::setHeight(double value)**                | Height in inches for PDF, XPS, DOCX output formats. In pixels for images.        | Optional |
+| **ConversionOptions\* ConversionOptions::setLeftMargin(double value)**            | Left margin in inches for PDF, XPS, DOCX output formats. In pixels for images.   | Optional |
+| **ConversionOptions\* ConversionOptions::setRightMargin(double value)**           | Right margin in inches for PDF, XPS, DOCX output formats. In pixels for images.  | Optional |
+| **ConversionOptions\* ConversionOptions::setTopMargin(double value)**             | Top margin in inches for PDF, XPS, DOCX output formats. In pixels for images.    | Optional |
+| **ConversionOptions\* ConversionOptions::setBottomMargin(double value)**          | Bottom margin in inches for PDF, XPS, DOCX output formats. In pixels for images. | Optional |
+| **ConversionOptions\* ConversionOptions::setJpegQuality(int value)**              | Quality in percent (for PDF conversion only).                                    | Optional |
+| **ConversionOptions\* ConversionOptions::setBackground(utility::string_t value)** | CSS background like '#FF0000'. For conversion from SVG only.                     | Optional |
+
+
+### Additional options for trace to the SVG format
+| Method                                                                     | Description                                                                                             | Note     |
+|----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|----------|
+| **ConversionOptions\* ConversionOptions::setErrorThreshold(double value)** | This parameter defines maximum deviation of points to fitted curve. By default it is 30.                | Optional |
+| **ConversionOptions\* ConversionOptions::setMaxIteration(int value)**      | This parameter defines number of iteration for least-squares approximation method. By default it is 30. | Optional |
+| **ConversionOptions\* ConversionOptions::setColorLimit(int value)**        | The maximum number of colors used to quantize an image. Default value is 25.                            | Optional |
+| **ConversionOptions\* ConversionOptions::setLineWidth(double value)**      | The value of this parameter is affected by the graphics scale. Default value is 1.                      | Optional |
+
+
+### Additional options for convert to the markdown format
+| Method                                                           | Description                                   | Note     |
+|------------------------------------------------------------------|-----------------------------------------------|----------|
+| **ConversionOptions\* ConversionOptions::setUseGit(bool value)** | Use git flavor. True or False. Default false. | Optional |
 
 
 ## Documentation for API Endpoints

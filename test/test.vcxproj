@@ -50,11 +50,13 @@
     <ClCompile Include="gtest\gtest-all.cc" />
     <ClCompile Include="gtest_main.cc" />
     <ClCompile Include="JsonTests.cpp" />
+    <ClCompile Include="TestFromSVGConversionApi.cpp" />
     <ClCompile Include="TestHtmlConversionApi.cpp" />
     <ClCompile Include="TestMarkdownConversionApi.cpp" />
     <ClCompile Include="TestMhtmlConversionApi.cpp" />
     <ClCompile Include="TestStorageApi.cpp" />
     <ClCompile Include="TestBase.cpp" />
+    <ClCompile Include="TestToSVGConversionApi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
