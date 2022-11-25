@@ -12,7 +12,7 @@ Get ready package or build from source.
 ### Install from command line
 
 ```code
-PM> Install-Package Aspose.Html-Cloud.Cpp -Version 22.11.1
+PM> NuGet\Install-Package aspose.html.cloud.v143 -Version 22.11.1
 ```
 
 ### Load from git
@@ -30,6 +30,18 @@ To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cl
 - MHTML -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
 - SVG -> PDF, XPS, JPEG, BMP, PNG, TIFF, GIF
 - JPEG, BMP, PNG, TIFF, GIF -> SVG
+
+
+All URIs are relative to *https://api.aspose.cloud/v4.0*
+
+| Method                                                                       | Description                                               |
+|------------------------------------------------------------------------------|-----------------------------------------------------------|
+| [**сonvertLocalToLocal**](docs/ConversionApi.md#convertlocaltolocal)         | Convert a document from the local disk to the local disk. |
+| [**сonvertLocalToStorage**](docs/ConversionApi.md#convertlocaltostorage)     | Convert a document from the local disk to the storage.    |
+| [**сonvertStorageToLocal**](docs/ConversionApi.md#convertstoragetolocal)     | Convert a document from the storage to the local disk.    |
+| [**сonvertStorageToStorage**](docs/ConversionApi.md#convertstoragetostorage) | Convert a document from the storage to the storage.       |
+| [**сonvertUrlToLocal**](docs/ConversionApi.md#converturltolocal)             | Convert the website to the local disk.                    |
+| [**сonvertUrlToStorage**](docs/ConversionApi.md#converturltostorage)         | Convert the website to the storage.                       |
 
 
 ```cpp
