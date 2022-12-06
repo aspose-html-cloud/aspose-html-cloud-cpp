@@ -49,7 +49,7 @@ ConversionApi::~ConversionApi()
 {
 }
 
-std::shared_ptr<ConversionResult> ConversionApi::convertLocalToLocal(
+std::shared_ptr<OperationResult> ConversionApi::convertLocalToLocal(
     const utility::string_t& src,
     const utility::string_t& dst,
     const std::shared_ptr<ConversionOptions> options
@@ -58,7 +58,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convertLocalToLocal(
     return convert(src, dst, true, true, false, options);
 }
 
-std::shared_ptr<ConversionResult> ConversionApi::convertLocalToStorage(
+std::shared_ptr<OperationResult> ConversionApi::convertLocalToStorage(
     const utility::string_t& src, 
     const utility::string_t& dst,
     const boost::optional<utility::string_t> storage,
@@ -68,7 +68,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convertLocalToStorage(
     return convert(src, dst, true, false, false, options, storage);
 }
 
-std::shared_ptr<ConversionResult> ConversionApi::convertStorageToLocal(
+std::shared_ptr<OperationResult> ConversionApi::convertStorageToLocal(
     const utility::string_t& src,
     const utility::string_t& dst,
     const boost::optional<utility::string_t> storage,
@@ -78,7 +78,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convertStorageToLocal(
     return convert(src, dst, false, true, false, options, storage);
 }
 
-std::shared_ptr<ConversionResult> ConversionApi::convertStorageToStorage(
+std::shared_ptr<OperationResult> ConversionApi::convertStorageToStorage(
     const utility::string_t& src,
     const utility::string_t& dst,
     const boost::optional<utility::string_t> storage,
@@ -88,7 +88,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convertStorageToStorage(
     return convert(src, dst, false, false, false, options, storage);
 }
 
-std::shared_ptr<ConversionResult> ConversionApi::convertUrlToLocal(
+std::shared_ptr<OperationResult> ConversionApi::convertUrlToLocal(
     const utility::string_t& src,
     const utility::string_t& dst,
     const std::shared_ptr<ConversionOptions> options
@@ -97,7 +97,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convertUrlToLocal(
     return convert(src, dst, false, true, true, options);
 }
 
-std::shared_ptr<ConversionResult> ConversionApi::convertUrlToStorage(
+std::shared_ptr<OperationResult> ConversionApi::convertUrlToStorage(
     const utility::string_t& src,
     const utility::string_t& dst,
     const boost::optional<utility::string_t> storage,
@@ -107,7 +107,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convertUrlToStorage(
     return convert(src, dst, false, false, true, options, storage);
 }
 
-std::shared_ptr<ConversionResult> ConversionApi::convert(
+std::shared_ptr<OperationResult> ConversionApi::convert(
     const utility::string_t& src,
     const utility::string_t& dst,
     bool srcInLocal,
@@ -127,7 +127,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convert(
             throw std::invalid_argument("Source file not found.");
         }
 
-        size_t index = src.find_last_of(L"/\\");
+        size_t index = src.find_last_of(_XPLATSTR("/\\"));
         utility::string_t name = src.substr(index + 1);
         utility::string_t folder = src.substr(0, index + 1);
         std::shared_ptr<HttpContent> file(new HttpContent(folder, name));
@@ -141,7 +141,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convert(
         
         fileInStorage = result->getUploaded()[0];
     }
-    size_t index = dst.find_last_of(L"/\\");
+    size_t index = dst.find_last_of(_XPLATSTR("/\\"));
     utility::string_t outFile = dstInLocal ? dst.substr(index + 1) : dst;
     utility::string_t outFolder = dst.substr(0, index + 1);
 
@@ -149,7 +149,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convert(
 
     if (!isUrl) 
     {
-        size_t index = src.find_last_of(L".");
+        size_t index = src.find_last_of(_XPLATSTR("."));
         utility::string_t ext = src.substr(index + 1);
         std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
 
@@ -179,7 +179,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convert(
         }
     }
 
-    index = dst.find_last_of(L".");
+    index = dst.find_last_of(_XPLATSTR("."));
     utility::string_t outFormat = dst.substr(index + 1);
     std::transform(outFormat.begin(), outFormat.end(), outFormat.begin(), ::tolower);
 
@@ -228,11 +228,11 @@ std::shared_ptr<ConversionResult> ConversionApi::convert(
     std::shared_ptr<IHttpBody> httpBody(new JsonBody(value));
 
 
-    std::shared_ptr<ConversionResult> 
+    std::shared_ptr<OperationResult> 
         response = runRequest(path, utility::conversions::to_string_t("POST"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType).get();
 
    
-    std::shared_ptr<ConversionResult> result;
+    std::shared_ptr<OperationResult> result;
 
     while (true)
     {
@@ -253,7 +253,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convert(
     if (dstInLocal)
     {
         auto resultFile = result->getFile();
-        size_t index = resultFile.find_last_of(L"/\\");
+        size_t index = resultFile.find_last_of(_XPLATSTR("/\\"));
         auto fileName = (index == std::string::npos) ? resultFile : resultFile.substr(index + 1);
         auto fullPath = outFolder + fileName;
         auto res = m_StorageApi->downloadFile(resultFile).get();
@@ -277,7 +277,7 @@ std::shared_ptr<ConversionResult> ConversionApi::convert(
 }
 
 
-std::shared_ptr<ConversionResult> ConversionApi::getState(const utility::string_t& id) const
+std::shared_ptr<OperationResult> ConversionApi::getState(const utility::string_t& id) const
 {
     std::shared_ptr<ApiConfiguration> apiConfiguration(m_ApiClient->getConfiguration());
     utility::string_t path = utility::conversions::to_string_t("/html/conversion/{id}");
@@ -293,13 +293,13 @@ std::shared_ptr<ConversionResult> ConversionApi::getState(const utility::string_
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType = utility::conversions::to_string_t("application/json");
 
-    pplx::task<std::shared_ptr<ConversionResult>> response = runRequest(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType);
+    pplx::task<std::shared_ptr<OperationResult>> response = runRequest(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType);
 
     return response.get();
 
 }
 
-pplx::task<std::shared_ptr<ConversionResult>>
+pplx::task<std::shared_ptr<OperationResult>>
 ConversionApi::runRequest(
     const utility::string_t& path,
     const utility::string_t& method,
@@ -329,7 +329,7 @@ ConversionApi::runRequest(
             })
         .then([=](utility::string_t response)
             {
-                std::shared_ptr<ConversionResult> result(new ConversionResult());
+                std::shared_ptr<OperationResult> result(new OperationResult());
                 web::json::value json = web::json::value::parse(response);
                 result->fromJson(json);
 

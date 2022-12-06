@@ -3,7 +3,7 @@
 AsposeHtml - the C++ library for the Aspose.HTML Cloud API Reference
 
 - API version: 4.0
-- Package version: 22.11.1
+- Package version: 22.12.1
 
 ## Installation
 
@@ -12,7 +12,7 @@ Get ready package or build from source.
 ### Install from command line
 
 ```code
-PM> NuGet\Install-Package aspose.html.cloud.v143 -Version 22.11.1
+PM> NuGet\Install-Package aspose.html.cloud.v143 -Version 22.12.1
 ```
 
 ### Load from git
@@ -34,6 +34,9 @@ To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cl
 
 All URIs are relative to *https://api.aspose.cloud/v4.0*
 
+
+### ConversionApi
+
 | Method                                                                       | Description                                               |
 |------------------------------------------------------------------------------|-----------------------------------------------------------|
 | [**сonvertLocalToLocal**](docs/ConversionApi.md#convertlocaltolocal)         | Convert a document from the local disk to the local disk. |
@@ -42,6 +45,16 @@ All URIs are relative to *https://api.aspose.cloud/v4.0*
 | [**сonvertStorageToStorage**](docs/ConversionApi.md#convertstoragetostorage) | Convert a document from the storage to the storage.       |
 | [**сonvertUrlToLocal**](docs/ConversionApi.md#converturltolocal)             | Convert the website to the local disk.                    |
 | [**сonvertUrlToStorage**](docs/ConversionApi.md#converturltostorage)         | Convert the website to the storage.                       |
+
+
+### VectorizationApi
+
+| Method                                                                              | Description                                                          |
+|-------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| [**vectorizeLocalToLocal**](docs/VectorizationApi.md#vectorizelocaltolocal)         | Vectorize image to SVG format from the local disk to the local disk. |
+| [**vectorizeLocalToStorage**](docs/VectorizationApi.md#vectorizelocaltostorage)     | Vectorize image to SVG format from the local disk to the storage.    |
+| [**vectorizeStorageToLocal**](docs/VectorizationApi.md#vectorizestoragetolocal)     | Vectorize image to SVG format from the storage to the local disk.    |
+| [**vectorizeStorageToStorage**](docs/VectorizationApi.md#vectorizestoragetostorage) | Vectorize image to SVG format from the storage to the storage.       |
 
 
 ```cpp
@@ -130,12 +143,24 @@ int main(int argc, char* argv[])
 | **ConversionOptions\* ConversionOptions::setUseGit(bool value)** | Use git flavor. True or False. Default false. | Optional |
 
 
+### Vectorization options for trace to the SVG format
+| Method                                                                           | Description                                                                                             | Note     |
+|----------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|----------|
+| **VectorizationOptions\* VectorizationOptions::setErrorThreshold(double value)** | This parameter defines maximum deviation of points to fitted curve. By default it is 30.                | Optional |
+| **VectorizationOptions\* VectorizationOptions::setMaxIteration(int value)**      | This parameter defines number of iteration for least-squares approximation method. By default it is 30. | Optional |
+| **VectorizationOptions\* VectorizationOptions::setColorLimit(int value)**        | The maximum number of colors used to quantize an image. Default value is 25.                            | Optional |
+| **VectorizationOptions\* VectorizationOptions::setLineWidth(double value)**      | The value of this parameter is affected by the graphics scale. Default value is 1.                      | Optional |
+
+
+
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.aspose.cloud/v4.0*   
 
 ## Examples
 - [ConversionApi](./docs/ConversionApi.md)
+- [VectorizationApi](./docs/VectorizationApi.md)
 - [StorageApi](./docs/StorageApi.md)
 
 

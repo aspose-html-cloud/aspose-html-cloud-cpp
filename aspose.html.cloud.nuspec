@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>aspose.html.cloud.v143</id>
-    <version>22.11.1</version>
+    <version>22.12.1</version>
     <title>Aspose.Html.Cloud</title>
     <authors>Aspose</authors>
     <owners>Aspose</owners>
@@ -11,10 +11,10 @@
     <projectUrl>https://products.aspose.cloud/html/cpp</projectUrl>
     <iconUrl>https://www.aspose.cloud/templates/asposecloud/App_Themes/V3/images/sdk/272x272/aspose_html-for-cpp.png</iconUrl>
     <description>Aspose HTML SDK for C++ is a programming SDK that allows software developers to manipulate and convert HTML documents from within their own applications. A Wrapper of RESTful APIs, Aspose HTML SDK for C++ speeds up HTML programming and conversion.
-Aspose Html SDK for C++ is a cross-platform C++ library that enables your applications to perform a great range of html document processing tasks. With Aspose.Html C++ you can load, save and convert html and epub documents between the following formats: PDF, XPS, DOCX, MD, JPG, GIF, BMP, PDF, TIFF, MHTML.</description>
-    <summary>SDK for conversion HTML and EPUB documents to PDF, XPS, DOCX, and image formats</summary>
-    <releaseNotes>Release of Aspose HTML SDK for .CPP SDK (v.22.11.1)Aspose HTML SDK for C++ is a programming SDK that allows software developers to manipulate and convert HTML documents from within their own applications. A Wrapper of RESTful APIs, Aspose HTML SDK for C++ speeds up HTML programming and conversion.
-Aspose Html SDK for C++ is a cross-platform C++ library that enables your applications to perform a great range of html document processing tasks. With Aspose.Html C++ you can load, save and convert html and epub documents between the following formats: PDF, XPS, DOCX, MD, JPG, GIF, BMP, PDF, TIFF, MHTML. With Aspose.Html you can convert in html documents.
+Aspose Html SDK for C++ is a cross-platform C++ library that enables your applications to perform a great range of html document processing tasks. With Aspose.Html C++ you can load, save and convert html, epub, mhtml, md documents between the following formats: PDF, XPS, DOCX, MD, JPG, GIF, BMP, PDF, TIFF, MHTML. Vectorize images to SVG format.</description>
+    <summary>SDK for conversion HTML, Markdown, MHTML, SVG and EPUB documents to PDF, XPS, DOCX, and image formats. Tracing images to SVG format.</summary>
+    <releaseNotes>Release of Aspose HTML SDK for .CPP SDK (v.22.12.1)Aspose HTML SDK for C++ is a programming SDK that allows software developers to manipulate and convert HTML documents from within their own applications. A Wrapper of RESTful APIs, Aspose HTML SDK for C++ speeds up HTML programming and conversion.
+Aspose Html SDK for C++ is a cross-platform C++ library that enables your applications to perform a great range of html document processing tasks. With Aspose.Html C++ you can load, save and convert html. markdown, mhtml, and epub documents between the following formats: PDF, XPS, DOCX, MD, JPG, GIF, BMP, PDF, TIFF, MHTML. Vectorize images to SVG format.
 
 Aspose Html SDK for C++ is well documented to help you create your solutions on different platforms.
 
@@ -23,7 +23,7 @@ Platform Independence
 Aspose Html SDK for C++ library can be assembled for different platforms using various modern compilers which support C++14, such as Microsoft Visual C++, GCC, Clang and MinGW.</releaseNotes>
     <copyright>Aspose 2002-2022. All Rights Reserved.</copyright>
     <language>en-US</language>
-    <tags>epub to pdf, xhtml html jpg, image, native, aspose.html, conversion pdf xps image</tags>
+    <tags>epub to pdf, image to svg, xhtml html jpg, image, native, aspose.html, conversion pdf xps image</tags>
     <dependencies>
       <dependency id="cpprestsdk" version="2.9.1.1" />
       <dependency id="boost" version="1.79.0" />

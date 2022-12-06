@@ -57,6 +57,7 @@
     <ClCompile Include="TestStorageApi.cpp" />
     <ClCompile Include="TestBase.cpp" />
     <ClCompile Include="TestToSVGConversionApi.cpp" />
+    <ClCompile Include="TestVectorizeToSVGApi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

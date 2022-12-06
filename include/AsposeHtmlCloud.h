@@ -14,6 +14,7 @@
 #include "OctetStreamBody.h"
 #include "api/ConversionApi.h"
 #include "api/StorageApi.h"
+#include "api/VectorizationApi.h"
 #include "model/DiscUsage.h"
 #include "model/Error.h"
 #include "model/ErrorDetails.h"

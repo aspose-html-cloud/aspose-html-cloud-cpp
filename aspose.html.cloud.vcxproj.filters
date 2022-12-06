@@ -67,13 +67,22 @@
     <ClCompile Include="src\model\ErrorDetails.cpp">
       <Filter>src\model</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\ConversionResult.cpp">
+    <ClCompile Include="src\model\OperationResult.cpp">
       <Filter>src\model</Filter>
     </ClCompile>
     <ClCompile Include="src\model\ConversionOptions.cpp">
       <Filter>src\model</Filter>
     </ClCompile>
     <ClCompile Include="src\model\ConversionRequest.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\api\VectorizationApi.cpp">
+      <Filter>src\api</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorizationOptions.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\VectorizationOptions.cpp">
       <Filter>src\model</Filter>
     </ClCompile>
   </ItemGroup>
@@ -157,6 +166,15 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\model\ConversionRequest.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\api\VectorizationApi.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\VectorizationOptions.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model\OperationResult.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

@@ -46,7 +46,7 @@ All URIs are relative to *https://api.aspose.cloud/v4.0*
     ) const;
 ```
 
-Convert the a document from the local file to the local file.
+Convert a document from the local file to the local file.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
@@ -138,7 +138,7 @@ int main(int argc, char* argv[])
     ) const;
 ```
 
-Convert the a document from the local file to the storage.
+Convert a document from the local file to the storage.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
@@ -238,7 +238,7 @@ int main(int argc, char* argv[])
     ) const;
 ```
 
-Convert the a document from the storage to the local file.
+Convert a document from the storage to the local file.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
@@ -345,7 +345,7 @@ int main(int argc, char* argv[])
     ) const;
 ```
 
-Convert the a document from the storage to the storage.
+Convert a document from the storage to the storage.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
@@ -452,7 +452,7 @@ int main(int argc, char* argv[])
     ) const;
 ```
 
-Convert the website to the local file.
+Convert a website to the local file.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 
@@ -542,7 +542,7 @@ int main(int argc, char* argv[])
     ) const;
 ```
 
-Convert the website to the storage.
+Convert a website to the storage.
 
 [&#8593;UP&#8593;](ConversionApi.md#ConversionApi)
 

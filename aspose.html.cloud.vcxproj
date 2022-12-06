@@ -147,12 +147,13 @@
     <ClCompile Include="src\ApiException.cpp" />
     <ClCompile Include="src\api\ConversionApi.cpp" />
     <ClCompile Include="src\api\StorageApi.cpp" />
+    <ClCompile Include="src\api\VectorizationApi.cpp" />
     <ClCompile Include="src\HttpContent.cpp" />
     <ClCompile Include="src\JsonBody.cpp" />
     <ClCompile Include="src\ModelBase.cpp" />
     <ClCompile Include="src\model\ConversionOptions.cpp" />
     <ClCompile Include="src\model\ConversionRequest.cpp" />
-    <ClCompile Include="src\model\ConversionResult.cpp" />
+    <ClCompile Include="src\model\OperationResult.cpp" />
     <ClCompile Include="src\model\DiscUsage.cpp" />
     <ClCompile Include="src\model\Error.cpp" />
     <ClCompile Include="src\model\ErrorDetails.cpp" />
@@ -164,11 +165,14 @@
     <ClCompile Include="src\model\ObjectExist.cpp" />
     <ClCompile Include="src\model\StorageExist.cpp" />
     <ClCompile Include="src\model\StorageFile.cpp" />
+    <ClCompile Include="src\model\VectorizationOptions.cpp" />
     <ClCompile Include="src\MultipartFormData.cpp" />
     <ClCompile Include="src\OAuth2Token.cpp" />
     <ClCompile Include="src\OctetStreamBody.cpp" />
+    <ClCompile Include="VectorizationOptions.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\api\VectorizationApi.h" />
     <ClInclude Include="include\AsposeHtmlCloud.h" />
     <ClInclude Include="include\defines.h" />
     <ClInclude Include="include\ApiClient.h" />
@@ -180,6 +184,7 @@
     <ClInclude Include="include\IHttpBody.h" />
     <ClInclude Include="include\model\ConversionOptions.h" />
     <ClInclude Include="include\model\ConversionRequest.h" />
+    <ClInclude Include="include\model\OperationResult.h" />
     <ClInclude Include="include\model\Error.h" />
     <ClInclude Include="include\model\ErrorDetails.h" />
     <ClInclude Include="include\model\FilesList.h" />
@@ -189,6 +194,7 @@
     <ClInclude Include="include\model\ObjectExist.h" />
     <ClInclude Include="include\model\StorageExist.h" />
     <ClInclude Include="include\model\StorageFile.h" />
+    <ClInclude Include="include\model\VectorizationOptions.h" />
     <ClInclude Include="include\OctetStreamBody.h" />
     <ClInclude Include="include\JsonBody.h" />
     <ClInclude Include="include\ModelBase.h" />
