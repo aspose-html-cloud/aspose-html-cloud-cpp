@@ -79,9 +79,6 @@
     <ClCompile Include="src\api\VectorizationApi.cpp">
       <Filter>src\api</Filter>
     </ClCompile>
-    <ClCompile Include="VectorizationOptions.cpp">
-      <Filter>src\model</Filter>
-    </ClCompile>
     <ClCompile Include="src\model\VectorizationOptions.cpp">
       <Filter>src\model</Filter>
     </ClCompile>

@@ -169,7 +169,6 @@
     <ClCompile Include="src\MultipartFormData.cpp" />
     <ClCompile Include="src\OAuth2Token.cpp" />
     <ClCompile Include="src\OctetStreamBody.cpp" />
-    <ClCompile Include="VectorizationOptions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\api\VectorizationApi.h" />
