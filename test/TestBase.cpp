@@ -26,6 +26,34 @@
 */
 #include "TestBase.h"
 
+#include <cstdlib>
+#include <string>
+
+namespace
+{
+	// Reads a setting from the environment, falling back to a literal so the
+	// suite still runs on a developer machine without any extra setup.
+	utility::string_t setting_from_env(const char* primary, const char* secondary, const char* fallback)
+	{
+		const char* names[] = { primary, secondary };
+
+		for (const char* name : names)
+		{
+			if (name == nullptr)
+			{
+				continue;
+			}
+
+			const char* value = std::getenv(name);
+			if (value != nullptr && *value != '\0')
+			{
+				return utility::conversions::to_string_t(std::string(value));
+			}
+		}
+
+		return utility::conversions::to_string_t(std::string(fallback));
+	}
+}
 
 TestBase::TestBase()
 {
@@ -35,18 +63,15 @@ TestBase::~TestBase()
 {
 }
 
-//const utility::string_t TestBase::basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
-//const utility::string_t TestBase::authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
-//const utility::string_t TestBase::clientId = _XPLATSTR("2225baa2-097b-4731-9831-d0d56c28230f");
-//const utility::string_t TestBase::clientSecret = _XPLATSTR("c8dda7d6445d82635b8797d1c8edd153");
+const utility::string_t TestBase::basePath = setting_from_env("ASPOSE_API_BASE_URL", nullptr, "https://api.aspose.cloud/v4.0");
+const utility::string_t TestBase::authPath = setting_from_env("ASPOSE_AUTH_URL", nullptr, "https://api.aspose.cloud/connect/token");
+const utility::string_t TestBase::clientId = setting_from_env("ASPOSE_CLIENT_ID", "APP_SID", "2225baa2-097b-4731-9831-d0d56c28230f");
+const utility::string_t TestBase::clientSecret = setting_from_env("ASPOSE_CLIENT_SECRET", "APP_KEY", "c8dda7d6445d82635b8797d1c8edd153");
 
-const utility::string_t TestBase::basePath = _XPLATSTR("http://localhost:5000/v4.0");
-const utility::string_t TestBase::authPath = _XPLATSTR("https://api-qa.aspose.cloud/connect/token");
-const utility::string_t TestBase::clientId = _XPLATSTR("html.cloud");
-const utility::string_t TestBase::clientSecret = _XPLATSTR("html.cloud");
-
-const utility::string_t TestBase::testSource = _XPLATSTR("e:\\WORK\\HTML\\Cloud\\aspose-html-cloud-cpp\\testsource\\");
-const utility::string_t TestBase::testResult = _XPLATSTR("e:\\WORK\\HTML\\Cloud\\aspose-html-cloud-cpp\\testresult\\");
+// Relative to the working directory the tests are started from (the repository
+// root), unless overridden through the environment.
+const utility::string_t TestBase::testSource = setting_from_env("ASPOSE_TEST_SOURCE", nullptr, "testsource\\");
+const utility::string_t TestBase::testResult = setting_from_env("ASPOSE_TEST_RESULT", nullptr, "testresult\\");
 
 bool TestBase::save_to_file(com::aspose::model::HttpContent content, utility::string_t name)
 {
