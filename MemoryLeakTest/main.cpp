@@ -1,6 +1,23 @@
 #include <AsposeHtmlCloud.h>
 
+#include <cstdio>
+#include <cstdlib>
+
 using namespace com::aspose::api;
+
+// Credentials are never stored in the repository: get keys from
+// https://dashboard.aspose.cloud (a free quota is available) and export them
+// as ASPOSE_CLIENT_ID / ASPOSE_CLIENT_SECRET before running.
+static utility::string_t required_env(const char* name)
+{
+    const char* value = std::getenv(name);
+    if (value == nullptr || *value == '\0')
+    {
+        std::fprintf(stderr, "Missing Aspose Cloud credentials: set %s in the environment.\n", name);
+        std::exit(2);
+    }
+    return utility::conversions::to_string_t(std::string(value));
+}
 
 
 int main(int argc, char* argv[])
@@ -16,12 +33,8 @@ int main(int argc, char* argv[])
         cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
         std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
 
-        // Get keys from aspose site.
-        // There is free quota available. 
-        // For more details, see https://purchase.aspose.cloud/pricing
-
-        const utility::string_t clientId = _XPLATSTR("5add06cf-9af7-44f6-b180-dfcc2583cfcb");
-        const utility::string_t clientSecret = _XPLATSTR("71a5b89b3f83cd39195d7fc39382babd");
+        const utility::string_t clientId = required_env("ASPOSE_CLIENT_ID");
+        const utility::string_t clientSecret = required_env("ASPOSE_CLIENT_SECRET");
         const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
         const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
 
@@ -69,12 +82,8 @@ int main(int argc, char* argv[])
         cur_dir = cur_dir.substr(0, pos + 1); // Include the last slash
         std::wstring w_cur_dir(cur_dir.begin(), cur_dir.end());
 
-        // Get keys from aspose site.
-        // There is free quota available. 
-        // For more details, see https://purchase.aspose.cloud/pricing
-
-        const utility::string_t clientId = _XPLATSTR("5add06cf-9af7-44f6-b180-dfcc2583cfcb");
-        const utility::string_t clientSecret = _XPLATSTR("71a5b89b3f83cd39195d7fc39382babd");
+        const utility::string_t clientId = required_env("ASPOSE_CLIENT_ID");
+        const utility::string_t clientSecret = required_env("ASPOSE_CLIENT_SECRET");
         const utility::string_t basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
         const utility::string_t authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
 

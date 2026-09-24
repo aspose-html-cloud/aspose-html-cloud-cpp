@@ -26,13 +26,17 @@
 */
 #include "TestBase.h"
 
+#include <cstdio>
 #include <cstdlib>
 #include <string>
 
 namespace
 {
-	// Reads a setting from the environment, falling back to a literal so the
-	// suite still runs on a developer machine without any extra setup.
+	// Reads a setting from the environment. When `fallback` is nullptr the
+	// setting is required: credentials are never stored in the repository, so
+	// set ASPOSE_CLIENT_ID and ASPOSE_CLIENT_SECRET (or the APP_SID / APP_KEY
+	// aliases) before running the suite; the SDK test agent does this
+	// automatically.
 	utility::string_t setting_from_env(const char* primary, const char* secondary, const char* fallback)
 	{
 		const char* names[] = { primary, secondary };
@@ -51,6 +55,15 @@ namespace
 			}
 		}
 
+		if (fallback == nullptr)
+		{
+			// Runs during static initialisation, where an exception would only
+			// surface as an unexplained std::terminate.
+			std::fprintf(stderr, "Missing Aspose Cloud credentials: set %s%s%s in the environment.\n",
+				primary, secondary ? " or " : "", secondary ? secondary : "");
+			std::exit(2);
+		}
+
 		return utility::conversions::to_string_t(std::string(fallback));
 	}
 }
@@ -63,10 +76,12 @@ TestBase::~TestBase()
 {
 }
 
-const utility::string_t TestBase::basePath = setting_from_env("ASPOSE_API_BASE_URL", nullptr, "https://api.aspose.cloud/v4.0");
-const utility::string_t TestBase::authPath = setting_from_env("ASPOSE_AUTH_URL", nullptr, "https://api.aspose.cloud/connect/token");
-const utility::string_t TestBase::clientId = setting_from_env("ASPOSE_CLIENT_ID", "APP_SID", "2225baa2-097b-4731-9831-d0d56c28230f");
-const utility::string_t TestBase::clientSecret = setting_from_env("ASPOSE_CLIENT_SECRET", "APP_KEY", "c8dda7d6445d82635b8797d1c8edd153");
+// Endpoints are fixed; ASPOSE_API_BASE_URL is not used because the value the
+// test agent exports has no /v4.0 segment.
+const utility::string_t TestBase::basePath = _XPLATSTR("https://api.aspose.cloud/v4.0");
+const utility::string_t TestBase::authPath = _XPLATSTR("https://api.aspose.cloud/connect/token");
+const utility::string_t TestBase::clientId = setting_from_env("ASPOSE_CLIENT_ID", "APP_SID", nullptr);
+const utility::string_t TestBase::clientSecret = setting_from_env("ASPOSE_CLIENT_SECRET", "APP_KEY", nullptr);
 
 // Relative to the working directory the tests are started from (the repository
 // root), unless overridden through the environment.
