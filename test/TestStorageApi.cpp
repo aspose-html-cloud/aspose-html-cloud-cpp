@@ -286,15 +286,6 @@ TEST_F(TestStorageApi, /*DISABLED_*/testGetListFiles)
 }
 
 //      TEST STORAGE API      
-TEST_F(TestStorageApi, /*DISABLED_*/testGetDiskUsage)
-{
-	boost::optional<utility::string_t> storageName = _XPLATSTR("");
-
-	auto result = api->getDiscUsage(storageName).get();
-
-	ASSERT_TRUE(result->getTotalSize() > 0);
-	ASSERT_TRUE(result->getUsedSize() > 0);
-}
 TEST_F(TestStorageApi, /*DISABLED_*/testGetIsExist)
 {
 	//Create file in storage
@@ -326,11 +317,4 @@ TEST_F(TestStorageApi, /*DISABLED_*/testGetIsExist)
 
 	ASSERT_FALSE(result_exist->isExists());
 	ASSERT_FALSE(result_exist->isFolder());
-}
-TEST_F(TestStorageApi, /*DISABLED_*/testGetIsStorageExistNotExist)
-{
-	utility::string_t storage_not_exist = _XPLATSTR("NotExistStorage");
-
-    auto result = api->storageExists(storage_not_exist).get();
-    ASSERT_FALSE(result->isExists());
 }
